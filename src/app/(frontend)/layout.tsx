@@ -11,6 +11,7 @@ import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { siteRobotsMetadata } from '@/utilities/siteRobots'
 import { draftMode } from 'next/headers'
 
 import './globals.css'
@@ -45,9 +46,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
-  openGraph: mergeOpenGraph(),
+  title: {
+    default: 'Manufacturing Marketing Agency',
+    template: '%s | Manufacturing Marketing Agency',
+  },
+  description:
+    'Manufacturing marketing agency website under development. Industrial SEO, demand generation, and brand authority for B2B manufacturers.',
+  robots: siteRobotsMetadata,
+  openGraph: mergeOpenGraph({
+    siteName: 'Manufacturing Marketing Agency',
+    title: 'Manufacturing Marketing Agency',
+    description:
+      'Manufacturing marketing agency website under development. Industrial SEO, demand generation, and brand authority for B2B manufacturers.',
+  }),
   twitter: {
     card: 'summary_large_image',
-    creator: '@payloadcms',
   },
 }

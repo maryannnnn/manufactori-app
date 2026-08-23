@@ -46,6 +46,20 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   redirects,
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value:
+              'noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai',
+          },
+        ],
+      },
+    ]
+  },
   turbopack: {
     root: path.resolve(dirname),
   },

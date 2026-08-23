@@ -5,6 +5,7 @@ import type { Media, Page, Post, Config } from '../payload-types'
 import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
 import { getPostUrl } from './getContentUrls'
+import { siteRobotsMetadata } from './siteRobots'
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
@@ -37,6 +38,7 @@ export const generateMeta = async (args: {
 
   return {
     description: doc?.meta?.description,
+    robots: siteRobotsMetadata,
     openGraph: mergeOpenGraph({
       description: doc?.meta?.description || '',
       images: ogImage
