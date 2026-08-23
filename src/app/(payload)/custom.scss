@@ -1,0 +1,98 @@
+// Compact block picker in Layout fields (shared by Pages, Posts, and other blocks fields).
+.blocks-drawer {
+  &__blocks-wrapper {
+    padding-top: calc(var(--base) * 0.75);
+  }
+
+  &__blocks {
+    // ~15% wider than the previous 12-column compact grid.
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: calc(var(--base) * 0.5);
+    align-items: start;
+  }
+
+  &__block-groups {
+    gap: calc(var(--base) * 0.75);
+  }
+
+  &__block-group-label {
+    padding-bottom: calc(var(--base) * 0.25);
+  }
+
+  &__block-group-none {
+    padding-top: calc(var(--base) * 0.75);
+  }
+
+  &__default-image {
+    aspect-ratio: 2 / 1;
+    max-height: calc(var(--base) * 2.5);
+
+    img,
+    svg {
+      max-height: calc(var(--base) * 2.25);
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  .thumbnail-card {
+    padding: calc(var(--base) * 0.25);
+    border-radius: var(--style-radius-s);
+    height: auto;
+
+    &__label {
+      padding: calc(var(--base) * 0.35) calc(var(--base) * 0.2) calc(var(--base) * 0.2);
+      overflow: visible;
+      text-overflow: unset;
+      white-space: normal;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      line-height: 1.25;
+    }
+  }
+
+  @media (max-width: 1440px) {
+    &__blocks {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__blocks-wrapper {
+      padding-top: calc(var(--base) * 0.875);
+    }
+
+    &__blocks {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    &__block-groups {
+      gap: calc(var(--base) * 0.875);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__blocks-wrapper {
+      padding-top: calc(var(--base) * 0.5);
+    }
+
+    &__blocks {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    &__block-groups {
+      gap: calc(var(--base) * 0.5);
+    }
+
+    &__block-group-none {
+      padding-top: calc(var(--base) * 0.5);
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__blocks {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
