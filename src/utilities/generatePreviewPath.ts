@@ -24,7 +24,17 @@ export const generatePreviewPath = ({ collection, slug, categorySlug }: Props) =
   }
 
   if (collection === 'categories') {
-    path = `/blog/categories/${encodedSlug}`
+    path = `/blog/category/${encodedSlug}`
+  }
+
+  if (collection === 'case-study-categories') {
+    path = `/case-study/category/${encodedSlug}`
+  }
+
+  if (collection === 'case-studies') {
+    path = categorySlug
+      ? `/case-study/${encodeURIComponent(categorySlug)}/${encodedSlug}`
+      : `/case-study/${encodedSlug}`
   }
 
   const encodedParams = new URLSearchParams({

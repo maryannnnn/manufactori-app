@@ -9,6 +9,7 @@ import { imageHero1 } from './image-hero-1'
 import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
+import { blogCategories, blogCategoryToPayloadData } from '@/data/blogCategories'
 
 const collections: CollectionSlug[] = [
   'categories',
@@ -21,8 +22,6 @@ const collections: CollectionSlug[] = [
 ]
 
 const globals: GlobalSlug[] = ['header', 'footer']
-
-const categories = ['Technology', 'News', 'Finance', 'Design', 'Software', 'Engineering']
 
 // Next.js revalidation errors are normal when seeding the database without a server running
 // i.e. running `yarn seed` locally instead of using the admin UI within an active app
@@ -130,14 +129,10 @@ export const seed = async ({
   ])
 
   const categoryDocs = await Promise.all(
-    categories.map((category) =>
+    blogCategories.map((category) =>
       payload.create({
         collection: 'categories',
-        data: {
-          title: category,
-          category_long_title: category,
-          slug: category.toLowerCase(),
-        },
+        data: blogCategoryToPayloadData(category),
       }),
     ),
   )

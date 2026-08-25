@@ -23,6 +23,8 @@ export const Categories: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: 'Blog',
+    description: 'Thematic categories for blog articles. Not a substitute for Services, Industries, or Solutions.',
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>
@@ -54,37 +56,37 @@ export const Categories: CollectionConfig = {
     {
       name: 'category_long_title',
       type: 'text',
-      label: 'Длинный заголовок (H1)',
+      label: 'Long title (H1)',
       required: true,
       admin: {
-        description: 'Длинный основной заголовок категории. Используется как H1.',
+        description: 'Longer category heading used as the H1 on the category page.',
       },
     },
     {
       name: 'category_description',
       type: 'richText',
-      label: 'Описание категории',
+      label: 'Category description',
       editor: defaultTiptap,
     },
     {
       name: 'category_image',
       type: 'upload',
-      label: 'Изображение категории',
+      label: 'Category image',
       relationTo: 'media',
       admin: {
-        description: 'Изображение для превью категории в карточках и списках.',
+        description: 'Image for category cards and archive pages.',
       },
     },
     {
       name: 'relatedPosts',
       type: 'join',
-      label: 'Посты в этой категории',
+      label: 'Posts in this category',
       collection: 'posts',
       on: 'categories',
       admin: {
         allowCreate: false,
         defaultColumns: ['title', 'slug', 'updatedAt'],
-        description: 'Посты, связанные с этой категорией через существующее поле Categories у Post.',
+        description: 'Posts linked through the existing Categories field on Post.',
       },
     },
     {

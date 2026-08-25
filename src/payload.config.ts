@@ -5,13 +5,17 @@ import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
+import { CaseStudies } from './collections/CaseStudies'
+import { CaseStudyCategories } from './collections/CaseStudyCategories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
+import { SiteCategories } from './collections/SiteCategories'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
+import { bulkCreateCategoriesEndpoint } from './endpoints/bulkCreateCategories'
 import { defaultTiptap } from '@/fields/defaultTiptap'
 import { getServerSideURL } from './utilities/getURL'
 
@@ -27,6 +31,13 @@ export default buildConfig({
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeDashboard: ['@/components/BeforeDashboard'],
+      afterNavLinks: ['@/components/admin/AddCategoryGroup/NavLink#AddCategoryGroupNavLink'],
+      views: {
+        addCategoryGroup: {
+          Component: '@/components/admin/AddCategoryGroup',
+          path: '/add-category-group',
+        },
+      },
     },
     importMap: {
       baseDir: path.resolve(dirname),
@@ -61,11 +72,13 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
-    // Schema is applied; disable interactive drizzle push so Admin is not blocked by rename/drop prompts.
+    // Temporarily true while applying Case Studies schema; set back to false after push.
     push: false,
+    migrationDir: path.resolve(dirname, 'migrations'),
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Posts, CaseStudies, Media, Categories, CaseStudyCategories, SiteCategories, Users],
   cors: [getServerSideURL()].filter(Boolean),
+  endpoints: [bulkCreateCategoriesEndpoint],
   globals: [Header, Footer],
   plugins,
   secret: process.env.PAYLOAD_SECRET,

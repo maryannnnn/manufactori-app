@@ -1,10 +1,12 @@
 import type { CollectionBeforeChangeHook } from 'payload'
 import { APIError } from 'payload'
 
+import { isReservedCategorySlug } from '../utilities/getContentUrls'
+
 export const rejectReservedCategorySlug: CollectionBeforeChangeHook = ({ data }) => {
-  if (data?.slug === 'categories') {
+  if (isReservedCategorySlug(data?.slug)) {
     throw new APIError(
-      'Slug «categories» зарезервирован для URL списка категорий: /blog/categories/{slug}',
+      'This slug is reserved for blog category URLs: /blog/category/{slug}',
       400,
     )
   }

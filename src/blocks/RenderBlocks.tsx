@@ -1,9 +1,15 @@
 import React, { Fragment } from 'react'
 
-import type { Category, Page } from '@/payload-types'
+import type { CaseStudy, CaseStudyCategory, Category, Page, Post } from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
+import { CaseStudyCommentsBlock } from '@/blocks/CaseStudyCommentsBlock/Component'
+import { CaseStudyContentTitleBlock } from '@/blocks/CaseStudyContentTitleBlock/Component'
+import { CaseStudyFAQBlock } from '@/blocks/CaseStudyFAQBlock/Component'
+import { CaseStudyGalleryBlock } from '@/blocks/CaseStudyGalleryBlock/Component'
+import { CaseStudyPreviewBlock } from '@/blocks/CaseStudyPreviewBlock/Component'
+import { CaseStudyVideoBlock } from '@/blocks/CaseStudyVideoBlock/Component'
 import { CodeBlock } from '@/blocks/Code/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
@@ -15,13 +21,32 @@ const blockComponents = {
   code: CodeBlock,
   content: ContentBlock,
   postContentBlock: ContentBlock,
+  caseStudyContentBlock: ContentBlock,
+  csContent: ContentBlock,
+  caseStudyPreviewBlock: CaseStudyPreviewBlock,
+  csPreview: CaseStudyPreviewBlock,
+  caseStudyContentTitleBlock: CaseStudyContentTitleBlock,
+  csContentTitle: CaseStudyContentTitleBlock,
+  caseStudyVideoBlock: CaseStudyVideoBlock,
+  csVideo: CaseStudyVideoBlock,
+  caseStudyGalleryBlock: CaseStudyGalleryBlock,
+  csGallery: CaseStudyGalleryBlock,
+  caseStudyCommentsBlock: CaseStudyCommentsBlock,
+  csComments: CaseStudyCommentsBlock,
+  caseStudyFAQBlock: CaseStudyFAQBlock,
+  csFAQ: CaseStudyFAQBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   pagePreviewBlock: PagePreviewBlock,
 }
 
-type LayoutBlock = NonNullable<Page['layout']>[number] | NonNullable<Category['layout']>[number]
+type LayoutBlock =
+  | NonNullable<Page['layout']>[number]
+  | NonNullable<Category['layout']>[number]
+  | NonNullable<CaseStudyCategory['layout']>[number]
+  | NonNullable<Post['layout']>[number]
+  | NonNullable<CaseStudy['layout']>[number]
 
 export const RenderBlocks: React.FC<{
   blocks: LayoutBlock[]
@@ -37,7 +62,7 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType]
+            const Block = blockComponents[blockType as keyof typeof blockComponents]
 
             if (Block) {
               return (

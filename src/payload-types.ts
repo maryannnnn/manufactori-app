@@ -69,8 +69,11 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
+    'case-studies': CaseStudy;
     media: Media;
     categories: Category;
+    'case-study-categories': CaseStudyCategory;
+    'site-categories': SiteCategory;
     users: User;
     redirects: Redirect;
     forms: Form;
@@ -87,6 +90,9 @@ export interface Config {
     categories: {
       relatedPosts: 'posts';
     };
+    'case-study-categories': {
+      relatedCaseStudies: 'case-studies';
+    };
     'payload-folders': {
       documentsAndFolders: 'payload-folders' | 'media';
     };
@@ -94,8 +100,11 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    'case-study-categories': CaseStudyCategoriesSelect<false> | CaseStudyCategoriesSelect<true>;
+    'site-categories': SiteCategoriesSelect<false> | SiteCategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -275,13 +284,17 @@ export interface Post {
   };
   relatedPosts?: (number | Post)[] | null;
   /**
-   * Если задана, URL поста: /blog/{category-slug}/{post-slug}. Если нет — /blog/{post-slug}.
+   * Used in the post URL: /blog/{primary-category-slug}/{post-slug}. Must be one of the selected Blog Categories.
    */
   primary_category: number | Category;
   /**
-   * Все категории поста. Используются для списков на страницах категорий.
+   * Blog topics for this article. A post can belong to several categories.
    */
   categories?: (number | Category)[] | null;
+  /**
+   * Site taxonomy nodes for this post (independent from Blog Categories). Multiple allowed. Does not affect post URL.
+   */
+  site_categories?: (number | SiteCategory)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -616,6 +629,8 @@ export interface ArchiveBlock {
   blockType: 'archive';
 }
 /**
+ * Thematic categories for blog articles. Not a substitute for Services, Industries, or Solutions.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
@@ -623,18 +638,18 @@ export interface Category {
   id: number;
   title: string;
   /**
-   * Длинный основной заголовок категории. Используется как H1.
+   * Longer category heading used as the H1 on the category page.
    */
   category_long_title: string;
   category_description?: {
     [k: string]: unknown;
   } | null;
   /**
-   * Изображение для превью категории в карточках и списках.
+   * Image for category cards and archive pages.
    */
   category_image?: (number | null) | Media;
   /**
-   * Посты, связанные с этой категорией через существующее поле Categories у Post.
+   * Posts linked through the existing Categories field on Post.
    */
   relatedPosts?: {
     docs?: (number | Post)[];
@@ -844,6 +859,32 @@ export interface Form {
   createdAt: string;
 }
 /**
+ * Internal site structure tree (parent/child). Used for taxonomy and relationships — not public pages.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-categories".
+ */
+export interface SiteCategory {
+  id: number;
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  parent?: (number | null) | SiteCategory;
+  breadcrumbs?:
+    | {
+        doc?: (number | null) | SiteCategory;
+        url?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
@@ -885,6 +926,270 @@ export interface PagePreviewBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-studies".
+ */
+export interface CaseStudy {
+  id: number;
+  title: string;
+  /**
+   * Main case study heading. Used as H1 on the frontend.
+   */
+  case_study_long_title: string;
+  layout: (
+    | CaseStudyPreviewBlock
+    | CaseStudyContentBlock
+    | CaseStudyContentTitleBlock
+    | CaseStudyVideoBlock
+    | CaseStudyGalleryBlock
+    | CaseStudyCommentsBlock
+    | CaseStudyFAQBlock
+    | CodeBlock
+    | CallToActionBlock
+    | MediaBlock
+    | ArchiveBlock
+  )[];
+  hero: {
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    richText?: {
+      [k: string]: unknown;
+    } | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose how the link should be rendered.
+             */
+            appearance?: ('default' | 'outline') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    media?: (number | null) | Media;
+  };
+  relatedCaseStudies?: (number | CaseStudy)[] | null;
+  /**
+   * Used in the case study URL: /case-study/{category-slug}/{case-study-slug}.
+   */
+  primary_case_study_category: number | CaseStudyCategory;
+  /**
+   * Thematic case study categories. Multiple allowed.
+   */
+  case_study_categories?: (number | CaseStudyCategory)[] | null;
+  /**
+   * Site taxonomy nodes (independent from Case Study Categories). Does not affect URL.
+   */
+  site_categories?: (number | SiteCategory)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyPreviewBlock".
+ */
+export interface CaseStudyPreviewBlock {
+  case_study_preview_title?: string | null;
+  case_study_preview_text?: {
+    [k: string]: unknown;
+  } | null;
+  case_study_preview_image?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csPreview';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyContentBlock".
+ */
+export interface CaseStudyContentBlock {
+  columns?:
+    | {
+        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+        richText?: {
+          [k: string]: unknown;
+        } | null;
+        enableLink?: boolean | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csContent';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyContentTitleBlock".
+ */
+export interface CaseStudyContentTitleBlock {
+  /**
+   * Additional content heading. Rendered as H2.
+   */
+  case_study_content_title?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csContentTitle';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyVideoBlock".
+ */
+export interface CaseStudyVideoBlock {
+  case_study_video_title?: string | null;
+  case_study_video_description?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Embed code (e.g. YouTube iframe). Not a video file upload.
+   */
+  case_study_video_code?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csVideo';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyGalleryBlock".
+ */
+export interface CaseStudyGalleryBlock {
+  case_study_gallery_title?: string | null;
+  /**
+   * Up to 20 images from Media.
+   */
+  case_study_gallery_images?: (number | Media)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csGallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyCommentsBlock".
+ */
+export interface CaseStudyCommentsBlock {
+  case_study_comment_title?: string | null;
+  case_study_comment_text?: {
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csComments';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyFAQBlock".
+ */
+export interface CaseStudyFAQBlock {
+  case_study_faq_title?: string | null;
+  case_study_faq_text?: {
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csFAQ';
+}
+/**
+ * Thematic categories for case studies. Separate from Blog Categories.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-study-categories".
+ */
+export interface CaseStudyCategory {
+  id: number;
+  title: string;
+  /**
+   * Longer category heading used as the H1 on the category page.
+   */
+  case_study_long_title: string;
+  case_study_description?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Image for category cards and archive pages.
+   */
+  case_study_image?: (number | null) | Media;
+  /**
+   * Case studies linked through Case Study Categories.
+   */
+  relatedCaseStudies?: {
+    docs?: (number | CaseStudy)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  /**
+   * Additional content below the case study list for this category.
+   */
+  layout?: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | CodeBlock)[] | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  parent?: (number | null) | CaseStudyCategory;
+  breadcrumbs?:
+    | {
+        doc?: (number | null) | CaseStudyCategory;
+        url?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -903,6 +1208,10 @@ export interface Redirect {
       | ({
           relationTo: 'posts';
           value: number | Post;
+        } | null)
+      | ({
+          relationTo: 'case-studies';
+          value: number | CaseStudy;
         } | null);
     url?: string | null;
   };
@@ -1084,12 +1393,24 @@ export interface PayloadLockedDocument {
         value: number | Post;
       } | null)
     | ({
+        relationTo: 'case-studies';
+        value: number | CaseStudy;
+      } | null)
+    | ({
         relationTo: 'media';
         value: number | Media;
       } | null)
     | ({
         relationTo: 'categories';
         value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'case-study-categories';
+        value: number | CaseStudyCategory;
+      } | null)
+    | ({
+        relationTo: 'site-categories';
+        value: number | SiteCategory;
       } | null)
     | ({
         relationTo: 'users';
@@ -1363,6 +1684,7 @@ export interface PostsSelect<T extends boolean = true> {
   relatedPosts?: T;
   primary_category?: T;
   categories?: T;
+  site_categories?: T;
   meta?:
     | T
     | {
@@ -1468,6 +1790,162 @@ export interface PostCommentsBlockSelect<T extends boolean = true> {
 export interface PostFAQBlockSelect<T extends boolean = true> {
   postFAQTitle?: T;
   postFAQText?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-studies_select".
+ */
+export interface CaseStudiesSelect<T extends boolean = true> {
+  title?: T;
+  case_study_long_title?: T;
+  layout?:
+    | T
+    | {
+        csPreview?: T | CaseStudyPreviewBlockSelect<T>;
+        csContent?: T | CaseStudyContentBlockSelect<T>;
+        csContentTitle?: T | CaseStudyContentTitleBlockSelect<T>;
+        csVideo?: T | CaseStudyVideoBlockSelect<T>;
+        csGallery?: T | CaseStudyGalleryBlockSelect<T>;
+        csComments?: T | CaseStudyCommentsBlockSelect<T>;
+        csFAQ?: T | CaseStudyFAQBlockSelect<T>;
+        code?: T | CodeBlockSelect<T>;
+        cta?: T | CallToActionBlockSelect<T>;
+        mediaBlock?: T | MediaBlockSelect<T>;
+        archive?: T | ArchiveBlockSelect<T>;
+      };
+  hero?:
+    | T
+    | {
+        type?: T;
+        richText?: T;
+        links?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                    appearance?: T;
+                  };
+              id?: T;
+            };
+        media?: T;
+      };
+  relatedCaseStudies?: T;
+  primary_case_study_category?: T;
+  case_study_categories?: T;
+  site_categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyPreviewBlock_select".
+ */
+export interface CaseStudyPreviewBlockSelect<T extends boolean = true> {
+  case_study_preview_title?: T;
+  case_study_preview_text?: T;
+  case_study_preview_image?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyContentBlock_select".
+ */
+export interface CaseStudyContentBlockSelect<T extends boolean = true> {
+  columns?:
+    | T
+    | {
+        size?: T;
+        richText?: T;
+        enableLink?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyContentTitleBlock_select".
+ */
+export interface CaseStudyContentTitleBlockSelect<T extends boolean = true> {
+  case_study_content_title?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyVideoBlock_select".
+ */
+export interface CaseStudyVideoBlockSelect<T extends boolean = true> {
+  case_study_video_title?: T;
+  case_study_video_description?: T;
+  case_study_video_code?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyGalleryBlock_select".
+ */
+export interface CaseStudyGalleryBlockSelect<T extends boolean = true> {
+  case_study_gallery_title?: T;
+  case_study_gallery_images?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyCommentsBlock_select".
+ */
+export interface CaseStudyCommentsBlockSelect<T extends boolean = true> {
+  case_study_comment_title?: T;
+  case_study_comment_text?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyFAQBlock_select".
+ */
+export interface CaseStudyFAQBlockSelect<T extends boolean = true> {
+  case_study_faq_title?: T;
+  case_study_faq_text?: T;
   id?: T;
   blockName?: T;
 }
@@ -1585,6 +2063,60 @@ export interface CategoriesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         code?: T | CodeBlockSelect<T>;
       };
+  generateSlug?: T;
+  slug?: T;
+  parent?: T;
+  breadcrumbs?:
+    | T
+    | {
+        doc?: T;
+        url?: T;
+        label?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-study-categories_select".
+ */
+export interface CaseStudyCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  case_study_long_title?: T;
+  case_study_description?: T;
+  case_study_image?: T;
+  relatedCaseStudies?: T;
+  layout?:
+    | T
+    | {
+        cta?: T | CallToActionBlockSelect<T>;
+        content?: T | ContentBlockSelect<T>;
+        mediaBlock?: T | MediaBlockSelect<T>;
+        archive?: T | ArchiveBlockSelect<T>;
+        formBlock?: T | FormBlockSelect<T>;
+        code?: T | CodeBlockSelect<T>;
+      };
+  generateSlug?: T;
+  slug?: T;
+  parent?: T;
+  breadcrumbs?:
+    | T
+    | {
+        doc?: T;
+        url?: T;
+        label?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-categories_select".
+ */
+export interface SiteCategoriesSelect<T extends boolean = true> {
+  title?: T;
   generateSlug?: T;
   slug?: T;
   parent?: T;
@@ -2029,6 +2561,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'posts';
           value: number | Post;
+        } | null)
+      | ({
+          relationTo: 'case-studies';
+          value: number | CaseStudy;
         } | null);
     global?: string | null;
     user?: (number | null) | User;

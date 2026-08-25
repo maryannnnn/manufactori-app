@@ -1,4 +1,11 @@
+import Link from 'next/link'
 import React from 'react'
+
+export type LandingCategory = {
+  title: string
+  href: string
+  description?: string
+}
 
 const pillars = [
   {
@@ -15,9 +22,13 @@ const pillars = [
   },
 ] as const
 
-export const ComingSoonLanding: React.FC = () => {
+type Props = {
+  categories?: LandingCategory[]
+}
+
+export const ComingSoonLanding: React.FC<Props> = ({ categories = [] }) => {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#070b10] text-white">
+    <main className="relative overflow-hidden bg-[#070b10] text-white">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_at_center,black,transparent_78%)]"
@@ -31,7 +42,7 @@ export const ComingSoonLanding: React.FC = () => {
         className="pointer-events-none absolute bottom-0 right-0 h-[24rem] w-[24rem] translate-x-1/4 translate-y-1/4 rounded-full bg-sky-500/10 blur-3xl"
       />
 
-      <div className="container relative z-10 flex min-h-screen flex-col justify-center py-20">
+      <section className="container relative z-10 flex min-h-screen flex-col justify-center py-20">
         <div className="max-w-4xl">
           <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm uppercase tracking-[0.24em] text-amber-200/90 backdrop-blur-sm">
             <span className="relative flex h-2.5 w-2.5">
@@ -73,7 +84,44 @@ export const ComingSoonLanding: React.FC = () => {
             Manufactori
           </p>
         </div>
-      </div>
+      </section>
+
+      {categories.length > 0 && (
+        <section className="relative z-10 border-t border-white/10 py-24">
+          <div className="container">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.35em] text-white/45">
+              Resources
+            </p>
+            <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
+              Blog categories
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/68">
+              Thematic guides and articles for manufacturing marketers. The full site is still in
+              development — these topics are already live.
+            </p>
+
+            <div className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2">
+              {categories.map((category) => (
+                <Link
+                  key={category.href}
+                  href={category.href}
+                  className="group block border-t border-white/10 pt-6 transition-colors hover:border-amber-300/40"
+                >
+                  <h3 className="text-xl font-medium text-white transition-colors group-hover:text-amber-200">
+                    {category.title}
+                  </h3>
+                  {category.description ? (
+                    <p className="mt-3 text-sm leading-7 text-white/60">{category.description}</p>
+                  ) : null}
+                  <span className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.24em] text-white/35 group-hover:text-amber-200/80">
+                    Read
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   )
 }

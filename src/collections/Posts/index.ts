@@ -44,6 +44,7 @@ export const Posts: CollectionConfig<'posts'> = {
     title: true,
     slug: true,
     categories: true,
+    site_categories: true,
     primary_category: true,
     meta: {
       image: true,
@@ -170,17 +171,17 @@ export const Posts: CollectionConfig<'posts'> = {
             {
               name: 'primary_category',
               type: 'relationship',
-              label: 'Основная категория',
+              label: 'Primary Category',
               relationTo: 'categories',
               required: true,
               admin: {
                 position: 'sidebar',
                 description:
-                  'Если задана, URL поста: /blog/{category-slug}/{post-slug}. Если нет — /blog/{post-slug}.',
+                  'Used in the post URL: /blog/{primary-category-slug}/{post-slug}. Must be one of the selected Blog Categories.',
               },
               validate: (value: unknown) => {
                 if (value == null || value === '') {
-                  return 'Основная категория обязательна'
+                  return 'Primary Category is required'
                 }
                 return true
               },
@@ -188,12 +189,25 @@ export const Posts: CollectionConfig<'posts'> = {
             {
               name: 'categories',
               type: 'relationship',
+              label: 'Blog Categories',
               admin: {
                 position: 'sidebar',
-                description: 'Все категории поста. Используются для списков на страницах категорий.',
+                description: 'Blog topics for this article. A post can belong to several categories.',
               },
               hasMany: true,
               relationTo: 'categories',
+            },
+            {
+              name: 'site_categories',
+              type: 'relationship',
+              label: 'Site Categories',
+              admin: {
+                position: 'sidebar',
+                description:
+                  'Site taxonomy nodes for this post (independent from Blog Categories). Multiple allowed. Does not affect post URL.',
+              },
+              hasMany: true,
+              relationTo: 'site-categories',
             },
           ],
           label: 'Meta',

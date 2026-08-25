@@ -11,7 +11,11 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { getPostListPreview } from '@/utilities/getPostListPreview'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 import { generateMeta } from '@/utilities/generateMeta'
-import { getCategorySlug } from '@/utilities/getContentUrls'
+import {
+  BLOG_CATEGORY_PATH_SEGMENT,
+  getCategorySlug,
+  isReservedCategorySlug,
+} from '@/utilities/getContentUrls'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
@@ -34,11 +38,11 @@ const parseSegments = (segments: string[] | undefined) => {
   const decoded = segments.map((segment) => decodeURIComponent(segment)).filter(Boolean)
   if (decoded.length === 1) {
     const postSlug = decoded[0]
-    if (!postSlug || postSlug === 'categories') return null
+    if (!postSlug || isReservedCategorySlug(postSlug)) return null
     return { type: 'post' as const, categorySlug: null, postSlug }
   }
 
-  if (decoded.length === 2 && decoded[0] === 'categories') {
+  if (decoded.length === 2 && isReservedCategorySlug(decoded[0])) {
     const categorySlug = decoded[1]
     if (!categorySlug) return null
     return { type: 'category' as const, categorySlug }
@@ -81,13 +85,13 @@ export async function generateStaticParams() {
   ])
 
   const categoryParams = categories.docs.flatMap(({ slug }) =>
-    slug ? [{ segments: ['categories', slug] }] : [],
+    slug ? [{ segments: [BLOG_CATEGORY_PATH_SEGMENT, slug] }] : [],
   )
 
   const postParams = posts.docs.flatMap((post) => {
     if (!post.slug) return []
     const category = getCategorySlug(post.primary_category)
-    if (!category || category === 'categories') {
+    if (!category || isReservedCategorySlug(category)) {
       return [{ segments: [post.slug] }]
     }
     return [{ segments: [category, post.slug] }]
@@ -135,7 +139,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 
 async function renderCategoryPage(slug: string) {
   const { isEnabled: draft } = await draftMode()
-  const url = `/blog/categories/${slug}`
+  const url = `/blog/${BLOG_CATEGORY_PATH_SEGMENT}/${slug}`
   const category = await queryCategoryBySlug({ slug })
 
   if (!category) return <PayloadRedirects url={url} />
@@ -209,7 +213,7 @@ async function renderCategoryPage(slug: string) {
           <CollectionArchive posts={postCards} />
         ) : (
           <div className="container">
-            <p>В этой категории пока нет постов.</p>
+            <p>No articles in this category yet.</p>
           </div>
         )}
       </div>
