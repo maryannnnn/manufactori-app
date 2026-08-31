@@ -7,9 +7,12 @@ import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c08
 import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
+import { HierarchicalCategoryRelationshipField as HierarchicalCategoryRelationshipField_bc1a0768fff96ef33e506d4fb7ee0771 } from '@/components/admin/CategoryHierarchy/HierarchicalCategoryRelationshipField'
 import { SlugField as SlugField_2b8867833a34864a02ddf429b0728a40 } from '@payloadcms/next/client'
 import { FolderTableCell as FolderTableCell_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 import { FolderField as FolderField_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
+import { CategoryTitleCell as CategoryTitleCell_3228047a15c6bf4c0f85af352bb0197e } from '@/components/admin/CategoryHierarchy/CategoryTitleCell'
+import { CategoryHierarchyListNav as CategoryHierarchyListNav_a798597060b50744e47ad7cdf56be79a, SiteCategoryHierarchyListNav as SiteCategoryHierarchyListNav_a798597060b50744e47ad7cdf56be79b, CaseStudyCategoryHierarchyListNav as CaseStudyCategoryHierarchyListNav_a798597060b50744e47ad7cdf56be79c } from '@/components/admin/CategoryHierarchy/HierarchicalCategoryListNav'
 import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { FolderTypeField as FolderTypeField_2b8867833a34864a02ddf429b0728a40 } from '@payloadcms/next/client'
@@ -32,9 +35,14 @@ export const importMap = {
   "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#PreviewComponent": PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
+  "@/components/admin/CategoryHierarchy/HierarchicalCategoryRelationshipField#HierarchicalCategoryRelationshipField": HierarchicalCategoryRelationshipField_bc1a0768fff96ef33e506d4fb7ee0771,
   "@payloadcms/next/client#SlugField": SlugField_2b8867833a34864a02ddf429b0728a40,
   "@payloadcms/next/rsc#FolderTableCell": FolderTableCell_f9c02e79a4aed9a3924487c0cd4cafb1,
   "@payloadcms/next/rsc#FolderField": FolderField_f9c02e79a4aed9a3924487c0cd4cafb1,
+  "@/components/admin/CategoryHierarchy/CategoryTitleCell#CategoryTitleCell": CategoryTitleCell_3228047a15c6bf4c0f85af352bb0197e,
+  "@/components/admin/CategoryHierarchy/HierarchicalCategoryListNav#CategoryHierarchyListNav": CategoryHierarchyListNav_a798597060b50744e47ad7cdf56be79a,
+  "@/components/admin/CategoryHierarchy/HierarchicalCategoryListNav#SiteCategoryHierarchyListNav": SiteCategoryHierarchyListNav_a798597060b50744e47ad7cdf56be79b,
+  "@/components/admin/CategoryHierarchy/HierarchicalCategoryListNav#CaseStudyCategoryHierarchyListNav": CaseStudyCategoryHierarchyListNav_a798597060b50744e47ad7cdf56be79c,
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/next/client#FolderTypeField": FolderTypeField_2b8867833a34864a02ddf429b0728a40,

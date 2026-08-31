@@ -16,6 +16,13 @@ import {
   revalidateCaseStudyCategoryDelete,
 } from '../hooks/revalidateCaseStudyCategory'
 import { rejectReservedCaseStudyCategorySlug } from '../hooks/rejectReservedCaseStudyCategorySlug'
+import {
+  hierarchicalCategoryAdmin,
+  hierarchicalCategoryCollectionHooks,
+  hierarchicalCategoryForceSelect,
+  hierarchicalCategoryTitleField,
+} from '@/fields/hierarchicalCategoryAdmin'
+import { hierarchicalCategoryListNavPaths } from '@/fields/hierarchicalCategoryRelationship'
 
 /**
  * Case Study Categories — mirrors Blog Categories (`categories`) for case-study archives.
@@ -38,6 +45,10 @@ export const CaseStudyCategories: CollectionConfig = {
     group: 'Case Studies',
     description: 'Thematic categories for case studies. Separate from Blog Categories.',
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    ...hierarchicalCategoryAdmin,
+    components: {
+      beforeListTable: [hierarchicalCategoryListNavPaths.caseStudy],
+    },
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({
@@ -64,6 +75,7 @@ export const CaseStudyCategories: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
+      ...hierarchicalCategoryTitleField,
     },
     {
       name: 'case_study_long_title',
@@ -119,7 +131,9 @@ export const CaseStudyCategories: CollectionConfig = {
   ],
   hooks: {
     beforeChange: [rejectReservedCaseStudyCategorySlug],
+    ...hierarchicalCategoryCollectionHooks,
     afterChange: [revalidateCaseStudyCategory],
     afterDelete: [revalidateCaseStudyCategoryDelete],
   },
+  forceSelect: hierarchicalCategoryForceSelect,
 }

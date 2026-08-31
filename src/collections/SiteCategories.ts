@@ -3,10 +3,17 @@ import { slugField } from 'payload'
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
+import {
+  hierarchicalCategoryAdmin,
+  hierarchicalCategoryCollectionHooks,
+  hierarchicalCategoryForceSelect,
+  hierarchicalCategoryTitleField,
+} from '@/fields/hierarchicalCategoryAdmin'
+import { hierarchicalCategoryListNavPaths } from '@/fields/hierarchicalCategoryRelationship'
 
 /**
- * Base site taxonomy tree (Website Template Categories shape).
- * Not a frontend page and not Blog Categories (`categories`).
+ * Unified site taxonomy tree (non-public, relationship-only).
+ * Parent/child hierarchy mirrors Post Categories structure.
  */
 export const SiteCategories: CollectionConfig = {
   slug: 'site-categories',
@@ -25,13 +32,19 @@ export const SiteCategories: CollectionConfig = {
     description:
       'Internal site structure tree (parent/child). Used for taxonomy and relationships — not public pages.',
     useAsTitle: 'title',
-    defaultColumns: ['title', 'slug', 'parent', 'updatedAt'],
+    defaultColumns: ['title', 'slug', 'updatedAt'],
+    ...hierarchicalCategoryAdmin,
+    components: {
+      beforeListTable: [hierarchicalCategoryListNavPaths.site],
+    },
   },
+  forceSelect: hierarchicalCategoryForceSelect,
   fields: [
     {
       name: 'title',
       type: 'text',
       required: true,
+      ...hierarchicalCategoryTitleField,
     },
     slugField({
       position: undefined,
@@ -39,4 +52,5 @@ export const SiteCategories: CollectionConfig = {
       useAsSlug: 'title',
     }),
   ],
+  hooks: hierarchicalCategoryCollectionHooks,
 }

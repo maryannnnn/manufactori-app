@@ -11,6 +11,17 @@ import { MediaBlock } from '../blocks/MediaBlock/config'
 import { defaultTiptap } from '@/fields/defaultTiptap'
 import { slugField } from 'payload'
 import { generatePreviewPath } from '../utilities/generatePreviewPath'
+import {
+  decorateCategoryHierarchyRead,
+  prepareCategoryHierarchyQuery,
+  reorderCategoryFindResults,
+} from '../hooks/categoryHierarchyHooks'
+import { hierarchicalCategoryListNavPaths } from '@/fields/hierarchicalCategoryRelationship'
+import {
+  hierarchicalCategoryAdmin,
+  hierarchicalCategoryForceSelect,
+  hierarchicalCategoryTitleField,
+} from '@/fields/hierarchicalCategoryAdmin'
 import { revalidateCategory, revalidateCategoryDelete } from '../hooks/revalidateCategory'
 import { rejectReservedCategorySlug } from '../hooks/rejectReservedCategorySlug'
 
@@ -26,6 +37,11 @@ export const Categories: CollectionConfig = {
     group: 'Blog',
     description: 'Thematic categories for blog articles. Not a substitute for Services, Industries, or Solutions.',
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    enableListViewSelectAPI: true,
+    components: {
+      beforeListTable: [hierarchicalCategoryListNavPaths.post],
+    },
+    pagination: hierarchicalCategoryAdmin.pagination,
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({
@@ -52,6 +68,7 @@ export const Categories: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
+      ...hierarchicalCategoryTitleField,
     },
     {
       name: 'category_long_title',
@@ -105,9 +122,13 @@ export const Categories: CollectionConfig = {
       useAsSlug: 'title',
     }),
   ],
+  forceSelect: hierarchicalCategoryForceSelect,
   hooks: {
     beforeChange: [rejectReservedCategorySlug],
+    beforeOperation: [prepareCategoryHierarchyQuery],
     afterChange: [revalidateCategory],
     afterDelete: [revalidateCategoryDelete],
+    afterRead: [decorateCategoryHierarchyRead],
+    afterOperation: [reorderCategoryFindResults],
   },
 }

@@ -284,15 +284,15 @@ export interface Post {
   };
   relatedPosts?: (number | Post)[] | null;
   /**
-   * Used in the post URL: /blog/{primary-category-slug}/{post-slug}. Must be one of the selected Blog Categories.
+   * Used in the post URL: /blog/{primary-category-slug}/{post-slug}. Browse the tree and pick one category.
    */
   primary_category: number | Category;
   /**
-   * Blog topics for this article. A post can belong to several categories.
+   * Blog topics for this article. Browse the tree and add one or more categories.
    */
   categories?: (number | Category)[] | null;
   /**
-   * Site taxonomy nodes for this post (independent from Blog Categories). Multiple allowed. Does not affect post URL.
+   * Site taxonomy nodes for this post (independent from Blog Categories). Browse the tree and add one or more.
    */
   site_categories?: (number | SiteCategory)[] | null;
   meta?: {
@@ -989,7 +989,7 @@ export interface CaseStudy {
    */
   case_study_categories?: (number | CaseStudyCategory)[] | null;
   /**
-   * Site taxonomy nodes (independent from Case Study Categories). Does not affect URL.
+   * Site taxonomy nodes (independent from Case Study Categories). Browse the tree and add one or more.
    */
   site_categories?: (number | SiteCategory)[] | null;
   meta?: {

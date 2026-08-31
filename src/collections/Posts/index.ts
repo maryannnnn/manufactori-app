@@ -27,6 +27,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { hierarchicalCategoryRelationshipAdmin } from '@/fields/hierarchicalCategoryRelationship'
 import { slugField } from 'payload'
 
 export const Posts: CollectionConfig<'posts'> = {
@@ -175,9 +176,11 @@ export const Posts: CollectionConfig<'posts'> = {
               relationTo: 'categories',
               required: true,
               admin: {
+                ...hierarchicalCategoryRelationshipAdmin,
+                allowCreate: false,
                 position: 'sidebar',
                 description:
-                  'Used in the post URL: /blog/{primary-category-slug}/{post-slug}. Must be one of the selected Blog Categories.',
+                  'Used in the post URL: /blog/{primary-category-slug}/{post-slug}. Browse the tree and pick one category.',
               },
               validate: (value: unknown) => {
                 if (value == null || value === '') {
@@ -191,8 +194,11 @@ export const Posts: CollectionConfig<'posts'> = {
               type: 'relationship',
               label: 'Blog Categories',
               admin: {
+                ...hierarchicalCategoryRelationshipAdmin,
+                allowCreate: false,
                 position: 'sidebar',
-                description: 'Blog topics for this article. A post can belong to several categories.',
+                description:
+                  'Blog topics for this article. Browse the tree and add one or more categories.',
               },
               hasMany: true,
               relationTo: 'categories',
@@ -202,9 +208,10 @@ export const Posts: CollectionConfig<'posts'> = {
               type: 'relationship',
               label: 'Site Categories',
               admin: {
+                ...hierarchicalCategoryRelationshipAdmin,
                 position: 'sidebar',
                 description:
-                  'Site taxonomy nodes for this post (independent from Blog Categories). Multiple allowed. Does not affect post URL.',
+                  'Site taxonomy nodes for this post (independent from Blog Categories). Browse the tree and add one or more.',
               },
               hasMany: true,
               relationTo: 'site-categories',

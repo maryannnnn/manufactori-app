@@ -8,6 +8,7 @@ import {
   CATEGORY_TYPE_TO_COLLECTION,
   type CategoryType,
 } from '@/utilities/categoryTypes'
+import { parseCategoryList } from '@/utilities/parseCategoryList'
 
 import './index.scss'
 
@@ -37,8 +38,6 @@ type ApiResponse = {
   summary?: { created: number; skipped: number; failed: number; total: number }
   results?: CreateResult[]
 }
-
-const emptyRows = (): string[] => ['', '', '']
 
 const parentIdOf = (doc: CategoryDoc): number | string | null => {
   if (doc.parent == null) return null
@@ -84,7 +83,8 @@ const baseClass = 'add-category-group'
 export const AddCategoryGroupForm: React.FC = () => {
   const [categoryType, setCategoryType] = useState<CategoryType>('post')
   const [parentId, setParentId] = useState<string>('')
-  const [rows, setRows] = useState<string[]>(emptyRows)
+  const [listText, setListText] = useState('')
+  const [singleTitle, setSingleTitle] = useState('')
   const [docs, setDocs] = useState<CategoryDoc[]>([])
   const [loadingTree, setLoadingTree] = useState(false)
   const [submitting, setSubmitting] = useState(false)
@@ -93,6 +93,7 @@ export const AddCategoryGroupForm: React.FC = () => {
 
   const collection = CATEGORY_TYPE_TO_COLLECTION[categoryType]
   const treeOptions = useMemo(() => buildTreeOptions(docs), [docs])
+  const parsedPreviewCount = useMemo(() => parseCategoryList(listText).length, [listText])
 
   const longTitleHint =
     categoryType === 'post'
@@ -135,27 +136,27 @@ export const AddCategoryGroupForm: React.FC = () => {
   const onTypeChange = (value: CategoryType) => {
     setCategoryType(value)
     setParentId('')
-    setRows(emptyRows())
+    setListText('')
+    setSingleTitle('')
   }
 
-  const updateRow = (index: number, value: string) => {
-    setRows((prev) => prev.map((row, i) => (i === index ? value : row)))
-  }
+  const appendSingleToList = () => {
+    const title = singleTitle.trim()
+    if (!title) return
 
-  const removeRow = (index: number) => {
-    setRows((prev) => (prev.length <= 1 ? [''] : prev.filter((_, i) => i !== index)))
-  }
-
-  const addRow = () => {
-    setRows((prev) => [...prev, ''])
+    setListText((prev) => {
+      const next = prev.trimEnd()
+      return next ? `${next}\n${title}` : title
+    })
+    setSingleTitle('')
   }
 
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-    const titles = rows.map((row) => row.trim()).filter(Boolean)
+    const titles = parseCategoryList(listText)
 
     if (titles.length === 0) {
-      toast.error('Enter at least one category title')
+      toast.error('Paste or type at least one category (one per line)')
       return
     }
 
@@ -170,7 +171,8 @@ export const AddCategoryGroupForm: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           categoryType,
-          parentId: parentId || null,
+          // Coerce select value to number so Payload relationship validation accepts it.
+          parentId: parentId ? Number(parentId) || parentId : null,
           titles,
         }),
       })
@@ -190,14 +192,15 @@ export const AddCategoryGroupForm: React.FC = () => {
 
       if (created > 0) {
         toast.success(`Created ${created} categor${created === 1 ? 'y' : 'ies'}`)
-        setRows(emptyRows())
+        setListText('')
+        setSingleTitle('')
         await loadTree(categoryType)
       } else {
         toast.info('No new categories created')
       }
 
       if (skipped > 0 || failed > 0) {
-        toast.info(`Skipped ${skipped}, failed ${failed}`)
+        toast.info(`Already existed: ${skipped}, Errors: ${failed}`)
       }
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Create failed'
@@ -210,8 +213,8 @@ export const AddCategoryGroupForm: React.FC = () => {
   return (
     <form className={baseClass} onSubmit={onSubmit}>
       <p className={`${baseClass}__intro`}>
-        Bulk-create categories into an existing collection. Uses the real Parent/Child tree from
-        nested docs — no new category systems.
+        Paste a list of categories (one per line), choose a parent, and create them in one step —
+        similar to Drupal Taxonomy Manager.
       </p>
 
       <label className={`${baseClass}__field`}>
@@ -246,37 +249,61 @@ export const AddCategoryGroupForm: React.FC = () => {
           ))}
         </select>
         <span className={`${baseClass}__hint`}>
-          {loadingTree ? 'Loading tree…' : `${treeOptions.length} categories in this tree`}
+          {loadingTree
+            ? 'Loading tree…'
+            : `${treeOptions.length} categories in this tree. Selected parent applies to every line.`}
         </span>
       </label>
 
-      <div className={`${baseClass}__field`}>
+      <label className={`${baseClass}__field`}>
         <span className={`${baseClass}__label`}>Categories</span>
-        <span className={`${baseClass}__hint`}>{longTitleHint}</span>
-        <div className={`${baseClass}__rows`}>
-          {rows.map((row, index) => (
-            <div className={`${baseClass}__row`} key={index}>
-              <input
-                className={`${baseClass}__input`}
-                value={row}
-                onChange={(e) => updateRow(index, e.target.value)}
-                placeholder={`Category ${index + 1}`}
-                autoComplete="off"
-              />
-              <Button
-                buttonStyle="secondary"
-                type="button"
-                onClick={() => removeRow(index)}
-                disabled={rows.length <= 1}
-              >
-                −
-              </Button>
-            </div>
-          ))}
+        <span className={`${baseClass}__hint`}>
+          One category per line. Paste from Excel, Google Sheets, or a text file. Empty lines are
+          ignored. {longTitleHint}
+        </span>
+        <textarea
+          className={`${baseClass}__textarea`}
+          value={listText}
+          onChange={(e) => setListText(e.target.value)}
+          rows={12}
+          placeholder={[
+            'Manufacturing SEO',
+            'Industrial SEO',
+            'Technical SEO',
+            'Local SEO',
+            'SEO Audit',
+            'SEO Content',
+          ].join('\n')}
+          spellCheck={false}
+        />
+        <span className={`${baseClass}__hint`}>
+          {parsedPreviewCount > 0
+            ? `${parsedPreviewCount} categor${parsedPreviewCount === 1 ? 'y' : 'ies'} ready to create`
+            : 'No categories entered yet'}
+        </span>
+      </label>
+
+      <div className={`${baseClass}__field ${baseClass}__field--secondary`}>
+        <span className={`${baseClass}__label`}>Add one category</span>
+        <span className={`${baseClass}__hint`}>Optional — appends a single line to the list above.</span>
+        <div className={`${baseClass}__row`}>
+          <input
+            className={`${baseClass}__input`}
+            value={singleTitle}
+            onChange={(e) => setSingleTitle(e.target.value)}
+            placeholder="Category title"
+            autoComplete="off"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                appendSingleToList()
+              }
+            }}
+          />
+          <Button buttonStyle="secondary" type="button" onClick={appendSingleToList}>
+            Add to list
+          </Button>
         </div>
-        <Button buttonStyle="secondary" type="button" onClick={addRow}>
-          + Add another category
-        </Button>
       </div>
 
       <div className={`${baseClass}__actions`}>
@@ -287,8 +314,11 @@ export const AddCategoryGroupForm: React.FC = () => {
 
       {summary && (
         <Banner type={summary.failed > 0 ? 'error' : 'success'} className={`${baseClass}__banner`}>
-          Created {summary.created}, skipped {summary.skipped}, failed {summary.failed} (total{' '}
-          {summary.total})
+          Created: {summary.created}
+          <br />
+          Already existed: {summary.skipped}
+          <br />
+          Errors: {summary.failed}
         </Banner>
       )}
 
@@ -298,7 +328,7 @@ export const AddCategoryGroupForm: React.FC = () => {
             <li key={`${result.title}-${index}`} data-status={result.status}>
               <strong>{result.title}</strong>
               {result.status === 'created' && <> — created ({result.slug})</>}
-              {result.status === 'skipped' && <> — skipped: {result.reason}</>}
+              {result.status === 'skipped' && <> — already existed: {result.reason}</>}
               {result.status === 'error' && <> — error: {result.reason}</>}
             </li>
           ))}

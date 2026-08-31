@@ -20,6 +20,7 @@ import { populateAuthors } from '../Posts/hooks/populateAuthors'
 import { ensurePrimaryCaseStudyCategoryInCategories } from './hooks/ensurePrimaryCaseStudyCategory'
 import { revalidateCaseStudy, revalidateCaseStudyDelete } from './hooks/revalidateCaseStudy'
 import { getCategorySlug } from '../../utilities/getContentUrls'
+import { hierarchicalCategoryRelationshipAdmin } from '@/fields/hierarchicalCategoryRelationship'
 
 import {
   MetaDescriptionField,
@@ -205,9 +206,10 @@ export const CaseStudies: CollectionConfig = {
               hasMany: true,
               relationTo: 'site-categories',
               admin: {
+                ...hierarchicalCategoryRelationshipAdmin,
                 position: 'sidebar',
                 description:
-                  'Site taxonomy nodes (independent from Case Study Categories). Does not affect URL.',
+                  'Site taxonomy nodes (independent from Case Study Categories). Browse the tree and add one or more.',
               },
             },
           ],

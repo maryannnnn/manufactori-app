@@ -27,7 +27,8 @@
 }
 
 .add-category-group__select,
-.add-category-group__input {
+.add-category-group__input,
+.add-category-group__textarea {
   width: 100%;
   padding: 0.55rem 0.7rem;
   border: 1px solid var(--theme-elevation-150);
@@ -36,10 +37,18 @@
   color: var(--theme-text);
 }
 
-.add-category-group__rows {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.add-category-group__textarea {
+  min-height: 14rem;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.45;
+  white-space: pre;
+}
+
+.add-category-group__field--secondary {
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--theme-elevation-100);
+  margin-top: 0.25rem;
 }
 
 .add-category-group__row {

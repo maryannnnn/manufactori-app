@@ -1,4 +1,4 @@
-import type { CollectionSlug, Endpoint, PayloadRequest } from 'payload'
+import type { CollectionSlug, Endpoint, PayloadRequest, Where } from 'payload'
 
 import {
   CATEGORY_TYPE_TO_COLLECTION,
@@ -21,7 +21,21 @@ const isCategoryType = (value: unknown): value is CategoryType =>
 
 const toParentId = (value: unknown): number | string | null => {
   if (value == null || value === '') return null
-  if (typeof value === 'number' || typeof value === 'string') return value
+
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return value
+  }
+
+  if (typeof value === 'string') {
+    const trimmed = value.trim()
+    if (!trimmed) return null
+    // HTML <select> always sends strings; Postgres relationship IDs are numbers.
+    if (/^\d+$/.test(trimmed)) {
+      return Number(trimmed)
+    }
+    return trimmed
+  }
+
   return null
 }
 
@@ -90,9 +104,18 @@ export const bulkCreateCategoriesHandler = async (req: PayloadRequest): Promise<
 
   const results: CreateResult[] = []
   const seenSlugs = new Set<string>()
+  const seenTitles = new Set<string>()
+
+  const parentWhere: Where =
+    parentId == null
+      ? {
+          or: [{ parent: { equals: null } }, { parent: { exists: false } }],
+        }
+      : { parent: { equals: parentId } }
 
   for (const title of normalizedTitles) {
     const slug = formatCategorySlug(title)
+    const titleKey = title.toLowerCase()
 
     if (!slug) {
       results.push({
@@ -103,7 +126,7 @@ export const bulkCreateCategoriesHandler = async (req: PayloadRequest): Promise<
       continue
     }
 
-    if (seenSlugs.has(slug)) {
+    if (seenSlugs.has(slug) || seenTitles.has(titleKey)) {
       results.push({
         title,
         status: 'skipped',
@@ -112,8 +135,45 @@ export const bulkCreateCategoriesHandler = async (req: PayloadRequest): Promise<
       continue
     }
     seenSlugs.add(slug)
+    seenTitles.add(titleKey)
 
-    const existing = await req.payload.find({
+    // Same parent: skip if title or slug already exists there.
+    const underParent = await req.payload.find({
+      collection,
+      depth: 0,
+      limit: 1,
+      pagination: false,
+      overrideAccess: false,
+      user: req.user,
+      where: {
+        and: [
+          parentWhere,
+          {
+            or: [{ slug: { equals: slug } }, { title: { equals: title } }],
+          },
+        ],
+      },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        parent: true,
+      },
+    })
+
+    if (underParent.docs.length > 0) {
+      const doc = underParent.docs[0] as { id: number | string; slug?: string | null }
+      results.push({
+        title,
+        status: 'skipped',
+        existingId: doc.id,
+        reason: `Already exists under the selected parent (slug: ${doc.slug || slug})`,
+      })
+      continue
+    }
+
+    // Slugs are unique collection-wide — skip if taken under another parent.
+    const slugElsewhere = await req.payload.find({
       collection,
       depth: 0,
       limit: 1,
@@ -125,34 +185,16 @@ export const bulkCreateCategoriesHandler = async (req: PayloadRequest): Promise<
       },
       select: {
         id: true,
-        title: true,
         slug: true,
-        parent: true,
       },
     })
 
-    if (existing.docs.length > 0) {
-      const doc = existing.docs[0] as {
-        id: number | string
-        parent?: number | string | { id: number | string } | null
-      }
-      const existingParent =
-        doc.parent == null
-          ? null
-          : typeof doc.parent === 'object'
-            ? doc.parent.id
-            : doc.parent
-      const sameParent =
-        (parentId == null && existingParent == null) ||
-        (parentId != null && String(existingParent) === String(parentId))
-
+    if (slugElsewhere.docs.length > 0) {
       results.push({
         title,
         status: 'skipped',
-        existingId: doc.id,
-        reason: sameParent
-          ? `Already exists under the selected parent (slug: ${slug})`
-          : `Slug "${slug}" already exists in this collection`,
+        existingId: slugElsewhere.docs[0].id,
+        reason: `Slug "${slug}" already exists in this collection`,
       })
       continue
     }
