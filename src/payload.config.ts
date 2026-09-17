@@ -72,7 +72,8 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
-    // Temporarily true while applying Case Studies schema; set back to false after push.
+    // Keep false. Apply structured Case Study fields via:
+    // npx tsx --tsconfig tsconfig.json src/scripts/applyCaseStudyStructuredFieldsSchema.ts
     push: false,
     migrationDir: path.resolve(dirname, 'migrations'),
   }),

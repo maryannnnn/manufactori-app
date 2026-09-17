@@ -21,6 +21,12 @@ import { ensurePrimaryCaseStudyCategoryInCategories } from './hooks/ensurePrimar
 import { revalidateCaseStudy, revalidateCaseStudyDelete } from './hooks/revalidateCaseStudy'
 import { getCategorySlug } from '../../utilities/getContentUrls'
 import { hierarchicalCategoryRelationshipAdmin } from '@/fields/hierarchicalCategoryRelationship'
+import {
+  caseStudyDigitalTabFields,
+  caseStudyProfileTabFields,
+  caseStudyResultsTabFields,
+  caseStudySidebarFields,
+} from './fields/structuredCaseStudyFields'
 
 import {
   MetaDescriptionField,
@@ -57,7 +63,7 @@ export const CaseStudies: CollectionConfig = {
   },
   admin: {
     group: 'Case Studies',
-    defaultColumns: ['title', 'slug', 'updatedAt'],
+    defaultColumns: ['title', 'featured', 'displayOrder', 'slug', 'updatedAt'],
     useAsTitle: 'title',
     livePreview: {
       url: async ({ data, req }) => {
@@ -152,6 +158,18 @@ export const CaseStudies: CollectionConfig = {
           ],
         },
         {
+          label: 'Profile & Challenge',
+          fields: caseStudyProfileTabFields,
+        },
+        {
+          label: 'Digital & Marketing',
+          fields: caseStudyDigitalTabFields,
+        },
+        {
+          label: 'Results & Proof',
+          fields: caseStudyResultsTabFields,
+        },
+        {
           label: 'Hero',
           fields: [hero],
         },
@@ -177,9 +195,11 @@ export const CaseStudies: CollectionConfig = {
               relationTo: 'case-study-categories',
               required: true,
               admin: {
+                ...hierarchicalCategoryRelationshipAdmin,
+                allowCreate: false,
                 position: 'sidebar',
                 description:
-                  'Used in the case study URL: /case-study/{category-slug}/{case-study-slug}.',
+                  'Used in the case study URL: /case-study/{category-slug}/{case-study-slug}. Browse the tree and pick one category.',
               },
               validate: (value: unknown) => {
                 if (value == null || value === '') {
@@ -195,8 +215,11 @@ export const CaseStudies: CollectionConfig = {
               hasMany: true,
               relationTo: 'case-study-categories',
               admin: {
+                ...hierarchicalCategoryRelationshipAdmin,
+                allowCreate: false,
                 position: 'sidebar',
-                description: 'Thematic case study categories. Multiple allowed.',
+                description:
+                  'Thematic case study categories. Browse the tree and add one or more.',
               },
             },
             {
@@ -235,6 +258,7 @@ export const CaseStudies: CollectionConfig = {
         },
       ],
     },
+    ...caseStudySidebarFields,
     {
       name: 'publishedAt',
       type: 'date',

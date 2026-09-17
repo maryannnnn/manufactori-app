@@ -948,6 +948,224 @@ export interface CaseStudy {
     | MediaBlock
     | ArchiveBlock
   )[];
+  /**
+   * Production core of the client. Content fields only — use Case Study Categories for Technology taxonomy.
+   */
+  manufacturingProfile?: {
+    /**
+     * Production capacity, equipment, operations, volumes, and full/partial cycle.
+     */
+    productionCapabilities?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Real products or product groups manufactured by the client.
+     */
+    products?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Materials used in production (metal, steel, wood, acrylic, composites, etc.).
+     */
+    materials?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Industries and use-cases for the products (construction, facades, retail, HoReCa, etc.).
+     */
+    applications?: {
+      [k: string]: unknown;
+    } | null;
+  };
+  businessChallenge?: {
+    /**
+     * What the business looked like before the engagement.
+     */
+    initialState?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * The core set of business problems.
+     */
+    challenge?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Project goals and KPIs.
+     */
+    goals?: {
+      [k: string]: unknown;
+    } | null;
+  };
+  /**
+   * How a complex plant is broken into distinct commercial directions. Do not duplicate products/applications here.
+   */
+  nicheSegmentation?:
+    | {
+        name: string;
+        /**
+         * Essence of the direction and positioning.
+         */
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        /**
+         * Promotion strategy for this specific direction.
+         */
+        marketingApproach?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Overall digital infrastructure (website, landings, CRM, analytics, ads, messengers).
+   */
+  digitalEcosystem?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Site structure, URL architecture, landing pages, navigation, and content hierarchy.
+   */
+  websiteArchitecture?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Semantic structure, entity links, internal hubs and clusters.
+   */
+  semanticArchitecture?: {
+    [k: string]: unknown;
+  } | null;
+  marketingStrategy?: {
+    /**
+     * Combined SEO, semantics, content, and internal linking strategy.
+     */
+    seoAndContentStrategy?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Conversion layer: forms, WhatsApp, quote/calc forms, proposals, CRM attribution.
+     */
+    leadGenMechanism?: {
+      [k: string]: unknown;
+    } | null;
+    paidAdvertising?:
+      | {
+          channel: 'google_ads' | 'microsoft_ads' | 'yandex_direct' | 'meta_ads' | 'linkedin_ads' | 'other';
+          strategy?: {
+            [k: string]: unknown;
+          } | null;
+          campaignStructure?: {
+            [k: string]: unknown;
+          } | null;
+          results?: {
+            [k: string]: unknown;
+          } | null;
+          id?: string | null;
+        }[]
+      | null;
+    socialMedia?:
+      | {
+          channel: 'linkedin' | 'facebook' | 'instagram' | 'youtube' | 'tiktok' | 'telegram' | 'other';
+          strategy?: {
+            [k: string]: unknown;
+          } | null;
+          content?: {
+            [k: string]: unknown;
+          } | null;
+          results?: {
+            [k: string]: unknown;
+          } | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  aiSearchOptimization?: {
+    /**
+     * Brand authority, E-E-A-T signals, external mentions, reviews, expert materials and publications.
+     */
+    brandAuthorityAndTrust?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Company and products as interconnected entities for AI search (ChatGPT, Perplexity, Gemini, Google SGE).
+     */
+    entityAndGeoStructure?: {
+      [k: string]: unknown;
+    } | null;
+  };
+  /**
+   * Main stages of the engagement.
+   */
+  implementationProcess?: {
+    [k: string]: unknown;
+  } | null;
+  timeline?:
+    | {
+        period?: string | null;
+        title?: string | null;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Final client outcome in narrative form.
+   */
+  resultsSummary?: {
+    [k: string]: unknown;
+  } | null;
+  metrics?:
+    | {
+        /**
+         * Example: "+140%", "3.2x"
+         */
+        value: string;
+        /**
+         * Example: "Growth of qualified leads"
+         */
+        label: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Concrete examples of manufactured products / plant projects.
+   */
+  projectsShowcase?:
+    | {
+        projectName: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        image?: (number | null) | Media;
+        /**
+         * Optional external or internal project URL.
+         */
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Team takeaways, engineering/marketing hacks and challenges.
+   */
+  expertInsight?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Structured proof quote. Free-form comments remain available via the existing Case Study Comments layout block.
+   */
+  clientTestimonial?: {
+    quote?: {
+      [k: string]: unknown;
+    } | null;
+    author?: string | null;
+    position?: string | null;
+    company?: string | null;
+  };
   hero: {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
@@ -981,11 +1199,11 @@ export interface CaseStudy {
   };
   relatedCaseStudies?: (number | CaseStudy)[] | null;
   /**
-   * Used in the case study URL: /case-study/{category-slug}/{case-study-slug}.
+   * Used in the case study URL: /case-study/{category-slug}/{case-study-slug}. Browse the tree and pick one category.
    */
   primary_case_study_category: number | CaseStudyCategory;
   /**
-   * Thematic case study categories. Multiple allowed.
+   * Thematic case study categories. Browse the tree and add one or more.
    */
   case_study_categories?: (number | CaseStudyCategory)[] | null;
   /**
@@ -1000,6 +1218,42 @@ export interface CaseStudy {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  /**
+   * Display this Case Study on the homepage.
+   */
+  featured?: boolean | null;
+  /**
+   * Controls the priority and display order of this Case Study. Lower numbers appear first.
+   */
+  displayOrder?: number | null;
+  /**
+   * Engagement duration for this Case Study.
+   */
+  duration?:
+    | (
+        | '6_months'
+        | '1_years'
+        | '2_years'
+        | '3_years'
+        | '4_years'
+        | '5_years'
+        | '6_years'
+        | '7_years'
+        | '8_years'
+        | '9_years'
+        | '10_years'
+        | '11_years'
+        | '12_years'
+        | '13_years'
+        | '14_years'
+        | '15_years'
+        | '16_years'
+        | '17_years'
+        | '18_years'
+        | '19_years'
+        | '20_years'
+      )
+    | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -1815,6 +2069,98 @@ export interface CaseStudiesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
       };
+  manufacturingProfile?:
+    | T
+    | {
+        productionCapabilities?: T;
+        products?: T;
+        materials?: T;
+        applications?: T;
+      };
+  businessChallenge?:
+    | T
+    | {
+        initialState?: T;
+        challenge?: T;
+        goals?: T;
+      };
+  nicheSegmentation?:
+    | T
+    | {
+        name?: T;
+        description?: T;
+        marketingApproach?: T;
+        id?: T;
+      };
+  digitalEcosystem?: T;
+  websiteArchitecture?: T;
+  semanticArchitecture?: T;
+  marketingStrategy?:
+    | T
+    | {
+        seoAndContentStrategy?: T;
+        leadGenMechanism?: T;
+        paidAdvertising?:
+          | T
+          | {
+              channel?: T;
+              strategy?: T;
+              campaignStructure?: T;
+              results?: T;
+              id?: T;
+            };
+        socialMedia?:
+          | T
+          | {
+              channel?: T;
+              strategy?: T;
+              content?: T;
+              results?: T;
+              id?: T;
+            };
+      };
+  aiSearchOptimization?:
+    | T
+    | {
+        brandAuthorityAndTrust?: T;
+        entityAndGeoStructure?: T;
+      };
+  implementationProcess?: T;
+  timeline?:
+    | T
+    | {
+        period?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  resultsSummary?: T;
+  metrics?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        description?: T;
+        id?: T;
+      };
+  projectsShowcase?:
+    | T
+    | {
+        projectName?: T;
+        description?: T;
+        image?: T;
+        url?: T;
+        id?: T;
+      };
+  expertInsight?: T;
+  clientTestimonial?:
+    | T
+    | {
+        quote?: T;
+        author?: T;
+        position?: T;
+        company?: T;
+      };
   hero?:
     | T
     | {
@@ -1848,6 +2194,9 @@ export interface CaseStudiesSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  featured?: T;
+  displayOrder?: T;
+  duration?: T;
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:
