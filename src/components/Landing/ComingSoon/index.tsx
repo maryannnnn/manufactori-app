@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
 
+import { ComponentPreview } from './ComponentPreview'
+import { PalettePanel } from './PalettePanel'
+import { PaletteSelector } from './PaletteSelector'
+
 export type LandingCategory = {
   title: string
   href: string
@@ -22,98 +26,128 @@ const pillars = [
   },
 ] as const
 
+const navItems = ['Services', 'Industries', 'Case Studies', 'Insights'] as const
+
 type Props = {
   categories?: LandingCategory[]
 }
 
+/**
+ * First implementation of the Design System.
+ *
+ * Every colour here comes from a semantic token, so switching the palette in the
+ * selector restyles the whole page without any component change.
+ */
 export const ComingSoonLanding: React.FC<Props> = ({ categories = [] }) => {
   return (
-    <main className="relative overflow-hidden bg-[#070b10] text-white">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_at_center,black,transparent_78%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-32 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-amber-500/15 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 right-0 h-[24rem] w-[24rem] translate-x-1/4 translate-y-1/4 rounded-full bg-sky-500/10 blur-3xl"
-      />
-
-      <section className="container relative z-10 flex min-h-screen flex-col justify-center py-20">
-        <div className="max-w-4xl">
-          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm uppercase tracking-[0.24em] text-amber-200/90 backdrop-blur-sm">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-60" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-amber-400" />
+    <main className="bg-body text-main">
+      <header className="border-b border-default">
+        <div className="container flex flex-wrap items-center justify-between gap-4 py-5">
+          <div className="flex items-baseline gap-3">
+            <span className="text-lg font-semibold tracking-tight text-heading">Manufactori</span>
+            <span className="font-mono text-xs uppercase tracking-[0.24em] text-muted">
+              Design System
             </span>
-            Website Under Development
           </div>
 
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.35em] text-white/45">
-            Manufacturing Marketing Agency
-          </p>
+          <nav aria-label="Placeholder navigation">
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              {navItems.map((item) => (
+                <li key={item}>
+                  <span className="cursor-default text-sm text-muted" title="Navigation placeholder">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </header>
 
-          <h1 className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-tight text-white md:text-7xl">
-            Growth strategy for manufacturers who sell expertise, not impulse buys.
+      <PaletteSelector />
+
+      <section className="py-20 md:py-28">
+        <div className="container">
+          <div className="inline-flex items-center gap-2 rounded-full border border-default bg-surface px-3 py-1.5">
+            <span aria-hidden className="h-2 w-2 rounded-full bg-cta" />
+            <span className="font-mono text-xs uppercase tracking-[0.24em] text-main">
+              Website Under Development
+            </span>
+          </div>
+
+          <h1 className="mt-8 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-heading md:text-6xl">
+            Manufacturing Digital Systems
           </h1>
 
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/68 md:text-xl">
-            We help industrial brands build search visibility, demand generation, and digital
-            authority across complex buying cycles. A new website experience is on the way.
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-main md:text-xl">
+            Websites, SEO and digital marketing for manufacturing and industrial companies.
           </p>
-        </div>
 
-        <div className="mt-16 grid gap-4 md:grid-cols-3">
-          {pillars.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-2xl border border-white/10 bg-white/4 p-6 backdrop-blur-sm transition-colors hover:border-amber-300/20 hover:bg-white/6"
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <a
+              className="rounded-md bg-cta px-5 py-2.5 text-sm font-medium text-on-cta transition-colors hover:bg-cta-hover active:bg-cta-active focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+              href="#component-preview-heading"
             >
-              <h2 className="text-lg font-medium text-white">{item.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-white/60">{item.description}</p>
-            </article>
-          ))}
-        </div>
+              Explore the System
+            </a>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-white/45 md:flex-row md:items-center md:justify-between">
-          <p>Launching soon. Full site, case studies, and insights are in production.</p>
-          <p className="font-mono text-xs uppercase tracking-[0.24em] text-white/35">
-            Manufactori
-          </p>
+            <a
+              className="rounded-md border border-border-strong px-5 py-2.5 text-sm font-medium text-heading transition-colors hover:bg-surface-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+              href="#landing-resources"
+            >
+              View Case Studies
+            </a>
+          </div>
+
+          <div className="mt-16 grid gap-4 md:grid-cols-3">
+            {pillars.map((item) => (
+              <article className="rounded-lg border border-default bg-surface p-6" key={item.title}>
+                <h2 className="text-base font-medium text-heading">{item.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-muted">{item.description}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
+      <ComponentPreview />
+
+      <PalettePanel />
+
       {categories.length > 0 && (
-        <section className="relative z-10 border-t border-white/10 py-24">
+        <section
+          aria-labelledby="landing-resources"
+          className="border-t border-default bg-surface py-20"
+        >
           <div className="container">
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.35em] text-white/45">
-              Resources
-            </p>
-            <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
+            <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted">Resources</p>
+
+            <h2
+              className="mt-3 text-2xl font-semibold tracking-tight text-heading md:text-3xl"
+              id="landing-resources"
+            >
               Blog categories
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/68">
+
+            <p className="mt-6 max-w-2xl text-base leading-7 text-main">
               Thematic guides and articles for manufacturing marketers. The full site is still in
-              development — these topics are already live.
+              development, but these topics are already live.
             </p>
 
-            <div className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2">
+            <div className="mt-12 grid gap-x-10 gap-y-8 md:grid-cols-2">
               {categories.map((category) => (
                 <Link
-                  key={category.href}
+                  className="group block border-t border-default pt-6 transition-colors hover:border-border-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                   href={category.href}
-                  className="group block border-t border-white/10 pt-6 transition-colors hover:border-amber-300/40"
+                  key={category.href}
                 >
-                  <h3 className="text-xl font-medium text-white transition-colors group-hover:text-amber-200">
-                    {category.title}
-                  </h3>
+                  <h3 className="text-lg font-medium text-heading">{category.title}</h3>
+
                   {category.description ? (
-                    <p className="mt-3 text-sm leading-7 text-white/60">{category.description}</p>
+                    <p className="mt-3 text-sm leading-6 text-muted">{category.description}</p>
                   ) : null}
-                  <span className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.24em] text-white/35 group-hover:text-amber-200/80">
+
+                  <span className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.24em] text-link transition-colors group-hover:text-link-hover">
                     Read
                   </span>
                 </Link>
@@ -122,6 +156,15 @@ export const ComingSoonLanding: React.FC<Props> = ({ categories = [] }) => {
           </div>
         </section>
       )}
+
+      <footer className="border-t border-default py-10">
+        <div className="container flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <p className="text-sm text-muted">
+            Launching soon. Full site, case studies, and insights are in production.
+          </p>
+          <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted">Manufactori</p>
+        </div>
+      </footer>
     </main>
   )
 }

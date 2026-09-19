@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Design System runtime colour tokens (--ds-*). Generated: pnpm ds:tokens */
+@import '../../design-system/palette-tokens.css';
+
 @config '../../../tailwind.config.mjs';
 
 @custom-variant dark (&:is([data-theme='dark'] *));
@@ -86,26 +89,32 @@
   }
 }
 
+/*
+ * The shadcn token layer is fed by the active Design System palette, so every
+ * existing component that already uses bg-card / text-muted-foreground / etc.
+ * follows the palette without being touched. Palette values themselves live in
+ * design-system/palette-tokens.css.
+ */
 :root {
-  --background: oklch(100% 0 0deg);
-  --foreground: oklch(14.5% 0 0deg);
-  --card: oklch(96.5% 0.005 265deg);
-  --card-foreground: oklch(14.5% 0 0deg);
-  --popover: oklch(100% 0 0deg);
-  --popover-foreground: oklch(14.5% 0 0deg);
-  --primary: oklch(20.5% 0 0deg);
-  --primary-foreground: oklch(98.5% 0 0deg);
-  --secondary: oklch(97% 0 0deg);
-  --secondary-foreground: oklch(20.5% 0 0deg);
-  --muted: oklch(97% 0 0deg);
-  --muted-foreground: oklch(55.6% 0 0deg);
-  --accent: oklch(97% 0 0deg);
-  --accent-foreground: oklch(20.5% 0 0deg);
+  --background: var(--ds-body);
+  --foreground: var(--ds-main);
+  --card: var(--ds-surface);
+  --card-foreground: var(--ds-on-surface);
+  --popover: var(--ds-body);
+  --popover-foreground: var(--ds-main);
+  --primary: var(--ds-primary);
+  --primary-foreground: var(--ds-on-primary);
+  --secondary: var(--ds-secondary);
+  --secondary-foreground: var(--ds-on-secondary);
+  --muted: var(--ds-surface);
+  --muted-foreground: var(--ds-muted);
+  --accent: var(--ds-surface-strong);
+  --accent-foreground: var(--ds-on-surface);
   --destructive: oklch(57.7% 0.245 27.325deg);
   --destructive-foreground: oklch(57.7% 0.245 27.325deg);
-  --border: oklch(92.2% 0 0deg);
-  --input: oklch(92.2% 0 0deg);
-  --ring: oklch(70.8% 0 0deg);
+  --border: var(--ds-border);
+  --input: var(--ds-border-strong);
+  --ring: var(--ds-focus-ring);
   --chart-1: oklch(64.6% 0.222 41.116deg);
   --chart-2: oklch(60% 0.118 184.704deg);
   --chart-3: oklch(39.8% 0.07 227.392deg);
@@ -164,23 +173,50 @@
 }
 
 @theme inline {
+  /*
+   * Design System semantic utilities. These read the --ds-* runtime layer
+   * directly, so bg-cta / text-main / border-default follow the active palette
+   * regardless of light/dark theme.
+   */
+  --color-cta: var(--ds-cta);
+  --color-cta-hover: var(--ds-cta-hover);
+  --color-cta-active: var(--ds-cta-active);
+  --color-on-cta: var(--ds-on-cta);
+  --color-primary-hover: var(--ds-primary-hover);
+  --color-primary-active: var(--ds-primary-active);
+  --color-on-primary: var(--ds-on-primary);
+  --color-secondary-hover: var(--ds-secondary-hover);
+  --color-on-secondary: var(--ds-on-secondary);
+  --color-surface: var(--ds-surface);
+  --color-surface-strong: var(--ds-surface-strong);
+  --color-on-surface: var(--ds-on-surface);
+  --color-body: var(--ds-body);
+  --color-main: var(--ds-main);
+  --color-heading: var(--ds-heading);
+  --color-default: var(--ds-border);
+  --color-border-strong: var(--ds-border-strong);
+  --color-link: var(--ds-link);
+  --color-link-hover: var(--ds-link-hover);
+  --color-focus-ring: var(--ds-focus-ring);
+
+  /* shadcn token layer, now palette-driven via :root above. */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
+  --color-primary: var(--ds-primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
+  --color-secondary: var(--ds-secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
+  --color-muted: var(--ds-muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
+  --color-border: var(--ds-border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-chart-1: var(--chart-1);

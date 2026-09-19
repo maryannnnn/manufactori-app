@@ -1,0 +1,441 @@
+/*
+ * GENERATED FILE — do not edit by hand.
+ * Source: src/design-system/palettes.ts + src/design-system/tokens.ts
+ * Regenerate: pnpm ds:tokens
+ *
+ * --ds-* custom properties are the runtime design-token layer. Tailwind maps
+ * semantic utilities onto them via @theme inline in globals.css, so switching
+ * the [data-palette] attribute on <html> restyles the whole application.
+ */
+
+/* Default palette: 01 Machine Shop Heavy (server-rendered baseline) */
+:root {
+  --ds-primary: #1a1d20;
+  --ds-cta: #e35205;
+  --ds-secondary: #4a5568;
+  --ds-surface: #f0f2f5;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e4e6e9;
+  --ds-main: #2c2f32;
+  --ds-heading: #1a1d20;
+  --ds-muted: #6c6e6f;
+  --ds-border: #d5d7da;
+  --ds-border-strong: #898b8d;
+  --ds-link: #bf4504;
+  --ds-link-hover: #9d3903;
+  --ds-cta-hover: #e66723;
+  --ds-cta-active: #e9783c;
+  --ds-primary-hover: #35383b;
+  --ds-primary-active: #4c4f51;
+  --ds-secondary-hover: #414b5c;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #2c2f32;
+  --ds-focus-ring: #e35205;
+}
+
+/* 01 Machine Shop Heavy */
+html[data-palette='01'] {
+  --ds-primary: #1a1d20;
+  --ds-cta: #e35205;
+  --ds-secondary: #4a5568;
+  --ds-surface: #f0f2f5;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e4e6e9;
+  --ds-main: #2c2f32;
+  --ds-heading: #1a1d20;
+  --ds-muted: #6c6e6f;
+  --ds-border: #d5d7da;
+  --ds-border-strong: #898b8d;
+  --ds-link: #bf4504;
+  --ds-link-hover: #9d3903;
+  --ds-cta-hover: #e66723;
+  --ds-cta-active: #e9783c;
+  --ds-primary-hover: #35383b;
+  --ds-primary-active: #4c4f51;
+  --ds-secondary-hover: #414b5c;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #2c2f32;
+  --ds-focus-ring: #e35205;
+}
+
+/* 02 Factory Safety Yellow */
+html[data-palette='02'] {
+  --ds-primary: #111111;
+  --ds-cta: #ffc700;
+  --ds-secondary: #2d3748;
+  --ds-surface: #e2e8f0;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #d7dce4;
+  --ds-main: #242424;
+  --ds-heading: #111111;
+  --ds-muted: #676767;
+  --ds-border: #c7cdd3;
+  --ds-border-strong: #828488;
+  --ds-link: #806400;
+  --ds-link-hover: #695200;
+  --ds-cta-hover: #ffce1f;
+  --ds-cta-active: #ffd338;
+  --ds-primary-hover: #2e2e2e;
+  --ds-primary-active: #454545;
+  --ds-secondary-hover: #464f5e;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #242424;
+  --ds-focus-ring: #a37f00;
+}
+
+/* 03 Deep Vulcanized Bronze */
+html[data-palette='03'] {
+  --ds-primary: #17191c;
+  --ds-cta: #d97706;
+  --ds-secondary: #6b7280;
+  --ds-surface: #f3f4f6;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e7e8ea;
+  --ds-main: #2a2b2e;
+  --ds-heading: #17191c;
+  --ds-muted: #6e6e70;
+  --ds-border: #d7d8da;
+  --ds-border-strong: #8a8b8c;
+  --ds-link: #a55a05;
+  --ds-link-hover: #874a04;
+  --ds-cta-hover: #de8724;
+  --ds-cta-active: #e1953d;
+  --ds-primary-hover: #333537;
+  --ds-primary-active: #4a4c4e;
+  --ds-secondary-hover: #5e6471;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #2a2b2e;
+  --ds-focus-ring: #d07206;
+}
+
+/* 04 Corporate Navy Trust */
+html[data-palette='04'] {
+  --ds-primary: #0f2c59;
+  --ds-cta: #00a8b5;
+  --ds-secondary: #334155;
+  --ds-surface: #f8fafc;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #ebeff3;
+  --ds-main: #223d66;
+  --ds-heading: #0f2c59;
+  --ds-muted: #687385;
+  --ds-border: #dae0e7;
+  --ds-border-strong: #8691a3;
+  --ds-link: #00808a;
+  --ds-link-hover: #006971;
+  --ds-cta-hover: #1fb2be;
+  --ds-cta-active: #38bbc5;
+  --ds-primary-hover: #2c456d;
+  --ds-primary-active: #445a7e;
+  --ds-secondary-hover: #4b5869;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #223d66;
+  --ds-focus-ring: #009eaa;
+}
+
+/* 05 Precision Engineering Blue */
+html[data-palette='05'] {
+  --ds-primary: #0a192f;
+  --ds-cta: #2563eb;
+  --ds-secondary: #38bdf8;
+  --ds-surface: #f1f5f9;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e4e9ee;
+  --ds-main: #1e2b40;
+  --ds-heading: #0a192f;
+  --ds-muted: #696e78;
+  --ds-border: #d3d9df;
+  --ds-border-strong: #868e99;
+  --ds-link: #2563eb;
+  --ds-link-hover: #1e51c1;
+  --ds-cta-hover: #2157cf;
+  --ds-cta-active: #1d4db7;
+  --ds-primary-hover: #273548;
+  --ds-primary-active: #404c5d;
+  --ds-secondary-hover: #50c5f9;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #ffffff;
+  --ds-on-secondary: #0b0b0c;
+  --ds-on-surface: #1e2b40;
+  --ds-focus-ring: #2563eb;
+}
+
+/* 06 HubSpot Platinum Inbound */
+html[data-palette='06'] {
+  --ds-primary: #002b49;
+  --ds-cta: #f58220;
+  --ds-secondary: #3b82f6;
+  --ds-surface: #f3f4f6;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e6e9ed;
+  --ds-main: #143c58;
+  --ds-heading: #002b49;
+  --ds-muted: #60707c;
+  --ds-border: #d4dae0;
+  --ds-border-strong: #7e8e9a;
+  --ds-link: #a75816;
+  --ds-link-hover: #894812;
+  --ds-cta-hover: #f6913b;
+  --ds-cta-active: #f79e51;
+  --ds-primary-hover: #1f445f;
+  --ds-primary-active: #385a71;
+  --ds-secondary-hover: #5391f7;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #0b0b0c;
+  --ds-on-surface: #143c58;
+  --ds-focus-ring: #d8721c;
+}
+
+/* 07 AI Search Engine */
+html[data-palette='07'] {
+  --ds-primary: #0b0f17;
+  --ds-cta: #00f0ff;
+  --ds-secondary: #1e293b;
+  --ds-surface: #94a3b8;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #8c9baf;
+  --ds-main: #14161c;
+  --ds-heading: #0b0f17;
+  --ds-muted: #373839;
+  --ds-border: #828fa2;
+  --ds-border-strong: #4a525d;
+  --ds-link: #003e42;
+  --ds-link-hover: #003336;
+  --ds-cta-hover: #1ff2ff;
+  --ds-cta-active: #38f3ff;
+  --ds-primary-hover: #282c33;
+  --ds-primary-active: #41444a;
+  --ds-secondary-hover: #394353;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #14161c;
+  --ds-focus-ring: #005b61;
+}
+
+/* 08 High-Tech Automation */
+html[data-palette='08'] {
+  --ds-primary: #1e2229;
+  --ds-cta: #10b981;
+  --ds-secondary: #64748b;
+  --ds-surface: #f8fafc;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #eceef0;
+  --ds-main: #30343a;
+  --ds-heading: #1e2229;
+  --ds-muted: #717276;
+  --ds-border: #dcdee1;
+  --ds-border-strong: #8e9195;
+  --ds-link: #0b825a;
+  --ds-link-hover: #096b4a;
+  --ds-cta-hover: #2dc190;
+  --ds-cta-active: #45c89d;
+  --ds-primary-hover: #393d43;
+  --ds-primary-active: #505358;
+  --ds-secondary-hover: #58667a;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #30343a;
+  --ds-focus-ring: #0ea372;
+}
+
+/* 09 Data Pipeline Purple */
+html[data-palette='09'] {
+  --ds-primary: #181123;
+  --ds-cta: #ec4899;
+  --ds-secondary: #8b5cf6;
+  --ds-surface: #f5f3ff;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e9e7f3;
+  --ds-main: #2a2435;
+  --ds-heading: #181123;
+  --ds-muted: #716f76;
+  --ds-border: #d9d6e3;
+  --ds-border-strong: #8e8a97;
+  --ds-link: #c23b7d;
+  --ds-link-hover: #9f3067;
+  --ds-cta-hover: #ee5ea5;
+  --ds-cta-active: #f070af;
+  --ds-primary-hover: #342e3d;
+  --ds-primary-active: #4b4553;
+  --ds-secondary-hover: #9970f7;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #0b0b0c;
+  --ds-on-surface: #2a2435;
+  --ds-focus-ring: #ec4899;
+}
+
+/* 10 Clean-Tech Emerald */
+html[data-palette='10'] {
+  --ds-primary: #064e3b;
+  --ds-cta: #059669;
+  --ds-secondary: #047857;
+  --ds-surface: #ecfdf5;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #dff3eb;
+  --ds-main: #1a5c4b;
+  --ds-heading: #064e3b;
+  --ds-muted: #5d7770;
+  --ds-border: #cfe6dd;
+  --ds-border-strong: #74948b;
+  --ds-link: #04815a;
+  --ds-link-hover: #036a4a;
+  --ds-cta-hover: #23a37b;
+  --ds-cta-active: #3cad8a;
+  --ds-primary-hover: #246353;
+  --ds-primary-active: #3d7566;
+  --ds-secondary-hover: #046a4d;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #1a5c4b;
+  --ds-focus-ring: #059669;
+}
+
+/* 11 Industrial Sage & Olive */
+html[data-palette='11'] {
+  --ds-primary: #1c2421;
+  --ds-cta: #5c933f;
+  --ds-secondary: #78716c;
+  --ds-surface: #f5f5f4;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e9eae8;
+  --ds-main: #2e3633;
+  --ds-heading: #1c2421;
+  --ds-muted: #6d7070;
+  --ds-border: #d9dad9;
+  --ds-border-strong: #888c8a;
+  --ds-link: #4d7b35;
+  --ds-link-hover: #3f652b;
+  --ds-cta-hover: #70a056;
+  --ds-cta-active: #80ab69;
+  --ds-primary-hover: #373e3c;
+  --ds-primary-active: #4e5452;
+  --ds-secondary-hover: #6a635f;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #2e3633;
+  --ds-focus-ring: #5c933f;
+}
+
+/* 12 Architectural CAD / Blueprint Blue */
+html[data-palette='12'] {
+  --ds-primary: #003366;
+  --ds-cta: #ff9900;
+  --ds-secondary: #64748b;
+  --ds-surface: #f1f5f9;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e4eaf1;
+  --ds-main: #144372;
+  --ds-heading: #003366;
+  --ds-muted: #5d7083;
+  --ds-border: #d2dce6;
+  --ds-border-strong: #7a8ea2;
+  --ds-link: #9e5f00;
+  --ds-link-hover: #824e00;
+  --ds-cta-hover: #ffa51f;
+  --ds-cta-active: #ffaf38;
+  --ds-primary-hover: #1f4b78;
+  --ds-primary-active: #386088;
+  --ds-secondary-hover: #58667a;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #144372;
+  --ds-focus-ring: #cc7a00;
+}
+
+/* 13 Swiss Minimal Industrial */
+html[data-palette='13'] {
+  --ds-primary: #000000;
+  --ds-cta: #dc2626;
+  --ds-secondary: #525252;
+  --ds-surface: #f5f5f5;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e8e8e8;
+  --ds-main: #141414;
+  --ds-heading: #000000;
+  --ds-muted: #6f6f6f;
+  --ds-border: #d6d6d6;
+  --ds-border-strong: #8d8d8d;
+  --ds-link: #d82525;
+  --ds-link-hover: #b11e1e;
+  --ds-cta-hover: #c22121;
+  --ds-cta-active: #ac1e1e;
+  --ds-primary-hover: #1f1f1f;
+  --ds-primary-active: #383838;
+  --ds-secondary-hover: #484848;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #ffffff;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #141414;
+  --ds-focus-ring: #dc2626;
+}
+
+/* 14 High-End Material Science */
+html[data-palette='14'] {
+  --ds-primary: #0f172a;
+  --ds-cta: #6366f1;
+  --ds-secondary: #0ea5e9;
+  --ds-surface: #f8fafc;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #ebeef0;
+  --ds-main: #222a3b;
+  --ds-heading: #0f172a;
+  --ds-muted: #6d7179;
+  --ds-border: #dadde1;
+  --ds-border-strong: #8c9098;
+  --ds-link: #5f62e7;
+  --ds-link-hover: #4e50bd;
+  --ds-cta-hover: #7678f3;
+  --ds-cta-active: #8588f4;
+  --ds-primary-hover: #2c3344;
+  --ds-primary-active: #444a59;
+  --ds-secondary-hover: #2bb0ec;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #050505;
+  --ds-on-secondary: #0b0b0c;
+  --ds-on-surface: #222a3b;
+  --ds-focus-ring: #6366f1;
+}
+
+/* 15 Modern Supply Chain & Logistics */
+html[data-palette='15'] {
+  --ds-primary: #131c2e;
+  --ds-cta: #ea580c;
+  --ds-secondary: #475569;
+  --ds-surface: #f1f5f9;
+  --ds-body: #ffffff;
+  --ds-surface-strong: #e5e9ee;
+  --ds-main: #262e3f;
+  --ds-heading: #131c2e;
+  --ds-muted: #6d7077;
+  --ds-border: #d5d9df;
+  --ds-border-strong: #878c95;
+  --ds-link: #c0480a;
+  --ds-link-hover: #9d3b08;
+  --ds-cta-hover: #ed6c29;
+  --ds-cta-active: #ef7d41;
+  --ds-primary-hover: #2f3747;
+  --ds-primary-active: #474e5c;
+  --ds-secondary-hover: #3e4b5c;
+  --ds-on-primary: #ffffff;
+  --ds-on-cta: #0b0b0c;
+  --ds-on-secondary: #ffffff;
+  --ds-on-surface: #262e3f;
+  --ds-focus-ring: #ea580c;
+}

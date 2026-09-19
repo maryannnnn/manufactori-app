@@ -15,6 +15,7 @@
     "lint": "cross-env NODE_OPTIONS=--no-deprecation eslint .",
     "lint:fix": "cross-env NODE_OPTIONS=--no-deprecation eslint . --fix",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "ds:tokens": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/generatePaletteTokens.ts",
     "db:site-categories": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applySiteCategoriesSchema.ts",
     "db:industrial-categories": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/addIndustrialCategories.ts",
     "verify:site-categories": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/verifySiteCategories.ts",

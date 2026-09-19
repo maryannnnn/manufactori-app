@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { PaletteProvider } from '@/design-system'
+
 import { HeaderThemeProvider } from './HeaderTheme'
 import { ThemeProvider } from './Theme'
 
@@ -8,7 +10,9 @@ export const Providers: React.FC<{
 }> = ({ children }) => {
   return (
     <ThemeProvider>
-      <HeaderThemeProvider>{children}</HeaderThemeProvider>
+      <PaletteProvider>
+        <HeaderThemeProvider>{children}</HeaderThemeProvider>
+      </PaletteProvider>
     </ThemeProvider>
   )
 }
