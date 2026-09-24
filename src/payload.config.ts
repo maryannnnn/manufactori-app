@@ -12,6 +12,7 @@ import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { SiteCategories } from './collections/SiteCategories'
 import { Users } from './collections/Users'
+import { CaseStudiesArchive } from './CaseStudiesArchive/config'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
@@ -80,7 +81,7 @@ export default buildConfig({
   collections: [Pages, Posts, CaseStudies, Media, Categories, CaseStudyCategories, SiteCategories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   endpoints: [bulkCreateCategoriesEndpoint],
-  globals: [Header, Footer],
+  globals: [Header, Footer, CaseStudiesArchive],
   plugins,
   secret: process.env.PAYLOAD_SECRET,
   sharp,

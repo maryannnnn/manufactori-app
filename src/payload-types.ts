@@ -124,10 +124,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'case-studies-archive': CaseStudiesArchive;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'case-studies-archive': CaseStudiesArchiveSelect<false> | CaseStudiesArchiveSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1372,10 +1374,38 @@ export interface CaseStudyGalleryBlock {
  * via the `definition` "CaseStudyCommentsBlock".
  */
 export interface CaseStudyCommentsBlock {
+  /**
+   * Section heading. Falls back to "Discussion" when empty.
+   */
   case_study_comment_title?: string | null;
+  /**
+   * Optional lead-in above the thread. Individual entries go in Discussion.
+   */
   case_study_comment_text?: {
     [k: string]: unknown;
   } | null;
+  comments?:
+    | {
+        author: string;
+        /**
+         * Job title or industry perspective.
+         */
+        role?: string | null;
+        date?: string | null;
+        /**
+         * Parent/reply relationship: 0 is a new top-level branch. Depth N replies to the nearest preceding comment at depth N-1. The frontend builds the tree from this, not from visual indent.
+         */
+        depth?: number | null;
+        /**
+         * Marks the entry as an answer from the site expert.
+         */
+        isExpert?: boolean | null;
+        body: {
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'csComments';
@@ -1385,10 +1415,28 @@ export interface CaseStudyCommentsBlock {
  * via the `definition` "CaseStudyFAQBlock".
  */
 export interface CaseStudyFAQBlock {
+  /**
+   * Section heading, e.g. "Frequently Asked Questions About Laser Made". Falls back to a generic heading when empty.
+   */
   case_study_faq_title?: string | null;
+  /**
+   * Optional lead-in above the questions. Individual questions go in Questions.
+   */
   case_study_faq_text?: {
     [k: string]: unknown;
   } | null;
+  /**
+   * Each entry renders as one accordion row.
+   */
+  items?:
+    | {
+        question: string;
+        answer: {
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'csFAQ';
@@ -2285,6 +2333,17 @@ export interface CaseStudyGalleryBlockSelect<T extends boolean = true> {
 export interface CaseStudyCommentsBlockSelect<T extends boolean = true> {
   case_study_comment_title?: T;
   case_study_comment_text?: T;
+  comments?:
+    | T
+    | {
+        author?: T;
+        role?: T;
+        date?: T;
+        depth?: T;
+        isExpert?: T;
+        body?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -2295,6 +2354,13 @@ export interface CaseStudyCommentsBlockSelect<T extends boolean = true> {
 export interface CaseStudyFAQBlockSelect<T extends boolean = true> {
   case_study_faq_title?: T;
   case_study_faq_text?: T;
+  items?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -2839,6 +2905,33 @@ export interface Footer {
   createdAt?: string | null;
 }
 /**
+ * Title and SEO for the /case-study listing page.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-studies-archive".
+ */
+export interface CaseStudiesArchive {
+  id: number;
+  /**
+   * Internal page title, used for navigation and admin. Not rendered as a heading.
+   */
+  title?: string | null;
+  /**
+   * Rendered as the H1 on /case-study.
+   */
+  longTitle?: string | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
@@ -2879,6 +2972,24 @@ export interface FooterSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-studies-archive_select".
+ */
+export interface CaseStudiesArchiveSelect<T extends boolean = true> {
+  title?: T;
+  longTitle?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
       };
   updatedAt?: T;
   createdAt?: T;

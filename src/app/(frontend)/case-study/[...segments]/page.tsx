@@ -2,16 +2,17 @@ import type { Metadata } from 'next'
 
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { CaseStudyArchive } from '@/components/CaseStudyArchive'
+import { CaseStudyPage } from '@/components/CaseStudyPage'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { RenderHero } from '@/heros/RenderHero'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getCaseStudyListPreview } from '@/utilities/getCaseStudyListPreview'
 import {
   CASE_STUDY_CATEGORY_PATH_SEGMENT,
+  getCaseStudyUrl,
   getCategorySlug,
   isReservedCaseStudyCategorySlug,
 } from '@/utilities/getContentUrls'
@@ -132,7 +133,10 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
     return generateMeta({ doc: null })
   }
 
-  return generateMeta({ doc: caseStudy as never })
+  const meta = await generateMeta({ doc: caseStudy })
+  const canonical = getCaseStudyUrl(caseStudy)
+
+  return canonical ? { ...meta, alternates: { ...meta.alternates, canonical } } : meta
 }
 
 async function renderCategoryPage(slug: string) {
@@ -239,24 +243,15 @@ async function renderCaseStudyPage(categorySlug: string | null, caseStudySlug: s
     notFound()
   }
 
-  const { hero, layout, case_study_long_title, title } = caseStudy
-  const heading = case_study_long_title || title
-
   return (
-    <article className="pt-16 pb-16">
-      <PageClient theme="dark" />
+    <React.Fragment>
+      {/* The case study hero sits on the normal page background, not a dark image. */}
+      <PageClient theme="light" />
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
 
-      <div className="container mb-8">
-        <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">{heading}</h1>
-      </div>
-
-      <RenderHero {...hero} />
-      {layout && layout.length > 0 && (
-        <RenderBlocks blocks={layout as Parameters<typeof RenderBlocks>[0]['blocks']} />
-      )}
-    </article>
+      <CaseStudyPage caseStudy={caseStudy} />
+    </React.Fragment>
   )
 }
 

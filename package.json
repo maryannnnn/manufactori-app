@@ -17,13 +17,15 @@
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "ds:tokens": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/generatePaletteTokens.ts",
     "db:site-categories": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applySiteCategoriesSchema.ts",
+    "db:case-studies-archive": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyCaseStudiesArchiveSchema.ts",
     "db:industrial-categories": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/addIndustrialCategories.ts",
     "verify:site-categories": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/verifySiteCategories.ts",
     "reinstall": "cross-env NODE_OPTIONS=--no-deprecation rm -rf node_modules && rm pnpm-lock.yaml && pnpm --ignore-workspace install",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
-    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
+    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
+    "db:cs-faq-comments": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyCaseStudyFaqCommentsSchema.ts"
   },
   "dependencies": {
     "@payloadcms/admin-bar": "3.86.0",

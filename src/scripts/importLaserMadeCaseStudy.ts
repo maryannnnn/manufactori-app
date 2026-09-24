@@ -61,7 +61,7 @@ const buildData = () => ({
 
     titleBlock('What Was Built'),
     contentBlock(
-      '<p>The WordPress landing pages were retired and the site was rebuilt on Drupal. The new structure was organized around the actual production process rather than a generic services list:</p><ul><li>Material processing, 15 categories (plywood, wood, MDF, composite, acrylic, PVC, plastic, and others)</li><li>Outdoor advertising, 7 sections, from illuminated letters to roof-mounted installations</li><li>Interior advertising: exhibition equipment, wayfinding signage, retail space fit-out</li><li>POS materials and retail equipment</li><li>Screens, stained-glass elements, custom furniture, partitions</li><li>A portfolio section with 200+ documented projects, a press and blog center, and a dedicated client-resources section</li></ul><p>A second, separate storefront, DecorTrend.ru, was launched for retail decor sales. It runs as its own platform with its own audience and promotion approach: the corporate site (lasermade.ru) serves B2B, the store serves B2C.</p><p>The semantic core behind the new structure covers 2,000+ keywords, broken down by individual material, process and application (for example, distinguishing "MDF milling" from generic "laser cutting" queries).</p>',
+      '<p>The WordPress landing pages were retired and the site was rebuilt on Drupal. The new structure was organized around the actual production process rather than a generic services list:</p><ul><li>Material processing, 15 categories (plywood, wood, MDF, composite, acrylic, PVC, plastic, and others)</li><li>Outdoor advertising, 7 sections, from illuminated letters to roof-mounted installations</li><li>Interior advertising: exhibition equipment, wayfinding signage, retail space fit-out</li><li>POS materials and retail equipment</li><li>Screens, stained-glass elements, custom furniture, partitions</li><li>A portfolio section with 200+ documented projects, a press and blog center, and a dedicated client-resources section</li></ul><p>A second, separate storefront, Decor Trend, was launched for retail decor sales. It runs as its own platform with its own audience and promotion approach: the corporate site (Laser Made) serves B2B, the store serves B2C.</p><p>The semantic core behind the new structure covers 2,000+ keywords, broken down by individual material, process and application (for example, distinguishing "MDF milling" from generic "laser cutting" queries).</p>',
     ),
 
     titleBlock('Year 1: Foundation'),
@@ -71,7 +71,7 @@ const buildData = () => ({
 
     titleBlock('Years 2 to 3: Scaling'),
     contentBlock(
-      '<ul><li>Optimized content written for each service and material category</li><li>Portfolio populated with 200+ real projects</li><li>Blog launched with expert articles, typically built from a 30-minute interview with the client turned into a roughly 2,000-word article</li><li>DecorTrend.ru online store developed and launched</li><li>Link building through industry publications, mixing free guest posts on industry blogs with paid placements in directories and design and construction media</li><li>10+ social media channels actively managed, including VKontakte, YouTube, Odnoklassniki, Telegram, Pinterest, Twitter/X and Instagram, covering content planning, shooting and design</li><li>Jivo live chat integrated for instant client contact</li></ul>',
+      '<ul><li>Optimized content written for each service and material category</li><li>Portfolio populated with 200+ real projects</li><li>Blog launched with expert articles, typically built from a 30-minute interview with the client turned into a roughly 2,000-word article</li><li>Decor Trend online store developed and launched</li><li>Link building through industry publications, mixing free guest posts on industry blogs with paid placements in directories and design and construction media</li><li>10+ social media channels actively managed, including VKontakte, YouTube, Odnoklassniki, Telegram, Pinterest, Twitter/X and Instagram, covering content planning, shooting and design</li><li>Jivo live chat integrated for instant client contact</li></ul>',
     ),
 
     titleBlock('Years 4 to 5: Optimization and Scaling'),
@@ -81,7 +81,7 @@ const buildData = () => ({
 
     titleBlock('Site Structure: From One Page to a System'),
     contentBlock(
-      '<p>lasermade.ru is organized into 27+ sections, grouped around six practical areas: material processing (15+ types, including 3D milling and CNC facade work), outdoor advertising (7 sections), interior advertising, POS and retail equipment, screens, furniture and decor, and a press-center plus client-resources area (blog, FAQ, free measurement and design requests, delivery information, layout requirements).</p><p>Representative portfolio pages referenced in the source material include a mirrored hallway wardrobe, an oak kitchen with countertop, a veneer bar counter for a cafe, a turnkey wine cellar, decorative radiator screens, ornamental cafe partitions, and wooden restaurant menus.</p><p>decortrend.ru is a separate online store for finished home-decor items, aimed at retail (B2C) buyers rather than the B2B production clients served by the corporate site.</p>',
+      '<p>The Laser Made corporate site is organized into 27+ sections, grouped around six practical areas: material processing (15+ types, including 3D milling and CNC facade work), outdoor advertising (7 sections), interior advertising, POS and retail equipment, screens, furniture and decor, and a press-center plus client-resources area (blog, FAQ, free measurement and design requests, delivery information, layout requirements).</p><p>Representative portfolio pages referenced in the source material include a mirrored hallway wardrobe, an oak kitchen with countertop, a veneer bar counter for a cafe, a turnkey wine cellar, decorative radiator screens, ornamental cafe partitions, and wooden restaurant menus.</p><p>Decor Trend is a separate online store for finished home-decor items, aimed at retail (B2C) buyers rather than the B2B production clients served by the corporate site.</p>',
     ),
   ],
 
@@ -114,7 +114,7 @@ const buildData = () => ({
 
   nicheSegmentation: [
     {
-      name: 'B2B Manufacturing, Custom Fabrication (lasermade.ru)',
+      name: 'B2B Manufacturing, Custom Fabrication (Laser Made)',
       description: rt(
         '<p>The corporate site covers the core production business: material processing, outdoor and interior advertising, POS and retail equipment, and custom furniture and decor manufactured to order. The audience is other businesses commissioning custom production work.</p>',
       ),
@@ -123,7 +123,7 @@ const buildData = () => ({
       ),
     },
     {
-      name: 'B2C Retail Decor (DecorTrend.ru)',
+      name: 'B2C Retail Decor (Decor Trend)',
       description: rt(
         '<p>A separate online store selling finished home-decor products to individual consumers, run as its own platform apart from the production-focused corporate site.</p>',
       ),
@@ -134,10 +134,10 @@ const buildData = () => ({
   ],
 
   digitalEcosystem: rt(
-    '<p>Two Drupal-built websites (lasermade.ru, decortrend.ru), Jivo live chat for on-site messaging, Google My Business for local search presence and reviews, and Google Ads for paid search. Contact routes include WhatsApp and Telegram alongside on-site forms.</p>',
+    '<p>Two Drupal-built websites (Laser Made, Decor Trend), Jivo live chat for on-site messaging, Google My Business for local search presence and reviews, and Google Ads for paid search. Contact routes include WhatsApp and Telegram alongside on-site forms.</p>',
   ),
   websiteArchitecture: rt(
-    '<p>lasermade.ru: 27+ sections built around 15 material-processing categories, 7 outdoor-advertising sections, interior advertising, POS and retail equipment, screens, furniture and decor, and a press-center and client-resources area.</p><p>decortrend.ru: a standalone e-commerce structure for finished decor products. The specific sub-page breakdown is not detailed in the source data.</p>',
+    '<p>Laser Made: 27+ sections built around 15 material-processing categories, 7 outdoor-advertising sections, interior advertising, POS and retail equipment, screens, furniture and decor, and a press-center and client-resources area.</p><p>Decor Trend: a standalone e-commerce structure for finished decor products. The specific sub-page breakdown is not detailed in the source data.</p>',
   ),
   semanticArchitecture: rt(
     '<p>A 2,000+ keyword semantic core clustered by individual material, process and application, rather than a small set of generic head terms. The source page references a dedicated site information-architecture diagram, confirming a deliberately mapped structure rather than an organic page list.</p>',
@@ -219,7 +219,7 @@ const buildData = () => ({
       period: 'Years 2 to 3',
       title: 'Scaling',
       description: rt(
-        '<p>Content production, 200+ project portfolio, blog launch, DecorTrend.ru launch, link building, 10+ social channels, Jivo chat integration.</p>',
+        '<p>Content production, 200+ project portfolio, blog launch, Decor Trend launch, link building, 10+ social channels, Jivo chat integration.</p>',
       ),
     },
     {
@@ -250,7 +250,7 @@ const buildData = () => ({
     },
     {
       value: '27+',
-      label: 'Structured Site Sections (lasermade.ru)',
+      label: 'Structured Site Sections (Laser Made)',
       description: rt(
         '<p>Replaced the original single, unstructured landing page with a navigable, material and process based structure.</p>',
       ),

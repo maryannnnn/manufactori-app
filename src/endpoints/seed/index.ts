@@ -21,7 +21,8 @@ const collections: CollectionSlug[] = [
   'search',
 ]
 
-const globals: GlobalSlug[] = ['header', 'footer']
+// Only the nav globals are reset here; they are the ones carrying `navItems`.
+const globals = ['header', 'footer'] as const satisfies readonly GlobalSlug[]
 
 // Next.js revalidation errors are normal when seeding the database without a server running
 // i.e. running `yarn seed` locally instead of using the admin UI within an active app

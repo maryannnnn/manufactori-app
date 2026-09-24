@@ -9,6 +9,7 @@ import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea
 import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { HierarchicalCategoryRelationshipField as HierarchicalCategoryRelationshipField_bc1a0768fff96ef33e506d4fb7ee0771 } from '@/components/admin/CategoryHierarchy/HierarchicalCategoryRelationshipField'
 import { SlugField as SlugField_2b8867833a34864a02ddf429b0728a40 } from '@payloadcms/next/client'
+import { CommentRowLabel as CommentRowLabel_04af887d2a71313503cdbcd24ce34c4c } from '@/blocks/CaseStudyCommentsBlock/CommentRowLabel'
 import { FolderTableCell as FolderTableCell_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 import { FolderField as FolderField_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 import { CategoryTitleCell as CategoryTitleCell_3228047a15c6bf4c0f85af352bb0197e } from '@/components/admin/CategoryHierarchy/CategoryTitleCell'
@@ -39,6 +40,7 @@ export const importMap = {
   "@payloadcms/plugin-seo/client#PreviewComponent": PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@/components/admin/CategoryHierarchy/HierarchicalCategoryRelationshipField#HierarchicalCategoryRelationshipField": HierarchicalCategoryRelationshipField_bc1a0768fff96ef33e506d4fb7ee0771,
   "@payloadcms/next/client#SlugField": SlugField_2b8867833a34864a02ddf429b0728a40,
+  "@/blocks/CaseStudyCommentsBlock/CommentRowLabel#CommentRowLabel": CommentRowLabel_04af887d2a71313503cdbcd24ce34c4c,
   "@payloadcms/next/rsc#FolderTableCell": FolderTableCell_f9c02e79a4aed9a3924487c0cd4cafb1,
   "@payloadcms/next/rsc#FolderField": FolderField_f9c02e79a4aed9a3924487c0cd4cafb1,
   "@/components/admin/CategoryHierarchy/CategoryTitleCell#CategoryTitleCell": CategoryTitleCell_3228047a15c6bf4c0f85af352bb0197e,

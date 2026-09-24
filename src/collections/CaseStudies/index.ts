@@ -231,6 +231,11 @@ export const CaseStudies: CollectionConfig = {
               admin: {
                 ...hierarchicalCategoryRelationshipAdmin,
                 position: 'sidebar',
+                // Part of the hidden site-wide taxonomy, not an editorial choice for
+                // case studies: `case_study_categories` is the categorization field.
+                // `hidden` rather than `disabled` so admin saves keep existing values
+                // instead of clearing the relationship.
+                hidden: true,
                 description:
                   'Site taxonomy nodes (independent from Case Study Categories). Browse the tree and add one or more.',
               },
