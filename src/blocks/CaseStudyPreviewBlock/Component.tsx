@@ -25,7 +25,7 @@ export const CaseStudyPreviewBlock: React.FC<Props> = ({
       ) : null}
       {case_study_preview_image && typeof case_study_preview_image === 'object' ? (
         <div className="mt-6 max-w-[48rem]">
-          <Media resource={case_study_preview_image as never} size="100vw" />
+          <Media resource={case_study_preview_image as never} showWatermark size="100vw" />
         </div>
       ) : null}
     </div>

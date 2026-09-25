@@ -8,6 +8,12 @@
  * Next.js image optimization treats them as local rather than fetching
  * through `remotePatterns`, which blocks private IPs since Next.js 16.
  */
+/** Public path for a file in `public/media`, which Vercel serves as a static asset. */
+export const getPublicMediaPath = (filename?: string | null): string | null => {
+  if (!filename) return null
+  return `/media/${filename}`
+}
+
 export const getMediaUrl = (url: string | null | undefined, cacheTag?: string | null): string => {
   if (!url) return ''
 

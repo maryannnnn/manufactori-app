@@ -137,7 +137,11 @@ export const CaseStudyPage: React.FC<Props> = ({
             <RichTextField className="max-w-[70ch]" value={preview?.case_study_preview_text} />
             {previewImage && typeof previewImage === 'object' ? (
               <div className="mt-6 overflow-hidden rounded-[2px] border border-border">
-                <Media resource={previewImage} size="(max-width: 1024px) 100vw, 1024px" />
+                <Media
+                  resource={previewImage}
+                  showWatermark
+                  size="(max-width: 1024px) 100vw, 1024px"
+                />
               </div>
             ) : null}
           </CaseStudySection>

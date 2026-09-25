@@ -64,8 +64,10 @@ export const CaseStudyCard: React.FC<Props> = ({
         {hasImage ? (
           <Media
             className="h-full w-full"
+            fill
             imgClassName="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
             resource={image}
+            showWatermark
             size={imageSizes}
           />
         ) : null}

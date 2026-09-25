@@ -22,7 +22,7 @@ export const CaseStudyGalleryBlock: React.FC<Props> = ({
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {images.map((image, index) =>
             image && typeof image === 'object' ? (
-              <Media key={index} resource={image as never} size="33vw" />
+              <Media key={index} resource={image as never} showWatermark size="33vw" />
             ) : null,
           )}
         </div>

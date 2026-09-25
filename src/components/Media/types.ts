@@ -19,4 +19,9 @@ export interface Props {
   size?: string // for NextImage only
   src?: StaticImageData // for static media
   videoClassName?: string
+  /**
+   * Photographic overlay "Neolines.com". Off by default so logos, icons,
+   * avatars and UI chrome stay clean.
+   */
+  showWatermark?: boolean
 }

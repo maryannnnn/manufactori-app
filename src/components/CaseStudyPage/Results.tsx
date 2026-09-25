@@ -40,8 +40,10 @@ const ShowcaseItem: React.FC<{
         {hasImage ? (
           <Media
             className="h-full w-full"
+            fill
             imgClassName="h-full w-full object-cover"
             resource={image}
+            showWatermark
             size="(max-width: 1024px) 50vw, 33vw"
           />
         ) : null}

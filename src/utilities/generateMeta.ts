@@ -5,6 +5,7 @@ import type { CaseStudy, Media, Page, Post, Config } from '../payload-types'
 import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
 import { getCaseStudyUrl, getPostUrl } from './getContentUrls'
+import { getPublicMediaPath } from './getMediaUrl'
 import { siteRobotsMetadata } from './siteRobots'
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
@@ -13,9 +14,14 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   let url = serverUrl + '/website-template-OG.webp'
 
   if (image && typeof image === 'object' && 'url' in image) {
+    const publicPath = getPublicMediaPath(image.sizes?.og?.filename || image.filename)
     const ogUrl = image.sizes?.og?.url
 
-    url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url
+    url = publicPath
+      ? serverUrl + publicPath
+      : ogUrl
+        ? serverUrl + ogUrl
+        : serverUrl + image.url
   }
 
   return url

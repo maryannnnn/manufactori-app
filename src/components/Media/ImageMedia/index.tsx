@@ -9,7 +9,9 @@ import React from 'react'
 import type { Props as MediaProps } from '../types'
 
 import { cssVariables } from '@/cssVariables'
-import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { getMediaUrl, getPublicMediaPath } from '@/utilities/getMediaUrl'
+
+import { ImageWatermark } from '../ImageWatermark'
 
 const { breakpoints } = cssVariables
 
@@ -56,6 +58,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     size: sizeFromProps,
     src: srcFromProps,
     loading: loadingFromProps,
+    showWatermark,
   } = props
 
   let width: number | undefined
@@ -72,7 +75,9 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
     const cacheTag = resource.updatedAt
 
-    src = getMediaUrl(url, cacheTag)
+    // Prefer the Git-tracked public file so Vercel can serve it as a static
+    // asset. Fall back to Payload's API URL when filename is missing.
+    src = getMediaUrl(getPublicMediaPath(resource.filename) || url, cacheTag)
   }
 
   const loading = loadingFromProps || (!priority ? 'lazy' : undefined)
@@ -85,7 +90,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         .join(', ')
 
   return (
-    <picture className={cn(pictureClassName)}>
+    <picture className={cn(showWatermark && 'relative', fill && 'block h-full w-full', pictureClassName)}>
       <NextImage
         alt={alt || ''}
         className={cn(imgClassName)}
@@ -100,6 +105,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         src={src}
         width={!fill ? width : undefined}
       />
+      {showWatermark ? <ImageWatermark /> : null}
     </picture>
   )
 }

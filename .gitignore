@@ -8,8 +8,11 @@ node_modules
 next-env.d.ts
 .vercel
 
-# Payload default media upload directory
-public/media/
+# Payload writes uploads to public/media (Media collection staticDir).
+# Production originals and Payload image sizes are Git-tracked so they
+# deploy with Git → Vercel. Ignore only junk that may appear beside them.
+public/media/.DS_Store
+public/media/**/.DS_Store
 
 public/robots.txt
 public/sitemap*.xml
