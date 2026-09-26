@@ -15,6 +15,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { PagePreviewBlock } from '@/blocks/PagePreviewBlock/Component'
+import { PostGalleryBlock } from '@/blocks/PostGalleryBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -39,6 +40,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   pagePreviewBlock: PagePreviewBlock,
+  postGalleryBlock: PostGalleryBlock,
 }
 
 type LayoutBlock =

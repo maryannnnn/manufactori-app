@@ -5,14 +5,19 @@ export const CaseStudyGalleryBlock: Block = {
   interfaceName: 'CaseStudyGalleryBlock',
   dbName: 'csGal',
   labels: {
-    singular: 'Case Study Gallery',
-    plural: 'Case Study Gallery',
+    singular: 'Media Gallery',
+    plural: 'Media Gallery',
   },
   fields: [
     {
       name: 'case_study_gallery_title',
       type: 'text',
       label: 'Case Study Gallery Title',
+      defaultValue: 'Gallery',
+      admin: {
+        description:
+          'Section heading. Defaults to Gallery. Change it for a specific set, for example Manufacturing Gallery or Before & After.',
+      },
     },
     {
       name: 'case_study_gallery_images',

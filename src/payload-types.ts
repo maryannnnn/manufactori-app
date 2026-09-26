@@ -1360,6 +1360,9 @@ export interface CaseStudyVideoBlock {
  * via the `definition` "CaseStudyGalleryBlock".
  */
 export interface CaseStudyGalleryBlock {
+  /**
+   * Section heading. Defaults to Gallery. Change it for a specific set, for example Manufacturing Gallery or Before & After.
+   */
   case_study_gallery_title?: string | null;
   /**
    * Up to 20 images from Media.
