@@ -32,7 +32,10 @@ export const MediaGallery: React.FC<Props> = ({
   if (items.length === 0) return null
 
   return (
-    <section aria-labelledby={heading ? headingId : undefined} className="container">
+    <section
+      aria-labelledby={heading ? headingId : undefined}
+      className="container min-w-0 max-w-full"
+    >
       {heading ? (
         <h2 className="mb-6 text-2xl font-semibold tracking-tight" id={headingId}>
           {heading}

@@ -91,12 +91,13 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
       className={cn(
         (showWatermark || fill) && 'relative',
         fill && 'block h-full w-full',
+        !fill && 'max-w-full',
         pictureClassName,
       )}
     >
       <NextImage
         alt={alt || ''}
-        className={cn(imgClassName)}
+        className={cn(!fill && 'h-auto max-w-full', imgClassName)}
         fill={fill}
         height={!fill ? height : undefined}
         placeholder="blur"

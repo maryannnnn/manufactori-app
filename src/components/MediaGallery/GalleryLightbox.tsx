@@ -67,7 +67,7 @@ export const GalleryLightbox: React.FC<Props> = ({
                 pictureClassName="relative block h-full w-full"
                 resource={resource}
                 showWatermark={showWatermark}
-                size="100vw"
+                size="(max-width: 768px) 100vw, 90vw"
               />
             </div>
           )
@@ -75,13 +75,14 @@ export const GalleryLightbox: React.FC<Props> = ({
       }}
       slides={slides}
       styles={{
-        container: { backgroundColor: 'rgba(8, 8, 8, 0.94)' },
+        container: { backgroundColor: 'rgba(8, 8, 8, 0.94)', maxWidth: '100vw' },
+        thumbnailsContainer: { maxWidth: '100%' },
       }}
       thumbnails={{
         border: 0,
         borderRadius: 2,
         gap: 8,
-        padding: 16,
+        padding: 12,
         position: 'bottom',
         vignette: false,
       }}

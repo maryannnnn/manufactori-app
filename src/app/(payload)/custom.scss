@@ -92,7 +92,102 @@
 
   @media (max-width: 480px) {
     &__blocks {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+}
+
+// Case Study (and other document) editors: keep fields inside the viewport.
+// Payload already clips `body` with overflow-x: hidden; that hides the
+// scrollbar but still leaves Gallery / upload controls unusable. Shrink the
+// actual flex children instead.
+.collection-edit,
+.collection-edit__main,
+.collection-edit__form,
+.document-fields,
+.document-fields__main,
+.document-fields__edit,
+.document-fields__fields,
+.render-fields,
+.field-type,
+.blocks-field,
+.blocks-field__rows,
+.collapsible,
+.collapsible__content,
+.array-field,
+.array-field__draggable-rows,
+.group-field,
+.tabs-field,
+.tabs-field__content-wrap {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.upload,
+.upload--has-many,
+.upload__dropzoneAndUpload,
+.upload--has-many__draggable-rows,
+.upload--has-many__dragItem {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.upload__dropzoneContent {
+  min-width: 0;
+}
+
+.upload__dropzoneContent__buttons {
+  flex-wrap: wrap;
+  min-width: 0;
+  left: 0;
+}
+
+.upload__dragAndDropText {
+  flex-shrink: 1;
+}
+
+.upload-field-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.upload-relationship-details {
+  min-width: 0;
+
+  &__imageAndDetails,
+  &__details {
+    min-width: 0;
+    flex: 1 1 0;
+  }
+
+  &__details {
+    margin-right: 0;
+  }
+
+  &__filename,
+  &__meta {
+    max-width: 100%;
+  }
+}
+
+.category-hierarchy-field,
+.category-hierarchy-picker,
+.category-hierarchy-nav {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.category-hierarchy-nav__label {
+  @media (max-width: 480px) {
+    min-width: 0;
+  }
+}
+
+.rich-editor {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.rich-editor-toolbar {
+  max-width: 100%;
 }

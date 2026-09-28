@@ -18,7 +18,7 @@ export const CaseStudyResults: React.FC<Props> = ({ projectsShowcase, resultsSum
       <RichTextField className="mb-7 max-w-[70ch]" value={resultsSummary} />
 
       {projects.length > 0 && (
-        <div className="grid grid-cols-2 gap-3.5 lg:grid-cols-3">
+        <div className="grid min-w-0 grid-cols-2 gap-3.5 lg:grid-cols-3">
           {projects.map((project, index) => (
             <ShowcaseItem key={project.id ?? index} project={project} />
           ))}
@@ -59,7 +59,7 @@ const ShowcaseItem: React.FC<{
   )
 
   const className =
-    'flex flex-col overflow-hidden rounded-[2px] border border-border bg-card transition-colors'
+    'flex min-w-0 flex-col overflow-hidden rounded-[2px] border border-border bg-card transition-colors'
 
   if (project.url) {
     return (

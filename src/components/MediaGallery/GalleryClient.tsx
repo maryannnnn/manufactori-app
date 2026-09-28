@@ -34,7 +34,7 @@ export const MediaGalleryClient: React.FC<Props> = ({ images, showWatermark }) =
 
   return (
     <>
-      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-[repeat(auto-fill,minmax(240px,1fr))] sm:gap-4 lg:gap-5">
+      <ul className="grid min-w-0 grid-cols-2 gap-3 sm:grid-cols-[repeat(auto-fill,minmax(min(100%,240px),1fr))] sm:gap-4 lg:gap-5">
         {images.map((image, imageIndex) => {
           const alt = image.alt?.trim() || `Gallery image ${imageIndex + 1}`
 
