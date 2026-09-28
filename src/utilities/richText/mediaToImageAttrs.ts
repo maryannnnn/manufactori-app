@@ -1,5 +1,7 @@
 import type { Media } from '@/payload-types'
 
+import { resolveMediaSource } from '@/utilities/getMediaUrl'
+
 import {
   DEFAULT_IMAGE_ALIGN,
   DEFAULT_IMAGE_WIDTH,
@@ -15,26 +17,17 @@ type MediaLike = Partial<Media> & {
   sizes?: Media['sizes']
 }
 
-const firstUrl = (...candidates: Array<string | null | undefined>): string | null => {
-  return candidates.find((value) => typeof value === 'string' && value.length > 0) || null
-}
+const withoutCacheTag = (url: string): string => url.split('?')[0] || url
 
 export const mediaToImageAttrs = (media: MediaLike): EditorImageAttrs | null => {
-  const src = firstUrl(
-    media.sizes?.large?.url,
-    media.sizes?.medium?.url,
-    media.url,
-    media.thumbnailURL,
-    media.filename ? `/media/${media.filename}` : null,
-  )
+  const display = resolveMediaSource(media, ['large', 'medium', 'small'])
+  if (!display.src) return null
 
-  if (!src) return null
-
-  const srcFull = firstUrl(media.sizes?.xlarge?.url, media.url, src)
+  const full = resolveMediaSource(media, ['xlarge', 'large', 'medium'])
 
   return {
-    src,
-    srcFull,
+    src: withoutCacheTag(display.src),
+    srcFull: withoutCacheTag(full.src || display.src),
     alt: media.alt || '',
     mediaId: media.id ?? null,
     align: DEFAULT_IMAGE_ALIGN,

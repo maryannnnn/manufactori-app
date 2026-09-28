@@ -2,6 +2,7 @@ import { generateHTML } from '@tiptap/html'
 
 import { getTiptapExtensions } from '@/utilities/richText/extensions'
 import type { TiptapRichTextValue } from '@/utilities/richText/types'
+import { rewriteMediaSrcsInHtml } from '@/utilities/getMediaUrl'
 import { cn } from '@/utilities/ui'
 
 import { RichTextLightbox } from './RichTextLightbox'
@@ -21,7 +22,9 @@ export default function TiptapRichText({
   enableGutter = true,
   enableProse = true,
 }: TiptapRichTextProps) {
-  const html = generateHTML(data, getTiptapExtensions({ headingLevels: [1, 2, 3, 4, 5, 6] }))
+  const html = rewriteMediaSrcsInHtml(
+    generateHTML(data, getTiptapExtensions({ headingLevels: [1, 2, 3, 4, 5, 6] })),
+  )
 
   return (
     <RichTextLightbox
