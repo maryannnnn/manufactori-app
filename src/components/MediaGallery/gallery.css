@@ -1,0 +1,112 @@
+.media-gallery {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.media-gallery__title {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.media-gallery__grid {
+  width: 100%;
+  min-width: 0;
+}
+
+.media-gallery__item,
+.media-gallery__thumb {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.media-gallery__thumb {
+  display: block;
+  width: 100%;
+}
+
+.media-gallery__frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.media-gallery-lightbox.yarl__portal {
+  inset: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100dvh;
+  background: #080808;
+}
+
+@supports (height: 100svh) {
+  .media-gallery-lightbox.yarl__portal {
+    height: 100svh;
+    max-height: 100svh;
+  }
+}
+
+.media-gallery-lightbox .yarl__container {
+  width: 100%;
+  max-width: 100%;
+  background-color: #080808;
+}
+
+.media-gallery-lightbox .yarl__thumbnails {
+  min-height: 0;
+  max-width: 100%;
+}
+
+.media-gallery-lightbox .yarl__thumbnails_wrapper {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.media-gallery-lightbox .yarl__thumbnails_container {
+  z-index: 3;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: #080808;
+  padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+}
+
+.media-gallery-lightbox .yarl__slide,
+.media-gallery-lightbox .yarl__slide_wrapper {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.media-gallery-lightbox {
+  --yarl__thumbnails_thumbnail_width: 88px;
+  --yarl__thumbnails_thumbnail_height: 66px;
+  --yarl__thumbnails_thumbnail_gap: 8px;
+  --yarl__thumbnails_container_padding: 10px;
+}
+
+.media-gallery-lightbox .yarl__thumbnails_thumbnail {
+  width: var(--yarl__thumbnails_thumbnail_width, 88px) !important;
+  height: var(--yarl__thumbnails_thumbnail_height, 66px) !important;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  .media-gallery-lightbox .yarl__slide_captions_container {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .media-gallery-lightbox {
+    --yarl__thumbnails_thumbnail_width: 120px;
+    --yarl__thumbnails_thumbnail_height: 80px;
+    --yarl__thumbnails_thumbnail_gap: 12px;
+    --yarl__thumbnails_container_padding: 12px;
+  }
+}

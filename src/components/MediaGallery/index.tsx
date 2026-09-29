@@ -4,6 +4,8 @@ import type { Media } from '@/payload-types'
 
 import { MediaGalleryClient } from './GalleryClient'
 
+import './gallery.css'
+
 type Props = {
   fallbackTitle?: string | null
   headingId?: string
@@ -34,10 +36,10 @@ export const MediaGallery: React.FC<Props> = ({
   return (
     <section
       aria-labelledby={heading ? headingId : undefined}
-      className="container min-w-0 max-w-full"
+      className="media-gallery container min-w-0 max-w-full"
     >
       {heading ? (
-        <h2 className="mb-6 text-2xl font-semibold tracking-tight" id={headingId}>
+        <h2 className="media-gallery__title mb-6 text-xl font-semibold tracking-tight sm:text-2xl" id={headingId}>
           {heading}
         </h2>
       ) : null}

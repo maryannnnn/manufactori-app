@@ -9,6 +9,8 @@ import { Media } from '@/components/Media'
 
 import { buildGallerySlides } from './slides'
 
+import './gallery.css'
+
 const GalleryLightbox = dynamic(
   () => import('./GalleryLightbox').then((mod) => mod.GalleryLightbox),
   { ssr: false },
@@ -34,30 +36,32 @@ export const MediaGalleryClient: React.FC<Props> = ({ images, showWatermark }) =
 
   return (
     <>
-      <ul className="grid min-w-0 grid-cols-2 gap-3 sm:grid-cols-[repeat(auto-fill,minmax(min(100%,240px),1fr))] sm:gap-4 lg:gap-5">
+      <ul className="media-gallery__grid grid min-w-0 grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-5">
         {images.map((image, imageIndex) => {
           const alt = image.alt?.trim() || `Gallery image ${imageIndex + 1}`
 
           return (
-            <li className="min-w-0" key={image.id ?? imageIndex}>
+            <li className="media-gallery__item min-w-0" key={image.id ?? imageIndex}>
               <button
                 aria-expanded={open && index === imageIndex}
                 aria-haspopup="dialog"
                 aria-label={`Open image ${imageIndex + 1} of ${images.length}: ${alt}`}
-                className="group relative aspect-[4/3] w-full overflow-hidden rounded-[2px] border border-border bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="media-gallery__thumb group w-full min-w-0 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 onClick={() => openAt(imageIndex)}
                 type="button"
               >
-                <Media
-                  fill
-                  htmlElement={null}
-                  imageSize={['medium', 'small']}
-                  imgClassName="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  pictureClassName="relative block h-full w-full"
-                  resource={image}
-                  showWatermark={showWatermark}
-                  size="(max-width: 767px) 50vw, 280px"
-                />
+                <span className="media-gallery__frame overflow-hidden rounded-[2px] border border-border bg-accent">
+                  <Media
+                    fill
+                    htmlElement={null}
+                    imageSize={['medium', 'small']}
+                    imgClassName="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    pictureClassName="relative block h-full w-full overflow-hidden"
+                    resource={image}
+                    showWatermark={showWatermark}
+                    size="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
+                  />
+                </span>
               </button>
             </li>
           )

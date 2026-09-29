@@ -90,7 +90,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     <picture
       className={cn(
         (showWatermark || fill) && 'relative',
-        fill && 'block h-full w-full',
+        fill && 'block h-full w-full overflow-hidden',
         !fill && 'max-w-full',
         pictureClassName,
       )}

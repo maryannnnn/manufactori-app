@@ -15,6 +15,8 @@ import { Media } from '@/components/Media'
 
 import type { GallerySlide } from './slides'
 
+import './gallery.css'
+
 type Props = {
   index: number
   onClose: () => void
@@ -34,6 +36,8 @@ export const GalleryLightbox: React.FC<Props> = ({
 }) => {
   return (
     <Lightbox
+      carousel={{ finite: false, imageFit: 'contain', padding: 8, spacing: 8 }}
+      className="media-gallery-lightbox"
       close={onClose}
       controller={{ closeOnBackdropClick: true, closeOnPullDown: true }}
       index={index}
@@ -52,19 +56,21 @@ export const GalleryLightbox: React.FC<Props> = ({
           const resource = 'resource' in slide ? (slide as GallerySlide).resource : null
           if (!resource) return undefined
 
-          const slideWidth = slide.width || rect.width
-          const slideHeight = slide.height || rect.height
-          const width = Math.round(Math.min(rect.width, (rect.height / slideHeight) * slideWidth))
-          const height = Math.round(Math.min(rect.height, (rect.width / slideWidth) * slideHeight))
+          const maxWidth = Math.max(1, rect.width)
+          const maxHeight = Math.max(1, rect.height)
+          const slideWidth = slide.width || maxWidth
+          const slideHeight = slide.height || maxHeight
+          const width = Math.round(Math.min(maxWidth, (maxHeight / slideHeight) * slideWidth))
+          const height = Math.round(Math.min(maxHeight, (maxWidth / slideWidth) * slideHeight))
 
           return (
-            <div className="relative" style={{ width, height }}>
+            <div className="relative overflow-hidden" style={{ width, height, maxWidth: '100%', maxHeight: '100%' }}>
               <Media
                 fill
                 htmlElement={null}
                 imageSize={['xlarge', 'large', 'medium']}
                 imgClassName="object-contain"
-                pictureClassName="relative block h-full w-full"
+                pictureClassName="relative block h-full w-full overflow-hidden"
                 resource={resource}
                 showWatermark={showWatermark}
                 size="(max-width: 768px) 100vw, 90vw"
@@ -75,16 +81,25 @@ export const GalleryLightbox: React.FC<Props> = ({
       }}
       slides={slides}
       styles={{
-        container: { backgroundColor: 'rgba(8, 8, 8, 0.94)', maxWidth: '100vw' },
-        thumbnailsContainer: { maxWidth: '100%' },
+        container: { backgroundColor: '#080808', maxWidth: '100%', width: '100%' },
+        root: {
+          backgroundColor: '#080808',
+          height: '100svh',
+          maxHeight: '100svh',
+          maxWidth: '100%',
+          width: '100%',
+        },
+        thumbnailsContainer: { backgroundColor: '#080808', maxWidth: '100%', zIndex: 3 },
       }}
       thumbnails={{
         border: 0,
         borderRadius: 2,
         gap: 8,
-        padding: 12,
+        height: 66,
+        padding: 10,
         position: 'bottom',
         vignette: false,
+        width: 88,
       }}
     />
   )
