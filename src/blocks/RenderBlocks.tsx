@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import type { CaseStudy, CaseStudyCategory, Category, Page, Post } from '@/payload-types'
+import type { CaseStudy, CaseStudyCategory, Category, Page, Post, Service } from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
@@ -16,6 +16,8 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { PagePreviewBlock } from '@/blocks/PagePreviewBlock/Component'
 import { PostGalleryBlock } from '@/blocks/PostGalleryBlock/Component'
+import { ServiceCommentsBlock } from '@/blocks/ServiceCommentsBlock/Component'
+import { ServiceGalleryBlock } from '@/blocks/ServiceGalleryBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -41,6 +43,8 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   pagePreviewBlock: PagePreviewBlock,
   postGalleryBlock: PostGalleryBlock,
+  svcGallery: ServiceGalleryBlock,
+  svcComments: ServiceCommentsBlock,
 }
 
 type LayoutBlock =
@@ -49,6 +53,7 @@ type LayoutBlock =
   | NonNullable<CaseStudyCategory['layout']>[number]
   | NonNullable<Post['layout']>[number]
   | NonNullable<CaseStudy['layout']>[number]
+  | NonNullable<Service['layout']>[number]
 
 export const RenderBlocks: React.FC<{
   blocks: LayoutBlock[]

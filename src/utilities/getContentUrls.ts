@@ -16,6 +16,17 @@ type CaseStudyUrlSource = {
   primary_case_study_category_slug?: string | null
 }
 
+type ServiceUrlSource = {
+  slug?: string | null
+}
+
+type TestimonialUrlSource = {
+  slug?: string | null
+}
+
+/** Posts listing route; individual posts live beneath it. */
+export const BLOG_ARCHIVE_PATH = '/blog'
+
 /** Path segment for category archive pages: /blog/category/{slug} */
 export const BLOG_CATEGORY_PATH_SEGMENT = 'category'
 
@@ -24,6 +35,12 @@ export const CASE_STUDY_CATEGORY_PATH_SEGMENT = 'category'
 
 /** Case study listing route; individual case studies live beneath it. */
 export const CASE_STUDIES_ARCHIVE_PATH = '/case-study'
+
+/** Services listing route; individual services live beneath it. */
+export const SERVICES_ARCHIVE_PATH = '/services'
+
+/** Future testimonials listing route; individual testimonials live beneath it. */
+export const TESTIMONIALS_ARCHIVE_PATH = '/testimonials'
 
 /** Slugs that would collide with blog routing. */
 export const RESERVED_CATEGORY_SLUGS = ['category', 'categories'] as const
@@ -83,6 +100,16 @@ export const getCaseStudyUrl = (doc: CaseStudyUrlSource | null | undefined): str
   return `/case-study/${categorySlug}/${doc.slug}`
 }
 
+export const getServiceUrl = (doc: ServiceUrlSource | null | undefined): string | null => {
+  if (!doc?.slug) return null
+  return `${SERVICES_ARCHIVE_PATH}/${doc.slug}`
+}
+
+export const getTestimonialUrl = (doc: TestimonialUrlSource | null | undefined): string | null => {
+  if (!doc?.slug) return null
+  return `${TESTIMONIALS_ARCHIVE_PATH}/${doc.slug}`
+}
+
 export const getReferenceUrl = (
   relationTo: string | null | undefined,
   value:
@@ -102,6 +129,8 @@ export const getReferenceUrl = (
 
   if (relationTo === 'posts') return getPostUrl(value)
   if (relationTo === 'case-studies') return getCaseStudyUrl(value)
+  if (relationTo === 'services') return getServiceUrl(value)
+  if (relationTo === 'testimonials') return getTestimonialUrl(value)
   if (relationTo === 'categories') return getCategoryUrl(value)
   if (relationTo === 'case-study-categories') return getCaseStudyCategoryUrl(value)
 

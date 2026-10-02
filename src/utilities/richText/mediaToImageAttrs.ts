@@ -20,10 +20,11 @@ type MediaLike = Partial<Media> & {
 const withoutCacheTag = (url: string): string => url.split('?')[0] || url
 
 export const mediaToImageAttrs = (media: MediaLike): EditorImageAttrs | null => {
-  const display = resolveMediaSource(media, ['large', 'medium', 'small'])
+  const resource = media as Pick<Media, 'filename' | 'url' | 'width' | 'height' | 'updatedAt' | 'sizes'>
+  const display = resolveMediaSource(resource, ['large', 'medium', 'small'])
   if (!display.src) return null
 
-  const full = resolveMediaSource(media, ['xlarge', 'large', 'medium'])
+  const full = resolveMediaSource(resource, ['xlarge', 'large', 'medium'])
 
   return {
     src: withoutCacheTag(display.src),

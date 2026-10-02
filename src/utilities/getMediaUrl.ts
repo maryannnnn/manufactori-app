@@ -43,12 +43,36 @@ const safeDecodeURIComponent = (value: string): string => {
 
 /**
  * Public path for a file in `public/media`.
- * Encodes spaces and unicode so Vercel / next/image can fetch the static file.
+ * Encodes spaces and unicode for HTML `src` / static fetches.
+ * Do not pass this encoded form to `next/image` — use `toNextImageSrc`.
  */
 export const getPublicMediaPath = (filename?: string | null): string | null => {
   if (!filename) return null
   const trimmed = filename.replace(/^\/media\//, '').replace(/^\/api\/media\/file\//, '')
   return `/media/${encodeMediaFilename(trimmed)}`
+}
+
+/**
+ * `next/image` percent-encodes `src` itself. Passing an already-encoded
+ * `/media/Bar%20countertop.jpg?updatedAt` makes the optimizer request `%2520`
+ * plus a query string. ASCII names such as `Screenshot_3.jpg` survive;
+ * spaces and unicode (Decor Trend, architecture diagrams, Results photos)
+ * 400 on Vercel. Strip the cache tag and decode back to the on-disk name.
+ */
+export const toNextImageSrc = (src: string): string => {
+  if (!src) return src
+
+  if (/^https?:\/\//i.test(src)) {
+    try {
+      const parsed = new URL(src)
+      return `${parsed.origin}${safeDecodeURIComponent(parsed.pathname)}`
+    } catch {
+      return src
+    }
+  }
+
+  const pathOnly = src.split('?')[0] || src
+  return safeDecodeURIComponent(pathOnly)
 }
 
 /** Turn Payload API file URLs into Git-tracked `/media/...` static paths. */

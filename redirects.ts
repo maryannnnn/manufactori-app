@@ -20,5 +20,17 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: true,
   }
 
-  return [internetExplorerRedirect, legacyBlogCategoryRedirect]
+  const legacyPostsArchiveRedirect = {
+    source: '/posts',
+    destination: '/blog',
+    permanent: true,
+  }
+
+  const legacyPostsPaginationRedirect = {
+    source: '/posts/page/:pageNumber',
+    destination: '/blog?page=:pageNumber',
+    permanent: true,
+  }
+
+  return [internetExplorerRedirect, legacyBlogCategoryRedirect, legacyPostsArchiveRedirect, legacyPostsPaginationRedirect]
 }

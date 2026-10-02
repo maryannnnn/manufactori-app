@@ -9,7 +9,7 @@ import React from 'react'
 import type { Props as MediaProps } from '../types'
 
 import { cssVariables } from '@/cssVariables'
-import { resolveMediaSource } from '@/utilities/getMediaUrl'
+import { resolveMediaSource, toNextImageSrc } from '@/utilities/getMediaUrl'
 
 import { ImageWatermark } from '../ImageWatermark'
 
@@ -74,7 +74,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     width = variant.width
     height = variant.height
     alt = altFromResource || ''
-    src = variant.src
+    src = toNextImageSrc(variant.src)
   }
 
   const loading = loadingFromProps || (!priority ? 'lazy' : undefined)

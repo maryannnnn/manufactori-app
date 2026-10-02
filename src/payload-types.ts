@@ -70,6 +70,8 @@ export interface Config {
     pages: Page;
     posts: Post;
     'case-studies': CaseStudy;
+    services: Service;
+    testimonials: Testimonial;
     media: Media;
     categories: Category;
     'case-study-categories': CaseStudyCategory;
@@ -101,6 +103,8 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     'case-study-categories': CaseStudyCategoriesSelect<false> | CaseStudyCategoriesSelect<true>;
@@ -1495,6 +1499,393 @@ export interface CaseStudyCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  /**
+   * Internal document title.
+   */
+  title: string;
+  /**
+   * SEO/content heading used as H1. Falls back to the internal title when empty.
+   */
+  service_long_title?: string | null;
+  /**
+   * Short title for cards, archives and related-service lists. Not the page H1.
+   */
+  service_preview_title?: string | null;
+  /**
+   * Compact explanation of the service and its business purpose.
+   */
+  service_preview_description?: string | null;
+  /**
+   * Uses the existing Media collection. Also used as the Service page hero image when present.
+   */
+  service_preview_image?: (number | null) | Media;
+  /**
+   * In-page heading under the H1. Separate from the internal title, long title and preview title.
+   */
+  service_content_title?: string | null;
+  /**
+   * Who the service is for, the problem it addresses, and the intended outcome.
+   */
+  introduction?: {
+    text?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Optional second paragraph. Leave empty when the short introduction is enough.
+     */
+    supportingText?: {
+      [k: string]: unknown;
+    } | null;
+  };
+  /**
+   * Situations in which this service becomes relevant. Optional.
+   */
+  clientSituations?:
+    | {
+        title: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        consequence?: {
+          [k: string]: unknown;
+        } | null;
+        recommendedApproach?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Scope items for this Service. Optional.
+   */
+  serviceScope?:
+    | {
+        title: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        deliverables?: {
+          [k: string]: unknown;
+        } | null;
+        approach?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Process steps. Typically 4–8, with no required count.
+   */
+  processSteps?:
+    | {
+        /**
+         * Optional. The frontend uses the list order when this is empty.
+         */
+        stepNumber?: number | null;
+        title: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        duration?: string | null;
+        deliverable?: {
+          [k: string]: unknown;
+        } | null;
+        clientInvolvement?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * How a new client can start. All fields are optional and editable per Service.
+   */
+  entryOffer?: {
+    title?: string | null;
+    description?: {
+      [k: string]: unknown;
+    } | null;
+    includes?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Free-form, e.g. "2–4 weeks". Not a global price list.
+     */
+    duration?: string | null;
+    deliverables?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Optional. Leave empty when price is not published.
+     */
+    price?: string | null;
+    ctaLabel?: string | null;
+    ctaUrl?: string | null;
+    nextStep?: {
+      [k: string]: unknown;
+    } | null;
+  };
+  workingFormat?: {
+    /**
+     * Add only the formats that apply to this Service.
+     */
+    formats?:
+      | {
+          format?: ('initial_project' | 'ongoing_monthly' | 'campaign') | null;
+          duration?: ('one_time_project' | '1_month' | '3_months' | '6_months' | '1_year' | 'ongoing') | null;
+          description?: {
+            [k: string]: unknown;
+          } | null;
+          id?: string | null;
+        }[]
+      | null;
+    minimumEngagement?: ('one_time_project' | '1_month' | '3_months' | '6_months' | '1_year' | 'ongoing') | null;
+    /**
+     * Optional, e.g. "Weekly working sessions".
+     */
+    frequency?: string | null;
+  };
+  /**
+   * Descriptive outcomes. Do not invent numeric guarantees.
+   */
+  expectedOutcomes?:
+    | {
+        title: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Existing Case Study collection. Preview title, text and image come from each case.
+   */
+  relatedCaseStudies?: (number | CaseStudy)[] | null;
+  /**
+   * Same proof-quote shape as Case Study. Separate from FAQ and from the optional Comments layout block.
+   */
+  clientTestimonial?: {
+    quote?: {
+      [k: string]: unknown;
+    } | null;
+    author?: string | null;
+    position?: string | null;
+    company?: string | null;
+  };
+  /**
+   * Same question/answer pattern as Case Study FAQ. Stored on the Service, not as a separate FAQ collection.
+   */
+  faq?: {
+    /**
+     * Section heading. Falls back to a generic heading when empty.
+     */
+    title?: string | null;
+    intro?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Typically 5–15 questions. No required count.
+     */
+    items?:
+      | {
+          question: string;
+          answer: {
+            [k: string]: unknown;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Optional Service-to-Service links. The current Service is excluded.
+   */
+  relatedServices?: (number | Service)[] | null;
+  /**
+   * Optional extra blocks (gallery, comments, CTA). Structured sections above do not require this.
+   */
+  layout?:
+    | (
+        | ContentBlock
+        | ServiceGalleryBlock
+        | ServiceCommentsBlock
+        | CallToActionBlock
+        | MediaBlock
+        | ArchiveBlock
+        | CodeBlock
+      )[]
+    | null;
+  /**
+   * Existing 4D site taxonomy (Services, Industrial, Solutions, Technology). No separate Service category collection.
+   */
+  site_categories?: (number | SiteCategory)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  /**
+   * Display this Service in featured listings.
+   */
+  featured?: boolean | null;
+  /**
+   * Lower numbers appear first in the Services archive.
+   */
+  displayOrder?: number | null;
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceGalleryBlock".
+ */
+export interface ServiceGalleryBlock {
+  service_gallery_title?: string | null;
+  /**
+   * Up to 20 images from the existing Media collection.
+   */
+  service_gallery_images?: (number | Media)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'svcGallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceCommentsBlock".
+ */
+export interface ServiceCommentsBlock {
+  /**
+   * Section heading. Falls back to "Discussion" when empty.
+   */
+  service_comment_title?: string | null;
+  service_comment_text?: {
+    [k: string]: unknown;
+  } | null;
+  comments?:
+    | {
+        author: string;
+        role?: string | null;
+        date?: string | null;
+        depth?: number | null;
+        isExpert?: boolean | null;
+        body: {
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'svcComments';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  /**
+   * Internal document title. Same Payload title field as Post and Case Study.
+   */
+  title: string;
+  /**
+   * Longer editorial/SEO title, same role as Post Long Title and Case Study Long Title.
+   */
+  testimonialLongTitle: string;
+  /**
+   * In-page heading. Separate from the internal title, long title and preview title.
+   */
+  testimonialContentTitle?: string | null;
+  /**
+   * Short title for cards, sliders and related lists. Not the page H1.
+   */
+  testimonialPreviewTitle?: string | null;
+  /**
+   * Compact card text. Independent from the full testimonial; not auto-filled from it.
+   */
+  testimonialPreviewDescription?: string | null;
+  /**
+   * Existing Media collection. Portrait, company or project image. Optional.
+   */
+  testimonialPreviewImage?: (number | null) | Media;
+  /**
+   * Authentic client statement. Do not rewrite or invent wording.
+   */
+  testimonial: {
+    [k: string]: unknown;
+  };
+  clientName?: string | null;
+  clientPosition?: string | null;
+  clientCompany?: string | null;
+  clientCompanyWebsite?: string | null;
+  clientLocation?: string | null;
+  projectContext?: string | null;
+  /**
+   * Existing Services collection. Optional.
+   */
+  service?: (number | null) | Service;
+  /**
+   * Existing Case Study collection. Optional.
+   */
+  caseStudy?: (number | null) | CaseStudy;
+  testimonialType?: ('client' | 'project' | 'service' | 'general') | null;
+  /**
+   * Existing 4D site taxonomy. No separate Testimonial category collection.
+   */
+  site_categories?: (number | SiteCategory)[] | null;
+  sourceType?: ('direct' | 'email' | 'website' | 'google' | 'linkedin' | 'other') | null;
+  sourceUrl?: string | null;
+  /**
+   * Never set automatically.
+   */
+  verified?: boolean | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  /**
+   * Date of the original statement. Separate from createdAt.
+   */
+  testimonialDate?: string | null;
+  /**
+   * Optional. Leave empty when there is no rating. Do not default to 5.
+   */
+  rating?: ('1' | '2' | '3' | '4' | '5') | null;
+  publishedAt?: string | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1517,6 +1908,14 @@ export interface Redirect {
       | ({
           relationTo: 'case-studies';
           value: number | CaseStudy;
+        } | null)
+      | ({
+          relationTo: 'services';
+          value: number | Service;
+        } | null)
+      | ({
+          relationTo: 'testimonials';
+          value: number | Testimonial;
         } | null);
     url?: string | null;
   };
@@ -1700,6 +2099,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'case-studies';
         value: number | CaseStudy;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
       } | null)
     | ({
         relationTo: 'media';
@@ -2369,6 +2776,216 @@ export interface CaseStudyFAQBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  title?: T;
+  service_long_title?: T;
+  service_preview_title?: T;
+  service_preview_description?: T;
+  service_preview_image?: T;
+  service_content_title?: T;
+  introduction?:
+    | T
+    | {
+        text?: T;
+        supportingText?: T;
+      };
+  clientSituations?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        consequence?: T;
+        recommendedApproach?: T;
+        id?: T;
+      };
+  serviceScope?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        deliverables?: T;
+        approach?: T;
+        id?: T;
+      };
+  processSteps?:
+    | T
+    | {
+        stepNumber?: T;
+        title?: T;
+        description?: T;
+        duration?: T;
+        deliverable?: T;
+        clientInvolvement?: T;
+        id?: T;
+      };
+  entryOffer?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        includes?: T;
+        duration?: T;
+        deliverables?: T;
+        price?: T;
+        ctaLabel?: T;
+        ctaUrl?: T;
+        nextStep?: T;
+      };
+  workingFormat?:
+    | T
+    | {
+        formats?:
+          | T
+          | {
+              format?: T;
+              duration?: T;
+              description?: T;
+              id?: T;
+            };
+        minimumEngagement?: T;
+        frequency?: T;
+      };
+  expectedOutcomes?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  relatedCaseStudies?: T;
+  clientTestimonial?:
+    | T
+    | {
+        quote?: T;
+        author?: T;
+        position?: T;
+        company?: T;
+      };
+  faq?:
+    | T
+    | {
+        title?: T;
+        intro?: T;
+        items?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              id?: T;
+            };
+      };
+  relatedServices?: T;
+  layout?:
+    | T
+    | {
+        content?: T | ContentBlockSelect<T>;
+        svcGallery?: T | ServiceGalleryBlockSelect<T>;
+        svcComments?: T | ServiceCommentsBlockSelect<T>;
+        cta?: T | CallToActionBlockSelect<T>;
+        mediaBlock?: T | MediaBlockSelect<T>;
+        archive?: T | ArchiveBlockSelect<T>;
+        code?: T | CodeBlockSelect<T>;
+      };
+  site_categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  featured?: T;
+  displayOrder?: T;
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceGalleryBlock_select".
+ */
+export interface ServiceGalleryBlockSelect<T extends boolean = true> {
+  service_gallery_title?: T;
+  service_gallery_images?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceCommentsBlock_select".
+ */
+export interface ServiceCommentsBlockSelect<T extends boolean = true> {
+  service_comment_title?: T;
+  service_comment_text?: T;
+  comments?:
+    | T
+    | {
+        author?: T;
+        role?: T;
+        date?: T;
+        depth?: T;
+        isExpert?: T;
+        body?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  title?: T;
+  testimonialLongTitle?: T;
+  testimonialContentTitle?: T;
+  testimonialPreviewTitle?: T;
+  testimonialPreviewDescription?: T;
+  testimonialPreviewImage?: T;
+  testimonial?: T;
+  clientName?: T;
+  clientPosition?: T;
+  clientCompany?: T;
+  clientCompanyWebsite?: T;
+  clientLocation?: T;
+  projectContext?: T;
+  service?: T;
+  caseStudy?: T;
+  testimonialType?: T;
+  site_categories?: T;
+  sourceType?: T;
+  sourceUrl?: T;
+  verified?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  testimonialDate?: T;
+  rating?: T;
+  publishedAt?: T;
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
@@ -3028,6 +3645,14 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'case-studies';
           value: number | CaseStudy;
+        } | null)
+      | ({
+          relationTo: 'services';
+          value: number | Service;
+        } | null)
+      | ({
+          relationTo: 'testimonials';
+          value: number | Testimonial;
         } | null);
     global?: string | null;
     user?: (number | null) | User;

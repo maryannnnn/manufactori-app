@@ -12,26 +12,48 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 
 import { Page, Post, CaseStudy } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
-import { getCaseStudyUrl, getPostUrl } from '@/utilities/getContentUrls'
+import { getCaseStudyUrl, getPostUrl, getServiceUrl, getTestimonialUrl } from '@/utilities/getContentUrls'
 
-const generateTitle: GenerateTitle<Post | Page | CaseStudy> = ({ doc }) => {
+type SeoDoc = (Post | Page | CaseStudy) & {
+  service_long_title?: string | null
+  testimonialLongTitle?: string | null
+  introduction?: unknown
+}
+
+const generateTitle: GenerateTitle<SeoDoc> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
 }
 
-const generateURL: GenerateURL<Post | Page | CaseStudy> = ({ doc }) => {
+const generateURL: GenerateURL<SeoDoc> = ({ doc }) => {
   const url = getServerSideURL()
-  const postPath = getPostUrl(doc as Post)
-  if (postPath) return `${url}${postPath}`
+  if (!doc || typeof doc !== 'object') return url
 
-  const caseStudyPath = getCaseStudyUrl(doc as CaseStudy)
-  if (caseStudyPath) return `${url}${caseStudyPath}`
+  if ('primary_case_study_category' in doc) {
+    const path = getCaseStudyUrl(doc as CaseStudy)
+    if (path) return `${url}${path}`
+  }
+
+  if ('primary_category' in doc) {
+    const path = getPostUrl(doc as Post)
+    if (path) return `${url}${path}`
+  }
+
+  if ('service_long_title' in doc || 'introduction' in doc) {
+    const path = getServiceUrl(doc)
+    if (path) return `${url}${path}`
+  }
+
+  if ('testimonialLongTitle' in doc) {
+    const path = getTestimonialUrl(doc)
+    if (path) return `${url}${path}`
+  }
 
   return doc?.slug ? `${url}/${doc.slug}` : url
 }
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['pages', 'posts', 'case-studies'],
+    collections: ['pages', 'posts', 'case-studies', 'services', 'testimonials'],
     overrides: {
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {

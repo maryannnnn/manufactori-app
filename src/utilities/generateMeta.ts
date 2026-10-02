@@ -4,9 +4,23 @@ import type { CaseStudy, Media, Page, Post, Config } from '../payload-types'
 
 import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
-import { getCaseStudyUrl, getPostUrl } from './getContentUrls'
+import { getCaseStudyUrl, getPostUrl, getServiceUrl, getTestimonialUrl } from './getContentUrls'
 import { resolveMediaSource } from './getMediaUrl'
 import { siteRobotsMetadata } from './siteRobots'
+
+type MetaDoc = Partial<Page> | Partial<Post> | Partial<CaseStudy> | {
+  slug?: string | null
+  title?: string | null
+  meta?: {
+    title?: string | null
+    description?: string | null
+    image?: Media | Config['db']['defaultIDType'] | null
+  } | null
+  primary_category?: unknown
+  primary_case_study_category?: unknown
+  service_long_title?: string | null
+  testimonialLongTitle?: string | null
+}
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
@@ -23,7 +37,7 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
 }
 
 export const generateMeta = async (args: {
-  doc: Partial<Page> | Partial<Post> | Partial<CaseStudy> | null
+  doc: MetaDoc | null
   /**
    * Explicit path for collection archives and other routes that are not backed
    * by a document slug. Takes precedence over the slug-derived path.
@@ -38,12 +52,14 @@ export const generateMeta = async (args: {
     ? doc?.meta?.title + ' | Payload Website Template'
     : 'Payload Website Template'
 
-  const isCaseStudy = Boolean(doc && 'primary_case_study_category' in doc)
-  const collectionPath = doc
-    ? isCaseStudy
-      ? getCaseStudyUrl(doc as CaseStudy)
-      : getPostUrl(doc as Post)
-    : null
+  const collectionPath = (() => {
+    if (!doc) return null
+    if ('primary_case_study_category' in doc) return getCaseStudyUrl(doc as CaseStudy)
+    if ('primary_category' in doc) return getPostUrl(doc as Post)
+    if ('service_long_title' in doc) return getServiceUrl(doc)
+    if ('testimonialLongTitle' in doc) return getTestimonialUrl(doc)
+    return null
+  })()
   const pagePath =
     Array.isArray(doc?.slug) ? doc?.slug.join('/') : doc?.slug ? `/${doc.slug}` : '/'
 

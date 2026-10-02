@@ -2,8 +2,9 @@ import { getServerSideSitemap } from 'next-sitemap'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
+import { getServiceUrl } from '@/utilities/getContentUrls'
 
-const getPagesSitemap = unstable_cache(
+const getServicesSitemap = unstable_cache(
   async () => {
     const payload = await getPayload({ config })
     const SITE_URL =
@@ -12,7 +13,7 @@ const getPagesSitemap = unstable_cache(
       'https://example.com'
 
     const results = await payload.find({
-      collection: 'pages',
+      collection: 'services',
       overrideAccess: false,
       draft: false,
       depth: 0,
@@ -31,42 +32,33 @@ const getPagesSitemap = unstable_cache(
 
     const dateFallback = new Date().toISOString()
 
-    const defaultSitemap = [
-      {
-        loc: `${SITE_URL}/search`,
-        lastmod: dateFallback,
-      },
-      {
-        loc: `${SITE_URL}/blog`,
-        lastmod: dateFallback,
-      },
-      {
-        loc: `${SITE_URL}/services`,
-        lastmod: dateFallback,
-      },
-    ]
+    const archive = {
+      loc: `${SITE_URL}/services`,
+      lastmod: dateFallback,
+    }
 
     const sitemap = results.docs
       ? results.docs
-          .filter((page) => Boolean(page?.slug))
-          .map((page) => {
+          .map((doc) => {
+            const path = getServiceUrl(doc)
+            if (!path) return null
             return {
-              loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
-              lastmod: page.updatedAt || dateFallback,
+              loc: `${SITE_URL}${path}`,
+              lastmod: doc.updatedAt || dateFallback,
             }
           })
+          .filter((entry): entry is { loc: string; lastmod: string } => Boolean(entry))
       : []
 
-    return [...defaultSitemap, ...sitemap]
+    return [archive, ...sitemap]
   },
-  ['pages-sitemap'],
+  ['services-sitemap'],
   {
-    tags: ['pages-sitemap'],
+    tags: ['services-sitemap'],
   },
 )
 
 export async function GET() {
-  const sitemap = await getPagesSitemap()
-
+  const sitemap = await getServicesSitemap()
   return getServerSideSitemap(sitemap)
 }

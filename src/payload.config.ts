@@ -10,7 +10,9 @@ import { CaseStudyCategories } from './collections/CaseStudyCategories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
+import { Services } from './collections/Services'
 import { SiteCategories } from './collections/SiteCategories'
+import { Testimonials } from './collections/Testimonials'
 import { Users } from './collections/Users'
 import { CaseStudiesArchive } from './CaseStudiesArchive/config'
 import { Footer } from './Footer/config'
@@ -73,12 +75,22 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
-    // Keep false. Apply structured Case Study fields via:
-    // npx tsx --tsconfig tsconfig.json src/scripts/applyCaseStudyStructuredFieldsSchema.ts
-    push: false,
+    // Keep false by default. Set PAYLOAD_DB_PUSH=true for one-off schema apply scripts.
+    push: process.env.PAYLOAD_DB_PUSH === 'true',
     migrationDir: path.resolve(dirname, 'migrations'),
   }),
-  collections: [Pages, Posts, CaseStudies, Media, Categories, CaseStudyCategories, SiteCategories, Users],
+  collections: [
+    Pages,
+    Posts,
+    CaseStudies,
+    Services,
+    Testimonials,
+    Media,
+    Categories,
+    CaseStudyCategories,
+    SiteCategories,
+    Users,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   endpoints: [bulkCreateCategoriesEndpoint],
   globals: [Header, Footer, CaseStudiesArchive],

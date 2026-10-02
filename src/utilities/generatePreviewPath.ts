@@ -37,6 +37,14 @@ export const generatePreviewPath = ({ collection, slug, categorySlug }: Props) =
       : `/case-study/${encodedSlug}`
   }
 
+  if (collection === 'services') {
+    path = `/services/${encodedSlug}`
+  }
+
+  if (collection === 'testimonials') {
+    path = `/testimonials/${encodedSlug}`
+  }
+
   const encodedParams = new URLSearchParams({
     path,
     previewSecret: process.env.PREVIEW_SECRET || '',

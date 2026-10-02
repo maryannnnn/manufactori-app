@@ -7,6 +7,7 @@ import React, { Fragment } from 'react'
 import type { Media as MediaType, Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { formatDateTime } from '@/utilities/formatDateTime'
 import { getCategoryUrl, getPostUrl } from '@/utilities/getContentUrls'
 
 export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'> & {
@@ -15,6 +16,7 @@ export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'> 
   previewTitle?: string | null
   previewText?: string | null
   previewImage?: MediaType | number | null
+  publishedAt?: string | null
 }
 
 export const Card: React.FC<{
@@ -36,6 +38,7 @@ export const Card: React.FC<{
     previewTitle,
     previewText,
     previewImage,
+    publishedAt,
     primary_category,
     primary_category_slug,
   } = doc || {}
@@ -44,7 +47,7 @@ export const Card: React.FC<{
   const textToUse = previewText || description
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
-  const titleToUse = titleFromProps || title
+  const titleToUse = titleFromProps || previewTitle || title
   const sanitizedDescription = textToUse?.replace(/\s/g, ' ')
   const href =
     relationTo === 'posts'
@@ -114,6 +117,11 @@ export const Card: React.FC<{
         {previewTitle && previewTitle !== titleToUse && (
           <div className="mt-2 text-sm font-medium">{previewTitle}</div>
         )}
+        {publishedAt ? (
+          <time className="mt-2 block font-mono text-[11px] text-muted-foreground" dateTime={publishedAt}>
+            {formatDateTime(publishedAt)}
+          </time>
+        ) : null}
         {sanitizedDescription && (
           <div className="mt-2">
             <p>{sanitizedDescription}</p>

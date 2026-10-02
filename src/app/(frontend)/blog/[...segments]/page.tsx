@@ -150,6 +150,7 @@ async function renderCategoryPage(slug: string) {
     depth: 1,
     limit: 100,
     overrideAccess: false,
+    sort: '-publishedAt',
     where: {
       categories: {
         in: [category.id],
@@ -158,6 +159,7 @@ async function renderCategoryPage(slug: string) {
     select: {
       title: true,
       slug: true,
+      publishedAt: true,
       categories: true,
       primary_category: true,
       meta: true,
@@ -170,6 +172,7 @@ async function renderCategoryPage(slug: string) {
     return {
       title: post.title,
       slug: post.slug,
+      publishedAt: post.publishedAt,
       categories: post.categories,
       primary_category: post.primary_category,
       meta: post.meta,
