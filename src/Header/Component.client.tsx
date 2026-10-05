@@ -1,20 +1,17 @@
 'use client'
+
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
-
-import type { Header } from '@/payload-types'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { Logo } from '@/components/Logo/Logo'
-import { HeaderNav } from './Nav'
 
-interface HeaderClientProps {
-  data: Header
-}
+import { DesktopNav } from './Nav/DesktopNav'
+import { MobileNav } from './Nav/MobileNav'
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
-  /* Storing the value in a useState to avoid hydration errors */
+export const HeaderClient: React.FC = () => {
+  const headerRef = useRef<HTMLElement>(null)
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
@@ -29,13 +26,37 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTheme])
 
+  useEffect(() => {
+    const el = headerRef.current
+    if (!el) return
+
+    const syncHeight = () => {
+      el.style.setProperty('--site-header-height', `${el.offsetHeight}px`)
+    }
+
+    syncHeight()
+    const observer = new ResizeObserver(syncHeight)
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <header className="container relative z-20   " {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="py-8 flex justify-between">
-        <Link href="/">
-          <Logo loading="eager" priority="high" className="invert dark:invert-0" />
-        </Link>
-        <HeaderNav data={data} />
+    <header
+      className="relative z-20 border-b border-default bg-body text-heading"
+      ref={headerRef}
+      {...(theme ? { 'data-theme': theme } : {})}
+    >
+      <div className="container">
+        <div className="flex min-h-[4.5rem] items-center justify-between gap-4 py-3 lg:min-h-[5.5rem] lg:py-5">
+          <Link
+            className="min-w-0 shrink text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+            href="/"
+          >
+            <Logo loading="eager" priority="high" />
+          </Link>
+          <DesktopNav />
+          <MobileNav />
+        </div>
       </div>
     </header>
   )

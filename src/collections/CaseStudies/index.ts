@@ -199,7 +199,7 @@ export const CaseStudies: CollectionConfig = {
                 allowCreate: false,
                 position: 'sidebar',
                 description:
-                  'Used in the case study URL: /case-study/{category-slug}/{case-study-slug}. Browse the tree and pick one category.',
+                  'Used in the case study URL: /case-studies/{category-slug}/{case-study-slug}. Browse the tree and pick one category.',
               },
               validate: (value: unknown) => {
                 if (value == null || value === '') {

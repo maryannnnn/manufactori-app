@@ -30,11 +30,11 @@ export const BLOG_ARCHIVE_PATH = '/blog'
 /** Path segment for category archive pages: /blog/category/{slug} */
 export const BLOG_CATEGORY_PATH_SEGMENT = 'category'
 
-/** Path segment for case study category archives: /case-study/category/{slug} */
+/** Reserved path segment that must not be used as a Case Study Category slug. */
 export const CASE_STUDY_CATEGORY_PATH_SEGMENT = 'category'
 
 /** Case study listing route; individual case studies live beneath it. */
-export const CASE_STUDIES_ARCHIVE_PATH = '/case-study'
+export const CASE_STUDIES_ARCHIVE_PATH = '/case-studies'
 
 /** Services listing route; individual services live beneath it. */
 export const SERVICES_ARCHIVE_PATH = '/services'
@@ -45,8 +45,11 @@ export const TESTIMONIALS_ARCHIVE_PATH = '/testimonials'
 /** Slugs that would collide with blog routing. */
 export const RESERVED_CATEGORY_SLUGS = ['category', 'categories'] as const
 
-/** Slugs that would collide with case-study routing. */
-export const RESERVED_CASE_STUDY_CATEGORY_SLUGS = ['category', 'categories'] as const
+/** Slugs that would collide with Case Studies routing. */
+export const RESERVED_CASE_STUDY_CATEGORY_SLUGS = [
+  CASE_STUDY_CATEGORY_PATH_SEGMENT,
+  'categories',
+] as const
 
 export const isReservedCategorySlug = (slug: string | null | undefined): boolean => {
   return Boolean(slug && RESERVED_CATEGORY_SLUGS.includes(slug as (typeof RESERVED_CATEGORY_SLUGS)[number]))
@@ -78,7 +81,7 @@ export const getCategoryUrl = (category: CategoryRef): string | null => {
 export const getCaseStudyCategoryUrl = (category: CategoryRef): string | null => {
   const slug = getCategorySlug(category)
   if (!slug) return null
-  return `/case-study/${CASE_STUDY_CATEGORY_PATH_SEGMENT}/${slug}`
+  return `${CASE_STUDIES_ARCHIVE_PATH}/${slug}`
 }
 
 export const getPostUrl = (post: PostUrlSource | null | undefined): string | null => {
@@ -95,9 +98,9 @@ export const getCaseStudyUrl = (doc: CaseStudyUrlSource | null | undefined): str
 
   const categorySlug =
     doc.primary_case_study_category_slug || getCategorySlug(doc.primary_case_study_category)
-  if (!categorySlug) return `/case-study/${doc.slug}`
+  if (!categorySlug) return `${CASE_STUDIES_ARCHIVE_PATH}/${doc.slug}`
 
-  return `/case-study/${categorySlug}/${doc.slug}`
+  return `${CASE_STUDIES_ARCHIVE_PATH}/${categorySlug}/${doc.slug}`
 }
 
 export const getServiceUrl = (doc: ServiceUrlSource | null | undefined): string | null => {

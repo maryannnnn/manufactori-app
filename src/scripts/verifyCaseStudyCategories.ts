@@ -39,7 +39,7 @@ const verify = async () => {
   const crumbs = loaded.breadcrumbs?.map((b) => b.label).join(' > ')
 
   payload.logger.info(
-    `OK child=${loaded.title} parent=${parentTitle} crumbs=${crumbs} url=/case-study/category/${loaded.slug}`,
+    `OK child=${loaded.title} parent=${parentTitle} crumbs=${crumbs} url=/case-studies/${loaded.slug}`,
   )
 
   await payload.delete({

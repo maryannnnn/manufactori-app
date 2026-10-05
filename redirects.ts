@@ -32,5 +32,10 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: true,
   }
 
-  return [internetExplorerRedirect, legacyBlogCategoryRedirect, legacyPostsArchiveRedirect, legacyPostsPaginationRedirect]
+  return [
+    internetExplorerRedirect,
+    legacyBlogCategoryRedirect,
+    legacyPostsArchiveRedirect,
+    legacyPostsPaginationRedirect,
+  ]
 }

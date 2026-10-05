@@ -39,7 +39,7 @@ export const buildCaseStudySearchWhere = (search: string): Where => ({
 })
 
 /**
- * Server-side, paginated Case Study query for the /case-study archive. Only a
+ * Server-side, paginated Case Study query for the /case-studies archive. Only a
  * single page of documents is ever fetched.
  */
 export const getCaseStudyList = async ({ page = 1, search }: Args): Promise<CaseStudyListResult> => {

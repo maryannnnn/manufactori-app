@@ -1205,7 +1205,7 @@ export interface CaseStudy {
   };
   relatedCaseStudies?: (number | CaseStudy)[] | null;
   /**
-   * Used in the case study URL: /case-study/{category-slug}/{case-study-slug}. Browse the tree and pick one category.
+   * Used in the case study URL: /case-studies/{category-slug}/{case-study-slug}. Browse the tree and pick one category.
    */
   primary_case_study_category: number | CaseStudyCategory;
   /**
@@ -3525,7 +3525,7 @@ export interface Footer {
   createdAt?: string | null;
 }
 /**
- * Title and SEO for the /case-study listing page.
+ * Title and SEO for the /case-studies listing page.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "case-studies-archive".
@@ -3537,7 +3537,7 @@ export interface CaseStudiesArchive {
    */
   title?: string | null;
   /**
-   * Rendered as the H1 on /case-study.
+   * Rendered as the H1 on /case-studies.
    */
   longTitle?: string | null;
   meta?: {

@@ -4,6 +4,7 @@ import type { CaseStudy, CaseStudyPreviewBlock } from '@/payload-types'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { Media } from '@/components/Media'
+import { CASE_STUDIES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 
 import type { NicheItem } from './NicheSegmentation'
@@ -43,7 +44,7 @@ type Props = {
  * template serves a fully-filled case study and a sparse one.
  */
 export const CaseStudyPage: React.FC<Props> = ({
-  archiveHref = '/case-study',
+  archiveHref = CASE_STUDIES_ARCHIVE_PATH,
   caseStudy,
   mark,
 }) => {

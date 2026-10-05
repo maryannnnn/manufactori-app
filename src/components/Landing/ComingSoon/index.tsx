@@ -26,8 +26,6 @@ const pillars = [
   },
 ] as const
 
-const navItems = ['Services', 'Industries', 'Case Studies', 'Insights'] as const
-
 type Props = {
   categories?: LandingCategory[]
 }
@@ -40,30 +38,7 @@ type Props = {
  */
 export const ComingSoonLanding: React.FC<Props> = ({ categories = [] }) => {
   return (
-    <main className="bg-body text-main">
-      <header className="border-b border-default">
-        <div className="container flex flex-wrap items-center justify-between gap-4 py-5">
-          <div className="flex items-baseline gap-3">
-            <span className="text-lg font-semibold tracking-tight text-heading">Manufactori</span>
-            <span className="font-mono text-xs uppercase tracking-[0.24em] text-muted">
-              Design System
-            </span>
-          </div>
-
-          <nav aria-label="Placeholder navigation">
-            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
-              {navItems.map((item) => (
-                <li key={item}>
-                  <span className="cursor-default text-sm text-muted" title="Navigation placeholder">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </header>
-
+    <main className="bg-body text-main" data-landing-page>
       <PaletteSelector />
 
       <section className="py-20 md:py-28">

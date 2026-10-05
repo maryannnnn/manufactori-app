@@ -12,7 +12,7 @@ import { authenticated } from '@/access/authenticated'
 import { revalidateCaseStudiesArchive } from './hooks/revalidateCaseStudiesArchive'
 
 /**
- * Page-level content and SEO for the /case-study listing route.
+ * Page-level content and SEO for the /case-studies listing route.
  *
  * The listing itself is a collection archive rather than a CMS document, so this
  * global holds only the values a Page would otherwise carry. Search, pagination
@@ -27,7 +27,7 @@ export const CaseStudiesArchive: GlobalConfig = {
   },
   admin: {
     group: 'Case Studies',
-    description: 'Title and SEO for the /case-study listing page.',
+    description: 'Title and SEO for the /case-studies listing page.',
   },
   fields: [
     {
@@ -50,7 +50,7 @@ export const CaseStudiesArchive: GlobalConfig = {
               type: 'text',
               label: 'Long Title (H1)',
               admin: {
-                description: 'Rendered as the H1 on /case-study.',
+                description: 'Rendered as the H1 on /case-studies.',
               },
             },
           ],

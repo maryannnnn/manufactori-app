@@ -1,6 +1,8 @@
 import { PreviewSearchParams } from '@/app/(frontend)/next/preview/route'
 import { PayloadRequest, CollectionSlug } from 'payload'
 
+import { getCaseStudyCategoryUrl, getCaseStudyUrl } from './getContentUrls'
+
 type Props = {
   collection: CollectionSlug
   slug: string
@@ -28,13 +30,15 @@ export const generatePreviewPath = ({ collection, slug, categorySlug }: Props) =
   }
 
   if (collection === 'case-study-categories') {
-    path = `/case-study/category/${encodedSlug}`
+    path = getCaseStudyCategoryUrl({ slug }) || `/${encodedSlug}`
   }
 
   if (collection === 'case-studies') {
-    path = categorySlug
-      ? `/case-study/${encodeURIComponent(categorySlug)}/${encodedSlug}`
-      : `/case-study/${encodedSlug}`
+    path =
+      getCaseStudyUrl({
+        slug,
+        primary_case_study_category_slug: categorySlug,
+      }) || `/${encodedSlug}`
   }
 
   if (collection === 'services') {

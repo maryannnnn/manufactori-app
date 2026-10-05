@@ -11,7 +11,7 @@ import { hasRichTextContent } from '@/utilities/richText/hasContent'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getCaseStudyListPreview } from '@/utilities/getCaseStudyListPreview'
 import {
-  CASE_STUDY_CATEGORY_PATH_SEGMENT,
+  getCaseStudyCategoryUrl,
   getCaseStudyUrl,
   getCategorySlug,
   isReservedCaseStudyCategorySlug,
@@ -36,21 +36,17 @@ const parseSegments = (segments: string[] | undefined) => {
   const decoded = segments.map((segment) => decodeURIComponent(segment)).filter(Boolean)
 
   if (decoded.length === 1) {
-    const caseStudySlug = decoded[0]
-    if (!caseStudySlug || isReservedCaseStudyCategorySlug(caseStudySlug)) return null
-    return { type: 'caseStudy' as const, categorySlug: null, caseStudySlug }
-  }
-
-  if (decoded.length === 2 && isReservedCaseStudyCategorySlug(decoded[0])) {
-    const categorySlug = decoded[1]
-    if (!categorySlug) return null
+    const categorySlug = decoded[0]
+    if (!categorySlug || isReservedCaseStudyCategorySlug(categorySlug)) return null
     return { type: 'category' as const, categorySlug }
   }
 
   if (decoded.length === 2) {
     const categorySlug = decoded[0]
     const caseStudySlug = decoded[1]
-    if (!categorySlug || !caseStudySlug) return null
+    if (!categorySlug || !caseStudySlug || isReservedCaseStudyCategorySlug(categorySlug)) {
+      return null
+    }
     return { type: 'caseStudy' as const, categorySlug, caseStudySlug }
   }
 
@@ -84,15 +80,13 @@ export async function generateStaticParams() {
   ])
 
   const categoryParams = categories.docs.flatMap(({ slug }) =>
-    slug ? [{ segments: [CASE_STUDY_CATEGORY_PATH_SEGMENT, slug] }] : [],
+    slug && !isReservedCaseStudyCategorySlug(slug) ? [{ segments: [slug] }] : [],
   )
 
   const caseStudyParams = caseStudies.docs.flatMap((doc) => {
     if (!doc.slug) return []
     const category = getCategorySlug(doc.primary_case_study_category)
-    if (!category || isReservedCaseStudyCategorySlug(category)) {
-      return [{ segments: [doc.slug] }]
-    }
+    if (!category || isReservedCaseStudyCategorySlug(category)) return []
     return [{ segments: [category, doc.slug] }]
   })
 
@@ -117,19 +111,17 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   if (parsed.type === 'category') {
     const category = await queryCategoryBySlug({ slug: parsed.categorySlug })
     const title = category?.case_study_long_title || category?.title
+    const canonical = getCaseStudyCategoryUrl({ slug: parsed.categorySlug })
     return {
       title: title ? `${title} | Payload Website Template` : 'Payload Website Template',
+      ...(canonical ? { alternates: { canonical } } : {}),
     }
   }
 
   const caseStudy = await queryCaseStudyBySlug({ slug: parsed.caseStudySlug })
   const primarySlug = getCategorySlug(caseStudy?.primary_case_study_category)
 
-  if (parsed.categorySlug) {
-    if (caseStudy && primarySlug !== parsed.categorySlug) {
-      return generateMeta({ doc: null })
-    }
-  } else if (caseStudy && primarySlug) {
+  if (caseStudy && primarySlug !== parsed.categorySlug) {
     return generateMeta({ doc: null })
   }
 
@@ -141,7 +133,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 
 async function renderCategoryPage(slug: string) {
   const { isEnabled: draft } = await draftMode()
-  const url = `/case-study/${CASE_STUDY_CATEGORY_PATH_SEGMENT}/${slug}`
+  const url = getCaseStudyCategoryUrl({ slug }) || slug
   const category = await queryCategoryBySlug({ slug })
 
   if (!category) return <PayloadRedirects url={url} />
@@ -227,21 +219,19 @@ async function renderCategoryPage(slug: string) {
   )
 }
 
-async function renderCaseStudyPage(categorySlug: string | null, caseStudySlug: string) {
+async function renderCaseStudyPage(categorySlug: string, caseStudySlug: string) {
   const { isEnabled: draft } = await draftMode()
-  const url = categorySlug
-    ? `/case-study/${categorySlug}/${caseStudySlug}`
-    : `/case-study/${caseStudySlug}`
+  const url =
+    getCaseStudyUrl({
+      slug: caseStudySlug,
+      primary_case_study_category_slug: categorySlug,
+    }) || caseStudySlug
   const caseStudy = await queryCaseStudyBySlug({ slug: caseStudySlug })
 
   if (!caseStudy) return <PayloadRedirects url={url} />
 
   const primaryCategorySlug = getCategorySlug(caseStudy.primary_case_study_category)
-  if (categorySlug) {
-    if (primaryCategorySlug !== categorySlug) notFound()
-  } else if (primaryCategorySlug) {
-    notFound()
-  }
+  if (primaryCategorySlug !== categorySlug) notFound()
 
   return (
     <React.Fragment>

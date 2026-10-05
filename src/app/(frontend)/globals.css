@@ -254,8 +254,8 @@ html {
   opacity: 0;
 }
 
-html[data-landing='true'] header,
-html[data-landing='true'] footer {
+html[data-landing='true'] [data-site-footer],
+html:has([data-landing-page]) [data-site-footer] {
   display: none;
 }
 

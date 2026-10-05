@@ -13,7 +13,7 @@ type Props = {
 }
 
 /**
- * Case Study grid shared by the /case-study listing and the category archives.
+ * Case Study grid shared by the /case-studies listing and the category archives.
  * One column on mobile, two on tablet, three from the large breakpoint.
  */
 export const CaseStudyArchive: React.FC<Props> = ({ className, docs }) => {
