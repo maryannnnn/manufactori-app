@@ -38,6 +38,7 @@ export const revalidateTestimonial: CollectionAfterChangeHook<TestimonialDoc> = 
         payload.logger.info(`Revalidating testimonial at path: ${path}`)
         safeRevalidatePath(path)
       }
+      safeRevalidatePath('/')
       safeRevalidateTag('testimonials-sitemap')
     }
 
@@ -47,6 +48,7 @@ export const revalidateTestimonial: CollectionAfterChangeHook<TestimonialDoc> = 
         payload.logger.info(`Revalidating old testimonial at path: ${oldPath}`)
         safeRevalidatePath(oldPath)
       }
+      safeRevalidatePath('/')
       safeRevalidateTag('testimonials-sitemap')
     }
   }
@@ -60,6 +62,7 @@ export const revalidateTestimonialDelete: CollectionAfterDeleteHook<TestimonialD
   if (!context.disableRevalidate) {
     const path = getTestimonialUrl(doc)
     if (path) safeRevalidatePath(path)
+    safeRevalidatePath('/')
     safeRevalidateTag('testimonials-sitemap')
   }
   return doc

@@ -34,6 +34,7 @@ export type CaseStudyCardData = {
 
 type Props = {
   className?: string
+  ctaLabel?: string
   doc: CaseStudyCardData
   /** Image `sizes` attribute; depends on the grid the card sits in. */
   imageSizes?: string
@@ -42,6 +43,7 @@ type Props = {
 
 export const CaseStudyCard: React.FC<Props> = ({
   className,
+  ctaLabel,
   doc,
   imageSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
   showCategory = true,
@@ -86,6 +88,12 @@ export const CaseStudyCard: React.FC<Props> = ({
 
         {description ? (
           <p className="line-clamp-3 text-sm text-muted-foreground">{description}</p>
+        ) : null}
+
+        {ctaLabel ? (
+          <span className="mt-auto pt-3 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground group-hover:text-foreground">
+            {ctaLabel}
+          </span>
         ) : null}
       </div>
     </>

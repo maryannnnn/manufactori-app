@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+import { PostTaxonomy } from '@/components/CaseStudyPage/CaseStudyTaxonomy'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { CollectionArchive } from '@/components/CollectionArchive'
 import { Media } from '@/components/Media'
@@ -10,12 +11,20 @@ import { RenderHero } from '@/heros/RenderHero'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { getPostListPreview } from '@/utilities/getPostListPreview'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
+import { richTextToPlainText } from '@/utilities/richText/toPlainText'
+import { collectActiveCategoryPaths } from '@/utilities/activeCategoryPaths'
+import { countPublishedInCategory } from '@/utilities/ensureCategorySeoMetadata'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
 import {
+  BLOG_ARCHIVE_PATH,
   BLOG_CATEGORY_PATH_SEGMENT,
   getCategorySlug,
+  getCategoryUrl,
   isReservedCategorySlug,
 } from '@/utilities/getContentUrls'
+import { buildBlogPostingGraph, buildWebPageGraph, categoryArchiveBreadcrumbs } from '@/utilities/jsonLd'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
@@ -61,15 +70,8 @@ const parseSegments = (segments: string[] | undefined) => {
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
 
-  const [categories, posts] = await Promise.all([
-    payload.find({
-      collection: 'categories',
-      draft: false,
-      limit: 1000,
-      overrideAccess: false,
-      pagination: false,
-      select: { slug: true },
-    }),
+  const [activeCategories, posts] = await Promise.all([
+    collectActiveCategoryPaths(payload, 'post'),
     payload.find({
       collection: 'posts',
       draft: false,
@@ -77,6 +79,11 @@ export async function generateStaticParams() {
       overrideAccess: false,
       pagination: false,
       depth: 1,
+      where: {
+        _status: {
+          equals: 'published',
+        },
+      },
       select: {
         slug: true,
         primary_category: true,
@@ -84,9 +91,9 @@ export async function generateStaticParams() {
     }),
   ])
 
-  const categoryParams = categories.docs.flatMap(({ slug }) =>
-    slug ? [{ segments: [BLOG_CATEGORY_PATH_SEGMENT, slug] }] : [],
-  )
+  const categoryParams = activeCategories.map(({ slug }) => ({
+    segments: [BLOG_CATEGORY_PATH_SEGMENT, slug],
+  }))
 
   const postParams = posts.docs.flatMap((post) => {
     if (!post.slug) return []
@@ -117,10 +124,21 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 
   if (parsed.type === 'category') {
     const category = await queryCategoryBySlug({ slug: parsed.categorySlug })
-    const title = category?.category_long_title || category?.title
-    return {
-      title: title ? `${title} | Payload Website Template` : 'Payload Website Template',
-    }
+    if (!category) return generateMeta({ doc: null })
+    const payload = await getPayload({ config: configPromise })
+    const publishedCount = await countPublishedInCategory(payload, 'post', category.id)
+    if (publishedCount === 0) return generateMeta({ doc: null })
+    const title = category.category_long_title || category.title
+    const seoTitle = category.meta?.title || title
+    const seoDescription =
+      category.meta?.description || richTextToPlainText(category.category_description) || undefined
+    return generateMeta({
+      doc: {
+        title,
+        meta: { title: seoTitle, description: seoDescription },
+      },
+      url: `/blog/${BLOG_CATEGORY_PATH_SEGMENT}/${parsed.categorySlug}`,
+    })
   }
 
   const post = await queryPostBySlug({ slug: parsed.postSlug })
@@ -148,13 +166,15 @@ async function renderCategoryPage(slug: string) {
   const posts = await payload.find({
     collection: 'posts',
     depth: 1,
+    draft: false,
     limit: 100,
     overrideAccess: false,
     sort: '-publishedAt',
     where: {
-      categories: {
-        in: [category.id],
-      },
+      and: [
+        { categories: { in: [category.id] } },
+        { _status: { equals: 'published' } },
+      ],
     },
     select: {
       title: true,
@@ -182,7 +202,10 @@ async function renderCategoryPage(slug: string) {
     }
   })
 
+  if (!draft && posts.totalDocs === 0) notFound()
+
   const heading = category.category_long_title || category.title
+  const intro = richTextToPlainText(category.category_description)
 
   return (
     <article className="pt-16 pb-24">
@@ -190,7 +213,25 @@ async function renderCategoryPage(slug: string) {
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
 
+      <JsonLd
+        data={buildWebPageGraph({
+          path: url,
+          name: heading,
+          description: intro || category.meta?.description,
+          type: 'CollectionPage',
+          breadcrumbs: categoryArchiveBreadcrumbs(heading, url),
+        })}
+      />
       <div className="container mb-16">
+        <div className="mb-5">
+          <Breadcrumbs
+            items={[
+              { name: 'Home', href: '/' },
+              { name: 'Blog', href: BLOG_ARCHIVE_PATH },
+              { name: heading },
+            ]}
+          />
+        </div>
         <div className="prose dark:prose-invert max-w-none">
           <h1>{heading}</h1>
         </div>
@@ -250,10 +291,32 @@ async function renderPostPage(categorySlug: string | null, postSlug: string) {
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
 
+      <JsonLd data={buildBlogPostingGraph(post)} />
+      <div className="container relative z-20 mb-4">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Blog', href: BLOG_ARCHIVE_PATH },
+            ...(typeof post.primary_category === 'object' && post.primary_category?.title
+              ? [
+                  {
+                    name: post.primary_category.title,
+                    href: getCategoryUrl(post.primary_category),
+                  },
+                ]
+              : []),
+            { name: post.postLongTitle || post.title },
+          ]}
+        />
+      </div>
       <RenderHero {...hero} />
       {layout && layout.length > 0 && (
         <RenderBlocks blocks={layout as Parameters<typeof RenderBlocks>[0]['blocks']} />
       )}
+
+      <div className="container">
+        <PostTaxonomy categories={post.categories} />
+      </div>
 
       {post.relatedPosts && post.relatedPosts.length > 0 && (
         <div className="flex flex-col items-center gap-4 pt-8">

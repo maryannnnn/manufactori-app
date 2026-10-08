@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-    "postbuild": "next-sitemap --config next-sitemap.config.cjs",
+    "audit:seo": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/auditSeo.ts",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "dev:prod": "cross-env NODE_OPTIONS=--no-deprecation rm -rf .next && pnpm build && pnpm start",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
@@ -27,7 +27,10 @@
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
     "db:cs-faq-comments": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyCaseStudyFaqCommentsSchema.ts",
     "db:services": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyServicesSchema.ts",
-    "db:testimonials": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyTestimonialsSchema.ts"
+    "db:testimonials": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyTestimonialsSchema.ts",
+    "db:category-seo": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyCategorySeoSchema.ts",
+    "ensure:category-seo": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/ensureActiveCategorySeo.ts",
+    "db:company-logo-card-image": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyCompanyLogoAndServiceCardImageSchema.ts"
   },
   "dependencies": {
     "@payloadcms/admin-bar": "3.86.0",

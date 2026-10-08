@@ -3,42 +3,40 @@ import React from 'react'
 
 import type { CaseStudy } from '@/payload-types'
 
-import { getCaseStudyCategoryUrl } from '@/utilities/getContentUrls'
+import { getCaseStudyCategoryUrl, getCategoryUrl } from '@/utilities/getContentUrls'
 
 import { FieldLabel } from './Section'
 
 type CategoryRef = { slug?: string | null; title?: string | null }
 
-type Props = Pick<CaseStudy, 'case_study_categories'>
+type TaxonomyGroup = {
+  hrefFor?: (item: CategoryRef) => string | null
+  items: CategoryRef[]
+  label: string
+}
+
+type TaxonomyChipsProps = {
+  groups: TaxonomyGroup[]
+  labelledBy?: string
+}
 
 /**
- * Full taxonomy footer. Case studies can carry a dozen-plus category
- * relationships, so they live here rather than crowding the hero, where only
- * the primary category is shown.
- *
- * `site_categories` is deliberately not rendered: it belongs to the hidden
- * site-wide taxonomy and is not case study categorization.
+ * Shared chip list for public taxonomies. Used by Case Studies and Posts.
+ * `site_categories` is never passed here.
  */
-export const CaseStudyTaxonomy: React.FC<Props> = ({ case_study_categories }) => {
-  const groups = [
-    {
-      label: 'Case Study Categories',
-      items: toCategoryRefs(case_study_categories),
-      linked: true,
-    },
-  ].filter((group) => group.items.length > 0)
-
-  if (groups.length === 0) return null
+export const TaxonomyChips: React.FC<TaxonomyChipsProps> = ({ groups, labelledBy = 'Taxonomy' }) => {
+  const visible = groups.filter((group) => group.items.length > 0)
+  if (visible.length === 0) return null
 
   return (
-    <section aria-label="Taxonomy" className="border-t border-border pt-8 pb-4">
+    <section aria-label={labelledBy} className="border-t border-border pt-8 pb-4">
       <div className="grid gap-7 md:grid-cols-2">
-        {groups.map(({ items, label, linked }) => (
+        {visible.map(({ hrefFor, items, label }) => (
           <div key={label}>
             <FieldLabel>{label}</FieldLabel>
             <ul className="flex flex-wrap gap-2">
               {items.map((item, index) => {
-                const href = linked && item.slug ? getCaseStudyCategoryUrl({ slug: item.slug }) : null
+                const href = hrefFor?.(item) ?? null
                 const title = item.title || item.slug
 
                 if (!title) return null
@@ -65,6 +63,37 @@ export const CaseStudyTaxonomy: React.FC<Props> = ({ case_study_categories }) =>
         ))}
       </div>
     </section>
+  )
+}
+
+type Props = Pick<CaseStudy, 'case_study_categories'>
+
+export const CaseStudyTaxonomy: React.FC<Props> = ({ case_study_categories }) => {
+  return (
+    <TaxonomyChips
+      groups={[
+        {
+          label: 'Case Study Categories',
+          items: toCategoryRefs(case_study_categories),
+          hrefFor: (item) => (item.slug ? getCaseStudyCategoryUrl({ slug: item.slug }) : null),
+        },
+      ]}
+    />
+  )
+}
+
+export const PostTaxonomy: React.FC<{ categories?: unknown }> = ({ categories }) => {
+  return (
+    <TaxonomyChips
+      labelledBy="Categories"
+      groups={[
+        {
+          label: 'Categories',
+          items: toCategoryRefs(categories),
+          hrefFor: (item) => (item.slug ? getCategoryUrl({ slug: item.slug }) : null),
+        },
+      ]}
+    />
   )
 }
 

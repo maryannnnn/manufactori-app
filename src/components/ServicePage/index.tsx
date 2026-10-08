@@ -5,6 +5,7 @@ import type { CaseStudy, Service, SiteCategory } from '@/payload-types'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { Accordion, type AccordionItem } from '@/components/Accordion'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { CaseStudyCard } from '@/components/CaseStudyCard'
 import { CaseStudyTestimonial } from '@/components/CaseStudyPage/ClientTestimonial'
 import { FieldLabel } from '@/components/CaseStudyPage/Section'
@@ -102,13 +103,14 @@ export const ServicePage: React.FC<Props> = ({ service }) => {
   return (
     <article className="pb-16">
       <div className="container">
-        <div className="flex items-center justify-between gap-4 py-5 font-mono text-xs">
-          <Link
-            className="text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            href={SERVICES_ARCHIVE_PATH}
-          >
-            ← All services
-          </Link>
+        <div className="py-5">
+          <Breadcrumbs
+            items={[
+              { name: 'Home', href: '/' },
+              { name: 'Services', href: SERVICES_ARCHIVE_PATH },
+              { name: heading },
+            ]}
+          />
         </div>
 
         <section className="pt-2 pb-10">

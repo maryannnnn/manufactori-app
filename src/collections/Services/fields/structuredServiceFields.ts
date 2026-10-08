@@ -63,7 +63,17 @@ export const servicePreviewFields: Field[] = [
     label: 'Service Preview Image',
     relationTo: 'media',
     admin: {
-      description: 'Uses the existing Media collection. Also used as the Service page hero image when present.',
+      description: 'Service page image. Not used on Related Services or archive cards.',
+    },
+  },
+  {
+    name: 'service_card_image',
+    type: 'upload',
+    label: 'Service Card Image',
+    relationTo: 'media',
+    admin: {
+      description:
+        'Image for archive cards and Related Services. Separate from the Service page image.',
     },
   },
 ]

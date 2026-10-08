@@ -3,8 +3,10 @@ import type { Metadata } from 'next'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { ServicePage } from '@/components/ServicePage'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getServiceUrl } from '@/utilities/getContentUrls'
+import { buildServiceGraph } from '@/utilities/jsonLd'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
@@ -48,6 +50,7 @@ export default async function ServiceDocumentPage({ params: paramsPromise }: Arg
       <PageClient />
       <PayloadRedirects disableNotFound url={url} />
       {draft ? <LivePreviewListener /> : null}
+      <JsonLd data={buildServiceGraph(service)} />
       <ServicePage service={service} />
     </div>
   )

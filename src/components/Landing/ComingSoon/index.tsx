@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
 
+import type { CardPostData } from '@/components/Card'
+import { CollectionArchive } from '@/components/CollectionArchive'
+import { BLOG_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+
 import { ComponentPreview } from './ComponentPreview'
 import { PalettePanel } from './PalettePanel'
 import { PaletteSelector } from './PaletteSelector'
@@ -28,6 +32,7 @@ const pillars = [
 
 type Props = {
   categories?: LandingCategory[]
+  posts?: CardPostData[]
 }
 
 /**
@@ -36,7 +41,7 @@ type Props = {
  * Every colour here comes from a semantic token, so switching the palette in the
  * selector restyles the whole page without any component change.
  */
-export const ComingSoonLanding: React.FC<Props> = ({ categories = [] }) => {
+export const ComingSoonLanding: React.FC<Props> = ({ categories = [], posts = [] }) => {
   return (
     <main className="bg-body text-main" data-landing-page>
       <PaletteSelector />
@@ -84,6 +89,33 @@ export const ComingSoonLanding: React.FC<Props> = ({ categories = [] }) => {
           </div>
         </div>
       </section>
+
+      {posts.length > 0 && (
+        <section
+          aria-labelledby="landing-latest-articles"
+          className="border-t border-default py-20"
+        >
+          <div className="container mb-10">
+            <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted">Blog</p>
+            <h2
+              className="mt-3 text-2xl font-semibold tracking-tight text-heading md:text-3xl"
+              id="landing-latest-articles"
+            >
+              Latest articles
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-main">
+              Recent posts from the manufacturing marketing blog.
+            </p>
+            <Link
+              className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.24em] text-link transition-colors hover:text-link-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+              href={BLOG_ARCHIVE_PATH}
+            >
+              View all articles
+            </Link>
+          </div>
+          <CollectionArchive posts={posts} />
+        </section>
+      )}
 
       <ComponentPreview />
 

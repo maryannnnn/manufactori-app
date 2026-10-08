@@ -644,9 +644,12 @@ export interface Category {
   id: number;
   title: string;
   /**
-   * Longer category heading used as the H1 on the category page.
+   * Public H1. Must differ from a Case Study Category with the same short title. Insights/articles intent, not project work.
    */
   category_long_title: string;
+  /**
+   * Visible intro on the public category page. Describe articles and insights, not case studies. About 400 characters.
+   */
   category_description?: {
     [k: string]: unknown;
   } | null;
@@ -666,6 +669,13 @@ export interface Category {
    * Дополнительный контент под списком постов категории.
    */
   layout?: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | CodeBlock)[] | null;
+  /**
+   * Public search metadata. Must differ from the equivalent Case Study Category when the short title is shared.
+   */
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+  };
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -955,6 +965,10 @@ export interface CaseStudy {
     | ArchiveBlock
   )[];
   /**
+   * Optional logo of the company in this Case Study. Separate from Preview Image and hero photography. Displayed with original proportions, never cropped.
+   */
+  company_logo?: (number | null) | Media;
+  /**
    * Production core of the client. Content fields only — use Case Study Categories for Technology taxonomy.
    */
   manufacturingProfile?: {
@@ -1225,7 +1239,7 @@ export interface CaseStudy {
     description?: string | null;
   };
   /**
-   * Display this Case Study on the homepage.
+   * When enabled, this Case Study can appear in the Featured Case Studies block on the homepage.
    */
   featured?: boolean | null;
   /**
@@ -1458,9 +1472,12 @@ export interface CaseStudyCategory {
   id: number;
   title: string;
   /**
-   * Longer category heading used as the H1 on the category page.
+   * Public H1. Must differ from a Post Category with the same short title. Case studies/projects intent, not articles.
    */
   case_study_long_title: string;
+  /**
+   * Visible intro on the public category page. Describe real projects and implementations. About 400 characters.
+   */
   case_study_description?: {
     [k: string]: unknown;
   } | null;
@@ -1480,6 +1497,13 @@ export interface CaseStudyCategory {
    * Additional content below the case study list for this category.
    */
   layout?: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | CodeBlock)[] | null;
+  /**
+   * Public search metadata. Must differ from the equivalent Post Category when the short title is shared.
+   */
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+  };
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -1520,9 +1544,13 @@ export interface Service {
    */
   service_preview_description?: string | null;
   /**
-   * Uses the existing Media collection. Also used as the Service page hero image when present.
+   * Service page image. Not used on Related Services or archive cards.
    */
   service_preview_image?: (number | null) | Media;
+  /**
+   * Image for archive cards and Related Services. Separate from the Service page image.
+   */
+  service_card_image?: (number | null) | Media;
   /**
    * In-page heading under the H1. Separate from the internal title, long title and preview title.
    */
@@ -1866,6 +1894,10 @@ export interface Testimonial {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  /**
+   * When enabled, this Testimonial can appear in the homepage testimonials block.
+   */
+  featured?: boolean | null;
   /**
    * Date of the original statement. Separate from createdAt.
    */
@@ -2527,6 +2559,7 @@ export interface CaseStudiesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
       };
+  company_logo?: T;
   manufacturingProfile?:
     | T
     | {
@@ -2784,6 +2817,7 @@ export interface ServicesSelect<T extends boolean = true> {
   service_preview_title?: T;
   service_preview_description?: T;
   service_preview_image?: T;
+  service_card_image?: T;
   service_content_title?: T;
   introduction?:
     | T
@@ -2975,6 +3009,7 @@ export interface TestimonialsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  featured?: T;
   testimonialDate?: T;
   rating?: T;
   publishedAt?: T;
@@ -3098,6 +3133,12 @@ export interface CategoriesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         code?: T | CodeBlockSelect<T>;
       };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
   generateSlug?: T;
   slug?: T;
   parent?: T;
@@ -3131,6 +3172,12 @@ export interface CaseStudyCategoriesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         code?: T | CodeBlockSelect<T>;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
       };
   generateSlug?: T;
   slug?: T;

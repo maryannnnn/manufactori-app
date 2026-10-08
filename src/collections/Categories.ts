@@ -10,6 +10,10 @@ import { FormBlock } from '../blocks/Form/config'
 import { MediaBlock } from '../blocks/MediaBlock/config'
 import { defaultTiptap } from '@/fields/defaultTiptap'
 import { slugField } from 'payload'
+import {
+  MetaDescriptionField,
+  MetaTitleField,
+} from '@payloadcms/plugin-seo/fields'
 import { generatePreviewPath } from '../utilities/generatePreviewPath'
 import {
   decorateCategoryHierarchyRead,
@@ -76,7 +80,8 @@ export const Categories: CollectionConfig = {
       label: 'Long title (H1)',
       required: true,
       admin: {
-        description: 'Longer category heading used as the H1 on the category page.',
+        description:
+          'Public H1. Must differ from a Case Study Category with the same short title. Insights/articles intent, not project work.',
       },
     },
     {
@@ -84,6 +89,10 @@ export const Categories: CollectionConfig = {
       type: 'richText',
       label: 'Category description',
       editor: defaultTiptap,
+      admin: {
+        description:
+          'Visible intro on the public category page. Describe articles and insights, not case studies. About 400 characters.',
+      },
     },
     {
       name: 'category_image',
@@ -115,6 +124,21 @@ export const Categories: CollectionConfig = {
         initCollapsed: true,
       },
       blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Code],
+    },
+    {
+      name: 'meta',
+      label: 'SEO',
+      type: 'group',
+      admin: {
+        description:
+          'Public search metadata. Must differ from the equivalent Case Study Category when the short title is shared.',
+      },
+      fields: [
+        MetaTitleField({
+          hasGenerateFn: true,
+        }),
+        MetaDescriptionField({}),
+      ],
     },
     slugField({
       position: undefined,

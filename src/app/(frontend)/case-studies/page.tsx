@@ -9,9 +9,13 @@ import { CaseStudySearch } from '@/components/CaseStudySearch'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import { CASE_STUDIES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+import { buildWebPageGraph, caseStudyArchiveBreadcrumbs } from '@/utilities/jsonLd'
 import { CASE_STUDIES_PAGE_SIZE, getCaseStudyList } from '@/utilities/getCaseStudyList'
 import { getCachedGlobal } from '@/utilities/getGlobals'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
+import { noindexRobotsMetadata } from '@/utilities/siteRobots'
 
 import PageClient from './page.client'
 
@@ -61,7 +65,19 @@ export default async function CaseStudiesPage({ searchParams: searchParamsPromis
     <div className="pt-16 pb-24">
       <PageClient />
 
+      <JsonLd
+        data={buildWebPageGraph({
+          path: CASE_STUDIES_ARCHIVE_PATH,
+          name: heading,
+          description: archive?.meta?.description,
+          breadcrumbs: caseStudyArchiveBreadcrumbs(),
+          type: 'CollectionPage',
+        })}
+      />
       <div className="container mb-10">
+        <div className="mb-5">
+          <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: heading }]} />
+        </div>
         <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           {heading}
         </h1>
@@ -116,8 +132,11 @@ export default async function CaseStudiesPage({ searchParams: searchParamsPromis
   )
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ searchParams: searchParamsPromise }: Args): Promise<Metadata> {
   const archive = await getCachedGlobal('case-studies-archive', 1)()
+  const { page: pageParam, search: searchParam } = await searchParamsPromise
+  const search = searchParam?.trim()
+  const page = parsePage(pageParam)
 
   const meta = await generateMeta({
     doc: {
@@ -127,8 +146,12 @@ export async function generateMetadata(): Promise<Metadata> {
         image: archive?.meta?.image,
       },
     },
-    url: CASE_STUDIES_ARCHIVE_PATH,
+    url: buildArchiveUrl(page),
   })
 
-  return { ...meta, alternates: { ...meta.alternates, canonical: CASE_STUDIES_ARCHIVE_PATH } }
+  return {
+    ...meta,
+    alternates: { ...meta.alternates, canonical: buildArchiveUrl(page) },
+    ...(search ? { robots: noindexRobotsMetadata } : {}),
+  }
 }

@@ -40,6 +40,8 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = async ({
         payload.logger.info(`Revalidating post at path: ${path}`)
         revalidatePath(path)
       }
+      revalidatePath('/')
+      revalidatePath('/blog')
       revalidateTag('posts-sitemap', 'max')
     }
 
@@ -50,6 +52,8 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = async ({
         payload.logger.info(`Revalidating old post at path: ${oldPath}`)
         revalidatePath(oldPath)
       }
+      revalidatePath('/')
+      revalidatePath('/blog')
       revalidateTag('posts-sitemap', 'max')
     }
   }
@@ -66,6 +70,8 @@ export const revalidateDelete: CollectionAfterDeleteHook<Post> = async ({
     if (path) {
       revalidatePath(path)
     }
+    revalidatePath('/')
+    revalidatePath('/blog')
     revalidateTag('posts-sitemap', 'max')
   }
 

@@ -1,19 +1,14 @@
 'use client'
 
-import { ChevronDown, Menu, Phone, X } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useId, useState } from 'react'
 
 import { cn } from '@/utilities/ui'
 
-import {
-  contactHref,
-  getNavSections,
-  mainNavigation,
-  navItemHasMenu,
-  type NavItem,
-} from '../navigation'
+import { getNavSections, headerCta, mainNavigation, navItemHasMenu, type NavItem } from '../navigation'
+import { PhoneLink } from './PhoneLink'
 
 const isCurrentPath = (pathname: string, href: string) => {
   if (href === '/') return pathname === '/'
@@ -58,13 +53,7 @@ export const MobileNav: React.FC = () => {
 
   return (
     <div className="flex items-center gap-1 lg:hidden">
-      <Link
-        aria-label="Contact"
-        className="inline-flex size-11 items-center justify-center text-main transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
-        href={contactHref}
-      >
-        <Phone className="size-5" />
-      </Link>
+      <PhoneLink />
       <button
         aria-controls={panelId}
         aria-expanded={open}
@@ -96,6 +85,14 @@ export const MobileNav: React.FC = () => {
                 pathname={pathname}
               />
             ))}
+            <li className="pt-4">
+              <Link
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-[2px] bg-primary px-4 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                href={headerCta.href}
+              >
+                {headerCta.label}
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

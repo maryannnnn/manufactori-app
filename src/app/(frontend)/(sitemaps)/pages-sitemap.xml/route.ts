@@ -2,14 +2,15 @@ import { getServerSideSitemap } from 'next-sitemap'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
+import { BLOG_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+import { getServerSideURL } from '@/utilities/getURL'
+
+const EXCLUDED_PAGE_SLUGS = new Set(['home', 'search', 'admin'])
 
 const getPagesSitemap = unstable_cache(
   async () => {
     const payload = await getPayload({ config })
-    const SITE_URL =
-      process.env.NEXT_PUBLIC_SERVER_URL ||
-      process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-      'https://example.com'
+    const SITE_URL = getServerSideURL()
 
     const results = await payload.find({
       collection: 'pages',
@@ -33,25 +34,21 @@ const getPagesSitemap = unstable_cache(
 
     const defaultSitemap = [
       {
-        loc: `${SITE_URL}/search`,
+        loc: `${SITE_URL}/`,
         lastmod: dateFallback,
       },
       {
-        loc: `${SITE_URL}/blog`,
-        lastmod: dateFallback,
-      },
-      {
-        loc: `${SITE_URL}/services`,
+        loc: `${SITE_URL}${BLOG_ARCHIVE_PATH}`,
         lastmod: dateFallback,
       },
     ]
 
     const sitemap = results.docs
       ? results.docs
-          .filter((page) => Boolean(page?.slug))
+          .filter((page) => Boolean(page?.slug) && !EXCLUDED_PAGE_SLUGS.has(page.slug as string))
           .map((page) => {
             return {
-              loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
+              loc: `${SITE_URL}/${page?.slug}`,
               lastmod: page.updatedAt || dateFallback,
             }
           })

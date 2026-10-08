@@ -32,10 +32,17 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: true,
   }
 
+  const cmsHomeSlugRedirect = {
+    source: '/home',
+    destination: '/',
+    permanent: true,
+  }
+
   return [
     internetExplorerRedirect,
     legacyBlogCategoryRedirect,
     legacyPostsArchiveRedirect,
     legacyPostsPaginationRedirect,
+    cmsHomeSlugRedirect,
   ]
 }

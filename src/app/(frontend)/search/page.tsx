@@ -83,6 +83,9 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Payload Website Template Search`,
+    title: 'Search',
+    description: 'Search published insights on this manufacturing marketing website.',
+    robots: { index: false, follow: false },
+    alternates: { canonical: '/search' },
   }
 }

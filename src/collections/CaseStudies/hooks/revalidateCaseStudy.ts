@@ -60,6 +60,8 @@ export const revalidateCaseStudy: CollectionAfterChangeHook<CaseStudyDoc> = asyn
         payload.logger.info(`Revalidating case study at path: ${path}`)
         safeRevalidatePath(path)
       }
+      safeRevalidatePath('/')
+      safeRevalidatePath('/case-studies')
       revalidateTag('case-studies-sitemap', 'max')
     }
 
@@ -69,6 +71,8 @@ export const revalidateCaseStudy: CollectionAfterChangeHook<CaseStudyDoc> = asyn
         payload.logger.info(`Revalidating old case study at path: ${oldPath}`)
         safeRevalidatePath(oldPath)
       }
+      safeRevalidatePath('/')
+      safeRevalidatePath('/case-studies')
       revalidateTag('case-studies-sitemap', 'max')
     }
   }
@@ -82,6 +86,8 @@ export const revalidateCaseStudyDelete: CollectionAfterDeleteHook<CaseStudyDoc> 
   if (!context.disableRevalidate) {
     const path = await resolveCaseStudyPath(payload, doc)
     if (path) safeRevalidatePath(path)
+    safeRevalidatePath('/')
+    safeRevalidatePath('/case-studies')
     revalidateTag('case-studies-sitemap', 'max')
   }
   return doc

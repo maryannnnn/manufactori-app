@@ -11,7 +11,10 @@ import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
+import { JsonLd } from '@/components/JsonLd'
+import { jsonLdGraph, organizationNode, websiteNode } from '@/utilities/jsonLd'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { HOME_DESCRIPTION, SITE_NAME } from '@/utilities/siteIdentity'
 import { siteRobotsMetadata } from '@/utilities/siteRobots'
 import { draftMode } from 'next/headers'
 
@@ -26,7 +29,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <InitTheme />
         <InitPalette />
-        <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
@@ -40,6 +42,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Header />
           {children}
           <Footer />
+          <JsonLd data={jsonLdGraph([organizationNode(), websiteNode()])} />
         </Providers>
       </body>
     </html>
@@ -55,19 +58,19 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
   title: {
-    default: 'Manufacturing Marketing Agency',
-    template: '%s | Manufacturing Marketing Agency',
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    'Manufacturing marketing agency website under development. Industrial SEO, demand generation, and brand authority for B2B manufacturers.',
+  description: HOME_DESCRIPTION,
   robots: siteRobotsMetadata,
   openGraph: mergeOpenGraph({
-    siteName: 'Manufacturing Marketing Agency',
-    title: 'Manufacturing Marketing Agency',
-    description:
-      'Manufacturing marketing agency website under development. Industrial SEO, demand generation, and brand authority for B2B manufacturers.',
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: HOME_DESCRIPTION,
   }),
   twitter: {
     card: 'summary_large_image',
+    title: SITE_NAME,
+    description: HOME_DESCRIPTION,
   },
 }

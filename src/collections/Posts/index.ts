@@ -18,6 +18,10 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { ensurePrimaryCategoryInCategories } from './hooks/ensurePrimaryCategory'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
+import {
+  syncPostAssignedCategorySeo,
+  syncPostAssignedCategorySeoDelete,
+} from '../../hooks/syncAssignedCategorySeo'
 import { getCategorySlug } from '../../utilities/getContentUrls'
 
 import {
@@ -304,9 +308,9 @@ export const Posts: CollectionConfig<'posts'> = {
   ],
   hooks: {
     beforeChange: [ensurePrimaryCategoryInCategories],
-    afterChange: [revalidatePost],
+    afterChange: [revalidatePost, syncPostAssignedCategorySeo],
     afterRead: [populateAuthors],
-    afterDelete: [revalidateDelete],
+    afterDelete: [revalidateDelete, syncPostAssignedCategorySeoDelete],
   },
   versions: {
     drafts: {

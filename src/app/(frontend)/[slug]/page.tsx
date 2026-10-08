@@ -9,7 +9,10 @@ import { homeStatic } from '@/endpoints/seed/home-static'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
+import { buildCmsPageGraph } from '@/utilities/jsonLd'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
@@ -64,15 +67,30 @@ export default async function Page({ params: paramsPromise }: Args) {
     return <PayloadRedirects url={url} />
   }
 
-  const { hero, layout } = page
+  const { hero, layout, pageLongTitle, title } = page
+  const heading = pageLongTitle || title
+  const compactHero = !hero?.type || hero.type === 'none' || hero.type === 'lowImpact'
+  const showStandaloneH1 = Boolean(heading) && (!hero?.type || hero.type === 'none')
 
   return (
     <article className="pt-16 pb-24">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
+      <JsonLd data={buildCmsPageGraph(page)} />
 
       {draft && <LivePreviewListener />}
+
+      {compactHero ? (
+        <div className="container mb-8">
+          <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: heading }]} />
+          {showStandaloneH1 ? (
+            <h1 className="mt-5 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+              {heading}
+            </h1>
+          ) : null}
+        </div>
+      ) : null}
 
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />

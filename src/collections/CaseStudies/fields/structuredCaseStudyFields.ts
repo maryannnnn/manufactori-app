@@ -40,11 +40,12 @@ export const caseStudySidebarFields: Field[] = [
   {
     name: 'featured',
     type: 'checkbox',
-    label: 'Featured',
+    label: 'Featured on Home',
     defaultValue: false,
     admin: {
       position: 'sidebar',
-      description: 'Display this Case Study on the homepage.',
+      description:
+        'When enabled, this Case Study can appear in the Featured Case Studies block on the homepage.',
     },
   },
   {
@@ -71,6 +72,17 @@ export const caseStudySidebarFields: Field[] = [
 ]
 
 export const caseStudyProfileTabFields: Field[] = [
+  {
+    name: 'company_logo',
+    type: 'upload',
+    label: 'Company Logo',
+    relationTo: 'media',
+    required: false,
+    admin: {
+      description:
+        'Optional logo of the company in this Case Study. Separate from Preview Image and hero photography. Displayed with original proportions, never cropped.',
+    },
+  },
   {
     name: 'manufacturingProfile',
     type: 'group',

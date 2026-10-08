@@ -1,17 +1,12 @@
 import type { Metadata } from 'next'
-import { getServerSideURL } from './getURL'
+
+import { HOME_DESCRIPTION, SITE_NAME } from './siteIdentity'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
-  description:
-    'Manufacturing marketing agency website under development. Industrial SEO, demand generation, and brand authority for B2B manufacturers.',
-  images: [
-    {
-      url: `${getServerSideURL()}/website-template-OG.webp`,
-    },
-  ],
-  siteName: 'Manufacturing Marketing Agency',
-  title: 'Manufacturing Marketing Agency',
+  description: HOME_DESCRIPTION,
+  siteName: SITE_NAME,
+  title: SITE_NAME,
 }
 
 export const mergeOpenGraph = (og?: Metadata['openGraph']): Metadata['openGraph'] => {

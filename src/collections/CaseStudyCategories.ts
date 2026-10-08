@@ -1,5 +1,9 @@
 import type { CollectionConfig } from 'payload'
 import { slugField } from 'payload'
+import {
+  MetaDescriptionField,
+  MetaTitleField,
+} from '@payloadcms/plugin-seo/fields'
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
@@ -83,7 +87,8 @@ export const CaseStudyCategories: CollectionConfig = {
       label: 'Long title (H1)',
       required: true,
       admin: {
-        description: 'Longer category heading used as the H1 on the category page.',
+        description:
+          'Public H1. Must differ from a Post Category with the same short title. Case studies/projects intent, not articles.',
       },
     },
     {
@@ -91,6 +96,10 @@ export const CaseStudyCategories: CollectionConfig = {
       type: 'richText',
       label: 'Category description',
       editor: defaultTiptap,
+      admin: {
+        description:
+          'Visible intro on the public category page. Describe real projects and implementations. About 400 characters.',
+      },
     },
     {
       name: 'case_study_image',
@@ -122,6 +131,21 @@ export const CaseStudyCategories: CollectionConfig = {
         initCollapsed: true,
       },
       blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Code],
+    },
+    {
+      name: 'meta',
+      label: 'SEO',
+      type: 'group',
+      admin: {
+        description:
+          'Public search metadata. Must differ from the equivalent Post Category when the short title is shared.',
+      },
+      fields: [
+        MetaTitleField({
+          hasGenerateFn: true,
+        }),
+        MetaDescriptionField({}),
+      ],
     },
     slugField({
       position: undefined,

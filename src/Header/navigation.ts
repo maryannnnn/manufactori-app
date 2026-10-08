@@ -55,8 +55,6 @@ export const serviceNavLinks: NavLink[] = [
 ]
 
 export const mainNavigation: NavItem[] = [
-  { id: 'home', label: 'Home', href: '/' },
-  { id: 'about', label: 'About', href: '/about' },
   {
     id: 'services',
     label: 'Services',
@@ -65,8 +63,13 @@ export const mainNavigation: NavItem[] = [
   },
   { id: 'case-studies', label: 'Case Studies', href: CASE_STUDIES_ARCHIVE_PATH },
   { id: 'blog', label: 'Blog', href: BLOG_ARCHIVE_PATH },
-  { id: 'contact', label: 'Contact', href: '/contact' },
+  { id: 'about', label: 'About', href: '/about' },
 ]
+
+export const headerCta: NavLink = {
+  label: 'Get a Free Audit',
+  href: '/contact',
+}
 
 /** Used by the mobile phone icon. No site phone number exists yet. */
 export const contactHref = '/contact'

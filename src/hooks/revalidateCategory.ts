@@ -1,6 +1,6 @@
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 
 import type { Category } from '../payload-types'
 import { getCategoryUrl } from '../utilities/getContentUrls'
@@ -8,6 +8,14 @@ import { getCategoryUrl } from '../utilities/getContentUrls'
 const safeRevalidatePath = (path: string) => {
   try {
     revalidatePath(path)
+  } catch {
+    // Payload scripts and nested-docs resave run outside a Next.js request.
+  }
+}
+
+const safeRevalidateTag = (tag: string) => {
+  try {
+    revalidateTag(tag, 'max')
   } catch {
     // Payload scripts and nested-docs resave run outside a Next.js request.
   }
@@ -25,6 +33,7 @@ export const revalidateCategory: CollectionAfterChangeHook<Category> = ({
       safeRevalidatePath(path)
     }
     safeRevalidatePath('/')
+    safeRevalidateTag('posts-sitemap')
 
     if (previousDoc?.slug && previousDoc.slug !== doc.slug) {
       const oldPath = getCategoryUrl(previousDoc)
@@ -46,6 +55,7 @@ export const revalidateCategoryDelete: CollectionAfterDeleteHook<Category> = ({
     const path = getCategoryUrl(doc)
     if (path) safeRevalidatePath(path)
     safeRevalidatePath('/')
+    safeRevalidateTag('posts-sitemap')
   }
 
   return doc

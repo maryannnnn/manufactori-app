@@ -8,6 +8,7 @@ import React, { useEffect, useId, useRef, useState } from 'react'
 import { cn } from '@/utilities/ui'
 
 import { getNavSections, mainNavigation, navItemHasMenu, type NavItem } from '../navigation'
+import { PhoneLink } from './PhoneLink'
 
 const navLinkClass =
   'inline-flex min-h-11 items-center px-2 text-sm font-medium text-main transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
@@ -149,6 +150,9 @@ export const DesktopNav: React.FC = () => {
             </li>
           )
         })}
+        <li>
+          <PhoneLink />
+        </li>
       </ul>
     </nav>
   )

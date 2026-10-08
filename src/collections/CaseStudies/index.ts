@@ -19,6 +19,10 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from '../Posts/hooks/populateAuthors'
 import { ensurePrimaryCaseStudyCategoryInCategories } from './hooks/ensurePrimaryCaseStudyCategory'
 import { revalidateCaseStudy, revalidateCaseStudyDelete } from './hooks/revalidateCaseStudy'
+import {
+  syncCaseStudyAssignedCategorySeo,
+  syncCaseStudyAssignedCategorySeoDelete,
+} from '../../hooks/syncAssignedCategorySeo'
 import { getCategorySlug } from '../../utilities/getContentUrls'
 import { hierarchicalCategoryRelationshipAdmin } from '@/fields/hierarchicalCategoryRelationship'
 import {
@@ -306,9 +310,9 @@ export const CaseStudies: CollectionConfig = {
   ],
   hooks: {
     beforeChange: [ensurePrimaryCaseStudyCategoryInCategories],
-    afterChange: [revalidateCaseStudy],
+    afterChange: [revalidateCaseStudy, syncCaseStudyAssignedCategorySeo],
     afterRead: [populateAuthors],
-    afterDelete: [revalidateCaseStudyDelete],
+    afterDelete: [revalidateCaseStudyDelete, syncCaseStudyAssignedCategorySeoDelete],
   },
   versions: {
     drafts: {

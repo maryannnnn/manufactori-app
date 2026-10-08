@@ -8,14 +8,21 @@ import RichText from '@/components/RichText'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
+import { richTextToPlainText } from '@/utilities/richText/toPlainText'
+import { collectActiveCategoryPaths } from '@/utilities/activeCategoryPaths'
+import { countPublishedInCategory } from '@/utilities/ensureCategorySeoMetadata'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getCaseStudyListPreview } from '@/utilities/getCaseStudyListPreview'
 import {
+  CASE_STUDIES_ARCHIVE_PATH,
   getCaseStudyCategoryUrl,
   getCaseStudyUrl,
   getCategorySlug,
   isReservedCaseStudyCategorySlug,
 } from '@/utilities/getContentUrls'
+import { buildCaseStudyGraph, buildWebPageGraph, caseStudyCategoryBreadcrumbs } from '@/utilities/jsonLd'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
@@ -56,15 +63,8 @@ const parseSegments = (segments: string[] | undefined) => {
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
 
-  const [categories, caseStudies] = await Promise.all([
-    payload.find({
-      collection: 'case-study-categories',
-      draft: false,
-      limit: 1000,
-      overrideAccess: false,
-      pagination: false,
-      select: { slug: true },
-    }),
+  const [activeCategories, caseStudies] = await Promise.all([
+    collectActiveCategoryPaths(payload, 'case-study'),
     payload.find({
       collection: 'case-studies',
       draft: false,
@@ -72,6 +72,11 @@ export async function generateStaticParams() {
       overrideAccess: false,
       pagination: false,
       depth: 1,
+      where: {
+        _status: {
+          equals: 'published',
+        },
+      },
       select: {
         slug: true,
         primary_case_study_category: true,
@@ -79,9 +84,7 @@ export async function generateStaticParams() {
     }),
   ])
 
-  const categoryParams = categories.docs.flatMap(({ slug }) =>
-    slug && !isReservedCaseStudyCategorySlug(slug) ? [{ segments: [slug] }] : [],
-  )
+  const categoryParams = activeCategories.map(({ slug }) => ({ segments: [slug] }))
 
   const caseStudyParams = caseStudies.docs.flatMap((doc) => {
     if (!doc.slug) return []
@@ -110,12 +113,24 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 
   if (parsed.type === 'category') {
     const category = await queryCategoryBySlug({ slug: parsed.categorySlug })
-    const title = category?.case_study_long_title || category?.title
+    if (!category) return generateMeta({ doc: null })
+    const payload = await getPayload({ config: configPromise })
+    const publishedCount = await countPublishedInCategory(payload, 'case-study', category.id)
+    if (publishedCount === 0) return generateMeta({ doc: null })
+    const title = category.case_study_long_title || category.title
     const canonical = getCaseStudyCategoryUrl({ slug: parsed.categorySlug })
-    return {
-      title: title ? `${title} | Payload Website Template` : 'Payload Website Template',
-      ...(canonical ? { alternates: { canonical } } : {}),
-    }
+    const seoTitle = category.meta?.title || title
+    const seoDescription =
+      category.meta?.description ||
+      richTextToPlainText(category.case_study_description) ||
+      undefined
+    return generateMeta({
+      doc: {
+        title,
+        meta: { title: seoTitle, description: seoDescription },
+      },
+      url: canonical || undefined,
+    })
   }
 
   const caseStudy = await queryCaseStudyBySlug({ slug: parsed.caseStudySlug })
@@ -142,12 +157,14 @@ async function renderCategoryPage(slug: string) {
   const caseStudies = await payload.find({
     collection: 'case-studies',
     depth: 1,
+    draft: false,
     limit: 100,
     overrideAccess: false,
     where: {
-      case_study_categories: {
-        in: [category.id],
-      },
+      and: [
+        { case_study_categories: { in: [category.id] } },
+        { _status: { equals: 'published' } },
+      ],
     },
     select: {
       title: true,
@@ -173,7 +190,10 @@ async function renderCategoryPage(slug: string) {
     }
   })
 
+  if (!draft && caseStudies.totalDocs === 0) notFound()
+
   const heading = category.case_study_long_title || category.title
+  const intro = richTextToPlainText(category.case_study_description)
 
   return (
     <article className="pt-16 pb-24">
@@ -181,7 +201,25 @@ async function renderCategoryPage(slug: string) {
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
 
+      <JsonLd
+        data={buildWebPageGraph({
+          path: url,
+          name: heading,
+          description: intro || category.meta?.description,
+          type: 'CollectionPage',
+          breadcrumbs: caseStudyCategoryBreadcrumbs(heading, url),
+        })}
+      />
       <div className="container mb-16">
+        <div className="mb-5">
+          <Breadcrumbs
+            items={[
+              { name: 'Home', href: '/' },
+              { name: 'Case Studies', href: CASE_STUDIES_ARCHIVE_PATH },
+              { name: heading },
+            ]}
+          />
+        </div>
         <div className="prose dark:prose-invert max-w-none">
           <h1>{heading}</h1>
         </div>
@@ -240,6 +278,7 @@ async function renderCaseStudyPage(categorySlug: string, caseStudySlug: string) 
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
 
+      <JsonLd data={buildCaseStudyGraph(caseStudy)} />
       <CaseStudyPage caseStudy={caseStudy} />
     </React.Fragment>
   )

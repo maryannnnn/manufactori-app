@@ -41,6 +41,7 @@ export const revalidateService: CollectionAfterChangeHook<ServiceDoc> = ({
         safeRevalidatePath(path)
       }
       safeRevalidatePath('/services')
+      safeRevalidatePath('/')
       safeRevalidateTag('services-sitemap')
     }
 
@@ -51,6 +52,7 @@ export const revalidateService: CollectionAfterChangeHook<ServiceDoc> = ({
         safeRevalidatePath(oldPath)
       }
       safeRevalidatePath('/services')
+      safeRevalidatePath('/')
       safeRevalidateTag('services-sitemap')
     }
   }
@@ -65,6 +67,7 @@ export const revalidateServiceDelete: CollectionAfterDeleteHook<ServiceDoc> = ({
     const path = resolveServicePath(doc)
     if (path) safeRevalidatePath(path)
     safeRevalidatePath('/services')
+    safeRevalidatePath('/')
     safeRevalidateTag('services-sitemap')
   }
   return doc

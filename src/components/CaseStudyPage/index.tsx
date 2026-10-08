@@ -4,7 +4,7 @@ import type { CaseStudy, CaseStudyPreviewBlock } from '@/payload-types'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { Media } from '@/components/Media'
-import { CASE_STUDIES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+import { CASE_STUDIES_ARCHIVE_PATH, getCaseStudyCategoryUrl } from '@/utilities/getContentUrls'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 
 import type { NicheItem } from './NicheSegmentation'
@@ -69,6 +69,11 @@ export const CaseStudyPage: React.FC<Props> = ({
   } = caseStudy
 
   const heading = caseStudy.case_study_long_title || caseStudy.title
+  const category =
+    typeof caseStudy.primary_case_study_category === 'object'
+      ? caseStudy.primary_case_study_category
+      : null
+  const categoryHref = category?.slug ? getCaseStudyCategoryUrl(category) : null
   const preview = layout?.find(
     (block): block is CaseStudyPreviewBlock => block.blockType === 'csPreview',
   )
@@ -119,9 +124,20 @@ export const CaseStudyPage: React.FC<Props> = ({
       <CaseStudyQuickNav sections={navSections} />
 
       <div className="container">
-        <CaseStudyTopNav backHref={archiveHref} backLabel="All case studies" mark={mark} />
+        <CaseStudyTopNav
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Case Studies', href: archiveHref },
+            ...(category?.title && categoryHref
+              ? [{ name: category.title, href: categoryHref }]
+              : []),
+            { name: heading },
+          ]}
+          mark={mark}
+        />
 
         <CaseStudyHero
+          companyLogo={caseStudy.company_logo}
           duration={duration}
           heading={heading}
           hero={hero}

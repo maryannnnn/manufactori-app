@@ -10,6 +10,7 @@ import { getCaseStudyCategoryUrl } from '@/utilities/getContentUrls'
 import { RichTextField } from './RichTextField'
 
 type Props = {
+  companyLogo?: CaseStudy['company_logo']
   duration?: CaseStudy['duration']
   heading: string
   hero?: CaseStudy['hero']
@@ -45,14 +46,37 @@ const Tag: React.FC<{ children: React.ReactNode; href?: string | null }> = ({ ch
   return <span className={className}>{children}</span>
 }
 
-export const CaseStudyHero: React.FC<Props> = ({ duration, heading, hero, primaryCategory }) => {
+export const CaseStudyHero: React.FC<Props> = ({
+  companyLogo,
+  duration,
+  heading,
+  hero,
+  primaryCategory,
+}) => {
   const category = typeof primaryCategory === 'object' ? primaryCategory : null
   const categoryHref = category?.slug ? getCaseStudyCategoryUrl({ slug: category.slug }) : null
   const heroMedia = hero?.media
   const heroLinks = hero?.links?.filter((item) => item?.link) ?? []
 
+  const logo = companyLogo && typeof companyLogo === 'object' ? companyLogo : null
+
   return (
     <section className="pt-2 pb-10">
+      {logo ? (
+        <div
+          className="mb-6 flex max-h-[var(--case-study-logo-max-height,3.5rem)] max-w-[var(--case-study-logo-max-width,12rem)] items-center"
+          data-company-logo
+        >
+          <Media
+            htmlElement={null}
+            imgClassName="h-auto max-h-[var(--case-study-logo-max-height,3.5rem)] w-auto max-w-[var(--case-study-logo-max-width,12rem)] object-contain object-left"
+            pictureClassName="inline-flex max-h-[var(--case-study-logo-max-height,3.5rem)] max-w-[var(--case-study-logo-max-width,12rem)]"
+            resource={logo}
+            size="256px"
+          />
+        </div>
+      ) : null}
+
       {(category || duration) && (
         <div className="mb-6 flex flex-wrap gap-2">
           {category?.title ? <Tag href={categoryHref}>{category.title}</Tag> : null}

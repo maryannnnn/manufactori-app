@@ -1,6 +1,6 @@
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 
 import type { CaseStudyCategory } from '../payload-types'
 import { getCaseStudyCategoryUrl } from '../utilities/getContentUrls'
@@ -8,6 +8,14 @@ import { getCaseStudyCategoryUrl } from '../utilities/getContentUrls'
 const safeRevalidatePath = (path: string) => {
   try {
     revalidatePath(path)
+  } catch {
+    // Payload scripts and nested-docs resave run outside a Next.js request.
+  }
+}
+
+const safeRevalidateTag = (tag: string) => {
+  try {
+    revalidateTag(tag, 'max')
   } catch {
     // Payload scripts and nested-docs resave run outside a Next.js request.
   }
@@ -32,6 +40,8 @@ export const revalidateCaseStudyCategory: CollectionAfterChangeHook<CaseStudyCat
         safeRevalidatePath(oldPath)
       }
     }
+
+    safeRevalidateTag('case-studies-sitemap')
   }
 
   return doc
@@ -44,6 +54,7 @@ export const revalidateCaseStudyCategoryDelete: CollectionAfterDeleteHook<CaseSt
   if (!context.disableRevalidate) {
     const path = getCaseStudyCategoryUrl(doc)
     if (path) safeRevalidatePath(path)
+    safeRevalidateTag('case-studies-sitemap')
   }
 
   return doc

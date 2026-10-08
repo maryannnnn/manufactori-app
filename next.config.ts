@@ -2,6 +2,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from 'next'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { BLOCK_SITE_INDEXING, xRobotsTagValue } from './src/utilities/siteRobots'
 
 const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
@@ -50,14 +51,15 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   redirects,
   async headers() {
+    if (!BLOCK_SITE_INDEXING) return []
+
     return [
       {
         source: '/:path*',
         headers: [
           {
             key: 'X-Robots-Tag',
-            value:
-              'noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai',
+            value: xRobotsTagValue,
           },
         ],
       },

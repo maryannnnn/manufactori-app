@@ -12,7 +12,15 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 
 import { Page, Post, CaseStudy } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
-import { getCaseStudyUrl, getPostUrl, getServiceUrl, getTestimonialUrl } from '@/utilities/getContentUrls'
+import {
+  getCaseStudyCategoryUrl,
+  getCaseStudyUrl,
+  getCategoryUrl,
+  getPostUrl,
+  getServiceUrl,
+  getTestimonialUrl,
+} from '@/utilities/getContentUrls'
+import { SITE_NAME } from '@/utilities/siteIdentity'
 
 type SeoDoc = (Post | Page | CaseStudy) & {
   service_long_title?: string | null
@@ -21,7 +29,7 @@ type SeoDoc = (Post | Page | CaseStudy) & {
 }
 
 const generateTitle: GenerateTitle<SeoDoc> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
+  return doc?.title ? `${doc.title} | ${SITE_NAME}` : SITE_NAME
 }
 
 const generateURL: GenerateURL<SeoDoc> = ({ doc }) => {
@@ -45,6 +53,16 @@ const generateURL: GenerateURL<SeoDoc> = ({ doc }) => {
 
   if ('testimonialLongTitle' in doc) {
     const path = getTestimonialUrl(doc)
+    if (path) return `${url}${path}`
+  }
+
+  if ('category_long_title' in doc && !('primary_category' in doc)) {
+    const path = getCategoryUrl(doc)
+    if (path) return `${url}${path}`
+  }
+
+  if ('case_study_long_title' in doc && !('primary_case_study_category' in doc)) {
+    const path = getCaseStudyCategoryUrl(doc)
     if (path) return `${url}${path}`
   }
 

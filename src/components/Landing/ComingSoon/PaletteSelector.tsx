@@ -16,13 +16,13 @@ const SWATCH_ORDER: readonly PaletteRole[] = ['primary', 'cta', 'secondary', 'su
  * The only literal colours are the preview swatches, which read their values
  * from the central palette config rather than from hardcoded hex.
  */
-export const PaletteSelector: React.FC = () => {
+export const PaletteSelector: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
   const { paletteId, palettes, setPaletteId } = usePalette()
 
   return (
     <section aria-labelledby="palette-selector-heading" className="border-b border-default bg-surface">
-      <div className="container py-5">
-        <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+      <div className={compact ? 'container py-3' : 'container py-5'}>
+        <div className={compact ? 'mb-3 flex flex-wrap items-baseline justify-between gap-2' : 'mb-4 flex flex-wrap items-baseline justify-between gap-2'}>
           <h2
             className="font-mono text-xs uppercase tracking-[0.24em] text-muted"
             id="palette-selector-heading"

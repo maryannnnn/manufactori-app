@@ -72,7 +72,7 @@ export const Testimonials: CollectionConfig = {
   },
   admin: {
     group: 'Testimonials',
-    defaultColumns: ['title', 'clientName', 'clientCompany', 'slug', 'updatedAt'],
+    defaultColumns: ['title', 'featured', 'clientName', 'clientCompany', 'slug', 'updatedAt'],
     useAsTitle: 'title',
   },
   fields: [
@@ -280,6 +280,17 @@ export const Testimonials: CollectionConfig = {
           ],
         },
       ],
+    },
+    {
+      name: 'featured',
+      type: 'checkbox',
+      label: 'Featured on Home',
+      defaultValue: false,
+      admin: {
+        position: 'sidebar',
+        description:
+          'When enabled, this Testimonial can appear in the homepage testimonials block.',
+      },
     },
     {
       name: 'testimonialDate',

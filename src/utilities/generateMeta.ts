@@ -6,7 +6,8 @@ import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
 import { getCaseStudyUrl, getPostUrl, getServiceUrl, getTestimonialUrl } from './getContentUrls'
 import { resolveMediaSource } from './getMediaUrl'
-import { siteRobotsMetadata } from './siteRobots'
+import { noindexRobotsMetadata, siteRobotsMetadata } from './siteRobots'
+import { brandTitle } from './siteIdentity'
 
 type MetaDoc = Partial<Page> | Partial<Post> | Partial<CaseStudy> | {
   slug?: string | null
@@ -19,21 +20,35 @@ type MetaDoc = Partial<Page> | Partial<Post> | Partial<CaseStudy> | {
   primary_category?: unknown
   primary_case_study_category?: unknown
   service_long_title?: string | null
+  service_preview_image?: Media | Config['db']['defaultIDType'] | null
   testimonialLongTitle?: string | null
 }
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
-  const serverUrl = getServerSideURL()
-
-  let url = serverUrl + '/website-template-OG.webp'
-
   if (image && typeof image === 'object' && 'url' in image) {
     const { src } = resolveMediaSource(image, ['og', 'medium', 'large'])
     const path = src.split('?')[0]
-    if (path) url = /^https?:\/\//i.test(path) ? path : serverUrl + path
+    if (!path) return undefined
+    return /^https?:\/\//i.test(path) ? path : getServerSideURL() + path
   }
 
-  return url
+  return undefined
+}
+
+const fallbackImage = (doc: MetaDoc | null | undefined) => {
+  if (!doc) return undefined
+  if (doc.meta?.image) return doc.meta.image
+  if ('service_preview_image' in doc) return doc.service_preview_image
+  return undefined
+}
+
+const pageTitleFromDoc = (doc: MetaDoc | null | undefined): string | undefined => {
+  if (!doc) return undefined
+  if (doc.meta?.title) return doc.meta.title
+  if ('service_long_title' in doc && doc.service_long_title) return doc.service_long_title
+  if ('pageLongTitle' in doc && doc.pageLongTitle) return doc.pageLongTitle
+  if (doc.title) return doc.title
+  return undefined
 }
 
 export const generateMeta = async (args: {
@@ -46,14 +61,19 @@ export const generateMeta = async (args: {
 }): Promise<Metadata> => {
   const { doc, url } = args
 
-  const ogImage = getImageURL(doc?.meta?.image)
+  if (!doc) {
+    return {
+      title: 'Page not found',
+      robots: noindexRobotsMetadata,
+    }
+  }
 
-  const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | Payload Website Template'
-    : 'Payload Website Template'
+  const ogImage = getImageURL(fallbackImage(doc))
+  const pageTitle = pageTitleFromDoc(doc)
+  const branded = brandTitle(pageTitle)
+  const description = doc.meta?.description || undefined
 
   const collectionPath = (() => {
-    if (!doc) return null
     if ('primary_case_study_category' in doc) return getCaseStudyUrl(doc as CaseStudy)
     if ('primary_category' in doc) return getPostUrl(doc as Post)
     if ('service_long_title' in doc) return getServiceUrl(doc)
@@ -61,23 +81,30 @@ export const generateMeta = async (args: {
     return null
   })()
   const pagePath =
-    Array.isArray(doc?.slug) ? doc?.slug.join('/') : doc?.slug ? `/${doc.slug}` : '/'
+    Array.isArray(doc.slug) ? doc.slug.join('/') : doc.slug ? `/${doc.slug}` : '/'
+  const path = url || collectionPath || pagePath
+  const canonical = path.startsWith('http') ? path : path
 
   return {
-    description: doc?.meta?.description,
+    description,
     robots: siteRobotsMetadata,
+    alternates: {
+      canonical,
+    },
     openGraph: mergeOpenGraph({
-      description: doc?.meta?.description || '',
-      images: ogImage
-        ? [
-            {
-              url: ogImage,
-            },
-          ]
-        : undefined,
-      title,
-      url: url || collectionPath || pagePath,
+      description: description || '',
+      images: ogImage ? [{ url: ogImage }] : undefined,
+      title: branded,
+      url: canonical,
     }),
-    title,
+    twitter: {
+      card: 'summary_large_image',
+      title: branded,
+      description,
+      images: ogImage ? [ogImage] : undefined,
+    },
+    title: {
+      absolute: branded,
+    },
   }
 }

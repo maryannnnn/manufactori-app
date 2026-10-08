@@ -55,6 +55,7 @@ export const Services: CollectionConfig = {
     service_preview_title: true,
     service_preview_description: true,
     service_preview_image: true,
+    service_card_image: true,
     site_categories: true,
     meta: {
       image: true,
