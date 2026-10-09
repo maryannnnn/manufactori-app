@@ -6,6 +6,7 @@ import React from 'react'
 
 import { ArchiveSearch } from '@/components/ArchiveSearch'
 import { CollectionArchive } from '@/components/CollectionArchive'
+import { ContactStrip } from '@/components/ContactStrip'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import { BLOG_ARCHIVE_PATH } from '@/utilities/getContentUrls'
@@ -82,6 +83,8 @@ export default async function PostsArchivePage({ searchParams: searchParamsPromi
           placeholder="Search posts"
         />
       </div>
+
+      <ContactStrip className="mb-10 border-y" variant="blog" />
 
       {posts.totalDocs > 0 ? (
         <React.Fragment>

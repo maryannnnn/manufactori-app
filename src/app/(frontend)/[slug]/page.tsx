@@ -10,6 +10,7 @@ import { homeStatic } from '@/endpoints/seed/home-static'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { HtmlSitemap } from '@/components/HtmlSitemap'
 import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
 import { buildCmsPageGraph } from '@/utilities/jsonLd'
@@ -94,6 +95,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
+      {decodedSlug === 'sitemap' ? <HtmlSitemap /> : null}
     </article>
   )
 }

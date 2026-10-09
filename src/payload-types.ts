@@ -3548,6 +3548,17 @@ export interface Header {
  */
 export interface Footer {
   id: number;
+  /**
+   * Small footer icons. Paste a full URL, or a username / number / email. Leave a field empty to hide that icon. WhatsApp and phone fall back to the existing public contact number if left empty.
+   */
+  channels?: {
+    linkedin?: string | null;
+    facebook?: string | null;
+    whatsapp?: string | null;
+    telegram?: string | null;
+    email?: string | null;
+    phone?: string | null;
+  };
   navItems?:
     | {
         link: {
@@ -3626,6 +3637,16 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  channels?:
+    | T
+    | {
+        linkedin?: T;
+        facebook?: T;
+        whatsapp?: T;
+        telegram?: T;
+        email?: T;
+        phone?: T;
+      };
   navItems?:
     | T
     | {

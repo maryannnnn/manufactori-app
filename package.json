@@ -30,7 +30,8 @@
     "db:testimonials": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyTestimonialsSchema.ts",
     "db:category-seo": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyCategorySeoSchema.ts",
     "ensure:category-seo": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/ensureActiveCategorySeo.ts",
-    "db:company-logo-card-image": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyCompanyLogoAndServiceCardImageSchema.ts"
+    "db:company-logo-card-image": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyCompanyLogoAndServiceCardImageSchema.ts",
+    "db:footer-channels": "cross-env NODE_OPTIONS=--no-deprecation tsx --tsconfig tsconfig.json src/scripts/applyFooterChannelsSchema.ts"
   },
   "dependencies": {
     "@payloadcms/admin-bar": "3.86.0",

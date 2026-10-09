@@ -3,6 +3,7 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'paylo
 import { revalidatePath, revalidateTag } from 'next/cache'
 
 import { getServiceUrl } from '../../../utilities/getContentUrls'
+import { revalidateHtmlSitemap } from '../../../utilities/revalidateHtmlSitemap'
 
 type ServiceDoc = {
   id: number
@@ -43,6 +44,7 @@ export const revalidateService: CollectionAfterChangeHook<ServiceDoc> = ({
       safeRevalidatePath('/services')
       safeRevalidatePath('/')
       safeRevalidateTag('services-sitemap')
+      revalidateHtmlSitemap()
     }
 
     if (previousDoc._status === 'published' && doc._status !== 'published') {
@@ -54,6 +56,7 @@ export const revalidateService: CollectionAfterChangeHook<ServiceDoc> = ({
       safeRevalidatePath('/services')
       safeRevalidatePath('/')
       safeRevalidateTag('services-sitemap')
+      revalidateHtmlSitemap()
     }
   }
   return doc
@@ -69,6 +72,7 @@ export const revalidateServiceDelete: CollectionAfterDeleteHook<ServiceDoc> = ({
     safeRevalidatePath('/services')
     safeRevalidatePath('/')
     safeRevalidateTag('services-sitemap')
+    revalidateHtmlSitemap()
   }
   return doc
 }

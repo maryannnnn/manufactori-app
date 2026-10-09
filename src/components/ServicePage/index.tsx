@@ -10,6 +10,7 @@ import { CaseStudyCard } from '@/components/CaseStudyCard'
 import { CaseStudyTestimonial } from '@/components/CaseStudyPage/ClientTestimonial'
 import { FieldLabel } from '@/components/CaseStudyPage/Section'
 import { RichTextField } from '@/components/CaseStudyPage/RichTextField'
+import { ContactStrip } from '@/components/ContactStrip'
 import { Media } from '@/components/Media'
 import { ServiceCard } from '@/components/ServiceCard'
 import { getCaseStudyListPreview } from '@/utilities/getCaseStudyListPreview'
@@ -134,6 +135,8 @@ export const ServicePage: React.FC<Props> = ({ service }) => {
             </div>
           ) : null}
         </section>
+
+        <ContactStrip className="mb-10" contained={false} variant="service" />
 
         {situations.length > 0 ? (
           <Section id="situations" title="When this service is relevant">
@@ -284,6 +287,8 @@ export const ServicePage: React.FC<Props> = ({ service }) => {
             </div>
           </Section>
         ) : null}
+
+        <ContactStrip className="mb-10" contained={false} variant="serviceLower" />
 
         {siteCategories.length > 0 ? (
           <section aria-label="Taxonomy" className="border-t border-border pt-8 pb-4">

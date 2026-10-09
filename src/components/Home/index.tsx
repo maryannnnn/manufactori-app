@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { ContactStrip } from '@/components/ContactStrip'
 import { PaletteSelector } from '@/components/Landing/ComingSoon/PaletteSelector'
 import { HomeCaseStudies } from '@/components/Home/CaseStudies'
 import { HomeFinalCta } from '@/components/Home/FinalCta'
@@ -21,6 +22,7 @@ export const HomePageContent: React.FC<Props> = ({ data }) => {
     <main>
       <PaletteSelector compact />
       <HomeHero />
+      <ContactStrip variant="homeAfterHero" />
       <HomeProblems />
       <HomeServices services={data.services} />
       <HomeProcess />
@@ -28,6 +30,7 @@ export const HomePageContent: React.FC<Props> = ({ data }) => {
       <HomeFit />
       <HomeTestimonials items={data.testimonials} />
       <HomeInsights posts={data.posts} />
+      <ContactStrip variant="homeLower" />
       <HomeFinalCta />
     </main>
   )

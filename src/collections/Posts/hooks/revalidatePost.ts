@@ -4,6 +4,7 @@ import { revalidatePath, revalidateTag } from 'next/cache'
 
 import type { Post } from '../../../payload-types'
 import { getPostUrl } from '../../../utilities/getContentUrls'
+import { revalidateHtmlSitemap } from '../../../utilities/revalidateHtmlSitemap'
 
 const resolvePostPath = async (payload: Payload, doc: Post): Promise<string | null> => {
   const fromDoc = getPostUrl(doc)
@@ -43,6 +44,7 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = async ({
       revalidatePath('/')
       revalidatePath('/blog')
       revalidateTag('posts-sitemap', 'max')
+      revalidateHtmlSitemap()
     }
 
     if (previousDoc._status === 'published' && doc._status !== 'published') {
@@ -55,6 +57,7 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = async ({
       revalidatePath('/')
       revalidatePath('/blog')
       revalidateTag('posts-sitemap', 'max')
+      revalidateHtmlSitemap()
     }
   }
   return doc
@@ -73,6 +76,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<Post> = async ({
     revalidatePath('/')
     revalidatePath('/blog')
     revalidateTag('posts-sitemap', 'max')
+    revalidateHtmlSitemap()
   }
 
   return doc

@@ -3,9 +3,18 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
+import { A11Y_ATTR } from '@/components/AccessibilityWidget/prefs'
 import { Media } from '@/components/Media'
 import type { HomeTestimonial } from '@/utilities/getHomePageData'
 import { cn } from '@/utilities/ui'
+
+const scrollBehavior = (): ScrollBehavior => {
+  if (typeof window === 'undefined') return 'smooth'
+  const reduceMotion =
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    document.documentElement.hasAttribute(A11Y_ATTR.motion)
+  return reduceMotion ? 'auto' : 'smooth'
+}
 
 type Props = {
   items: HomeTestimonial[]
@@ -22,7 +31,7 @@ export const TestimonialCarousel: React.FC<Props> = ({ items, labelledBy }) => {
     if (!node) return
     const bounded = (next + items.length) % items.length
     const child = node.children[bounded] as HTMLElement | undefined
-    child?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+    child?.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest', inline: 'start' })
     setIndex(bounded)
   }, [items.length])
 

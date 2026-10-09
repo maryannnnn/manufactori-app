@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+import { ContactStrip } from '@/components/ContactStrip'
 import { PostTaxonomy } from '@/components/CaseStudyPage/CaseStudyTaxonomy'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { CollectionArchive } from '@/components/CollectionArchive'
@@ -310,6 +311,9 @@ async function renderPostPage(categorySlug: string | null, postSlug: string) {
         />
       </div>
       <RenderHero {...hero} />
+      <div className="container mt-8 mb-4">
+        <ContactStrip contained={false} variant="post" />
+      </div>
       {layout && layout.length > 0 && (
         <RenderBlocks blocks={layout as Parameters<typeof RenderBlocks>[0]['blocks']} />
       )}

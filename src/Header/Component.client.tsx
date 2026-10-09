@@ -49,6 +49,7 @@ export const HeaderClient: React.FC = () => {
       <div className="container">
         <div className="flex min-h-[4.5rem] items-center justify-between gap-4 py-3 lg:min-h-[5.5rem] lg:py-5">
           <Link
+            aria-label="Maryan Polyak Manufacturing Marketing Agency, home"
             className="min-w-0 shrink text-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
             href="/"
           >

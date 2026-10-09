@@ -38,8 +38,14 @@ export const ServiceCard: React.FC<Props> = ({
   const href = getServiceUrl(doc)
   const title = doc.service_preview_title || doc.title
   const description = doc.service_preview_description || doc.meta?.description
-  const image = doc.service_card_image
-  const hasImage = image && typeof image === 'object'
+  const image =
+    (doc.service_preview_image && typeof doc.service_preview_image === 'object'
+      ? doc.service_preview_image
+      : null) ||
+    (doc.service_card_image && typeof doc.service_card_image === 'object'
+      ? doc.service_card_image
+      : null)
+  const hasImage = Boolean(image)
   const compact = variant === 'compact'
 
   const inner = (

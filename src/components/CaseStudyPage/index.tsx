@@ -3,6 +3,7 @@ import React from 'react'
 import type { CaseStudy, CaseStudyPreviewBlock } from '@/payload-types'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { ContactStrip } from '@/components/ContactStrip'
 import { Media } from '@/components/Media'
 import { CASE_STUDIES_ARCHIVE_PATH, getCaseStudyCategoryUrl } from '@/utilities/getContentUrls'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
@@ -144,6 +145,8 @@ export const CaseStudyPage: React.FC<Props> = ({
           primaryCategory={caseStudy.primary_case_study_category}
         />
 
+        <ContactStrip className="mb-10" contained={false} variant="caseStudy" />
+
         {present.overview && (
           <CaseStudySection id="overview" title="Overview">
             {preview?.case_study_preview_title ? (
@@ -221,6 +224,7 @@ export const CaseStudyPage: React.FC<Props> = ({
       )}
 
       <div className="container">
+        <ContactStrip className="mb-10" contained={false} variant="caseStudyLower" />
         <CaseStudyTaxonomy case_study_categories={caseStudy.case_study_categories} />
       </div>
     </article>

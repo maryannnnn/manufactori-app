@@ -3,6 +3,8 @@ import React from 'react'
 
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
+import { FooterChannels } from '@/Footer/Channels'
+import { legalFooterLinks } from '@/Footer/legalLinks'
 import { headerCta, mainNavigation } from '@/Header/navigation'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { getCachedGlobal } from '@/utilities/getGlobals'
@@ -30,6 +32,7 @@ export async function Footer() {
           <p className="mt-4 text-sm leading-6 text-muted-foreground">
             Manufacturing marketing, SEO and digital growth for industrial companies.
           </p>
+          <FooterChannels channels={footerData?.channels} />
         </div>
 
         <div className="flex flex-col gap-6 md:items-end">
@@ -52,9 +55,22 @@ export async function Footer() {
         </div>
       </div>
       <div className="container border-t border-border py-6">
-        <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
-          © {year} Maryan Polyak
-        </p>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
+            © {year} Maryan Polyak
+          </p>
+          <nav aria-label="Legal" className="flex flex-wrap gap-x-5 gap-y-2">
+            {legalFooterLinks.map((item) => (
+              <Link
+                className="text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                href={item.href}
+                key={item.href}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </footer>
   )
