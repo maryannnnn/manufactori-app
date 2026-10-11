@@ -307,7 +307,7 @@ const DISCUSSION: DiscussionEntry[] = [
 
 const discussionBlock = () => ({
   blockType: 'csComments' as const,
-  case_study_comment_title: 'Expert Discussion: Laser Made',
+  case_study_comment_title: 'Comments',
   comments: DISCUSSION.map((entry) => ({
     author: entry.author,
     role: entry.role,

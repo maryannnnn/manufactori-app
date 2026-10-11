@@ -64,6 +64,11 @@ export type PaletteTokens = {
 
   // Surfaces
   surfaceStrong: string
+  /** Distinctive CTA mixed into the surface — hover tints, chips, soft fills. */
+  accentSoft: string
+  /** Second meaningful colour from the research set, when it is not a grey. */
+  accentSecondary: string
+  accentSecondaryForeground: string
 
   // Text
   main: string

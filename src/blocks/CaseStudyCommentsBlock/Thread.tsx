@@ -25,7 +25,7 @@ const MOBILE_VISIBLE_DEPTH = 2
 const DESKTOP_QUERY = '(min-width: 640px)'
 
 const controlClassName =
-  'rounded-[2px] font-mono text-[11px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+  'rounded-[2px] font-mono text-[11px] text-muted-foreground transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
 
 /**
  * Renders a discussion tree: light text blocks, a thin thread line, and
@@ -96,7 +96,7 @@ const CommentBody: React.FC<{ node: ThreadNode }> = ({ node }) => {
       <header className="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <span className="text-sm font-semibold text-foreground">{node.author}</span>
         {node.isExpert ? (
-          <span className="font-mono text-[10px] tracking-wide text-primary uppercase">Expert</span>
+          <span className="font-mono text-[10px] tracking-wide text-link uppercase">Expert</span>
         ) : null}
         {node.role ? (
           <>

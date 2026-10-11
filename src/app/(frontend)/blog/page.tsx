@@ -117,7 +117,7 @@ export default async function PostsArchivePage({ searchParams: searchParamsPromi
                 No posts match <span className="font-semibold">&ldquo;{search}&rdquo;</span>.
               </p>
               <Link
-                className="mt-4 inline-flex rounded-[2px] border border-border px-3 py-2 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="mt-4 inline-flex rounded-[2px] border border-border px-3 py-2 font-mono text-xs text-muted-foreground transition-colors hover:border-cta hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                 href={BLOG_ARCHIVE_PATH}
               >
                 Clear search

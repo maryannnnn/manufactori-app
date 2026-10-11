@@ -22,7 +22,7 @@ export const CaseStudyQuickNav: React.FC<Props> = ({ sections }) => {
     >
       {sections.map((id) => (
         <a
-          className="pointer-events-auto group flex items-center justify-end gap-2 font-mono text-[11px] text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary"
+          className="pointer-events-auto group flex items-center justify-end gap-2 font-mono text-[11px] text-muted-foreground transition-colors hover:text-link focus-visible:outline-none focus-visible:text-link"
           href={`#${id}`}
           key={id}
         >

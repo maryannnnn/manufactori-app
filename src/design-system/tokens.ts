@@ -44,6 +44,9 @@ export const resolvePaletteTokens = (palette: Palette): PaletteTokens => {
     body,
 
     surfaceStrong: mix(surface, main, 0.06),
+    accentSoft: mix(surface, cta, 0.16),
+    accentSecondary: secondary,
+    accentSecondaryForeground: onSecondary,
 
     main,
     heading,
@@ -121,6 +124,7 @@ export const auditPaletteContrast = (palette: Palette): ContrastReport[] => {
     ['borderStrong on surface', tokens.borderStrong, tokens.surface, UI_BOUNDARY],
     ['focusRing on body', tokens.focusRing, tokens.body, UI_BOUNDARY],
     ['focusRing on surface', tokens.focusRing, tokens.surface, UI_BOUNDARY],
+    ['onSecondary on accentSecondary', tokens.accentSecondaryForeground, tokens.accentSecondary, TEXT_AA],
   ]
 
   return checks.map(([pair, foreground, background, target]) => {

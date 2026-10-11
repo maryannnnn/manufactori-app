@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
+import { ctaButtonClassName } from '@/design-system/ctaClasses'
 import { headerCta } from '@/Header/navigation'
 
 export const HomeFinalCta: React.FC = () => {
@@ -14,10 +15,7 @@ export const HomeFinalCta: React.FC = () => {
           Let&apos;s look at your website, search visibility and current marketing system and
           identify where the biggest opportunities are.
         </p>
-        <Link
-          className="mt-8 inline-flex min-h-11 items-center rounded-[2px] bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          href={headerCta.href}
-        >
+        <Link className={`mt-8 ${ctaButtonClassName}`} href={headerCta.href}>
           {headerCta.label}
         </Link>
       </div>

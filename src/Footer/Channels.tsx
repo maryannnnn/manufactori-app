@@ -24,7 +24,7 @@ const ICONS: Record<FooterChannelLink['id'], React.FC> = {
 }
 
 const linkClassName =
-  'inline-flex size-8 items-center justify-center rounded-[2px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+  'inline-flex size-8 items-center justify-center rounded-[2px] text-muted-foreground transition-colors hover:bg-accent-soft hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
 
 export const FooterChannels: React.FC<{ channels?: FooterChannelValues | null }> = ({ channels }) => {
   const links = resolveFooterChannels(channels)

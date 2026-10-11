@@ -136,7 +136,7 @@ export const AccessibilityWidget: React.FC = () => {
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label="Open accessibility settings"
-        className="a11y-widget__launch inline-flex size-11 items-center justify-center rounded-[2px] border border-border bg-card text-foreground shadow-sm transition-colors hover:border-foreground/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="a11y-widget__launch inline-flex size-11 items-center justify-center rounded-[2px] border-2 border-cta bg-cta text-on-cta shadow-sm transition-colors hover:bg-cta-hover hover:border-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
         onClick={() => setOpen(true)}
         ref={launchRef}
         title="Accessibility settings"
@@ -150,6 +150,7 @@ export const AccessibilityWidget: React.FC = () => {
         className="a11y-widget__panel"
         ref={dialogRef}
       >
+        <div aria-hidden className="h-1 bg-cta" />
         <div className="flex items-start justify-between gap-3 border-b border-border px-4 py-3">
           <h2 className="text-base font-semibold tracking-tight" id={headingId}>
             Accessibility Settings
@@ -227,7 +228,7 @@ export const AccessibilityWidget: React.FC = () => {
                       </span>
                       <input
                         checked={checked}
-                        className="size-5 shrink-0 accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        className="size-5 shrink-0 accent-cta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                         id={controlId}
                         onChange={(event) => setToggle(item.key, event.target.checked, item.label)}
                         type="checkbox"

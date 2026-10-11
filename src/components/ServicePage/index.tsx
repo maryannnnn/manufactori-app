@@ -200,7 +200,7 @@ export const ServicePage: React.FC<Props> = ({ service }) => {
             <RichTextField label="Next step" value={offer?.nextStep} />
             {offer?.ctaLabel && offer?.ctaUrl ? (
               <Link
-                className="mt-6 inline-flex rounded-[2px] border border-foreground bg-foreground px-4 py-2 text-sm text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="mt-6 inline-flex min-h-11 items-center rounded-[2px] bg-cta px-4 py-2 text-sm font-medium text-on-cta transition-colors hover:bg-cta-hover active:bg-cta-active focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                 href={offer.ctaUrl}
               >
                 {offer.ctaLabel}

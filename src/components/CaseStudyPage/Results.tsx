@@ -64,7 +64,7 @@ const ShowcaseItem: React.FC<{
   if (project.url) {
     return (
       <Link
-        className={`${className} hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+        className={`${className} hover:border-cta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring`}
         href={project.url}
       >
         {body}

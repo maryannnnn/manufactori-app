@@ -33,7 +33,7 @@ export const CaseStudyChallenge: React.FC<Props> = ({ challenge }) => {
             className="relative md:pr-6 md:after:absolute md:after:top-[9px] md:after:right-0 md:after:h-px md:after:w-6 md:after:bg-border md:last:after:hidden"
             key={label}
           >
-            <div aria-hidden className="mb-3.5 h-2 w-2 rounded-full bg-primary" />
+            <div aria-hidden className="mb-3.5 h-2 w-2 rounded-full bg-cta" />
             <FieldLabel>{`0${index + 1} — ${label}`}</FieldLabel>
             <RichTextField className="[&_p]:text-sm [&_p]:text-foreground" value={value} />
           </div>

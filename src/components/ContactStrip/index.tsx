@@ -15,7 +15,7 @@ type Props = {
 }
 
 const buttonClassName =
-  'inline-flex min-h-11 min-w-[9.5rem] flex-1 items-center justify-center gap-2 rounded-[2px] border border-border bg-background px-3.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:flex-none'
+  'inline-flex min-h-11 min-w-[9.5rem] flex-1 items-center justify-center gap-2 rounded-[2px] border border-border bg-background px-3.5 text-sm font-medium text-foreground transition-colors hover:border-cta hover:bg-accent-soft hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring sm:flex-none'
 
 const WhatsAppIcon: React.FC = () => (
   <svg aria-hidden className="size-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">

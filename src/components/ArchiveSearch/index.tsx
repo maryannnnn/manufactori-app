@@ -69,7 +69,7 @@ export const ArchiveSearch: React.FC<Props> = ({
       />
       {value ? (
         <button
-          className="h-11 shrink-0 rounded-[2px] border border-border px-3 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:h-9"
+          className="h-11 shrink-0 rounded-[2px] border border-border px-3 font-mono text-xs text-muted-foreground transition-colors hover:border-cta hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring sm:h-9"
           onClick={() => setValue('')}
           type="button"
         >

@@ -329,7 +329,7 @@ const faqBlock = () => ({
 
 const discussionBlock = () => ({
   blockType: 'csComments' as const,
-  case_study_comment_title: 'Expert Discussion: Vimpel Engineering',
+  case_study_comment_title: 'Comments',
   comments: DISCUSSION.map((entry) => ({
     author: entry.author,
     role: entry.role,

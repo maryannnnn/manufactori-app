@@ -54,6 +54,7 @@ export const ServiceCard: React.FC<Props> = ({
         hasImage ? (
           <div className="relative mx-5 mt-5 size-14 overflow-hidden rounded-[2px] bg-accent">
             <Media
+              className="h-full w-full"
               fill
               imgClassName="h-full w-full object-cover"
               resource={image}
@@ -65,6 +66,7 @@ export const ServiceCard: React.FC<Props> = ({
         <div className="relative aspect-[4/3] overflow-hidden bg-accent">
           {hasImage ? (
             <Media
+              className="h-full w-full"
               fill
               imgClassName="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
               resource={image}
@@ -79,7 +81,7 @@ export const ServiceCard: React.FC<Props> = ({
           <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{description}</p>
         ) : null}
         {ctaLabel ? (
-          <span className="mt-auto pt-4 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground group-hover:text-foreground">
+          <span className="mt-auto pt-4 font-mono text-xs uppercase tracking-[0.16em] text-link group-hover:text-link-hover">
             {ctaLabel}
           </span>
         ) : null}
@@ -96,7 +98,7 @@ export const ServiceCard: React.FC<Props> = ({
 
   return (
     <Link
-      className={cn(classNames, 'transition-colors hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring')}
+      className={cn(classNames, 'transition-colors hover:border-cta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring')}
       href={href}
     >
       {inner}

@@ -22,7 +22,7 @@ export const CaseStudyCommentsBlock: Block = {
       type: 'text',
       label: 'Case Study Comment Title',
       admin: {
-        description: 'Section heading. Falls back to "Discussion" when empty.',
+        description: 'Admin label only. The public heading is always "Comments".',
       },
     },
     {

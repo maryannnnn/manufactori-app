@@ -32,7 +32,7 @@ export const HomeCaseStudies: React.FC<Props> = ({ docs }) => {
           ))}
         </div>
         <Link
-          className="mt-8 inline-flex font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="mt-8 inline-flex font-mono text-xs uppercase tracking-[0.18em] text-link transition-colors hover:text-link-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
           href={CASE_STUDIES_ARCHIVE_PATH}
         >
           View all case studies

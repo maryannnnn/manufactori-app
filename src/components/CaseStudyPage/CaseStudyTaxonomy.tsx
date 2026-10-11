@@ -45,7 +45,7 @@ export const TaxonomyChips: React.FC<TaxonomyChipsProps> = ({ groups, labelledBy
                   <li key={`${title}-${index}`}>
                     {href ? (
                       <Link
-                        className="inline-flex rounded-[2px] border border-border px-2.5 py-1 font-mono text-[11.5px] text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        className="inline-flex rounded-[2px] border border-border px-2.5 py-1 font-mono text-[11.5px] text-muted-foreground transition-colors hover:border-cta hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                         href={href}
                       >
                         {title}

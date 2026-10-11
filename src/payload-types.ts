@@ -534,10 +534,38 @@ export interface PostGalleryBlock {
  * via the `definition` "PostCommentsBlock".
  */
 export interface PostCommentsBlock {
+  /**
+   * Admin label only. The public heading is always "Comments".
+   */
   postCommentTitle?: string | null;
+  /**
+   * Optional lead-in above the thread. Individual entries go in Discussion.
+   */
   postCommentText?: {
     [k: string]: unknown;
   } | null;
+  comments?:
+    | {
+        author: string;
+        /**
+         * Job title or industry perspective.
+         */
+        role?: string | null;
+        date?: string | null;
+        /**
+         * Parent/reply relationship: 0 is a new top-level branch. Depth N replies to the nearest preceding comment at depth N-1.
+         */
+        depth?: number | null;
+        /**
+         * Marks the entry as an answer from Maryan Polyak.
+         */
+        isExpert?: boolean | null;
+        body: {
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'postCommentsBlock';
@@ -1396,7 +1424,7 @@ export interface CaseStudyGalleryBlock {
  */
 export interface CaseStudyCommentsBlock {
   /**
-   * Section heading. Falls back to "Discussion" when empty.
+   * Admin label only. The public heading is always "Comments".
    */
   case_study_comment_title?: string | null;
   /**
@@ -1802,7 +1830,7 @@ export interface ServiceGalleryBlock {
  */
 export interface ServiceCommentsBlock {
   /**
-   * Section heading. Falls back to "Discussion" when empty.
+   * Admin label only. The public heading is always "Comments".
    */
   service_comment_title?: string | null;
   service_comment_text?: {
@@ -2524,6 +2552,17 @@ export interface PostGalleryBlockSelect<T extends boolean = true> {
 export interface PostCommentsBlockSelect<T extends boolean = true> {
   postCommentTitle?: T;
   postCommentText?: T;
+  comments?:
+    | T
+    | {
+        author?: T;
+        role?: T;
+        date?: T;
+        depth?: T;
+        isExpert?: T;
+        body?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

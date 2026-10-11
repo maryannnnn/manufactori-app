@@ -46,7 +46,7 @@ export const PaletteSelector: React.FC<{ compact?: boolean }> = ({ compact = fal
                     'flex w-full items-center gap-3 rounded-md border px-3 py-2 text-left transition-colors',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring',
                     isActive
-                      ? 'border-border-strong bg-body'
+                      ? 'border-cta bg-body'
                       : 'border-default bg-body/60 hover:bg-body',
                   )}
                   onClick={() => setPaletteId(palette.id)}

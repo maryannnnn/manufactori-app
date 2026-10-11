@@ -108,7 +108,7 @@
   --secondary-foreground: var(--ds-on-secondary);
   --muted: var(--ds-surface);
   --muted-foreground: var(--ds-muted);
-  --accent: var(--ds-surface-strong);
+  --accent: var(--ds-accent-soft);
   --accent-foreground: var(--ds-on-surface);
   --destructive: oklch(57.7% 0.245 27.325deg);
   --destructive-foreground: oklch(57.7% 0.245 27.325deg);
@@ -147,13 +147,13 @@
   --secondary-foreground: oklch(98.5% 0 0deg);
   --muted: oklch(26.9% 0 0deg);
   --muted-foreground: oklch(70.8% 0 0deg);
-  --accent: oklch(26.9% 0 0deg);
+  --accent: color-mix(in oklab, var(--ds-cta) 22%, #1c1c1c);
   --accent-foreground: oklch(98.5% 0 0deg);
   --destructive: oklch(39.6% 0.141 25.723deg);
   --destructive-foreground: oklch(63.7% 0.237 25.331deg);
   --border: oklch(26.9% 0 0deg);
   --input: oklch(26.9% 0 0deg);
-  --ring: oklch(43.9% 0 0deg);
+  --ring: var(--ds-focus-ring);
   --chart-1: oklch(48.8% 0.243 264.376deg);
   --chart-2: oklch(69.6% 0.17 162.48deg);
   --chart-3: oklch(76.9% 0.188 70.08deg);
@@ -182,6 +182,9 @@
   --color-cta-hover: var(--ds-cta-hover);
   --color-cta-active: var(--ds-cta-active);
   --color-on-cta: var(--ds-on-cta);
+  --color-accent-soft: var(--ds-accent-soft);
+  --color-accent-secondary: var(--ds-accent-secondary);
+  --color-accent-secondary-foreground: var(--ds-accent-secondary-foreground);
   --color-primary-hover: var(--ds-primary-hover);
   --color-primary-active: var(--ds-primary-active);
   --color-on-primary: var(--ds-on-primary);

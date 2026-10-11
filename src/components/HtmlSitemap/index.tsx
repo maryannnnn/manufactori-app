@@ -4,7 +4,7 @@ import React from 'react'
 import { getHtmlSitemapData, type HtmlSitemapLink } from '@/utilities/getHtmlSitemapData'
 
 const linkClassName =
-  'text-base text-foreground underline-offset-4 transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+  'text-base text-foreground underline-offset-4 transition-colors hover:text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
 
 const SitemapSection = ({
   heading,

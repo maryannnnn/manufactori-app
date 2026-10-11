@@ -87,7 +87,7 @@ export const MobileNav: React.FC = () => {
             ))}
             <li className="pt-4">
               <Link
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-[2px] bg-primary px-4 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-[2px] bg-cta px-4 text-base font-medium text-on-cta transition-colors hover:bg-cta-hover active:bg-cta-active focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                 href={headerCta.href}
               >
                 {headerCta.label}

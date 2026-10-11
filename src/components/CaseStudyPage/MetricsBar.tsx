@@ -18,7 +18,7 @@ export const CaseStudyMetrics: React.FC<Props> = ({ metrics }) => {
       <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
         {metrics.map((metric, index) => (
           <div className="bg-card p-5" key={metric.id ?? index}>
-            <div className="font-mono text-[clamp(1.6rem,3vw,2.25rem)] leading-tight font-semibold tabular-nums text-primary">
+            <div className="font-mono text-[clamp(1.6rem,3vw,2.25rem)] leading-tight font-semibold tabular-nums text-link">
               {metric.value}
             </div>
             <div className="mt-1 text-sm font-semibold text-foreground">{metric.label}</div>

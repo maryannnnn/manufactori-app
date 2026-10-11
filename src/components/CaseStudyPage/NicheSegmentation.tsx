@@ -60,8 +60,8 @@ export const CaseStudyNiches: React.FC<Props> = ({ niches }) => {
                   'shrink-0 rounded-[2px] border px-3.5 py-2.5 text-left text-sm font-medium whitespace-nowrap transition-colors',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:whitespace-normal',
                   isActive
-                    ? 'border-foreground/40 bg-accent text-foreground'
-                    : 'border-border bg-card text-muted-foreground hover:text-foreground',
+                    ? 'border-cta bg-accent-soft text-foreground'
+                    : 'border-border bg-card text-muted-foreground hover:text-link',
                 )}
                 id={`${baseId}-tab-${index}`}
                 key={niche.name}

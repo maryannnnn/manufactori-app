@@ -77,7 +77,7 @@ export const CaseStudyCard: React.FC<Props> = ({
 
       <div className="flex flex-1 flex-col gap-2 p-5">
         {showCategory && category ? (
-          <div className="font-mono text-[11px] text-muted-foreground">{category}</div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-link">{category}</div>
         ) : null}
 
         {heading ? (
@@ -91,7 +91,7 @@ export const CaseStudyCard: React.FC<Props> = ({
         ) : null}
 
         {ctaLabel ? (
-          <span className="mt-auto pt-3 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground group-hover:text-foreground">
+          <span className="mt-auto pt-3 font-mono text-xs uppercase tracking-[0.16em] text-link group-hover:text-link-hover">
             {ctaLabel}
           </span>
         ) : null}
@@ -112,7 +112,7 @@ export const CaseStudyCard: React.FC<Props> = ({
   return (
     <article className={shell}>
       <Link
-        className="flex h-full flex-col transition-colors hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="flex h-full flex-col transition-colors hover:border-cta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
         href={href}
       >
         {body}

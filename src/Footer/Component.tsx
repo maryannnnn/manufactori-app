@@ -39,11 +39,11 @@ export async function Footer() {
           <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-3">
             {cmsItems.length > 0
               ? cmsItems.map(({ link }, index) => (
-                  <CMSLink className="text-sm text-muted-foreground" key={index} {...link} />
+                  <CMSLink className="text-sm text-muted-foreground hover:text-link" key={index} {...link} />
                 ))
               : fallbackLinks.map((item) => (
                   <Link
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="text-sm text-muted-foreground transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                     href={item.href}
                     key={item.href}
                   >
@@ -62,7 +62,7 @@ export async function Footer() {
           <nav aria-label="Legal" className="flex flex-wrap gap-x-5 gap-y-2">
             {legalFooterLinks.map((item) => (
               <Link
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="text-xs text-muted-foreground transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                 href={item.href}
                 key={item.href}
               >

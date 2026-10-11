@@ -130,7 +130,7 @@ export const TestimonialCarousel: React.FC<Props> = ({ items, labelledBy }) => {
                 aria-label={`Go to testimonial ${itemIndex + 1}`}
                 className={cn(
                   'size-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                  itemIndex === index ? 'bg-foreground' : 'bg-border',
+                  itemIndex === index ? 'bg-cta' : 'bg-border',
                 )}
                 key={item.id}
                 onClick={() => goTo(itemIndex)}

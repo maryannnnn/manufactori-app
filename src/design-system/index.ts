@@ -5,6 +5,7 @@
  * border-default, ...) and only reach for these exports when they need palette
  * metadata, such as the research panel and the palette selector.
  */
+export { ctaButtonClassName } from './ctaClasses'
 export { InitPalette } from './InitPalette'
 export { PaletteProvider, usePalette } from './PaletteProvider'
 export type { PaletteContextValue } from './PaletteProvider'

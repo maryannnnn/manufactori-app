@@ -35,7 +35,7 @@ const Tag: React.FC<{ children: React.ReactNode; href?: string | null }> = ({ ch
   if (href) {
     return (
       <Link
-        className={`${className} transition-colors hover:border-foreground/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+        className={`${className} transition-colors hover:border-cta hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring`}
         href={href}
       >
         {children}
@@ -72,6 +72,7 @@ export const CaseStudyHero: React.FC<Props> = ({
             imgClassName="h-auto max-h-[var(--case-study-logo-max-height,3.5rem)] w-auto max-w-[var(--case-study-logo-max-width,12rem)] object-contain object-left"
             pictureClassName="inline-flex max-h-[var(--case-study-logo-max-height,3.5rem)] max-w-[var(--case-study-logo-max-width,12rem)]"
             resource={logo}
+            showWatermark={false}
             size="256px"
           />
         </div>

@@ -65,7 +65,7 @@ export default async function ServicesArchivePage() {
               return (
                 <li key={doc.slug ?? doc.title}>
                   <Link
-                    className="block py-3 text-base text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="block py-3 text-base text-foreground transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                     href={href}
                   >
                     {label}

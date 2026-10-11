@@ -53,7 +53,7 @@ export const Accordion: React.FC<Props> = ({
               <button
                 aria-controls={panelId}
                 aria-expanded={isOpen}
-                className="flex w-full items-center justify-between gap-3 py-4 text-left text-[15px] font-semibold text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="flex w-full items-center justify-between gap-3 py-4 text-left text-[15px] font-semibold text-foreground transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                 id={`${panelId}-trigger`}
                 onClick={() => setOpenKey(isOpen ? null : item.key)}
                 type="button"

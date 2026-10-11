@@ -67,7 +67,7 @@ and anything whose answer is not in the source.
 
 Produce **about 25** entries in the `csComments` block:
 
-- `case_study_comment_title`: `Expert Discussion: {Client}`.
+- `case_study_comment_title`: `Comments`. The public heading is always Comments.
 - `comments[]`: `author`, `role`, `date`, `depth`, `isExpert`, `body` (rich text).
 
 The list is stored flat, but it must be a **real tree**. `depth` is the parent/reply
