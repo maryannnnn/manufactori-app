@@ -102,8 +102,9 @@ export default async function PostsArchivePage({ searchParams: searchParamsPromi
           {posts.totalPages > 1 && (
             <div className="container">
               <Pagination
-                buildPageUrl={(pageNumber) => buildArchiveUrl(pageNumber, search)}
+                basePath={BLOG_ARCHIVE_PATH}
                 page={posts.page}
+                search={search}
                 totalPages={posts.totalPages}
               />
             </div>

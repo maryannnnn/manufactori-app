@@ -94,17 +94,26 @@ const upsertMedia = async (
 }
 
 const insertGallery = (
-  layout: Array<{ blockType?: string }>,
+  layout: Array<{ blockType?: string; case_study_gallery_title?: string | null }>,
   block: {
     blockType: 'csGallery'
     case_study_gallery_title: string
     case_study_gallery_images: number[]
   },
 ) => {
-  const without = layout.filter((item) => item.blockType !== 'csGallery')
-  const index = without.findIndex((item) => item.blockType && TRAILING.has(item.blockType))
-  if (index === -1) return [...without, block]
-  return [...without.slice(0, index), block, ...without.slice(index)]
+  const existing = layout.findIndex(
+    (item) =>
+      item.blockType === 'csGallery' && item.case_study_gallery_title === block.case_study_gallery_title,
+  )
+  if (existing >= 0) {
+    const next = [...layout]
+    next[existing] = { ...layout[existing], ...block }
+    return next
+  }
+
+  const index = layout.findIndex((item) => item.blockType && TRAILING.has(item.blockType))
+  if (index === -1) return [...layout, block]
+  return [...layout.slice(0, index), block, ...layout.slice(index)]
 }
 
 const main = async () => {

@@ -13,13 +13,15 @@ export const CaseStudyGalleryBlock: React.FC<Props> = ({
   case_study_gallery_title,
   id,
 }) => {
+  const heading = case_study_gallery_title?.trim()
+
   return (
     <MediaGallery
-      fallbackTitle={FALLBACK_TITLE}
+      fallbackTitle={heading ? FALLBACK_TITLE : null}
       headingId={id ? `case-study-gallery-${id}` : 'case-study-gallery'}
       images={case_study_gallery_images}
       showWatermark
-      title={case_study_gallery_title}
+      title={heading || null}
     />
   )
 }

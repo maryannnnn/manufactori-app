@@ -64,13 +64,13 @@ export const CaseStudyHero: React.FC<Props> = ({
     <section className="pt-2 pb-10">
       {logo ? (
         <div
-          className="mb-6 flex max-h-[var(--case-study-logo-max-height,3.5rem)] max-w-[var(--case-study-logo-max-width,12rem)] items-center"
+          className="mb-6 flex max-h-[var(--case-study-logo-max-height,3.5rem)] max-w-[min(100%,var(--case-study-logo-max-width,20rem))] items-center"
           data-company-logo
         >
           <Media
             htmlElement={null}
-            imgClassName="h-auto max-h-[var(--case-study-logo-max-height,3.5rem)] w-auto max-w-[var(--case-study-logo-max-width,12rem)] object-contain object-left"
-            pictureClassName="inline-flex max-h-[var(--case-study-logo-max-height,3.5rem)] max-w-[var(--case-study-logo-max-width,12rem)]"
+            imgClassName="h-auto max-h-[var(--case-study-logo-max-height,3.5rem)] w-auto max-w-[min(100%,var(--case-study-logo-max-width,20rem))] object-contain object-left"
+            pictureClassName="inline-flex max-h-[var(--case-study-logo-max-height,3.5rem)] max-w-[min(100%,var(--case-study-logo-max-width,20rem))]"
             resource={logo}
             showWatermark={false}
             size="256px"

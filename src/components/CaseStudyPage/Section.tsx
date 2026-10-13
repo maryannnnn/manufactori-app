@@ -17,7 +17,11 @@ type Props = {
  */
 export const CaseStudySection: React.FC<Props> = ({ children, className, id, title }) => {
   return (
-    <section aria-labelledby={`${id}-heading`} className={cn('scroll-mt-24 pb-16', className)} id={id}>
+    <section
+      aria-labelledby={`${id}-heading`}
+      className={cn('min-w-0 max-w-full scroll-mt-24 pb-16', className)}
+      id={id}
+    >
       <h2
         className="mb-6 border-b border-border pb-3 font-mono text-[13px] font-medium text-muted-foreground"
         id={`${id}-heading`}

@@ -121,7 +121,7 @@ export const CaseStudyPage: React.FC<Props> = ({
   const navSections = CASE_STUDY_SECTION_ORDER.filter((id) => present[id])
 
   return (
-    <article className="pb-16">
+    <article className="min-w-0 pb-16">
       <CaseStudyQuickNav sections={navSections} />
 
       <div className="container">
@@ -138,7 +138,7 @@ export const CaseStudyPage: React.FC<Props> = ({
         />
 
         <CaseStudyHero
-          companyLogo={caseStudy.company_logo}
+          companyLogo={hasOverview ? null : caseStudy.company_logo}
           duration={duration}
           heading={heading}
           hero={hero}
@@ -149,12 +149,11 @@ export const CaseStudyPage: React.FC<Props> = ({
 
         {present.overview && (
           <CaseStudySection id="overview" title="Overview">
-            {preview?.case_study_preview_title ? (
-              <h3 className="mb-3 text-xl font-semibold tracking-tight text-foreground">
-                {preview.case_study_preview_title}
-              </h3>
-            ) : null}
-            <RichTextField className="max-w-[70ch]" value={preview?.case_study_preview_text} />
+            <OverviewIntro
+              companyLogo={caseStudy.company_logo}
+              previewText={preview?.case_study_preview_text}
+              previewTitle={preview?.case_study_preview_title}
+            />
             {previewImage && typeof previewImage === 'object' ? (
               <div className="mt-6 max-w-full">
                 <Media
@@ -232,6 +231,44 @@ export const CaseStudyPage: React.FC<Props> = ({
 }
 
 const hasAnyRichText = (values: unknown[]): boolean => values.some(hasRichTextContent)
+
+const LOGO_MAX_H = 'max-h-[var(--case-study-logo-max-height,3.5rem)]'
+const LOGO_MAX_W = 'max-w-[min(100%,var(--case-study-logo-max-width,20rem))]'
+
+const OverviewIntro: React.FC<{
+  companyLogo?: CaseStudy['company_logo']
+  previewText?: CaseStudyPreviewBlock['case_study_preview_text']
+  previewTitle?: string | null
+}> = ({ companyLogo, previewText, previewTitle }) => {
+  const logo = companyLogo && typeof companyLogo === 'object' ? companyLogo : null
+
+  return (
+    <div className={logo ? 'flex min-w-0 flex-col gap-5 sm:flex-row sm:items-start sm:gap-6' : undefined}>
+      {logo ? (
+        <div
+          className={`flex shrink-0 items-center ${LOGO_MAX_H} ${LOGO_MAX_W}`}
+          data-company-logo
+        >
+          <Media
+            alt={logo.alt?.trim() || 'Client logo'}
+            htmlElement={null}
+            imgClassName={`h-auto w-auto object-contain object-left ${LOGO_MAX_H} ${LOGO_MAX_W}`}
+            pictureClassName={`inline-flex ${LOGO_MAX_H} ${LOGO_MAX_W}`}
+            resource={logo}
+            showWatermark={false}
+            size="320px"
+          />
+        </div>
+      ) : null}
+      <div className="min-w-0">
+        {previewTitle ? (
+          <h3 className="mb-3 text-xl font-semibold tracking-tight text-foreground">{previewTitle}</h3>
+        ) : null}
+        <RichTextField className="max-w-[70ch]" value={previewText} />
+      </div>
+    </div>
+  )
+}
 
 /**
  * Flattens the Marketing Strategy group, its per-channel arrays and the AI

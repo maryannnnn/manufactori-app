@@ -101,8 +101,9 @@ export default async function CaseStudiesPage({ searchParams: searchParamsPromis
           {caseStudies.totalPages > 1 && (
             <div className="container">
               <Pagination
-                buildPageUrl={(pageNumber) => buildArchiveUrl(pageNumber, search)}
+                basePath={CASE_STUDIES_ARCHIVE_PATH}
                 page={caseStudies.page}
+                search={search}
                 totalPages={caseStudies.totalPages}
               />
             </div>

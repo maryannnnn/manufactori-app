@@ -18,7 +18,7 @@ type Props = {
 /**
  * One production capability, several commercial directions. The selector is the
  * centrepiece of the case study, so it stays a real control: a vertical list on
- * desktop, a horizontally scrollable row of the same buttons on mobile.
+ * desktop, and the same buttons wrapping to the available width on mobile.
  */
 export const CaseStudyNiches: React.FC<Props> = ({ niches }) => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -39,13 +39,13 @@ export const CaseStudyNiches: React.FC<Props> = ({ niches }) => {
   if (!active) return null
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(200px,260px)_1fr] lg:gap-9">
-      <div>
+    <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(200px,260px)_1fr] lg:gap-9">
+      <div className="min-w-0 max-w-full">
         <NicheBranches count={niches.length} />
 
         <div
           aria-label="Commercial directions"
-          className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:mx-0 lg:mt-4 lg:flex-col lg:overflow-visible lg:px-0"
+          className="flex min-w-0 max-w-full flex-wrap gap-2 lg:mt-4 lg:flex-col lg:flex-nowrap"
           onKeyDown={handleKeyDown}
           role="tablist"
         >
@@ -57,8 +57,8 @@ export const CaseStudyNiches: React.FC<Props> = ({ niches }) => {
                 aria-controls={`${baseId}-panel`}
                 aria-selected={isActive}
                 className={cn(
-                  'shrink-0 rounded-[2px] border px-3.5 py-2.5 text-left text-sm font-medium whitespace-nowrap transition-colors',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:whitespace-normal',
+                  'max-w-full rounded-[2px] border px-3.5 py-2.5 text-left text-sm font-medium whitespace-normal transition-colors',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                   isActive
                     ? 'border-cta bg-accent-soft text-foreground'
                     : 'border-border bg-card text-muted-foreground hover:text-link',
@@ -79,13 +79,15 @@ export const CaseStudyNiches: React.FC<Props> = ({ niches }) => {
 
       <div
         aria-labelledby={`${baseId}-tab-${activeIndex}`}
-        className="rounded-[2px] border border-border bg-card p-6 md:p-8"
+        className="min-w-0 max-w-full rounded-[2px] border border-border bg-card p-6 md:p-8"
         id={`${baseId}-panel`}
         role="tabpanel"
       >
-        <h3 className="text-xl font-semibold tracking-tight text-foreground">{active.name}</h3>
+        <h3 className="max-w-full text-xl font-semibold tracking-tight break-words text-foreground">
+          {active.name}
+        </h3>
 
-        <div className="mt-5 space-y-5">
+        <div className="mt-5 max-w-full space-y-5 break-words">
           {active.description}
           {active.marketingApproach}
         </div>
