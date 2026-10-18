@@ -35,8 +35,10 @@ Collection fields: `title`, `case_study_long_title`, `slug`, `featured`,
 `clientTestimonial`, `hero`, `meta`.
 
 Taxonomy: `primary_case_study_category` (drives the URL) plus
-`case_study_categories`. **Do not set `site_categories`** — it belongs to the hidden
-site-wide taxonomy and is not editorial case study categorization.
+`case_study_categories`. Also set `site_categories` to the Site Category nodes
+with the same slugs. The trees are parallel copies; this is the hidden shared
+structure, not a second editorial choice and not a public label. Do not invent
+site-category titles that are not already on the case study.
 
 `layout` blocks, in order: `csPreview`, then the narrative as alternating
 `csContentTitle` / `csContent` pairs, then `csFAQ`, then `csComments`, then `cta`.

@@ -9,6 +9,7 @@ import {
   PALETTES,
   PALETTE_ATTRIBUTE,
   PALETTE_STORAGE_KEY,
+  SHOW_PALETTE_SELECTOR,
   getPalette,
   isPaletteId,
 } from './palettes'
@@ -55,6 +56,12 @@ export const PaletteProvider = ({ children }: { children: React.ReactNode }) => 
   const [paletteId, setPaletteIdState] = useState<PaletteId>(DEFAULT_PALETTE_ID)
 
   useEffect(() => {
+    if (!SHOW_PALETTE_SELECTOR) {
+      document.documentElement.setAttribute(PALETTE_ATTRIBUTE, DEFAULT_PALETTE_ID)
+      setPaletteIdState(DEFAULT_PALETTE_ID)
+      return
+    }
+
     const resolved = readStoredPaletteId() ?? DEFAULT_PALETTE_ID
     document.documentElement.setAttribute(PALETTE_ATTRIBUTE, resolved)
     setPaletteIdState(resolved)

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+import { RelatedSiteContent } from '@/components/RelatedSiteContent'
 import { ContactStrip } from '@/components/ContactStrip'
 import { PostTaxonomy } from '@/components/CaseStudyPage/CaseStudyTaxonomy'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
@@ -332,6 +333,7 @@ async function renderPostPage(categorySlug: string | null, postSlug: string) {
           </div>
         </div>
       )}
+      <RelatedSiteContent mode="case-studies" siteCategories={post.site_categories} />
     </article>
   )
 }

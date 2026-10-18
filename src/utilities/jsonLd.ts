@@ -4,6 +4,7 @@ import { resolveMediaSource } from './getMediaUrl'
 import {
   BLOG_ARCHIVE_PATH,
   CASE_STUDIES_ARCHIVE_PATH,
+  CLIENTS_PATH,
   getCaseStudyCategoryUrl,
   getCaseStudyUrl,
   getCategoryUrl,
@@ -427,6 +428,12 @@ export const serviceArchiveBreadcrumbs = (): BreadcrumbItem[] => [
 export const caseStudyArchiveBreadcrumbs = (): BreadcrumbItem[] => [
   { name: 'Home', path: '/' },
   { name: 'Case Studies', path: CASE_STUDIES_ARCHIVE_PATH },
+]
+
+export const clientsBreadcrumbs = (): BreadcrumbItem[] => [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Clients', path: CLIENTS_PATH },
 ]
 
 export const blogArchiveBreadcrumbs = (): BreadcrumbItem[] => [

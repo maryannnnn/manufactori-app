@@ -8,7 +8,13 @@ import type { CaseStudyCardData } from '@/components/CaseStudyCard'
 import { getCaseStudyListPreview } from './getCaseStudyListPreview'
 
 /** Single source of truth for the Case Studies archive page size. */
-export const CASE_STUDIES_PAGE_SIZE = 9
+export const CASE_STUDIES_PAGE_SIZE = 18
+
+/**
+ * Case Studies archive order: featured first, then display order (lower first),
+ * then newest. The Clients page uses this same list.
+ */
+export const CASE_STUDY_ARCHIVE_SORT = ['-featured', 'displayOrder', '-publishedAt'] as const
 
 type Args = {
   page?: number
@@ -52,8 +58,7 @@ export const getCaseStudyList = async ({ page = 1, search }: Args): Promise<Case
     limit: CASE_STUDIES_PAGE_SIZE,
     overrideAccess: false,
     page,
-    // Editorially curated first, then the manual order, then newest.
-    sort: ['-featured', 'displayOrder', '-publishedAt'],
+    sort: [...CASE_STUDY_ARCHIVE_SORT],
     select: {
       title: true,
       slug: true,

@@ -7,16 +7,17 @@ import React, { useEffect, useId, useRef, useState } from 'react'
 
 import { cn } from '@/utilities/ui'
 
-import { getNavSections, mainNavigation, navItemHasMenu, type NavItem } from '../navigation'
+import {
+  getNavSections,
+  isNavPathCurrent,
+  mainNavigation,
+  navItemHasMenu,
+  type NavItem,
+} from '../navigation'
 import { PhoneLink } from './PhoneLink'
 
 const navLinkClass =
   'inline-flex min-h-11 items-center px-2 text-sm font-medium text-main transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
-
-const isCurrentPath = (pathname: string, href: string) => {
-  if (href === '/') return pathname === '/'
-  return pathname === href || pathname.startsWith(`${href}/`)
-}
 
 export const DesktopNav: React.FC = () => {
   const pathname = usePathname()
@@ -97,7 +98,7 @@ export const DesktopNav: React.FC = () => {
         {mainNavigation.map((item) => {
           const hasMenu = navItemHasMenu(item)
           const isOpen = openId === item.id
-          const current = isCurrentPath(pathname, item.href)
+          const current = isNavPathCurrent(pathname, item.href)
           const panelId = `${megaId}-${item.id}`
 
           if (!hasMenu) {
@@ -145,6 +146,7 @@ export const DesktopNav: React.FC = () => {
                   item={item}
                   onMouseEnter={() => openMenu(item.id)}
                   open
+                  pathname={pathname}
                 />
               ) : null}
             </li>
@@ -163,7 +165,8 @@ const MegaPanel: React.FC<{
   item: NavItem
   onMouseEnter: () => void
   open: boolean
-}> = ({ id, item, onMouseEnter, open }) => {
+  pathname: string
+}> = ({ id, item, onMouseEnter, open, pathname }) => {
   const sections = getNavSections(item)
   const columnCount = Math.min(3, Math.max(1, sections.length > 1 ? sections.length : 2))
 
@@ -192,6 +195,7 @@ const MegaPanel: React.FC<{
               {section.links.map((link) => (
                 <li key={link.href}>
                   <Link
+                    aria-current={isNavPathCurrent(pathname, link.href) ? 'page' : undefined}
                     className="block min-h-11 py-2 text-sm leading-snug text-main break-words transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                     href={link.href}
                     tabIndex={open ? 0 : -1}

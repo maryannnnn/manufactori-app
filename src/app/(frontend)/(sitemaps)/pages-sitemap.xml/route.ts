@@ -2,10 +2,10 @@ import { getServerSideSitemap } from 'next-sitemap'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
-import { BLOG_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+import { BLOG_ARCHIVE_PATH, CLIENTS_PATH } from '@/utilities/getContentUrls'
 import { getServerSideURL } from '@/utilities/getURL'
 
-const EXCLUDED_PAGE_SLUGS = new Set(['home', 'search', 'admin'])
+const EXCLUDED_PAGE_SLUGS = new Set(['home', 'search', 'admin', 'clients'])
 
 const getPagesSitemap = unstable_cache(
   async () => {
@@ -39,6 +39,10 @@ const getPagesSitemap = unstable_cache(
       },
       {
         loc: `${SITE_URL}${BLOG_ARCHIVE_PATH}`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}${CLIENTS_PATH}`,
         lastmod: dateFallback,
       },
     ]

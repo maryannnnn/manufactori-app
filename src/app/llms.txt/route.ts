@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import {
   BLOG_ARCHIVE_PATH,
   CASE_STUDIES_ARCHIVE_PATH,
+  CLIENTS_PATH,
   getCaseStudyUrl,
   getPostUrl,
   getServiceUrl,
@@ -75,6 +76,7 @@ export async function GET() {
     `- [Case Studies](${base}${CASE_STUDIES_ARCHIVE_PATH})`,
     `- [Blog](${base}${BLOG_ARCHIVE_PATH})`,
     `- [About](${base}/about)`,
+    `- [Clients](${base}${CLIENTS_PATH})`,
     `- [Contact](${base}/contact)`,
     '',
     '## Services',

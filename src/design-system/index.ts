@@ -15,6 +15,7 @@ export {
   PALETTE_ATTRIBUTE,
   PALETTE_IDS,
   PALETTE_STORAGE_KEY,
+  SHOW_PALETTE_SELECTOR,
   getPalette,
   isPaletteId,
 } from './palettes'

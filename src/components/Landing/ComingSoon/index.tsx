@@ -8,6 +8,7 @@ import { BLOG_ARCHIVE_PATH } from '@/utilities/getContentUrls'
 import { ComponentPreview } from './ComponentPreview'
 import { PalettePanel } from './PalettePanel'
 import { PaletteSelector } from './PaletteSelector'
+import { SHOW_PALETTE_SELECTOR } from '@/design-system'
 
 export type LandingCategory = {
   title: string
@@ -44,7 +45,7 @@ type Props = {
 export const ComingSoonLanding: React.FC<Props> = ({ categories = [], posts = [] }) => {
   return (
     <main className="bg-body text-main" data-landing-page>
-      <PaletteSelector />
+      {SHOW_PALETTE_SELECTOR ? <PaletteSelector /> : null}
 
       <section className="py-20 md:py-28">
         <div className="container">

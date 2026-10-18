@@ -8,7 +8,7 @@ import React from 'react'
 import { AccessibilityWidget } from '@/components/AccessibilityWidget'
 import { InitAccessibility } from '@/components/AccessibilityWidget/InitAccessibility'
 import { AdminBar } from '@/components/AdminBar'
-import { InitPalette } from '@/design-system'
+import { InitPalette, DEFAULT_PALETTE_ID } from '@/design-system'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
@@ -28,7 +28,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html
+      className={cn(GeistSans.variable, GeistMono.variable)}
+      data-palette={DEFAULT_PALETTE_ID}
+      lang="en"
+      suppressHydrationWarning
+    >
       <head>
         <InitTheme />
         <InitPalette />

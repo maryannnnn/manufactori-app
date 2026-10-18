@@ -1,6 +1,7 @@
 import {
   BLOG_ARCHIVE_PATH,
   CASE_STUDIES_ARCHIVE_PATH,
+  CLIENTS_PATH,
   getServiceUrl,
   SERVICES_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
@@ -63,7 +64,12 @@ export const mainNavigation: NavItem[] = [
   },
   { id: 'case-studies', label: 'Case Studies', href: CASE_STUDIES_ARCHIVE_PATH },
   { id: 'blog', label: 'Blog', href: BLOG_ARCHIVE_PATH },
-  { id: 'about', label: 'About', href: '/about' },
+  {
+    id: 'about',
+    label: 'About',
+    href: '/about',
+    sections: [{ links: [{ label: 'Clients', href: CLIENTS_PATH }] }],
+  },
 ]
 
 export const headerCta: NavLink = {
@@ -77,3 +83,8 @@ export const contactHref = '/contact'
 export const getNavSections = (item: NavItem): NavSection[] => item.sections ?? []
 
 export const navItemHasMenu = (item: NavItem): boolean => getNavSections(item).some((section) => section.links.length > 0)
+
+export const isNavPathCurrent = (pathname: string, href: string): boolean => {
+  if (href === '/') return pathname === '/'
+  return pathname === href || pathname.startsWith(`${href}/`)
+}

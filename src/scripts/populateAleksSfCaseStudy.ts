@@ -22,7 +22,7 @@ import { getTiptapExtensions } from '../utilities/richText/extensions'
  * uninterrupted campaign length. Metrics are source-reported for an
  * eight-year window. Contextual advertising is a documented activity;
  * budgets, platforms and paid results are not disclosed. No site_categories.
- * No invented client quotes, store counts or English logo.
+ * No invented client quotes or store counts. The logo uses English lettering on the original mark.
  */
 const SLUG = 'aleks-sf-jewelry-retail-equipment'
 const IMAGE_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'assets')
@@ -125,10 +125,10 @@ const PREVIEW_IMAGE: ImageSpec = {
 }
 
 const LOGO_IMAGE: ImageSpec = {
-  filename: 'aleks-sf-logo-original.jpg',
-  alt: 'Aleks SF (АЛЕКС) wordmark for custom retail equipment.',
+  filename: 'aleks-sf-logo-en.png',
+  alt: 'Aleks SF logo',
   caption:
-    'Original Aleks SF wordmark used on the source materials. Authentic logo; not an English recreation.',
+    'English Aleks SF wordmark. ALEKS and Retail Equipment replace the Cyrillic lines. The red lobster is the original mark.',
 }
 
 const GALLERY_IMAGES: ImageSpec[] = [

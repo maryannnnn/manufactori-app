@@ -36,6 +36,9 @@ export const CASE_STUDY_CATEGORY_PATH_SEGMENT = 'category'
 /** Case study listing route; individual case studies live beneath it. */
 export const CASE_STUDIES_ARCHIVE_PATH = '/case-studies'
 
+/** Companies drawn from published case studies. */
+export const CLIENTS_PATH = '/clients'
+
 /** Services listing route; individual services live beneath it. */
 export const SERVICES_ARCHIVE_PATH = '/services'
 

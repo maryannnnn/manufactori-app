@@ -8,11 +8,13 @@ import { headerCta, mainNavigation } from '@/Header/navigation'
 import {
   BLOG_ARCHIVE_PATH,
   CASE_STUDIES_ARCHIVE_PATH,
+  CLIENTS_PATH,
   getCaseStudyUrl,
   getPostUrl,
   getServiceUrl,
   SERVICES_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
+import { CASE_STUDY_ARCHIVE_SORT } from '@/utilities/getCaseStudyList'
 import { HTML_SITEMAP_CACHE_TAG } from '@/utilities/revalidateHtmlSitemap'
 
 export type HtmlSitemapLink = {
@@ -33,7 +35,14 @@ const PAGE_SIZE = 200
 
 const MAIN_NAV_PAGE_SLUGS = new Set(['about', 'contact'])
 const LEGAL_PAGE_SLUGS = new Set(legalFooterLinks.map((link) => link.href.replace(/^\//, '')))
-const EXCLUDED_PAGE_SLUGS = new Set(['home', 'search', 'admin', ...MAIN_NAV_PAGE_SLUGS, ...LEGAL_PAGE_SLUGS])
+const EXCLUDED_PAGE_SLUGS = new Set([
+  'home',
+  'search',
+  'admin',
+  'clients',
+  ...MAIN_NAV_PAGE_SLUGS,
+  ...LEGAL_PAGE_SLUGS,
+])
 
 const publishedWhere = {
   _status: {
@@ -46,6 +55,7 @@ const navById = Object.fromEntries(mainNavigation.map((item) => [item.id, item])
 const mainNavigationLinks: HtmlSitemapLink[] = [
   { label: 'Home', href: '/' },
   { label: navById.about?.label || 'About', href: navById.about?.href || '/about' },
+  { label: 'Clients', href: CLIENTS_PATH },
   { label: navById.services?.label || 'Services', href: navById.services?.href || SERVICES_ARCHIVE_PATH },
   {
     label: navById['case-studies']?.label || 'Case Studies',
@@ -110,7 +120,7 @@ const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
       Pick<CaseStudy, 'title' | 'slug' | 'case_study_long_title' | 'primary_case_study_category'>
     >(payload, 'case-studies', {
       depth: 1,
-      sort: ['-featured', 'displayOrder', '-publishedAt'],
+      sort: [...CASE_STUDY_ARCHIVE_SORT],
       select: {
         title: true,
         slug: true,

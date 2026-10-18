@@ -2,7 +2,7 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook, Payload } fr
 
 import { revalidatePath, revalidateTag } from 'next/cache'
 
-import { getCaseStudyUrl } from '../../../utilities/getContentUrls'
+import { CLIENTS_PATH, getCaseStudyUrl } from '../../../utilities/getContentUrls'
 import { revalidateHtmlSitemap } from '../../../utilities/revalidateHtmlSitemap'
 
 type CaseStudyDoc = {
@@ -63,6 +63,7 @@ export const revalidateCaseStudy: CollectionAfterChangeHook<CaseStudyDoc> = asyn
       }
       safeRevalidatePath('/')
       safeRevalidatePath('/case-studies')
+      safeRevalidatePath(CLIENTS_PATH)
       revalidateTag('case-studies-sitemap', 'max')
       revalidateHtmlSitemap()
     }
@@ -75,6 +76,7 @@ export const revalidateCaseStudy: CollectionAfterChangeHook<CaseStudyDoc> = asyn
       }
       safeRevalidatePath('/')
       safeRevalidatePath('/case-studies')
+      safeRevalidatePath(CLIENTS_PATH)
       revalidateTag('case-studies-sitemap', 'max')
       revalidateHtmlSitemap()
     }
@@ -91,6 +93,7 @@ export const revalidateCaseStudyDelete: CollectionAfterDeleteHook<CaseStudyDoc> 
     if (path) safeRevalidatePath(path)
     safeRevalidatePath('/')
     safeRevalidatePath('/case-studies')
+    safeRevalidatePath(CLIENTS_PATH)
     revalidateTag('case-studies-sitemap', 'max')
     revalidateHtmlSitemap()
   }

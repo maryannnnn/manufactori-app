@@ -7,13 +7,15 @@ import React, { useEffect, useId, useState } from 'react'
 
 import { cn } from '@/utilities/ui'
 
-import { getNavSections, headerCta, mainNavigation, navItemHasMenu, type NavItem } from '../navigation'
+import {
+  getNavSections,
+  headerCta,
+  isNavPathCurrent,
+  mainNavigation,
+  navItemHasMenu,
+  type NavItem,
+} from '../navigation'
 import { PhoneLink } from './PhoneLink'
-
-const isCurrentPath = (pathname: string, href: string) => {
-  if (href === '/') return pathname === '/'
-  return pathname === href || pathname.startsWith(`${href}/`)
-}
 
 export const MobileNav: React.FC = () => {
   const pathname = usePathname()
@@ -108,7 +110,7 @@ const MobileItem: React.FC<{
 }> = ({ expanded, item, onToggle, pathname }) => {
   const disclosureId = useId()
   const hasMenu = navItemHasMenu(item)
-  const current = isCurrentPath(pathname, item.href)
+  const current = isNavPathCurrent(pathname, item.href)
 
   if (!hasMenu) {
     return (
@@ -158,6 +160,7 @@ const MobileItem: React.FC<{
             section.links.map((link) => (
               <li key={link.href}>
                 <Link
+                  aria-current={isNavPathCurrent(pathname, link.href) ? 'page' : undefined}
                   className="flex min-h-12 items-center py-2 text-base leading-snug text-muted break-words transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                   href={link.href}
                 >

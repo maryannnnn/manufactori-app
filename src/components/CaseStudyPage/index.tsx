@@ -5,6 +5,7 @@ import type { CaseStudy, CaseStudyPreviewBlock } from '@/payload-types'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { ContactStrip } from '@/components/ContactStrip'
 import { Media } from '@/components/Media'
+import { RelatedSiteContent } from '@/components/RelatedSiteContent'
 import { CASE_STUDIES_ARCHIVE_PATH, getCaseStudyCategoryUrl } from '@/utilities/getContentUrls'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 
@@ -226,6 +227,7 @@ export const CaseStudyPage: React.FC<Props> = ({
         <ContactStrip className="mb-10" contained={false} variant="caseStudyLower" />
         <CaseStudyTaxonomy case_study_categories={caseStudy.case_study_categories} />
       </div>
+      <RelatedSiteContent mode="posts" siteCategories={caseStudy.site_categories} />
     </article>
   )
 }

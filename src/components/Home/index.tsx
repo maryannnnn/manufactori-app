@@ -2,6 +2,7 @@ import React from 'react'
 
 import { ContactStrip } from '@/components/ContactStrip'
 import { PaletteSelector } from '@/components/Landing/ComingSoon/PaletteSelector'
+import { SHOW_PALETTE_SELECTOR } from '@/design-system'
 import { HomeCaseStudies } from '@/components/Home/CaseStudies'
 import { HomeFinalCta } from '@/components/Home/FinalCta'
 import { HomeFit } from '@/components/Home/Fit'
@@ -20,7 +21,7 @@ type Props = {
 export const HomePageContent: React.FC<Props> = ({ data }) => {
   return (
     <main>
-      <PaletteSelector compact />
+      {SHOW_PALETTE_SELECTOR ? <PaletteSelector compact /> : null}
       <HomeHero />
       <ContactStrip variant="homeAfterHero" />
       <HomeProblems />

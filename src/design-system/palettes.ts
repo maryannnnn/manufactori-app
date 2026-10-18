@@ -296,7 +296,14 @@ export const PALETTES: readonly Palette[] = [
   },
 ] as const
 
-export const DEFAULT_PALETTE_ID: PaletteId = '01'
+export const DEFAULT_PALETTE_ID: PaletteId = '02'
+
+/**
+ * The homepage palette switcher stays in the codebase. Set this to true to
+ * show it again. While it is false, the site stays on DEFAULT_PALETTE_ID and
+ * a previously stored choice is ignored.
+ */
+export const SHOW_PALETTE_SELECTOR = false
 
 /** localStorage key holding the visitor's chosen palette. */
 export const PALETTE_STORAGE_KEY = 'ds-palette'

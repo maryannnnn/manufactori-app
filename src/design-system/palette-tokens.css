@@ -8,34 +8,34 @@
  * the [data-palette] attribute on <html> restyles the whole application.
  */
 
-/* Default palette: 01 Machine Shop Heavy (server-rendered baseline) */
+/* Default palette: 02 Factory Safety Yellow (server-rendered baseline) */
 :root {
-  --ds-primary: #1a1d20;
-  --ds-cta: #e35205;
-  --ds-secondary: #4a5568;
-  --ds-surface: #f0f2f5;
+  --ds-primary: #111111;
+  --ds-cta: #ffc700;
+  --ds-secondary: #2d3748;
+  --ds-surface: #e2e8f0;
   --ds-body: #ffffff;
-  --ds-surface-strong: #e4e6e9;
-  --ds-accent-soft: #eed8cf;
-  --ds-accent-secondary: #4a5568;
+  --ds-surface-strong: #d7dce4;
+  --ds-accent-soft: #e7e3ca;
+  --ds-accent-secondary: #2d3748;
   --ds-accent-secondary-foreground: #ffffff;
-  --ds-main: #2c2f32;
-  --ds-heading: #1a1d20;
-  --ds-muted: #6c6e6f;
-  --ds-border: #d5d7da;
-  --ds-border-strong: #898b8d;
-  --ds-link: #bf4504;
-  --ds-link-hover: #9d3903;
-  --ds-cta-hover: #e66723;
-  --ds-cta-active: #e9783c;
-  --ds-primary-hover: #35383b;
-  --ds-primary-active: #4c4f51;
-  --ds-secondary-hover: #414b5c;
+  --ds-main: #242424;
+  --ds-heading: #111111;
+  --ds-muted: #676767;
+  --ds-border: #c7cdd3;
+  --ds-border-strong: #828488;
+  --ds-link: #806400;
+  --ds-link-hover: #695200;
+  --ds-cta-hover: #ffce1f;
+  --ds-cta-active: #ffd338;
+  --ds-primary-hover: #2e2e2e;
+  --ds-primary-active: #454545;
+  --ds-secondary-hover: #464f5e;
   --ds-on-primary: #ffffff;
   --ds-on-cta: #0b0b0c;
   --ds-on-secondary: #ffffff;
-  --ds-on-surface: #2c2f32;
-  --ds-focus-ring: #e35205;
+  --ds-on-surface: #242424;
+  --ds-focus-ring: #a37f00;
 }
 
 /* 01 Machine Shop Heavy */
