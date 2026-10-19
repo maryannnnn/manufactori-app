@@ -148,10 +148,10 @@ const GALLERY_IMAGES: ImageSpec[] = [
 ]
 
 const LOGO_IMAGE: ImageSpec = {
-  filename: 'siblux-logo-original.jpg',
-  alt: 'Siblux logo: a brown arch over a geometric mark, with the Cyrillic word СИБЛЮКС.',
+  filename: 'siblux-logo-en.png',
+  alt: 'Siblux logo: a brown arch monogram above the name SIBLUX.',
   caption:
-    'Authentic Siblux mark from the source case page. The Cyrillic wordmark was not redrawn.',
+    'English adaptation of the source mark. The brown arch and the geometric panes are kept. The Cyrillic name СИБЛЮКС was replaced with SIBLUX.',
 }
 
 const mimeFromName = (filename: string) => {

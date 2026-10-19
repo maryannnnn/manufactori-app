@@ -140,10 +140,10 @@ const GALLERY_IMAGES: ImageSpec[] = [
 ]
 
 const LOGO_IMAGE: ImageSpec = {
-  filename: 'sauna-shop-logo-original.jpg',
-  alt: 'Sauna Shop logo: flame-textured Russian lettering Баня и сауна, with the line Оборудование, материалы.',
+  filename: 'sauna-shop-logo-en.png',
+  alt: 'Sauna Shop logo: flame-textured lettering reading BATH and SAUNA, with the line EQUIPMENT, MATERIALS.',
   caption:
-    'Authentic source mark. The lettering reads «Баня и сауна» and «Оборудование, материалы». It does not include an English wordmark, and it was not redrawn.',
+    'English adaptation of the source mark. The flame-filled letters, black outline, and two-line layout are kept. «Баня и сауна» is rendered as BATH and SAUNA. «Оборудование, материалы» is rendered as EQUIPMENT, MATERIALS.',
 }
 
 const mimeFromName = (filename: string) => {
