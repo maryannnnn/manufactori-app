@@ -113,9 +113,9 @@ const PREVIEW_IMAGE: ImageSpec = {
 const GALLERY_IMAGES: ImageSpec[] = [
   {
     filename: 'ventfasad-commercial-envelope.jpg',
-    alt: 'Low commercial office-and-logistics building wrapped in dark graphite horizontal ventilated-facade panels.',
+    alt: 'Curved metallic louver facade with vertical fins, photographed in daylight.',
     caption:
-      'Illustrative commercial building envelope with ventilated cladding. Not a documented VentFasad contract.',
+      'Licensed photograph of a metal louver facade (Santiago Franco, Unsplash License). Illustrative, not a documented VentFasad contract.',
   },
   {
     filename: 'ventfasad-mounting-detail.jpg',
@@ -125,9 +125,9 @@ const GALLERY_IMAGES: ImageSpec[] = [
   },
   {
     filename: 'ventfasad-completed-civic.jpg',
-    alt: 'Completed public building with a mixed cream ceramic and bronze aluminum ventilated facade.',
+    alt: 'Perforated metal facade panels on a curved building corner, photographed in daylight.',
     caption:
-      'Illustrative finished ventilated facade on a civic building. Not a verified VentFasad installation.',
+      'Licensed photograph of perforated metal cladding (Diana, Pexels License). Illustrative, not a verified VentFasad installation.',
   },
 ]
 

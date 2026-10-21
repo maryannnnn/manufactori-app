@@ -105,9 +105,9 @@ type ImageSpec = {
 
 const PREVIEW_IMAGE: ImageSpec = {
   filename: 'promtehmontg-main-facade.jpg',
-  alt: 'Large commercial building with a champagne and graphite aluminum cassette ventilated facade and visible panel joints.',
+  alt: 'Modern metal-and-glass facade with horizontal panel bands, photographed looking up in daylight.',
   caption:
-    'Illustrative ventilated facade with aluminum cassette cladding. Not a documented PromTehMontg project photograph.',
+    'Licensed photograph of a metal-panel building facade (David Garrick, Unsplash License). Illustrative, not a documented PromTehMontg project photograph.',
 }
 
 const GALLERY_IMAGES: ImageSpec[] = [

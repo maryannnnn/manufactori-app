@@ -8,21 +8,15 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
+import { buildCaseStudyArchiveUrl } from '@/utilities/caseStudyArchiveUrl'
 import { cn } from '@/utilities/ui'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const buildArchivePageUrl = (basePath: string, pageNumber: number, search?: string) => {
-  const params = new URLSearchParams()
-  if (search) params.set('search', search)
-  if (pageNumber > 1) params.set('page', String(pageNumber))
-  const query = params.toString()
-  return query ? `${basePath}?${query}` : basePath
-}
-
 export const Pagination: React.FC<{
   /** Archive pathname, e.g. /case-studies or /blog. URLs are built on the client. */
   basePath: string
+  category?: string
   className?: string
   page: number
   search?: string
@@ -30,8 +24,9 @@ export const Pagination: React.FC<{
 }> = (props) => {
   const router = useRouter()
 
-  const { basePath, className, page, search, totalPages } = props
-  const pageUrl = (pageNumber: number) => buildArchivePageUrl(basePath, pageNumber, search)
+  const { basePath, category, className, page, search, totalPages } = props
+  const pageUrl = (pageNumber: number) =>
+    buildCaseStudyArchiveUrl(basePath, { page: pageNumber, search, category })
   const hasNextPage = page < totalPages
   const hasPrevPage = page > 1
 

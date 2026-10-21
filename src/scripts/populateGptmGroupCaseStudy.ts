@@ -81,9 +81,9 @@ type ImageSpec = {
 
 const PREVIEW_IMAGE: ImageSpec = {
   filename: 'gptm-main-facade.jpg',
-  alt: 'Large office tower with limestone ventilated stone on the lower floors and dark aluminum cassette panels above.',
+  alt: 'Stainless-steel panel facade with a curved geometry and punched windows, photographed in daylight.',
   caption:
-    'Illustrative mixed stone and aluminum ventilated facade on a substantial commercial building. Not a documented GPTM GROUP project photograph.',
+    'Licensed photograph of a metal-clad building (Volker Braun, Pexels License). Illustrative, not a documented GPTM GROUP project photograph.',
 }
 
 const GALLERY_IMAGES: ImageSpec[] = [

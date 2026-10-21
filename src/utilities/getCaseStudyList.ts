@@ -6,6 +6,7 @@ import { getPayload } from 'payload'
 import type { CaseStudyCardData } from '@/components/CaseStudyCard'
 
 import { getCaseStudyListPreview } from './getCaseStudyListPreview'
+import { caseStudyCategoryWhere } from './industrialCaseStudyFilters'
 
 /** Single source of truth for the Case Studies archive page size. */
 export const CASE_STUDIES_PAGE_SIZE = 18
@@ -17,6 +18,7 @@ export const CASE_STUDIES_PAGE_SIZE = 18
 export const CASE_STUDY_ARCHIVE_SORT = ['-featured', 'displayOrder', '-publishedAt'] as const
 
 type Args = {
+  categoryId?: number
   page?: number
   search?: string
 }
@@ -48,9 +50,17 @@ export const buildCaseStudySearchWhere = (search: string): Where => ({
  * Server-side, paginated Case Study query for the /case-studies archive. Only a
  * single page of documents is ever fetched.
  */
-export const getCaseStudyList = async ({ page = 1, search }: Args): Promise<CaseStudyListResult> => {
+export const getCaseStudyList = async ({
+  categoryId,
+  page = 1,
+  search,
+}: Args): Promise<CaseStudyListResult> => {
   const payload = await getPayload({ config: configPromise })
   const trimmed = search?.trim()
+  const whereParts: Where[] = []
+  if (trimmed) whereParts.push(buildCaseStudySearchWhere(trimmed))
+  if (categoryId) whereParts.push(caseStudyCategoryWhere(categoryId))
+  const where = whereParts.length === 1 ? whereParts[0] : whereParts.length > 1 ? { and: whereParts } : undefined
 
   const result = await payload.find({
     collection: 'case-studies',
@@ -70,7 +80,7 @@ export const getCaseStudyList = async ({ page = 1, search }: Args): Promise<Case
       meta: true,
       layout: true,
     },
-    ...(trimmed ? { where: buildCaseStudySearchWhere(trimmed) } : {}),
+    ...(where ? { where } : {}),
   })
 
   return {

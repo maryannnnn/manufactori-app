@@ -333,7 +333,7 @@ async function renderPostPage(categorySlug: string | null, postSlug: string) {
           </div>
         </div>
       )}
-      <RelatedSiteContent mode="case-studies" siteCategories={post.site_categories} />
+      <RelatedSiteContent siteCategories={post.site_categories} sourceId={post.id} />
     </article>
   )
 }

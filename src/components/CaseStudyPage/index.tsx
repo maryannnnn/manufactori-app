@@ -5,7 +5,6 @@ import type { CaseStudy, CaseStudyPreviewBlock } from '@/payload-types'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { ContactStrip } from '@/components/ContactStrip'
 import { Media } from '@/components/Media'
-import { RelatedSiteContent } from '@/components/RelatedSiteContent'
 import { CASE_STUDIES_ARCHIVE_PATH, getCaseStudyCategoryUrl } from '@/utilities/getContentUrls'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 
@@ -22,7 +21,7 @@ import { CaseStudyMetrics } from './MetricsBar'
 import { CaseStudyNiches } from './NicheSegmentation'
 import { CaseStudyProfile } from './ManufacturingProfile'
 import { CaseStudyQuickNav } from './QuickNav'
-import { CaseStudyResults } from './Results'
+import { CaseStudyResults, caseStudyHasResults } from './Results'
 import { CaseStudySection } from './Section'
 import { CaseStudyStrategy } from './MarketingStrategy'
 import { CaseStudyTaxonomy } from './CaseStudyTaxonomy'
@@ -115,7 +114,7 @@ export const CaseStudyPage: React.FC<Props> = ({
     architecture: hasAnyRichText([digitalEcosystem, websiteArchitecture, semanticArchitecture]),
     strategy: strategyItems.length > 0,
     implementation: hasRichTextContent(implementationProcess) || Boolean(timeline?.length),
-    results: hasRichTextContent(resultsSummary) || Boolean(projectsShowcase?.length),
+    results: caseStudyHasResults({ projectsShowcase, resultsSummary }),
     insight: hasRichTextContent(expertInsight),
   }
 
@@ -227,7 +226,6 @@ export const CaseStudyPage: React.FC<Props> = ({
         <ContactStrip className="mb-10" contained={false} variant="caseStudyLower" />
         <CaseStudyTaxonomy case_study_categories={caseStudy.case_study_categories} />
       </div>
-      <RelatedSiteContent mode="posts" siteCategories={caseStudy.site_categories} />
     </article>
   )
 }

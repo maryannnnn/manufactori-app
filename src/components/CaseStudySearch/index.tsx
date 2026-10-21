@@ -6,6 +6,7 @@ import { ArchiveSearch } from '@/components/ArchiveSearch'
 import { CASE_STUDIES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
 
 type Props = {
+  category?: string
   className?: string
   initialValue?: string
 }

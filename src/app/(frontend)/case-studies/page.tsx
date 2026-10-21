@@ -5,12 +5,15 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 
 import { CaseStudyArchive } from '@/components/CaseStudyArchive'
+import { CaseStudyCategoryFilters } from '@/components/CaseStudyCategoryFilters'
 import { CaseStudySearch } from '@/components/CaseStudySearch'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import { CASE_STUDIES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
 import { buildWebPageGraph, caseStudyArchiveBreadcrumbs } from '@/utilities/jsonLd'
+import { buildCaseStudyArchiveUrl } from '@/utilities/caseStudyArchiveUrl'
 import { CASE_STUDIES_PAGE_SIZE, getCaseStudyList } from '@/utilities/getCaseStudyList'
+import { getIndustrialCaseStudyFilters } from '@/utilities/industrialCaseStudyFilters'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { JsonLd } from '@/components/JsonLd'
@@ -24,6 +27,7 @@ const FALLBACK_HEADING = 'Case Studies'
 
 type Args = {
   searchParams: Promise<{
+    category?: string
     page?: string
     search?: string
   }>
@@ -34,29 +38,29 @@ const parsePage = (value: string | undefined): number => {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 1
 }
 
-const buildArchiveUrl = (page: number, search?: string): string => {
-  const params = new URLSearchParams()
-  if (search) params.set('search', search)
-  if (page > 1) params.set('page', String(page))
-
-  const query = params.toString()
-  return query ? `${CASE_STUDIES_ARCHIVE_PATH}?${query}` : CASE_STUDIES_ARCHIVE_PATH
-}
-
 export default async function CaseStudiesPage({ searchParams: searchParamsPromise }: Args) {
-  const { page: pageParam, search: searchParam } = await searchParamsPromise
+  const { category: categoryParam, page: pageParam, search: searchParam } = await searchParamsPromise
   const search = searchParam?.trim() || undefined
   const page = parsePage(pageParam)
+  const filters = await getIndustrialCaseStudyFilters()
+  const activeFilter = filters.find((filter) => filter.slug === categoryParam?.trim())
+  const category = activeFilter?.slug
 
   const [archive, caseStudies] = await Promise.all([
     getCachedGlobal('case-studies-archive', 1)(),
-    getCaseStudyList({ page, search }),
+    getCaseStudyList({ categoryId: activeFilter?.id, page, search }),
   ])
 
   // A page past the end would otherwise render an empty grid alongside a
   // non-zero total, so send those requests to the last real page.
   if (caseStudies.totalPages > 0 && page > caseStudies.totalPages) {
-    redirect(buildArchiveUrl(caseStudies.totalPages, search))
+    redirect(
+      buildCaseStudyArchiveUrl(CASE_STUDIES_ARCHIVE_PATH, {
+        page: caseStudies.totalPages,
+        search,
+        category,
+      }),
+    )
   }
 
   const heading = archive?.longTitle || archive?.title || FALLBACK_HEADING
@@ -82,7 +86,8 @@ export default async function CaseStudiesPage({ searchParams: searchParamsPromis
           {heading}
         </h1>
 
-        <CaseStudySearch className="mt-8" initialValue={search ?? ''} />
+        <CaseStudySearch category={category} className="mt-8" initialValue={search ?? ''} />
+        <CaseStudyCategoryFilters activeSlug={category} filters={filters} search={search} />
       </div>
 
       {caseStudies.totalDocs > 0 ? (
@@ -102,6 +107,7 @@ export default async function CaseStudiesPage({ searchParams: searchParamsPromis
             <div className="container">
               <Pagination
                 basePath={CASE_STUDIES_ARCHIVE_PATH}
+                category={category}
                 page={caseStudies.page}
                 search={search}
                 totalPages={caseStudies.totalPages}
@@ -111,17 +117,30 @@ export default async function CaseStudiesPage({ searchParams: searchParamsPromis
         </React.Fragment>
       ) : (
         <div className="container">
-          {search ? (
+          {search || activeFilter ? (
             <div className="max-w-[60ch]">
               <p className="text-base text-foreground">
-                No case studies match{' '}
-                <span className="font-semibold">&ldquo;{search}&rdquo;</span>.
+                {activeFilter && search ? (
+                  <>
+                    No case studies in <span className="font-semibold">{activeFilter.title}</span>{' '}
+                    match <span className="font-semibold">&ldquo;{search}&rdquo;</span>.
+                  </>
+                ) : activeFilter ? (
+                  <>
+                    No case studies in <span className="font-semibold">{activeFilter.title}</span>.
+                  </>
+                ) : (
+                  <>
+                    No case studies match{' '}
+                    <span className="font-semibold">&ldquo;{search}&rdquo;</span>.
+                  </>
+                )}
               </p>
               <Link
                 className="mt-4 inline-flex rounded-[2px] border border-border px-3 py-2 font-mono text-xs text-muted-foreground transition-colors hover:border-cta hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
                 href={CASE_STUDIES_ARCHIVE_PATH}
               >
-                Clear search
+                {activeFilter && search ? 'Clear filters' : search ? 'Clear search' : 'Show all case studies'}
               </Link>
             </div>
           ) : (
@@ -135,9 +154,11 @@ export default async function CaseStudiesPage({ searchParams: searchParamsPromis
 
 export async function generateMetadata({ searchParams: searchParamsPromise }: Args): Promise<Metadata> {
   const archive = await getCachedGlobal('case-studies-archive', 1)()
-  const { page: pageParam, search: searchParam } = await searchParamsPromise
+  const { category: categoryParam, page: pageParam, search: searchParam } = await searchParamsPromise
   const search = searchParam?.trim()
+  const category = categoryParam?.trim()
   const page = parsePage(pageParam)
+  const canonical = buildCaseStudyArchiveUrl(CASE_STUDIES_ARCHIVE_PATH, { page })
 
   const meta = await generateMeta({
     doc: {
@@ -147,12 +168,12 @@ export async function generateMetadata({ searchParams: searchParamsPromise }: Ar
         image: archive?.meta?.image,
       },
     },
-    url: buildArchiveUrl(page),
+    url: canonical,
   })
 
   return {
     ...meta,
-    alternates: { ...meta.alternates, canonical: buildArchiveUrl(page) },
-    ...(search ? { robots: noindexRobotsMetadata } : {}),
+    alternates: { ...meta.alternates, canonical },
+    ...(search || category ? { robots: noindexRobotsMetadata } : {}),
   }
 }

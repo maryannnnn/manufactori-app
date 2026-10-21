@@ -6,10 +6,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useDebounce } from '@/utilities/useDebounce'
+import { buildCaseStudyArchiveUrl } from '@/utilities/caseStudyArchiveUrl'
 import { cn } from '@/utilities/ui'
 
 type Props = {
   archivePath: string
+  category?: string
   className?: string
   initialValue?: string
   inputId: string
@@ -23,6 +25,7 @@ type Props = {
  */
 export const ArchiveSearch: React.FC<Props> = ({
   archivePath,
+  category,
   className,
   initialValue = '',
   inputId,
@@ -46,8 +49,10 @@ export const ArchiveSearch: React.FC<Props> = ({
     if (next === committedValue.current) return
 
     committedValue.current = next
-    router.push(next ? `${archivePath}?search=${encodeURIComponent(next)}` : archivePath)
-  }, [archivePath, debouncedValue, router])
+    router.push(buildCaseStudyArchiveUrl(archivePath, { search: next || undefined, category }), {
+      scroll: false,
+    })
+  }, [archivePath, category, debouncedValue, router])
 
   return (
     <form
