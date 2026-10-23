@@ -13,7 +13,8 @@ Phase Two began on 2026-10-23. The table below is the record of those edits. Ori
 | 2026-10-23 | Phase Two | services ids 5, 6, 9, 10, 12 | Short additions only: roadmap sequence, website foundation wording, landing-page consistency, CRM referrer reporting, and a link from content engineering back to the SEO service. |
 | 2026-10-23 | Phase Two | Case template | Public accordion no longer tags historical blocks "AI Search". Titles are "What the project record shows" and "Relevance to today's search". |
 | 2026-10-23 | Phase Two | Case studies whose text said "GEO programme" | Replaced that acronym, which meant geography, with "local-search". Metrics, names, and project facts were not edited. Cases that did not use the acronym were left unchanged. |
-
-Original wording for the replaced sentences is in `backups/2026-10-22-baseline/`. Restore from that directory, not from this summary.
+| 2026-10-23 | Phase Two, GEO/AEO language | pages id 7, About | Replaced the body with a 481-word About: who the practice is for, twenty years of technical B2B work, SEO as the foundation for GEO/AEO, and how an engagement is organized. No measured AI results are claimed. |
+| 2026-10-23 | Phase Two, GEO/AEO language | services 5, 6, 7, 8, 9, 10 | Added short AI-assistant language to strategy, website, lead generation, and CRM. Restored GEO/AEO and named AI products on the SEO and technical-content pages as readiness, not as a guaranteed citation. |
+| 2026-10-23 | Phase Two, GEO/AEO language | case studies ids 3–26 | Softened defensive closers in the search-context fields and added one case-specific expert-insight sentence. The shared disclaimer says no measured ChatGPT, Perplexity, or similar result is claimed. Metrics and project facts were not changed. |
 
 The baseline copies are in `backups/2026-10-22-baseline/`. Do not overwrite that directory. A later edit batch needs its own dated backup first.

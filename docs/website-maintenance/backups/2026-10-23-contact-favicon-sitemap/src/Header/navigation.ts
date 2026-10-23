@@ -1,0 +1,94 @@
+import {
+  BLOG_ARCHIVE_PATH,
+  CASE_STUDIES_ARCHIVE_PATH,
+  CLIENTS_PATH,
+  getServiceUrl,
+  SERVICES_ARCHIVE_PATH,
+} from '@/utilities/getContentUrls'
+
+export type NavLink = {
+  label: string
+  href: string
+}
+
+/**
+ * One column or named group inside a mega menu / mobile disclosure.
+ * Extra sections, headings and nested groups can be added here later
+ * without changing the menu components.
+ */
+export type NavSection = {
+  heading?: string
+  links: NavLink[]
+}
+
+export type NavItem = {
+  id: string
+  label: string
+  href: string
+  sections?: NavSection[]
+}
+
+export const serviceNavLinks: NavLink[] = [
+  {
+    label: 'Marketing Strategy & Roadmap',
+    href: getServiceUrl({ slug: 'marketing-strategy-roadmap' })!,
+  },
+  {
+    label: 'Website Design & Development for Manufacturers',
+    href: getServiceUrl({ slug: 'website-design-development-for-manufacturers' })!,
+  },
+  {
+    label: 'SEO & AI Search Optimization',
+    href: getServiceUrl({ slug: 'seo-ai-search-optimization' })!,
+  },
+  {
+    label: 'AI Search Optimization & Content Engineering',
+    href: getServiceUrl({ slug: 'ai-search-optimization-manufacturers' })!,
+  },
+  {
+    label: 'Technical Content & Thought Leadership',
+    href: getServiceUrl({ slug: 'technical-content-thought-leadership' })!,
+  },
+  {
+    label: 'Lead Generation',
+    href: getServiceUrl({ slug: 'lead-generation' })!,
+  },
+  {
+    label: 'Sales Enablement & CRM',
+    href: getServiceUrl({ slug: 'sales-enablement-crm' })!,
+  },
+]
+
+export const mainNavigation: NavItem[] = [
+  {
+    id: 'services',
+    label: 'Services',
+    href: SERVICES_ARCHIVE_PATH,
+    sections: [{ links: serviceNavLinks }],
+  },
+  { id: 'case-studies', label: 'Case Studies', href: CASE_STUDIES_ARCHIVE_PATH },
+  { id: 'blog', label: 'Blog', href: BLOG_ARCHIVE_PATH },
+  {
+    id: 'about',
+    label: 'About',
+    href: '/about',
+    sections: [{ links: [{ label: 'Clients', href: CLIENTS_PATH }] }],
+  },
+]
+
+export const headerCta: NavLink = {
+  label: 'Get a Free Audit',
+  href: '/contact',
+}
+
+/** Used by the mobile phone icon. No site phone number exists yet. */
+export const contactHref = '/contact'
+
+export const getNavSections = (item: NavItem): NavSection[] => item.sections ?? []
+
+export const navItemHasMenu = (item: NavItem): boolean => getNavSections(item).some((section) => section.links.length > 0)
+
+export const isNavPathCurrent = (pathname: string, href: string): boolean => {
+  if (href === '/') return pathname === '/'
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
