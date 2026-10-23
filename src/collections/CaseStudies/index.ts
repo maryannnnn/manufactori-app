@@ -57,6 +57,8 @@ export const CaseStudies: CollectionConfig = {
   defaultPopulate: {
     title: true,
     slug: true,
+    case_study_long_title: true,
+    company_logo: true,
     case_study_categories: true,
     primary_case_study_category: true,
     site_categories: true,

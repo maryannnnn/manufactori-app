@@ -1,5 +1,6 @@
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import { cache } from 'react'
 
 import type { CaseStudyCardData } from '@/components/CaseStudyCard'
 import type { CardPostData } from '@/components/Card'
@@ -32,7 +33,7 @@ export type HomePageData = {
   testimonials: HomeTestimonial[]
 }
 
-export const getHomePageData = async (): Promise<HomePageData> => {
+export const getHomePageData = cache(async (): Promise<HomePageData> => {
   const payload = await getPayload({ config: configPromise })
 
   const [services, caseStudies, posts, testimonials] = await Promise.all([
@@ -132,4 +133,4 @@ export const getHomePageData = async (): Promise<HomePageData> => {
       ]
     }),
   }
-}
+})

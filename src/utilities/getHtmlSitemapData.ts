@@ -2,7 +2,7 @@ import { unstable_cache } from 'next/cache'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 
-import type { CaseStudy, Post } from '@/payload-types'
+import type { CaseStudy, Post, Testimonial } from '@/payload-types'
 import { legalFooterLinks } from '@/Footer/legalLinks'
 import { headerCta, mainNavigation } from '@/Header/navigation'
 import {
@@ -12,7 +12,9 @@ import {
   getCaseStudyUrl,
   getPostUrl,
   getServiceUrl,
+  getTestimonialUrl,
   SERVICES_ARCHIVE_PATH,
+  TESTIMONIALS_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
 import { CASE_STUDY_ARCHIVE_SORT } from '@/utilities/getCaseStudyList'
 import { HTML_SITEMAP_CACHE_TAG } from '@/utilities/revalidateHtmlSitemap'
@@ -27,6 +29,7 @@ export type HtmlSitemapData = {
   services: HtmlSitemapLink[]
   caseStudies: HtmlSitemapLink[]
   posts: HtmlSitemapLink[]
+  testimonials: HtmlSitemapLink[]
   additionalPages: HtmlSitemapLink[]
   legalPages: HtmlSitemapLink[]
 }
@@ -63,6 +66,7 @@ const mainNavigationLinks: HtmlSitemapLink[] = [
   { label: 'Home', href: '/' },
   { label: navById.about?.label || 'About', href: navById.about?.href || '/about' },
   { label: 'Clients', href: CLIENTS_PATH },
+  { label: 'Testimonials', href: TESTIMONIALS_ARCHIVE_PATH },
   { label: navById.services?.label || 'Services', href: navById.services?.href || SERVICES_ARCHIVE_PATH },
   {
     label: navById['case-studies']?.label || 'Case Studies',
@@ -74,7 +78,7 @@ const mainNavigationLinks: HtmlSitemapLink[] = [
 
 const collectPublished = async <T>(
   payload: Awaited<ReturnType<typeof getPayload>>,
-  collection: 'pages' | 'services' | 'case-studies' | 'posts',
+  collection: 'pages' | 'services' | 'case-studies' | 'posts' | 'testimonials',
   args: {
     depth?: number
     sort?: string | string[]
@@ -110,7 +114,7 @@ const collectPublished = async <T>(
 const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
   const payload = await getPayload({ config: configPromise })
 
-  const [pages, services, caseStudies, posts] = await Promise.all([
+  const [pages, services, caseStudies, posts, testimonials] = await Promise.all([
     collectPublished<{ title?: string | null; slug?: string | null }>(payload, 'pages', {
       sort: 'title',
       select: { title: true, slug: true },
@@ -149,6 +153,14 @@ const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
         },
       },
     ),
+    collectPublished<Pick<Testimonial, 'title' | 'slug' | 'testimonialLongTitle'>>(
+      payload,
+      'testimonials',
+      {
+        sort: 'title',
+        select: { title: true, slug: true, testimonialLongTitle: true },
+      },
+    ),
   ])
 
   const additionalPages = pages.flatMap((page) => {
@@ -178,6 +190,12 @@ const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
       if (!href || !label) return []
       return [{ label, href }]
     }),
+    testimonials: testimonials.flatMap((doc) => {
+      const href = getTestimonialUrl(doc)
+      const label = doc.testimonialLongTitle || doc.title
+      if (!href || !label) return []
+      return [{ label, href }]
+    }),
     additionalPages,
     legalPages: legalFooterLinks,
   }
@@ -190,5 +208,6 @@ export const getHtmlSitemapData = unstable_cache(loadHtmlSitemapData, [HTML_SITE
     'posts-sitemap',
     'services-sitemap',
     'case-studies-sitemap',
+    'testimonials-sitemap',
   ],
 })

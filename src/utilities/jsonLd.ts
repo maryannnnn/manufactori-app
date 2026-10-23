@@ -11,6 +11,7 @@ import {
   getPostUrl,
   getServiceUrl,
   SERVICES_ARCHIVE_PATH,
+  TESTIMONIALS_ARCHIVE_PATH,
 } from './getContentUrls'
 import { richTextToPlainText } from './richText/toPlainText'
 import {
@@ -434,6 +435,11 @@ export const clientsBreadcrumbs = (): BreadcrumbItem[] => [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Clients', path: CLIENTS_PATH },
+]
+
+export const testimonialArchiveBreadcrumbs = (): BreadcrumbItem[] => [
+  { name: 'Home', path: '/' },
+  { name: 'Testimonials', path: TESTIMONIALS_ARCHIVE_PATH },
 ]
 
 export const blogArchiveBreadcrumbs = (): BreadcrumbItem[] => [

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import Link from 'next/link'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
@@ -14,6 +15,7 @@ import { ContactStrip } from '@/components/ContactStrip'
 import { HtmlSitemap } from '@/components/HtmlSitemap'
 import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
+import { TESTIMONIALS_ARCHIVE_PATH } from '@/utilities/getContentUrls'
 import { buildCmsPageGraph } from '@/utilities/jsonLd'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
@@ -96,6 +98,18 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
+      {decodedSlug === 'about' ? (
+        <div className="container mt-10">
+          <p className="max-w-[65ch] text-base leading-7">
+            <Link
+              className="text-link underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+              href={TESTIMONIALS_ARCHIVE_PATH}
+            >
+              Read client testimonials
+            </Link>
+          </p>
+        </div>
+      ) : null}
       {decodedSlug === 'contact' ? (
         <div className="container mt-10">
           <ContactStrip contained={false} variant="contact" />

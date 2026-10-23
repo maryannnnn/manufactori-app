@@ -10,6 +10,7 @@ export function GET() {
   <sitemap><loc>${base}/posts-sitemap.xml</loc></sitemap>
   <sitemap><loc>${base}/services-sitemap.xml</loc></sitemap>
   <sitemap><loc>${base}/case-studies-sitemap.xml</loc></sitemap>
+  <sitemap><loc>${base}/testimonials-sitemap.xml</loc></sitemap>
 </sitemapindex>`
 
   return new NextResponse(body, {

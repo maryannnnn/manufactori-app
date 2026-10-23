@@ -4,6 +4,7 @@ import {
   CLIENTS_PATH,
   getServiceUrl,
   SERVICES_ARCHIVE_PATH,
+  TESTIMONIALS_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
 
 export type NavLink = {
@@ -72,7 +73,14 @@ export const mainNavigation: NavItem[] = [
     id: 'about',
     label: 'About',
     href: '/about',
-    sections: [{ links: [{ label: 'Clients', href: CLIENTS_PATH }] }],
+    sections: [
+      {
+        links: [
+          { label: 'Clients', href: CLIENTS_PATH },
+          { label: 'Testimonials', href: TESTIMONIALS_ARCHIVE_PATH },
+        ],
+      },
+    ],
   },
 ]
 

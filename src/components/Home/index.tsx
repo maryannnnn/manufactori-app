@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import { ContactStrip } from '@/components/ContactStrip'
 import { PaletteSelector } from '@/components/Landing/ComingSoon/PaletteSelector'
 import { SHOW_PALETTE_SELECTOR } from '@/design-system'
+import { CookieNotice } from '@/components/Home/CookieNotice'
 import { HomeCaseStudies } from '@/components/Home/CaseStudies'
 import { HomeFinalCta } from '@/components/Home/FinalCta'
 import { HomeFit } from '@/components/Home/Fit'
@@ -12,27 +13,52 @@ import { HomeProblems } from '@/components/Home/Problems'
 import { HomeProcess } from '@/components/Home/Process'
 import { HomeServices } from '@/components/Home/Services'
 import { HomeTestimonials } from '@/components/Home/Testimonials'
-import type { HomePageData } from '@/utilities/getHomePageData'
+import { getHomePageData } from '@/utilities/getHomePageData'
 
-type Props = {
-  data: HomePageData
+const HomeServicesSlot = async () => {
+  const data = await getHomePageData()
+  return <HomeServices services={data.services} />
 }
 
-export const HomePageContent: React.FC<Props> = ({ data }) => {
+const HomeCaseStudiesSlot = async () => {
+  const data = await getHomePageData()
+  return <HomeCaseStudies docs={data.caseStudies} />
+}
+
+const HomeTestimonialsSlot = async () => {
+  const data = await getHomePageData()
+  return <HomeTestimonials items={data.testimonials} />
+}
+
+const HomeInsightsSlot = async () => {
+  const data = await getHomePageData()
+  return <HomeInsights posts={data.posts} />
+}
+
+export const HomePageContent: React.FC = () => {
   return (
     <main>
       {SHOW_PALETTE_SELECTOR ? <PaletteSelector compact /> : null}
       <HomeHero />
       <ContactStrip variant="homeAfterHero" />
       <HomeProblems />
-      <HomeServices services={data.services} />
+      <Suspense fallback={null}>
+        <HomeServicesSlot />
+      </Suspense>
       <HomeProcess />
-      <HomeCaseStudies docs={data.caseStudies} />
+      <Suspense fallback={null}>
+        <HomeCaseStudiesSlot />
+      </Suspense>
       <HomeFit />
-      <HomeTestimonials items={data.testimonials} />
-      <HomeInsights posts={data.posts} />
+      <Suspense fallback={null}>
+        <HomeTestimonialsSlot />
+      </Suspense>
+      <Suspense fallback={null}>
+        <HomeInsightsSlot />
+      </Suspense>
       <ContactStrip variant="homeLower" />
       <HomeFinalCta />
+      <CookieNotice />
     </main>
   )
 }

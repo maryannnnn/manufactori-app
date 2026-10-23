@@ -8,7 +8,9 @@ import {
   getCaseStudyUrl,
   getPostUrl,
   getServiceUrl,
+  getTestimonialUrl,
   SERVICES_ARCHIVE_PATH,
+  TESTIMONIALS_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
 import { getServerSideURL } from '@/utilities/getURL'
 import { ORGANIZATION_DESCRIPTION, ORGANIZATION_NAME, SITE_NAME } from '@/utilities/siteIdentity'
@@ -17,7 +19,7 @@ export async function GET() {
   const base = getServerSideURL()
   const payload = await getPayload({ config })
 
-  const [services, caseStudies, posts] = await Promise.all([
+  const [services, caseStudies, posts, testimonials] = await Promise.all([
     payload.find({
       collection: 'services',
       draft: false,
@@ -50,6 +52,16 @@ export async function GET() {
       sort: '-publishedAt',
       where: { _status: { equals: 'published' } },
     }),
+    payload.find({
+      collection: 'testimonials',
+      draft: false,
+      limit: 50,
+      overrideAccess: false,
+      pagination: false,
+      select: { title: true, slug: true, clientCompany: true },
+      sort: ['-featured', 'publishedAt'],
+      where: { _status: { equals: 'published' } },
+    }),
   ])
 
   const serviceLines = services.docs.flatMap((doc) => {
@@ -64,6 +76,11 @@ export async function GET() {
     const path = getPostUrl(doc)
     return path ? [`- [${doc.title}](${base}${path})`] : []
   })
+  const testimonialLines = testimonials.docs.flatMap((doc) => {
+    const path = getTestimonialUrl(doc)
+    const label = doc.clientCompany?.trim() || doc.title
+    return path && label ? [`- [${label}](${base}${path})`] : []
+  })
 
   const body = [
     `# ${ORGANIZATION_NAME} — ${SITE_NAME}`,
@@ -77,6 +94,7 @@ export async function GET() {
     `- [Blog](${base}${BLOG_ARCHIVE_PATH})`,
     `- [About](${base}/about)`,
     `- [Clients](${base}${CLIENTS_PATH})`,
+    `- [Testimonials](${base}${TESTIMONIALS_ARCHIVE_PATH})`,
     `- [Contact](${base}/contact)`,
     '',
     '## Services',
@@ -87,6 +105,9 @@ export async function GET() {
     '',
     '## Blog',
     ...postLines,
+    '',
+    '## Testimonials',
+    ...testimonialLines,
     '',
   ]
     .filter((item) => item !== null)

@@ -8,22 +8,10 @@ const h2 = (text: string) => `<h2>${escapeHtml(text)}</h2>`
 const h3 = (text: string) => `<h3>${escapeHtml(text)}</h3>`
 const p = (text: string) => `<p>${escapeHtml(text)}</p>`
 const htmlP = (inner: string) => `<p>${inner}</p>`
-const strong = (text: string) => `<strong>${escapeHtml(text)}</strong>`
 const bullets = (items: string[]) =>
   `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
-const htmlBullets = (items: string[]) => `<ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>`
 const link = (href: string, text: string) =>
   `<a href="${escapeHtml(href)}">${escapeHtml(text)}</a>`
-const placeholder = (text: string) => strong(`[${text}]`)
-
-export const LEGAL_PLACEHOLDERS = {
-  legalEntity: 'Registered legal entity name — to be confirmed by the site owner',
-  postalAddress: 'Registered postal address — to be confirmed by the site owner',
-  privacyEmail: 'Privacy contact email — to be confirmed by the site owner',
-  retention: 'Data retention schedule — to be confirmed by the site owner',
-  lastUpdated: 'Last updated date — to be confirmed by the site owner',
-  euRepresentative: 'EU/UK representative, DPO, and lawful bases — to be confirmed by the site owner',
-} as const
 
 export const accessibilitySeo = {
   title: `Accessibility Statement | ${SITE_NAME}`,
@@ -31,10 +19,12 @@ export const accessibilitySeo = {
     'Learn about our commitment to website accessibility, inclusive design, keyboard navigation, readable content, and ongoing accessibility improvements.',
 }
 
+const PRIVACY_EMAIL = 'info@neo-lines.com'
+
 export const privacySeo = {
   title: `Privacy Policy | ${SITE_NAME}`,
   description:
-    'Read our privacy policy to understand how website information, contact inquiries, cookies, analytics, advertising technologies, and personal data are handled.',
+    'How this website handles inquiries, cookies, Google Analytics, Meta Pixel, and advertising measurement.',
 }
 
 export const sitemapSeo = {
@@ -112,16 +102,10 @@ export const privacyHtml = (): string =>
       `This Privacy Policy explains how personal information may be collected, used, disclosed, retained, and protected when you visit ${SITE_NAME}, read our content, or contact ${ORGANIZATION_NAME} about manufacturing marketing services.`,
     ),
     htmlP(
-      `The website is presented publicly under the name ${escapeHtml(ORGANIZATION_NAME)}, operating as ${escapeHtml(SITE_NAME)}. The registered legal entity, if different from that public name, has not been confirmed for publication: ${placeholder(LEGAL_PLACEHOLDERS.legalEntity)}.`,
-    ),
-    htmlP(
-      `Registered postal address for privacy correspondence: ${placeholder(LEGAL_PLACEHOLDERS.postalAddress)}.`,
+      `The website is presented publicly under the name ${escapeHtml(ORGANIZATION_NAME)}, operating as ${escapeHtml(SITE_NAME)}. Privacy requests go to ${link(`mailto:${PRIVACY_EMAIL}`, PRIVACY_EMAIL)} or through the ${link('/contact', 'Contact page')}. A separate registered postal address is not published on this website.`,
     ),
     p(
-      'This policy covers the public website, contact and inquiry communications, browser storage used for site preferences, and marketing or advertising technologies if they are enabled. It does not cover unrelated websites that we do not operate.',
-    ),
-    p(
-      'This document is a practical description of current website implementation and of categories of processing that may become relevant. It is not a claim that every technology mentioned below is active today, and it is not a substitute for a legal review of actual business practices.',
+      'This policy covers the public website, contact and inquiry communications, browser storage used for site preferences, Google Analytics, and Meta advertising technologies, including the Meta Pixel. It does not cover unrelated websites that we do not operate.',
     ),
 
     h2('2. Information We May Collect'),
@@ -143,7 +127,7 @@ export const privacyHtml = (): string =>
       'Like most websites, the hosting and application infrastructure may process technical information needed to deliver pages, keep the site secure, and diagnose problems. That information can include IP address, browser and device details, operating system, referring URL, pages requested, date and time of the request, approximate location derived from IP address, and diagnostic or security logs.',
     ),
     p(
-      'This operational processing is distinct from optional analytics or advertising tracking. Optional analytics and advertising tags are described later in this policy and are not treated as active merely because they are mentioned.',
+      'In addition, Google Analytics and Meta technologies described below collect usage and advertising information when you browse the public site. That collection is separate from the message you choose to send us on WhatsApp, Telegram, or email.',
     ),
     h3('Information from third parties'),
     p(
@@ -158,8 +142,8 @@ export const privacyHtml = (): string =>
       'Provide contracted manufacturing marketing services.',
       'Maintain customer and prospect records needed to manage a professional relationship.',
       'Operate, secure, and troubleshoot the website.',
-      'Understand how the public website is performing, where analytics are lawfully configured.',
-      'Measure marketing or advertising effectiveness, where those tools are enabled and configured.',
+      'Measure visits, pages, referring sites, and on-site actions with Google Analytics.',
+      'Measure and improve advertising with Meta, including the Meta Pixel, conversion events, and audiences built from site visits.',
       'Improve website content and user experience.',
       'Prevent abuse, fraud, and security incidents.',
       'Meet legal obligations and establish, exercise, or defend legal claims where applicable.',
@@ -180,48 +164,43 @@ export const privacyHtml = (): string =>
     p(
       'The public website stores certain preferences in the browser’s local storage rather than in advertising cookies. These include appearance theme, color-palette selection, and accessibility-widget settings. Those preferences stay on the device and are used to remember the visitor’s chosen display options.',
     ),
-    h3('Analytics, advertising, and embedded content'),
+    h3('Analytics and advertising technologies'),
     p(
-      'Analytics cookies, advertising identifiers, conversion-measurement tags, and embedded third-party content may process information when those integrations are actually loaded. Similar technologies can operate without a traditional cookie, for example through pixels, local storage, or server-side logging.',
+      'The public website uses Google Analytics and Meta technologies. These can set cookies, similar identifiers, and pixels. They can also recognize a browser without a traditional cookie, including through local storage or an advertising identifier.',
     ),
-    h3('Consent and preference controls'),
+    bullets([
+      'Google Analytics, to count visits and understand which pages and referring sites are used.',
+      'Meta Pixel and related Meta advertising tools, to measure visits, record conversion events, build audiences from site activity, and deliver or measure ads on Meta services such as Facebook and Instagram.',
+      'Google advertising cookies, where a Google tag on the site is also used for ads measurement or remarketing.',
+    ]),
+    h3('Controls'),
     p(
-      'Where applicable law requires consent before optional tracking, that consent should be collected through a working preference mechanism. This website does not currently include a cookie-consent banner or a consent-management platform. Optional advertising and analytics tags are not currently loaded by the public frontend. Preference controls in the accessibility widget and theme selector are not consent tools for advertising cookies.',
-    ),
-    p(
-      'We do not claim that all cookies are blocked until consent, because no such blocking layer is implemented.',
-    ),
-    h3('Current and possible future integrations'),
-    p(
-      'A code review of the current project found no Google Analytics 4, Google Ads conversion or remarketing tags, Google Tag Manager container, Meta Pixel, or Cloudflare analytics/bot script installed on the public website.',
+      'The accessibility widget and the theme selector only remember display preferences. They do not switch analytics or advertising off.',
     ),
     p(
-      'Those products, and other analytics, attribution, or advertising tools, may be added later. If they are enabled, this policy should be updated so that active providers are described as active, and any required consent or disclosure controls should be implemented before those tags collect optional data.',
-    ),
-    p(
-      'Until that happens, the list above is a maintainable map of technologies that a manufacturing marketing website might use. It is not a statement that they currently collect visitor data on this site.',
+      'Where the law requires a choice before analytics or advertising cookies, that choice is the basis for those cookies. You can also limit them with the browser and with the Google and Meta controls linked in the next sections. Blocking cookies in the browser can stop parts of this measurement.',
     ),
 
-    h2('5. Google Analytics and Google Advertising'),
+    h2('5. Google Analytics'),
     p(
-      'Google Analytics 4, Google Ads conversion tracking, remarketing tags, and Google Tag Manager are not currently initialized in the public website code.',
+      'Google Analytics is used on the public website to measure how the site is used. Google can process information such as pages viewed, approximate location derived from IP address, device and browser details, language, referring URL, date and time, events on the page, and an identifier stored in a cookie or similar technology.',
     ),
     p(
-      'If Google technologies are enabled later, they may process website usage information and advertising interaction data for analytics, campaign measurement, or other purposes configured in the Google account. We would not, at that time, publish unverified claims about exact data fields, retention periods, data locations, Google signals, or advertising personalization settings. Those details would need to be taken from the live Google configuration.',
+      'We use that information to see which pages are used, how visitors arrive, and whether the site is working. Where Google advertising features are connected to the same Google tag, Google can also use visit information to measure ads and to support remarketing. The exact retention period and any advertising-personalization switch are the settings in the Google account that receives this site’s traffic, together with Google’s own retention rules.',
     ),
     htmlP(
-      `Google’s own information about how it processes data is available in ${link('https://policies.google.com/privacy', "Google's Privacy Policy")} and ${link('https://business.safety.google/privacy/', "Google's Business Data Responsibility pages")}.`,
+      `You can limit Google Analytics in the browser with ${link('https://tools.google.com/dlpage/gaoptout', 'Google’s Analytics opt-out add-on')}. Ad personalization controls are in ${link('https://myadcenter.google.com/', 'Google My Ad Center')}. Google describes its own processing in ${link('https://policies.google.com/privacy', "Google's Privacy Policy")} and ${link('https://business.safety.google/privacy/', "Google's Business Data Responsibility pages")}.`,
     ),
 
-    h2('6. Meta and Social Advertising Technologies'),
+    h2('6. Meta Pixel and Meta Advertising'),
     p(
-      'Meta Pixel and related Meta advertising measurement tools are not currently initialized in the public website code.',
+      'The public website uses the Meta Pixel and Meta’s advertising measurement tools. Meta can process information about pages you view, actions we configure as conversion events, the date and time, device and browser details, IP address, a cookie or similar identifier such as those Meta uses to recognize a browser, and the fact that you came from or interacted with an ad.',
     ),
     p(
-      'If a Meta Pixel or similar tool is enabled later, it may process information about website interactions and configured conversion events for measurement and advertising. Private messages sent through a contact form, email, or WhatsApp are not automatically shared with advertising platforms by the current website implementation.',
+      'We use that information to measure advertising, understand which visits follow an ad, create and use audiences based on visits to this site, and improve or limit later ads on Meta services. If you are logged in to Facebook or Instagram, Meta can match the visit to your account under Meta’s own terms. A message you send through the contact page, email, WhatsApp, or Telegram is not added to the Meta Pixel by this policy and is not used here as an advertising audience by itself.',
     ),
     htmlP(
-      `Meta’s privacy information is available in the ${link('https://www.facebook.com/privacy/policy/', 'Meta Privacy Policy')}. WhatsApp, which is a separate Meta product used here only as a contact channel when you choose to open it, publishes its own ${link('https://www.whatsapp.com/legal/privacy-policy', 'WhatsApp Privacy Policy')}.`,
+      `Meta’s privacy information is in the ${link('https://www.facebook.com/privacy/policy/', 'Meta Privacy Policy')}. Ad controls are in ${link('https://www.facebook.com/adpreferences', 'Meta Ad Preferences')}. WhatsApp is a separate Meta product used only as a contact channel when you choose to open it. WhatsApp’s own notice is the ${link('https://www.whatsapp.com/legal/privacy-policy', 'WhatsApp Privacy Policy')}.`,
     ),
 
     h2('7. Cloudflare and Website Security'),
@@ -243,7 +222,7 @@ export const privacyHtml = (): string =>
       'The website software includes form-builder support and a form-submission endpoint. No public form was published in the CMS when this policy was drafted. If a form is added to a public page later, submissions from that form will be stored so we can read and respond to the inquiry. The precise fields will be those displayed on the form you submit.',
     ),
     htmlP(
-      `If you contact us by WhatsApp, telephone, Telegram, or another channel that we actually offer, the relevant communications provider processes that conversation under its own terms. The current public WhatsApp number is ${escapeHtml(contact.displayPhone)}. No public Telegram username is configured at the time this policy was drafted.`,
+      `If you contact us by WhatsApp, telephone, or Telegram, that provider processes the conversation under its own terms. The published WhatsApp number and the published Telegram destination both use ${escapeHtml(contact.displayPhone)}.`,
     ),
     p(
       'Contacting us about a project is not the same as opting in to a newsletter or paid advertising audience.',
@@ -272,7 +251,8 @@ export const privacyHtml = (): string =>
     bullets([
       'Hosting, database, and application infrastructure providers.',
       'Security, DNS, or content-delivery providers, if used.',
-      'Analytics and advertising providers, if those tags are enabled.',
+      'Google, for Analytics and any connected advertising measurement.',
+      'Meta, for the Meta Pixel, conversion measurement, and advertising audiences.',
       'Communications platforms you choose to use, such as WhatsApp.',
       'Professional advisers, such as legal or accounting advisers, where needed.',
       'Authorities when the law requires disclosure.',
@@ -290,15 +270,15 @@ export const privacyHtml = (): string =>
       'Service providers may process information in countries other than the country from which you visit the site. The current implementation does not publish a verified list of processing countries, standard contractual clauses, or transfer certifications.',
     ),
     p(
-      'If GDPR, UK GDPR, or another transfer regime applies, the site owner should confirm the safeguards actually used rather than relying on this placeholder description.',
+      'Google and Meta may process this information in countries other than the country from which you visit. Their published terms describe the safeguards they offer for those transfers. Hosting and database providers used to run this website may do the same for technical logs and stored content.',
     ),
 
     h2('13. Data Retention'),
     p(
       'We retain information only as long as reasonably necessary for the purpose for which it was collected, including inquiry follow-up, project delivery, security, and legal or accounting recordkeeping where those requirements apply.',
     ),
-    htmlP(
-      `No specific retention schedule has been confirmed for publication: ${placeholder(LEGAL_PLACEHOLDERS.retention)}.`,
+    p(
+      'Inquiry and project records are kept for as long as needed to answer the inquiry, carry out the work, and meet ordinary legal or accounting recordkeeping. Google Analytics data and Meta advertising data are kept for the period set in those accounts and under Google’s and Meta’s own rules. Browser preference storage stays on the device until you clear it.',
     ),
     p(
       'Browser preference storage remains on the visitor’s device until the visitor clears it or resets the relevant control. Hosting and security logs follow the provider’s own retention practices.',
@@ -320,20 +300,16 @@ export const privacyHtml = (): string =>
       'Not every visitor has every right in every jurisdiction. The availability and scope of these rights depend on applicable law, the role of the website operator, and the circumstances of the request.',
     ),
     htmlP(
-      `To make a privacy request, use the ${link('/contact', 'Contact page')} or write to ${placeholder(LEGAL_PLACEHOLDERS.privacyEmail)}. We may need to confirm the request is legitimate before completing it.`,
+      `To make a privacy request, use the ${link('/contact', 'Contact page')} or write to ${link(`mailto:${PRIVACY_EMAIL}`, PRIVACY_EMAIL)}. We may need to confirm the request is legitimate before completing it.`,
     ),
 
     h2('16. Regional Privacy Information'),
     p(
-      `${SITE_NAME} is a B2B manufacturing marketing website that may be visited by companies in more than one country. The subsections below are structured so they can be completed as the operator’s legal status is confirmed. They do not assert unsupported registrations, representative appointments, or jurisdictional coverage.`,
+      `${SITE_NAME} is a B2B manufacturing marketing website. Visitors may be in more than one country. The notes below state how the uses in this policy are treated. They do not claim a government registration that is not listed here.`,
     ),
     h3('European Economic Area and United Kingdom'),
     p(
-      'If the GDPR or UK GDPR applies to a particular processing activity, the operator would need to identify lawful bases, honor valid data-subject rights, and use appropriate transfer safeguards. Those items have not been confirmed for publication.',
-    ),
-    htmlP(placeholder(LEGAL_PLACEHOLDERS.euRepresentative)),
-    p(
-      'Depending on the activity, a lawful basis may later be confirmed as steps taken at the request of a prospective client, performance of a contract, compliance with law, legitimate interests in operating a B2B website, or consent where optional tracking is introduced and consent is required. Until the operator confirms the bases actually relied on, this policy does not select them as established legal positions.',
+      'For visits from the EEA or the United Kingdom, answering an inquiry and doing the requested work is a step toward a contract or performance of a contract. Running, securing, and hosting the site is a legitimate interest. Google Analytics and Meta advertising cookies are used on the basis of consent where the law requires a choice before those cookies. No separate EU or UK representative is appointed on this page. Send privacy requests to the email above.',
     ),
     h3('Israel'),
     p(
@@ -341,7 +317,7 @@ export const privacyHtml = (): string =>
     ),
     h3('United States'),
     p(
-      'Some U.S. state privacy laws, including the California Consumer Privacy Act as amended by the CPRA and similar state statutes, confer rights on certain residents when the business is in scope. This website does not currently publish a separate “Do Not Sell or Share My Personal Information” link, because it has not been confirmed that those statutes apply to this operator or that a sale or share as those laws define it is occurring.',
+      'Use of Google advertising features and the Meta Pixel can count as sharing personal information for cross-context advertising under some U.S. state laws, including the California Consumer Privacy Act as amended by the CPRA. We do not sell personal information for money. To limit advertising use, use the Google and Meta controls linked in sections 5 and 6, and the browser controls described above.',
     ),
     p(
       'State-specific notices should be added only when the relevant law applies. No U.S. state is listed here as definitely in scope.',
@@ -371,18 +347,15 @@ export const privacyHtml = (): string =>
     p(
       'We may update this policy as the website, services, legal requirements, and technology integrations change. Material changes should be reflected in the CMS copy before new optional tracking is presented as current practice.',
     ),
-    htmlP(`Last updated: ${placeholder(LEGAL_PLACEHOLDERS.lastUpdated)}.`),
+    p('This policy was last updated on 23 October 2026.'),
     p(
       'The presence of a last-updated field does not mean that a lawyer has completed a formal legal review on that date.',
     ),
 
     h2('20. Contact Information'),
     htmlP(
-      `For privacy questions or requests, contact ${escapeHtml(ORGANIZATION_NAME)} through the ${link('/contact', 'Contact page')} or WhatsApp at ${escapeHtml(contact.displayPhone)}.`,
+      `For privacy questions or requests, contact ${escapeHtml(ORGANIZATION_NAME)} at ${link(`mailto:${PRIVACY_EMAIL}`, PRIVACY_EMAIL)}, through the ${link('/contact', 'Contact page')}, or by WhatsApp at ${escapeHtml(contact.displayPhone)}.`,
     ),
-    htmlP(`Privacy email: ${placeholder(LEGAL_PLACEHOLDERS.privacyEmail)}.`),
-    htmlP(`Legal entity: ${placeholder(LEGAL_PLACEHOLDERS.legalEntity)}.`),
-    htmlP(`Postal address: ${placeholder(LEGAL_PLACEHOLDERS.postalAddress)}.`),
     p(
       'Do not send passwords, payment-card numbers, or other highly sensitive credentials through public contact channels.',
     ),

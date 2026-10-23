@@ -2,7 +2,7 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'paylo
 
 import { revalidatePath, revalidateTag } from 'next/cache'
 
-import { getTestimonialUrl } from '../../../utilities/getContentUrls'
+import { getTestimonialUrl, TESTIMONIALS_ARCHIVE_PATH } from '../../../utilities/getContentUrls'
 
 type TestimonialDoc = {
   id: number
@@ -39,6 +39,7 @@ export const revalidateTestimonial: CollectionAfterChangeHook<TestimonialDoc> = 
         safeRevalidatePath(path)
       }
       safeRevalidatePath('/')
+      safeRevalidatePath(TESTIMONIALS_ARCHIVE_PATH)
       safeRevalidateTag('testimonials-sitemap')
     }
 
@@ -49,6 +50,7 @@ export const revalidateTestimonial: CollectionAfterChangeHook<TestimonialDoc> = 
         safeRevalidatePath(oldPath)
       }
       safeRevalidatePath('/')
+      safeRevalidatePath(TESTIMONIALS_ARCHIVE_PATH)
       safeRevalidateTag('testimonials-sitemap')
     }
   }
@@ -63,6 +65,7 @@ export const revalidateTestimonialDelete: CollectionAfterDeleteHook<TestimonialD
     const path = getTestimonialUrl(doc)
     if (path) safeRevalidatePath(path)
     safeRevalidatePath('/')
+    safeRevalidatePath(TESTIMONIALS_ARCHIVE_PATH)
     safeRevalidateTag('testimonials-sitemap')
   }
   return doc

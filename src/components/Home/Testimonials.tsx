@@ -1,7 +1,11 @@
+import dynamic from 'next/dynamic'
 import React from 'react'
 
-import { TestimonialCarousel } from '@/components/Home/TestimonialCarousel'
 import type { HomeTestimonial } from '@/utilities/getHomePageData'
+
+const TestimonialCarousel = dynamic(() =>
+  import('@/components/Home/TestimonialCarousel').then((mod) => mod.TestimonialCarousel),
+)
 
 type Props = {
   items: HomeTestimonial[]

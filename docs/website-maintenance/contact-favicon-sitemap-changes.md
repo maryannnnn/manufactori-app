@@ -9,7 +9,8 @@ Checked 2026-10-23 on branch `main` at commit `c187a4a`. This pass did not chang
 - Telegram destination already stored on the footer global is `https://t.me/+972538974802`. Reusable contact strips use the same URL. Phone-style Telegram links do not add a `?text=` parameter.
 - The header phone icon is a link to `/contact` with the accessible name `Contact us`. It is not a `tel:` link. The footer phone icon remains `tel:+972538974802`.
 - The Contact page (CMS slug `contact`, published) uses the heading `Contact & Global Operations`, the business email `mailto:info@neo-lines.com`, the specified introduction, and the contact strip heading `Have a Question About Your Project?`. There is no booking calendar.
-- Favicon is `public/favicon.svg`: a navy square (`#144372`) with a white capital N. `layout.tsx` points both the document icon link and metadata icons at that file. There is no `favicon.ico` and no default Next.js icon in `app/`.
+- Favicon artwork is `public/favicon.svg`: a navy square (`#144372`) with a white capital N. `layout.tsx` points the document icon link and metadata icons at that file.
+- Audit on 2026-10-23 found that `public/favicon.ico` was still the 29 July 2026 website-template icon (15,086 bytes) and was being served at `/favicon.ico`. It was replaced with a 16/32/48 PNG-in-ICO rendition of the same N. The template file is kept at `public/favicon.ico.template-original` inside the backup folder.
 - `/sitemap.xml` is an index of `/pages-sitemap.xml`, `/posts-sitemap.xml`, `/services-sitemap.xml`, and `/case-studies-sitemap.xml`. Entries use `getServerSideURL()`. `lastmod` is included only when a CMS `updatedAt` exists. There is no `priority` or `changefreq`.
 - The HTML sitemap is the CMS page `/sitemap`. It lists titles and public routes. The old irrelevant entry was the draft test page `image-editor-check`, which is unpublished and excluded from both sitemaps. Media URLs are rejected in `getHtmlSitemapData`.
 
@@ -58,7 +59,8 @@ Checked by HTTP against the already running dev server. Not a production deploy.
 | WhatsApp | `https://wa.me/972538974802?text=Hello, I would like to discuss digital marketing for my manufacturing business.` |
 | Telegram | `https://t.me/+972538974802` |
 | VKontakte | No `vk.com` link. |
-| `/favicon.svg` | 200, `image/svg+xml`, the N mark above. |
+| `/favicon.svg` | 200, `image/svg+xml`, the N mark. |
+| `/favicon.ico` | Was the template icon. After the replacement, 200, 1,558 bytes, the same N. |
 | `/sitemap.xml` | 200, XML sitemap index. Child sitemaps have no `image-editor`, `priority`, or `changefreq`. Local host is localhost, which matches `getServerSideURL()`. |
 | `/sitemap` | 200. Human titles for home, about, clients, services, case studies, blog, and contact. No media file links and no image-editor entry. |
 | `/robots.txt` | 200. Local noindex policy only. Sitemap line appears in production when indexing is on. |

@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { HomePageContent } from '@/components/Home'
 import { JsonLd } from '@/components/JsonLd'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
-import { getHomePageData } from '@/utilities/getHomePageData'
 import { buildWebPageGraph } from '@/utilities/jsonLd'
 import { HOME_DESCRIPTION, HOME_TITLE } from '@/utilities/siteIdentity'
 import { siteRobotsMetadata } from '@/utilities/siteRobots'
@@ -29,9 +28,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function HomePage() {
-  const data = await getHomePageData()
-
+export default function HomePage() {
   return (
     <>
       <JsonLd
@@ -41,7 +38,7 @@ export default async function HomePage() {
           description: HOME_DESCRIPTION,
         })}
       />
-      <HomePageContent data={data} />
+      <HomePageContent />
     </>
   )
 }

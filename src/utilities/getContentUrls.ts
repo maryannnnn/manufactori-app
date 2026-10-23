@@ -42,7 +42,7 @@ export const CLIENTS_PATH = '/clients'
 /** Services listing route; individual services live beneath it. */
 export const SERVICES_ARCHIVE_PATH = '/services'
 
-/** Future testimonials listing route; individual testimonials live beneath it. */
+/** Testimonials listing route; individual testimonials live beneath it. */
 export const TESTIMONIALS_ARCHIVE_PATH = '/testimonials'
 
 /** Slugs that would collide with blog routing. */

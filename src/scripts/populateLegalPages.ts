@@ -83,7 +83,9 @@ const populate = async () => {
     `Contact page: ${contactDoc ? `${contactDoc.title} [/${contactDoc.slug}] formBlock=${contactHasForm}` : 'not found'}`,
   )
 
+  const only = process.argv[2]
   for (const page of pages) {
+    if (only && page.slug !== only) continue
     const existing = await payload.find({
       collection: 'pages',
       depth: 0,
@@ -114,6 +116,8 @@ const populate = async () => {
         collection: 'pages',
         id: found.id,
         depth: 0,
+        draft: false,
+        overrideAccess: true,
         context: { disableRevalidate: true },
         data,
       })

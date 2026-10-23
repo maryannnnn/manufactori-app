@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 
+import Link from 'next/link'
 import React from 'react'
 
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ClientDirectory } from '@/components/ClientDirectory'
 import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
-import { CLIENTS_PATH } from '@/utilities/getContentUrls'
+import { CLIENTS_PATH, TESTIMONIALS_ARCHIVE_PATH } from '@/utilities/getContentUrls'
 import { getClientList } from '@/utilities/getClientList'
 import { buildWebPageGraph, clientsBreadcrumbs } from '@/utilities/jsonLd'
 
@@ -47,6 +48,14 @@ export default async function ClientsPage() {
         <p className="mt-4 max-w-[62ch] text-base leading-7 text-muted-foreground">
           Companies and businesses whose projects are featured in the portfolio. Open a card to
           read that company’s case study.
+        </p>
+        <p className="mt-4 text-base leading-7">
+          <Link
+            className="text-link underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+            href={TESTIMONIALS_ARCHIVE_PATH}
+          >
+            Read client testimonials
+          </Link>
         </p>
       </div>
       <div className="container">
