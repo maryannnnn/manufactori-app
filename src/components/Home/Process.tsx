@@ -11,7 +11,7 @@ const steps = [
   {
     number: '02',
     title: 'Strategy & Positioning',
-    text: 'Define how the company should appear in search and sales conversations.',
+    text: 'Define how the company should appear in ordinary search, in AI-powered discovery, and in sales conversations.',
     icon: Waypoints,
   },
   {

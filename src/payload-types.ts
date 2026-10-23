@@ -1136,7 +1136,7 @@ export interface CaseStudy {
       [k: string]: unknown;
     } | null;
     /**
-     * Company and products as interconnected entities for AI search (ChatGPT, Perplexity, Gemini, Google SGE).
+     * How the original information architecture can be read today. Do not describe the historical project as an AI-search campaign, and do not use GEO to mean either geography or Generative Engine Optimization.
      */
     entityAndGeoStructure?: {
       [k: string]: unknown;

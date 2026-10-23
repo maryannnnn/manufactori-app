@@ -8,15 +8,17 @@ export const contact = {
   displayPhone: '+972538974802',
   /** Digits only, no plus or spaces — required by wa.me. */
   whatsappPhone: '972538974802',
-  defaultMessage: "Hello, I'd like to discuss a project.",
+  defaultMessage: 'Hello, I would like to discuss digital marketing for my manufacturing business.',
   /**
    * Public Telegram username without @.
    * Leave empty until a real username exists. Do not invent one.
-   * Phone-based t.me / tg://resolve links are not reliable on desktop and mobile.
    */
   telegramUsername: '',
-  /** Optional full URL. Takes precedence over telegramUsername when set. */
-  telegramUrl: '',
+  /**
+   * Verified destination already stored on the footer contact link.
+   * This is a phone-based t.me URL, not a username, and it does not take a prefilled message.
+   */
+  telegramUrl: 'https://t.me/+972538974802',
 } as const
 
 export const getWhatsAppUrl = (message: string = contact.defaultMessage): string => {

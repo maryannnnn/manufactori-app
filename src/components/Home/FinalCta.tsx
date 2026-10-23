@@ -12,8 +12,8 @@ export const HomeFinalCta: React.FC = () => {
           Ready to Turn Your Manufacturing Expertise Into More Qualified Opportunities?
         </h2>
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
-          Let&apos;s look at your website, search visibility and current marketing system and
-          identify where the biggest opportunities are.
+          Let&apos;s look at your website, ordinary search visibility, AI-powered discovery, and the
+          current marketing system, and identify where the biggest opportunities are.
         </p>
         <Link className={`mt-8 ${ctaButtonClassName}`} href={headerCta.href}>
           {headerCta.label}

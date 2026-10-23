@@ -42,6 +42,10 @@ export const serviceNavLinks: NavLink[] = [
     href: getServiceUrl({ slug: 'seo-ai-search-optimization' })!,
   },
   {
+    label: 'AI Search Optimization & Content Engineering',
+    href: getServiceUrl({ slug: 'ai-search-optimization-manufacturers' })!,
+  },
+  {
     label: 'Technical Content & Thought Leadership',
     href: getServiceUrl({ slug: 'technical-content-thought-leadership' })!,
   },

@@ -6,13 +6,13 @@ export const ORGANIZATION_NAME = 'Maryan Polyak'
 /** Public site name used in metadata, Open Graph, and the logo subtitle. */
 export const SITE_NAME = 'Manufacturing Marketing Agency'
 
-export const HOME_TITLE = 'Manufacturing Marketing Agency | SEO, Websites & Lead Generation'
+export const HOME_TITLE = 'Manufacturing Marketing Agency | SEO, AI Search & Lead Generation'
 
 export const HOME_DESCRIPTION =
-  'Digital marketing, SEO, websites and lead generation for manufacturers and industrial companies. Turn technical expertise into qualified B2B opportunities.'
+  'SEO, websites, technical content, and lead generation for manufacturers and industrial companies. The same product information supports ordinary search and AI-powered discovery.'
 
 export const ORGANIZATION_DESCRIPTION =
-  'Manufacturing marketing, SEO and digital growth for industrial companies.'
+  'Manufacturing marketing, SEO, and AI-powered search for industrial companies.'
 
 export const HOME_H1 = 'Marketing That Turns Manufacturing Expertise Into Qualified Pipeline'
 

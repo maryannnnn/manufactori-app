@@ -88,4 +88,7 @@ export const metadata: Metadata = {
     title: SITE_NAME,
     description: HOME_DESCRIPTION,
   },
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+  },
 }

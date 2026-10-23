@@ -11,7 +11,7 @@ type Props = {
 export const PhoneLink: React.FC<Props> = ({ className }) => {
   return (
     <Link
-      aria-label="Contact"
+      aria-label="Contact us"
       className={
         className ??
         'inline-flex size-11 items-center justify-center text-main transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'

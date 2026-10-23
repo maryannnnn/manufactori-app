@@ -1,0 +1,836 @@
+[
+  {
+    "id": 15,
+    "title": "Manufacturing Content Distribution in the AI Search Era",
+    "slug": "manufacturing-content-distribution-ai-search-zero-click",
+    "_status": "published",
+    "publishedAt": "2026-10-22T09:00:00.000Z",
+    "updatedAt": "2026-10-22T11:39:43.186Z",
+    "meta": {
+      "title": "Manufacturing Content Distribution and Zero-Click Search",
+      "image": {
+        "id": 201,
+        "filename": "blog-content-distribution-zero-click.jpg",
+        "alt": "Industrial sales professional reviewing product documents and a tablet on a factory floor."
+      },
+      "description": "Distribute technical manufacturing content for high-intent queries and qualified inquiries. Traffic alone is an incomplete measure of performance."
+    },
+    "categories": [
+      {
+        "id": 33,
+        "title": "Manufacturing Demand Generation",
+        "category_image": null,
+        "slug": "manufacturing-demand-generation",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f4312bb721436bc296a2f",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f4312bb721436bc296a30",
+            "doc": 33,
+            "url": "/services/manufacturing-demand-generation",
+            "label": "Manufacturing Demand Generation"
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "title": "Manufacturing Marketing Strategy",
+        "category_image": null,
+        "slug": "manufacturing-marketing-strategy",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42e3bb721436bc296a21",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42e3bb721436bc296a22",
+            "doc": 26,
+            "url": "/services/manufacturing-marketing-strategy",
+            "label": "Manufacturing Marketing Strategy"
+          }
+        ]
+      },
+      {
+        "id": 104,
+        "title": "AI Search Optimization",
+        "category_image": null,
+        "slug": "ai-search-optimization",
+        "parent": 29,
+        "breadcrumbs": [
+          {
+            "id": "6a8ffb1790668149743e6a7e",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a7f",
+            "doc": 29,
+            "url": "/services/ai-search--aeo--geo",
+            "label": "AI Search / AEO / GEO"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a80",
+            "doc": 104,
+            "url": "/services/ai-search--aeo--geo/ai-search-optimization",
+            "label": "AI Search Optimization"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "First-Party Data for Manufacturing SEO",
+    "slug": "manufacturing-first-party-data-information-gain",
+    "_status": "published",
+    "publishedAt": "2026-10-21T09:00:00.000Z",
+    "updatedAt": "2026-10-22T11:39:23.442Z",
+    "meta": {
+      "title": "First-Party Data for Manufacturing SEO",
+      "image": {
+        "id": 200,
+        "filename": "blog-first-party-data-manufacturing.jpg",
+        "alt": "Precision-machined steel component on a workbench beside a caliper, a micrometer, and an engineering drawing."
+      },
+      "description": "Use original measurements, drawings, and application evidence on manufacturing websites. Originality helps buyers and does not guarantee AI citations."
+    },
+    "categories": [
+      {
+        "id": 28,
+        "title": "Manufacturing SEO",
+        "category_image": null,
+        "slug": "manufacturing-seo",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42f1bb721436bc296a25",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42f1bb721436bc296a26",
+            "doc": 28,
+            "url": "/services/manufacturing-seo",
+            "label": "Manufacturing SEO"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "title": "Technical Content Marketing",
+        "category_image": null,
+        "slug": "technical-content-marketing",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42febb721436bc296a29",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42febb721436bc296a2a",
+            "doc": 30,
+            "url": "/services/technical-content-marketing",
+            "label": "Technical Content Marketing"
+          }
+        ]
+      },
+      {
+        "id": 104,
+        "title": "AI Search Optimization",
+        "category_image": null,
+        "slug": "ai-search-optimization",
+        "parent": 29,
+        "breadcrumbs": [
+          {
+            "id": "6a8ffb1790668149743e6a7e",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a7f",
+            "doc": 29,
+            "url": "/services/ai-search--aeo--geo",
+            "label": "AI Search / AEO / GEO"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a80",
+            "doc": 104,
+            "url": "/services/ai-search--aeo--geo/ai-search-optimization",
+            "label": "AI Search Optimization"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "AI Search Visibility for Manufacturers",
+    "slug": "manufacturing-ai-outreach-brand-mentions-entity-visibility",
+    "_status": "published",
+    "publishedAt": "2026-10-20T09:00:00.000Z",
+    "updatedAt": "2026-10-22T11:39:04.418Z",
+    "meta": {
+      "title": "AI Search Visibility for Manufacturers",
+      "image": {
+        "id": 199,
+        "filename": "blog-ai-outreach-entity-visibility.jpg",
+        "alt": "Engineer reviewing a technical drawing in a factory office, with a laptop on the desk."
+      },
+      "description": "How manufacturers build a consistent public identity with relevant mentions, links, and third-party references, without promising AI recommendations."
+    },
+    "categories": [
+      {
+        "id": 104,
+        "title": "AI Search Optimization",
+        "category_image": null,
+        "slug": "ai-search-optimization",
+        "parent": 29,
+        "breadcrumbs": [
+          {
+            "id": "6a8ffb1790668149743e6a7e",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a7f",
+            "doc": 29,
+            "url": "/services/ai-search--aeo--geo",
+            "label": "AI Search / AEO / GEO"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a80",
+            "doc": 104,
+            "url": "/services/ai-search--aeo--geo/ai-search-optimization",
+            "label": "AI Search Optimization"
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "title": "AI Search / AEO / GEO",
+        "category_image": null,
+        "slug": "ai-search--aeo--geo",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42f7bb721436bc296a27",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42f7bb721436bc296a28",
+            "doc": 29,
+            "url": "/services/ai-search--aeo--geo",
+            "label": "AI Search / AEO / GEO"
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "title": "Manufacturing Marketing Strategy",
+        "category_image": null,
+        "slug": "manufacturing-marketing-strategy",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42e3bb721436bc296a21",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42e3bb721436bc296a22",
+            "doc": 26,
+            "url": "/services/manufacturing-marketing-strategy",
+            "label": "Manufacturing Marketing Strategy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "How to Structure Manufacturing Content for AI Search",
+    "slug": "manufacturing-content-engineering-semantic-chunking",
+    "_status": "published",
+    "publishedAt": "2026-10-19T09:00:00.000Z",
+    "updatedAt": "2026-10-22T11:38:44.177Z",
+    "meta": {
+      "title": "How to Structure Manufacturing Content for AI Search",
+      "image": {
+        "id": 198,
+        "filename": "blog-content-engineering-semantic-chunking.jpg",
+        "alt": "Laptop showing a specification grid, with technical drawings and machined metal parts on an engineering desk."
+      },
+      "description": "Organize manufacturing product pages into clear technical sections. Semantic chunking helps buyers and search systems read specifications, applications, and limits."
+    },
+    "categories": [
+      {
+        "id": 30,
+        "title": "Technical Content Marketing",
+        "category_image": null,
+        "slug": "technical-content-marketing",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42febb721436bc296a29",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42febb721436bc296a2a",
+            "doc": 30,
+            "url": "/services/technical-content-marketing",
+            "label": "Technical Content Marketing"
+          }
+        ]
+      },
+      {
+        "id": 104,
+        "title": "AI Search Optimization",
+        "category_image": null,
+        "slug": "ai-search-optimization",
+        "parent": 29,
+        "breadcrumbs": [
+          {
+            "id": "6a8ffb1790668149743e6a7e",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a7f",
+            "doc": 29,
+            "url": "/services/ai-search--aeo--geo",
+            "label": "AI Search / AEO / GEO"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a80",
+            "doc": 104,
+            "url": "/services/ai-search--aeo--geo/ai-search-optimization",
+            "label": "AI Search Optimization"
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "title": "Manufacturing SEO",
+        "category_image": null,
+        "slug": "manufacturing-seo",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42f1bb721436bc296a25",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42f1bb721436bc296a26",
+            "doc": 28,
+            "url": "/services/manufacturing-seo",
+            "label": "Manufacturing SEO"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "LinkedIn for B2B Manufacturing: How to Build Visibility With Engineers and Buyers",
+    "slug": "linkedin-b2b-manufacturing",
+    "_status": "published",
+    "publishedAt": "2026-09-08T09:00:00.000Z",
+    "updatedAt": "2026-10-15T17:54:00.022Z",
+    "meta": {
+      "title": "LinkedIn for B2B Manufacturing | Industrial Marketing",
+      "image": {
+        "id": 24,
+        "filename": "blog-linkedin-b2b-manufacturing.jpg",
+        "alt": "Engineers reviewing a machined metal part in a workshop, used as editorial art for an article on LinkedIn for B2B manufacturing."
+      },
+      "description": "How manufacturing companies can use LinkedIn to build technical authority, reach engineers and buyers, and connect social content with their website and SEO strategy."
+    },
+    "categories": [
+      {
+        "id": 26,
+        "title": "Manufacturing Marketing Strategy",
+        "category_image": null,
+        "slug": "manufacturing-marketing-strategy",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42e3bb721436bc296a21",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42e3bb721436bc296a22",
+            "doc": 26,
+            "url": "/services/manufacturing-marketing-strategy",
+            "label": "Manufacturing Marketing Strategy"
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "title": "Manufacturing Demand Generation",
+        "category_image": null,
+        "slug": "manufacturing-demand-generation",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f4312bb721436bc296a2f",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f4312bb721436bc296a30",
+            "doc": 33,
+            "url": "/services/manufacturing-demand-generation",
+            "label": "Manufacturing Demand Generation"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "title": "Technical Content Marketing",
+        "category_image": null,
+        "slug": "technical-content-marketing",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42febb721436bc296a29",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42febb721436bc296a2a",
+            "doc": 30,
+            "url": "/services/technical-content-marketing",
+            "label": "Technical Content Marketing"
+          }
+        ]
+      },
+      {
+        "id": 882,
+        "title": "Manufacturing",
+        "category_image": null,
+        "slug": "manufacturing",
+        "parent": 11,
+        "breadcrumbs": [
+          {
+            "id": "6a914ddff2c99b19f444b86b",
+            "doc": 11,
+            "url": "/industrial",
+            "label": "Industrial"
+          },
+          {
+            "id": "6a914ddff2c99b19f444b86c",
+            "doc": 882,
+            "url": "/industrial/manufacturing",
+            "label": "Manufacturing"
+          }
+        ]
+      },
+      {
+        "id": 1661,
+        "title": "Engineer & Specifier Reach",
+        "category_image": null,
+        "slug": "engineer--specifier-reach",
+        "parent": 12,
+        "breadcrumbs": [
+          {
+            "id": "6a93fa4c40a4a160e4703416",
+            "doc": 12,
+            "url": "/solutions",
+            "label": "Solutions"
+          },
+          {
+            "id": "6a93fa4c40a4a160e4703417",
+            "doc": 1661,
+            "url": "/solutions/engineer--specifier-reach",
+            "label": "Engineer & Specifier Reach"
+          }
+        ]
+      },
+      {
+        "id": 1734,
+        "title": "Complex B2B Sales",
+        "category_image": null,
+        "slug": "complex-b2b-sales",
+        "parent": 12,
+        "breadcrumbs": [
+          {
+            "id": "6a93fc3140a4a160e47034eb",
+            "doc": 12,
+            "url": "/solutions",
+            "label": "Solutions"
+          },
+          {
+            "id": "6a93fc3140a4a160e47034ec",
+            "doc": 1734,
+            "url": "/solutions/complex-b2b-sales",
+            "label": "Complex B2B Sales"
+          }
+        ]
+      },
+      {
+        "id": 1678,
+        "title": "Brand, Market Position & Competitive Growth",
+        "category_image": null,
+        "slug": "brand-market-position--competitive-growth",
+        "parent": 12,
+        "breadcrumbs": [
+          {
+            "id": "6a93fabd40a4a160e4703447",
+            "doc": 12,
+            "url": "/solutions",
+            "label": "Solutions"
+          },
+          {
+            "id": "6a93fabd40a4a160e4703448",
+            "doc": 1678,
+            "url": "/solutions/brand-market-position--competitive-growth",
+            "label": "Brand, Market Position & Competitive Growth"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Google Ads for Manufacturers: From Clicks to Qualified Industrial Leads",
+    "slug": "google-ads-for-manufacturers",
+    "_status": "published",
+    "publishedAt": "2026-09-22T09:00:00.000Z",
+    "updatedAt": "2026-10-15T17:54:33.930Z",
+    "meta": {
+      "title": "Google Ads for Manufacturers | B2B Lead Generation",
+      "image": {
+        "id": 23,
+        "filename": "blog-google-ads-manufacturing.jpg",
+        "alt": "Manufacturing control room with production documents and unmarked screens, used as editorial art for an article on Google Ads for manufacturers."
+      },
+      "description": "A practical approach to Google Ads for manufacturers: search intent, product structure, landing pages, negative keywords and measuring qualified B2B leads."
+    },
+    "categories": [
+      {
+        "id": 363,
+        "title": "Google Ads for Manufacturers",
+        "category_image": null,
+        "slug": "google-ads-for-manufacturers",
+        "parent": 35,
+        "breadcrumbs": [
+          {
+            "id": "6a8ffe96c743cb51bc9c9b21",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8ffe96c743cb51bc9c9b22",
+            "doc": 35,
+            "url": "/services/paid-search--paid-media",
+            "label": "Paid Search & Paid Media"
+          },
+          {
+            "id": "6a8ffe96c743cb51bc9c9b23",
+            "doc": 363,
+            "url": "/services/paid-search--paid-media/google-ads-for-manufacturers",
+            "label": "Google Ads for Manufacturers"
+          }
+        ]
+      },
+      {
+        "id": 35,
+        "title": "Paid Search & Paid Media",
+        "category_image": null,
+        "slug": "paid-search--paid-media",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f431fbb721436bc296a33",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f431fbb721436bc296a34",
+            "doc": 35,
+            "url": "/services/paid-search--paid-media",
+            "label": "Paid Search & Paid Media"
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "title": "Manufacturing Demand Generation",
+        "category_image": null,
+        "slug": "manufacturing-demand-generation",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f4312bb721436bc296a2f",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f4312bb721436bc296a30",
+            "doc": 33,
+            "url": "/services/manufacturing-demand-generation",
+            "label": "Manufacturing Demand Generation"
+          }
+        ]
+      },
+      {
+        "id": 882,
+        "title": "Manufacturing",
+        "category_image": null,
+        "slug": "manufacturing",
+        "parent": 11,
+        "breadcrumbs": [
+          {
+            "id": "6a914ddff2c99b19f444b86b",
+            "doc": 11,
+            "url": "/industrial",
+            "label": "Industrial"
+          },
+          {
+            "id": "6a914ddff2c99b19f444b86c",
+            "doc": 882,
+            "url": "/industrial/manufacturing",
+            "label": "Manufacturing"
+          }
+        ]
+      },
+      {
+        "id": 1607,
+        "title": "Lead Generation & New Business",
+        "category_image": null,
+        "slug": "lead-generation--new-business",
+        "parent": 12,
+        "breadcrumbs": [
+          {
+            "id": "6a93f8e540a4a160e470337a",
+            "doc": 12,
+            "url": "/solutions",
+            "label": "Solutions"
+          },
+          {
+            "id": "6a93f8e540a4a160e470337b",
+            "doc": 1607,
+            "url": "/solutions/lead-generation--new-business",
+            "label": "Lead Generation & New Business"
+          }
+        ]
+      },
+      {
+        "id": 1710,
+        "title": "Digital Sales & Customer Acquisition Growth",
+        "category_image": null,
+        "slug": "digital-sales--customer-acquisition-growth",
+        "parent": 12,
+        "breadcrumbs": [
+          {
+            "id": "6a93fb9140a4a160e47034a5",
+            "doc": 12,
+            "url": "/solutions",
+            "label": "Solutions"
+          },
+          {
+            "id": "6a93fb9140a4a160e47034a6",
+            "doc": 1710,
+            "url": "/solutions/digital-sales--customer-acquisition-growth",
+            "label": "Digital Sales & Customer Acquisition Growth"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "AI Search Optimization for B2B Companies: What GEO Actually Means",
+    "slug": "ai-search-optimization-b2b-geo",
+    "_status": "published",
+    "publishedAt": "2026-10-06T09:00:00.000Z",
+    "updatedAt": "2026-10-15T17:55:00.649Z",
+    "meta": {
+      "title": "AI Search Optimization for B2B Companies | GEO Strategy",
+      "image": {
+        "id": 22,
+        "filename": "blog-ai-search-b2b.jpg",
+        "alt": "Technical drawings and industrial components on a table in a factory office, used as editorial art for an article on AI search and GEO."
+      },
+      "description": "How AI search is changing B2B discovery and what companies can do to improve visibility across Google, ChatGPT, Perplexity and other AI-driven search experiences."
+    },
+    "categories": [
+      {
+        "id": 104,
+        "title": "AI Search Optimization",
+        "category_image": null,
+        "slug": "ai-search-optimization",
+        "parent": 29,
+        "breadcrumbs": [
+          {
+            "id": "6a8ffb1790668149743e6a7e",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a7f",
+            "doc": 29,
+            "url": "/services/ai-search--aeo--geo",
+            "label": "AI Search / AEO / GEO"
+          },
+          {
+            "id": "6a8ffb1790668149743e6a80",
+            "doc": 104,
+            "url": "/services/ai-search--aeo--geo/ai-search-optimization",
+            "label": "AI Search Optimization"
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "title": "AI Search / AEO / GEO",
+        "category_image": null,
+        "slug": "ai-search--aeo--geo",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42f7bb721436bc296a27",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42f7bb721436bc296a28",
+            "doc": 29,
+            "url": "/services/ai-search--aeo--geo",
+            "label": "AI Search / AEO / GEO"
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "title": "Manufacturing SEO",
+        "category_image": null,
+        "slug": "manufacturing-seo",
+        "parent": 10,
+        "breadcrumbs": [
+          {
+            "id": "6a8f42f1bb721436bc296a25",
+            "doc": 10,
+            "url": "/services",
+            "label": "Services"
+          },
+          {
+            "id": "6a8f42f1bb721436bc296a26",
+            "doc": 28,
+            "url": "/services/manufacturing-seo",
+            "label": "Manufacturing SEO"
+          }
+        ]
+      },
+      {
+        "id": 882,
+        "title": "Manufacturing",
+        "category_image": null,
+        "slug": "manufacturing",
+        "parent": 11,
+        "breadcrumbs": [
+          {
+            "id": "6a914ddff2c99b19f444b86b",
+            "doc": 11,
+            "url": "/industrial",
+            "label": "Industrial"
+          },
+          {
+            "id": "6a914ddff2c99b19f444b86c",
+            "doc": 882,
+            "url": "/industrial/manufacturing",
+            "label": "Manufacturing"
+          }
+        ]
+      },
+      {
+        "id": 1753,
+        "title": "Customer & Market Education",
+        "category_image": null,
+        "slug": "customer--market-education",
+        "parent": 12,
+        "breadcrumbs": [
+          {
+            "id": "6a93fcae40a4a160e4703522",
+            "doc": 12,
+            "url": "/solutions",
+            "label": "Solutions"
+          },
+          {
+            "id": "6a93fcae40a4a160e4703523",
+            "doc": 1753,
+            "url": "/solutions/customer--market-education",
+            "label": "Customer & Market Education"
+          }
+        ]
+      },
+      {
+        "id": 1661,
+        "title": "Engineer & Specifier Reach",
+        "category_image": null,
+        "slug": "engineer--specifier-reach",
+        "parent": 12,
+        "breadcrumbs": [
+          {
+            "id": "6a93fa4c40a4a160e4703416",
+            "doc": 12,
+            "url": "/solutions",
+            "label": "Solutions"
+          },
+          {
+            "id": "6a93fa4c40a4a160e4703417",
+            "doc": 1661,
+            "url": "/solutions/engineer--specifier-reach",
+            "label": "Engineer & Specifier Reach"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": null,
+    "slug": null,
+    "_status": "draft",
+    "publishedAt": null,
+    "updatedAt": "2026-08-25T19:31:35.822Z",
+    "meta": {
+      "title": null,
+      "image": null,
+      "description": null
+    },
+    "categories": []
+  }
+]

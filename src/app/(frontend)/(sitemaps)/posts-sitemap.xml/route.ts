@@ -33,8 +33,6 @@ const getPostsSitemap = unstable_cache(
       collectActiveCategoryPaths(payload, 'post'),
     ])
 
-    const dateFallback = new Date().toISOString()
-
     const sitemap = results.docs
       ? results.docs
           .map((post) => {
@@ -42,16 +40,16 @@ const getPostsSitemap = unstable_cache(
             if (!path) return null
             return {
               loc: `${SITE_URL}${path}`,
-              lastmod: post.updatedAt || dateFallback,
+              ...(post.updatedAt ? { lastmod: post.updatedAt } : {}),
             }
           })
-          .filter((entry): entry is { loc: string; lastmod: string } => Boolean(entry))
+          .filter((entry): entry is { loc: string; lastmod?: string } => Boolean(entry))
       : []
 
     for (const category of activeCategories) {
       sitemap.push({
         loc: `${SITE_URL}${category.path}`,
-        lastmod: category.lastmod || dateFallback,
+        ...(category.lastmod ? { lastmod: category.lastmod } : {}),
       })
     }
 

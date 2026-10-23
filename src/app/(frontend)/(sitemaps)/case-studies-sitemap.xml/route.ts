@@ -33,11 +33,15 @@ const getCaseStudiesSitemap = unstable_cache(
       collectActiveCategoryPaths(payload, 'case-study'),
     ])
 
-    const dateFallback = new Date().toISOString()
-    const entries: { loc: string; lastmod: string }[] = [
+    const newest = results.docs
+      ?.map((doc) => doc.updatedAt)
+      .filter((value): value is string => Boolean(value))
+      .sort()
+      .at(-1)
+    const entries: { loc: string; lastmod?: string }[] = [
       {
         loc: `${SITE_URL}${CASE_STUDIES_ARCHIVE_PATH}`,
-        lastmod: dateFallback,
+        ...(newest ? { lastmod: newest } : {}),
       },
     ]
 
@@ -46,7 +50,7 @@ const getCaseStudiesSitemap = unstable_cache(
       if (path) {
         entries.push({
           loc: `${SITE_URL}${path}`,
-          lastmod: doc.updatedAt || dateFallback,
+          ...(doc.updatedAt ? { lastmod: doc.updatedAt } : {}),
         })
       }
     }
@@ -54,7 +58,7 @@ const getCaseStudiesSitemap = unstable_cache(
     for (const category of activeCategories) {
       entries.push({
         loc: `${SITE_URL}${category.path}`,
-        lastmod: category.lastmod || dateFallback,
+        ...(category.lastmod ? { lastmod: category.lastmod } : {}),
       })
     }
 

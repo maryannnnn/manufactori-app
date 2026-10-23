@@ -331,12 +331,12 @@ export const caseStudyDigitalTabFields: Field[] = [
   {
     name: 'aiSearchOptimization',
     type: 'group',
-    label: 'AI Search Optimization (GEO & AEO)',
+    label: 'Search context',
     fields: [
       {
         name: 'brandAuthorityAndTrust',
         type: 'richText',
-        label: 'Brand Authority & Trust',
+        label: 'What the project record shows',
         editor: defaultTiptap,
         admin: {
           description:
@@ -346,11 +346,11 @@ export const caseStudyDigitalTabFields: Field[] = [
       {
         name: 'entityAndGeoStructure',
         type: 'richText',
-        label: 'Entity & GEO Structure',
+        label: "Relevance to today's search",
         editor: defaultTiptap,
         admin: {
           description:
-            'Company and products as interconnected entities for AI search (ChatGPT, Perplexity, Gemini, Google SGE).',
+            'How the original information architecture can be read today. Do not describe the historical project as an AI-search campaign, and do not use GEO to mean either geography or Generative Engine Optimization.',
         },
       },
     ],

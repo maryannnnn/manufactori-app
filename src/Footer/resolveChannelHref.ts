@@ -43,7 +43,9 @@ const whatsappHref = (value?: string | null): string | null => {
   if (!raw) return getWhatsAppUrl()
   if (/^https?:\/\//i.test(raw) || /wa\.me/i.test(raw)) return asHttpsUrl(raw)
   const digits = raw.replace(/\D/g, '')
-  if (digits.length >= 8) return `https://wa.me/${digits}`
+  if (digits.length >= 8) {
+    return `https://wa.me/${digits}?text=${encodeURIComponent(contact.defaultMessage)}`
+  }
   return getWhatsAppUrl()
 }
 

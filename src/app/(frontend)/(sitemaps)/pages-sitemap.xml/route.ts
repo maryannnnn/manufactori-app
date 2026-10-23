@@ -5,7 +5,7 @@ import { unstable_cache } from 'next/cache'
 import { BLOG_ARCHIVE_PATH, CLIENTS_PATH } from '@/utilities/getContentUrls'
 import { getServerSideURL } from '@/utilities/getURL'
 
-const EXCLUDED_PAGE_SLUGS = new Set(['home', 'search', 'admin', 'clients'])
+const EXCLUDED_PAGE_SLUGS = new Set(['home', 'search', 'admin', 'clients', 'image-editor-check'])
 
 const getPagesSitemap = unstable_cache(
   async () => {
@@ -30,35 +30,26 @@ const getPagesSitemap = unstable_cache(
       },
     })
 
-    const dateFallback = new Date().toISOString()
+    const home = results.docs?.find((page) => page.slug === 'home')
 
-    const defaultSitemap = [
+    const entries: { loc: string; lastmod?: string }[] = [
       {
         loc: `${SITE_URL}/`,
-        lastmod: dateFallback,
+        ...(home?.updatedAt ? { lastmod: home.updatedAt } : {}),
       },
-      {
-        loc: `${SITE_URL}${BLOG_ARCHIVE_PATH}`,
-        lastmod: dateFallback,
-      },
-      {
-        loc: `${SITE_URL}${CLIENTS_PATH}`,
-        lastmod: dateFallback,
-      },
+      { loc: `${SITE_URL}${BLOG_ARCHIVE_PATH}` },
+      { loc: `${SITE_URL}${CLIENTS_PATH}` },
     ]
 
-    const sitemap = results.docs
-      ? results.docs
-          .filter((page) => Boolean(page?.slug) && !EXCLUDED_PAGE_SLUGS.has(page.slug as string))
-          .map((page) => {
-            return {
-              loc: `${SITE_URL}/${page?.slug}`,
-              lastmod: page.updatedAt || dateFallback,
-            }
-          })
-      : []
+    for (const page of results.docs ?? []) {
+      if (!page?.slug || EXCLUDED_PAGE_SLUGS.has(page.slug)) continue
+      entries.push({
+        loc: `${SITE_URL}/${page.slug}`,
+        ...(page.updatedAt ? { lastmod: page.updatedAt } : {}),
+      })
+    }
 
-    return [...defaultSitemap, ...sitemap]
+    return entries
   },
   ['pages-sitemap'],
   {

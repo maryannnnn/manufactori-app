@@ -16,8 +16,9 @@ export const HomeHero: React.FC = () => {
           Marketing That Turns Manufacturing Expertise Into Qualified Pipeline
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">
-          Digital marketing, SEO, websites and lead generation built for manufacturers and
-          industrial companies.
+          SEO, websites, technical content, and lead generation for manufacturers and industrial
+          companies, prepared so ordinary search and AI-powered search can use the same product
+          information.
         </p>
         <div className="mt-10">
           <Link className={ctaButtonClassName} href={headerCta.href}>

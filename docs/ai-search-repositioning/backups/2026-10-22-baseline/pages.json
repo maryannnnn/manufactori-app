@@ -1,0 +1,2722 @@
+[
+  {
+    "id": 11,
+    "title": "Sitemap",
+    "pageLongTitle": "Sitemap",
+    "hero": {
+      "type": "none",
+      "richText": null,
+      "links": [],
+      "media": null
+    },
+    "layout": [
+      {
+        "id": "6ac896062b45bf5188dfcd3d",
+        "blockName": null,
+        "columns": [
+          {
+            "id": "6ac896062b45bf5188dfcd3c",
+            "size": "full",
+            "richText": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This page lists the main public areas of Manufacturing Marketing Agency. Use it to move to services, case studies, articles, and legal pages. Search-engine XML sitemaps are separate from this visitor page.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "enableLink": null,
+            "link": {
+              "type": "reference",
+              "newTab": null,
+              "url": null,
+              "label": null,
+              "appearance": "default"
+            }
+          }
+        ],
+        "blockType": "content"
+      }
+    ],
+    "meta": {
+      "title": "Sitemap | Manufacturing Marketing Agency",
+      "image": null,
+      "description": "Browse the main pages, services, case studies, and articles available on our website."
+    },
+    "publishedAt": null,
+    "generateSlug": false,
+    "slug": "sitemap",
+    "updatedAt": "2026-10-09T07:21:42.086Z",
+    "createdAt": "2026-10-09T07:20:37.483Z",
+    "_status": "published"
+  },
+  {
+    "id": 10,
+    "title": "Privacy Policy",
+    "pageLongTitle": "Privacy Policy",
+    "hero": {
+      "type": "none",
+      "richText": null,
+      "links": [],
+      "media": null
+    },
+    "layout": [
+      {
+        "id": "6ac896002b45bf5188dfcd3b",
+        "blockName": null,
+        "columns": [
+          {
+            "id": "6ac896002b45bf5188dfcd3a",
+            "size": "full",
+            "richText": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "1. Scope and Introduction",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This Privacy Policy explains how personal information may be collected, used, disclosed, retained, and protected when you visit Manufacturing Marketing Agency, read our content, or contact Maryan Polyak about manufacturing marketing services.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The website is presented publicly under the name Maryan Polyak, operating as Manufacturing Marketing Agency. The registered legal entity, if different from that public name, has not been confirmed for publication: ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "[Registered legal entity name — to be confirmed by the site owner]",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Registered postal address for privacy correspondence: ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "[Registered postal address — to be confirmed by the site owner]",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This policy covers the public website, contact and inquiry communications, browser storage used for site preferences, and marketing or advertising technologies if they are enabled. It does not cover unrelated websites that we do not operate.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This document is a practical description of current website implementation and of categories of processing that may become relevant. It is not a claim that every technology mentioned below is active today, and it is not a substitute for a legal review of actual business practices.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "2. Information We May Collect",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Information provided directly",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The information we receive depends on how you choose to contact us. You are not required to submit an inquiry in order to browse public pages.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "At the time this policy was drafted, the CMS did not contain a published contact form, and the Contact page did not include a form block. The website software can host forms. If a form is published later, we will process the fields shown on that form, which may include name, email address, telephone number, message text, and other details the form is configured to collect, such as company name, job title, website URL, or project requirements.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "You may also contact us through the ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Contact page",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "/contact",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": " or through WhatsApp using the number published on the website (+972538974802). A Telegram option may be shown, but it is only active when a public Telegram destination has been configured. Information you send through those channels is the information you choose to provide in the conversation.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Starting a conversation or submitting an inquiry does not, by itself, subscribe you to a marketing email list.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Automatically collected information",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Like most websites, the hosting and application infrastructure may process technical information needed to deliver pages, keep the site secure, and diagnose problems. That information can include IP address, browser and device details, operating system, referring URL, pages requested, date and time of the request, approximate location derived from IP address, and diagnostic or security logs.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This operational processing is distinct from optional analytics or advertising tracking. Optional analytics and advertising tags are described later in this policy and are not treated as active merely because they are mentioned.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Information from third parties",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We may receive business contact details from the person who contacts us, from public business sources, or from service providers involved in hosting, security, communications, or project delivery. We do not claim that every possible third-party source is currently in use.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "3. How We Use Information",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Depending on the interaction, information may be used to:",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Respond to inquiries and prepare requested information or quotations.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Communicate about potential or active projects.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Provide contracted manufacturing marketing services.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Maintain customer and prospect records needed to manage a professional relationship.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Operate, secure, and troubleshoot the website.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Understand how the public website is performing, where analytics are lawfully configured.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Measure marketing or advertising effectiveness, where those tools are enabled and configured.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Improve website content and user experience.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Prevent abuse, fraud, and security incidents.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Meet legal obligations and establish, exercise, or defend legal claims where applicable.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Operational communications about an inquiry or a project are different from promotional campaigns. We do not treat a contact form submission or a WhatsApp message as consent to unrelated marketing emails unless that consent is separately and clearly obtained.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "4. Cookies and Similar Technologies",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This website can use cookies, similar identifiers, and browser storage. The technologies actually present depend on the current configuration of the site.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Essential and operational technologies",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The application may set cookies required to operate signed-in administrative sessions, such as the Payload CMS authentication cookie used by site editors. Ordinary public visitors do not need an account to read the website.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Preference storage",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The public website stores certain preferences in the browser’s local storage rather than in advertising cookies. These include appearance theme, color-palette selection, and accessibility-widget settings. Those preferences stay on the device and are used to remember the visitor’s chosen display options.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Analytics, advertising, and embedded content",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Analytics cookies, advertising identifiers, conversion-measurement tags, and embedded third-party content may process information when those integrations are actually loaded. Similar technologies can operate without a traditional cookie, for example through pixels, local storage, or server-side logging.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Consent and preference controls",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Where applicable law requires consent before optional tracking, that consent should be collected through a working preference mechanism. This website does not currently include a cookie-consent banner or a consent-management platform. Optional advertising and analytics tags are not currently loaded by the public frontend. Preference controls in the accessibility widget and theme selector are not consent tools for advertising cookies.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We do not claim that all cookies are blocked until consent, because no such blocking layer is implemented.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Current and possible future integrations",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "A code review of the current project found no Google Analytics 4, Google Ads conversion or remarketing tags, Google Tag Manager container, Meta Pixel, or Cloudflare analytics/bot script installed on the public website.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Those products, and other analytics, attribution, or advertising tools, may be added later. If they are enabled, this policy should be updated so that active providers are described as active, and any required consent or disclosure controls should be implemented before those tags collect optional data.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Until that happens, the list above is a maintainable map of technologies that a manufacturing marketing website might use. It is not a statement that they currently collect visitor data on this site.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "5. Google Analytics and Google Advertising",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Google Analytics 4, Google Ads conversion tracking, remarketing tags, and Google Tag Manager are not currently initialized in the public website code.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "If Google technologies are enabled later, they may process website usage information and advertising interaction data for analytics, campaign measurement, or other purposes configured in the Google account. We would not, at that time, publish unverified claims about exact data fields, retention periods, data locations, Google signals, or advertising personalization settings. Those details would need to be taken from the live Google configuration.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Google’s own information about how it processes data is available in ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Google's Privacy Policy",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "https://policies.google.com/privacy",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": " and ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Google's Business Data Responsibility pages",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "https://business.safety.google/privacy/",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "6. Meta and Social Advertising Technologies",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Meta Pixel and related Meta advertising measurement tools are not currently initialized in the public website code.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "If a Meta Pixel or similar tool is enabled later, it may process information about website interactions and configured conversion events for measurement and advertising. Private messages sent through a contact form, email, or WhatsApp are not automatically shared with advertising platforms by the current website implementation.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Meta’s privacy information is available in the ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Meta Privacy Policy",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "https://www.facebook.com/privacy/policy/",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": ". WhatsApp, which is a separate Meta product used here only as a contact channel when you choose to open it, publishes its own ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "WhatsApp Privacy Policy",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "https://www.whatsapp.com/legal/privacy-policy",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "7. Cloudflare and Website Security",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The current website codebase does not install Cloudflare analytics or a Cloudflare challenge widget. The site may still be delivered through hosting, DNS, CDN, or security infrastructure that logs technical requests in order to operate the service.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The project is configured to run as a Next.js application with a hosted Postgres database. Those hosting and database providers may process technical logs, stored content, and backup copies as needed to deliver the website. We do not claim that any provider encrypts or anonymizes all data in every circumstance, and we do not publish invented retention periods for those vendors.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "If Cloudflare or a similar security or CDN service is later confirmed as part of the live environment, this section should be updated to describe the functions actually used, such as DNS, content delivery, security filtering, abuse prevention, or performance optimization.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Cloudflare’s policy, for reference if that infrastructure is used, is available at ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Cloudflare’s Privacy Policy",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "https://www.cloudflare.com/privacypolicy/",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "8. Contact Forms and Direct Communications",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The website software includes form-builder support and a form-submission endpoint. No public form was published in the CMS when this policy was drafted. If a form is added to a public page later, submissions from that form will be stored so we can read and respond to the inquiry. The precise fields will be those displayed on the form you submit.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "If you contact us by WhatsApp, telephone, Telegram, or another channel that we actually offer, the relevant communications provider processes that conversation under its own terms. The current public WhatsApp number is +972538974802. No public Telegram username is configured at the time this policy was drafted.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Contacting us about a project is not the same as opting in to a newsletter or paid advertising audience.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "9. CRM and Lead Management",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Inquiry information may be stored in internal business tools so we can organize requests, manage projects, keep business records, and coordinate follow-up. The current website code does not name a specific CRM product as a connected integration.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Not every website visitor is entered into a CRM. Records are created when there is a business reason to keep the inquiry or relationship, such as a message you sent or a project we are discussing.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "10. AI Tools and Automated Processing",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We may use internal drafting, research, and productivity tools, including AI-assisted tools, in ordinary business work. That is different from sending visitor data to an AI provider as part of the public website, and it is different from automated decisions that produce legal or similarly significant effects.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The current website implementation does not send contact-form submissions to a public AI provider for automated decision-making of that kind. We do not claim that AI is used to approve or refuse services through a fully automated legal decision. If those practices change, this policy should be updated.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "11. Sharing and Disclosure",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Information may be disclosed to recipients who need it for a specific purpose. Actual recipients depend on the services in use and the circumstances of the inquiry or project. Categories can include:",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Hosting, database, and application infrastructure providers.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Security, DNS, or content-delivery providers, if used.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Analytics and advertising providers, if those tags are enabled.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Communications platforms you choose to use, such as WhatsApp.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Professional advisers, such as legal or accounting advisers, where needed.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Authorities when the law requires disclosure.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "A successor in a lawful business transaction, where applicable.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We do not operate this website as a data-brokerage service. We also do not publish an absolute statement that personal information is never shared, because hosting, communications, and future marketing tools necessarily involve service providers.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Whether any activity meets a legal definition of a “sale” or “sharing” of personal information depends on applicable law and on practices that the site owner must confirm. No claim that data is sold, or never sold, is made here without that confirmation.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "12. International Data Transfers",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Service providers may process information in countries other than the country from which you visit the site. The current implementation does not publish a verified list of processing countries, standard contractual clauses, or transfer certifications.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "If GDPR, UK GDPR, or another transfer regime applies, the site owner should confirm the safeguards actually used rather than relying on this placeholder description.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "13. Data Retention",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We retain information only as long as reasonably necessary for the purpose for which it was collected, including inquiry follow-up, project delivery, security, and legal or accounting recordkeeping where those requirements apply.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "No specific retention schedule has been confirmed for publication: ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "[Data retention schedule — to be confirmed by the site owner]",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Browser preference storage remains on the visitor’s device until the visitor clears it or resets the relevant control. Hosting and security logs follow the provider’s own retention practices.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "14. Data Security",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We use reasonable technical and organizational measures appropriate to a professional website, including access-controlled administration of the CMS, encrypted transport to the public site over HTTPS where the hosting environment provides it, and limitation of published secrets in the frontend.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "No website is immune to security incidents. This policy does not claim that systems have been independently audited or that a breach cannot occur.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "15. Privacy Rights",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Depending on where you live and which law applies, you may have rights in relation to personal information. Those rights can include access, correction, deletion, restriction of processing, objection to certain processing, data portability, withdrawal of consent where processing relies on consent, opting out of certain targeted advertising or sale/sharing practices, and lodging a complaint with a supervisory authority.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Not every visitor has every right in every jurisdiction. The availability and scope of these rights depend on applicable law, the role of the website operator, and the circumstances of the request.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "To make a privacy request, use the ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Contact page",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "/contact",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": " or write to ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "[Privacy contact email — to be confirmed by the site owner]",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "text": ". We may need to confirm the request is legitimate before completing it.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "16. Regional Privacy Information",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Manufacturing Marketing Agency is a B2B manufacturing marketing website that may be visited by companies in more than one country. The subsections below are structured so they can be completed as the operator’s legal status is confirmed. They do not assert unsupported registrations, representative appointments, or jurisdictional coverage.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "European Economic Area and United Kingdom",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "If the GDPR or UK GDPR applies to a particular processing activity, the operator would need to identify lawful bases, honor valid data-subject rights, and use appropriate transfer safeguards. Those items have not been confirmed for publication.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "[EU/UK representative, DPO, and lawful bases — to be confirmed by the site owner]",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Depending on the activity, a lawful basis may later be confirmed as steps taken at the request of a prospective client, performance of a contract, compliance with law, legitimate interests in operating a B2B website, or consent where optional tracking is introduced and consent is required. Until the operator confirms the bases actually relied on, this policy does not select them as established legal positions.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Israel",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The public contact number uses an Israeli country code. Israeli privacy law, including the Protection of Privacy Law, 5741-1981, related data-security regulations, and subsequent amendments, may be relevant. This subsection identifies that local framework for legal review. It does not claim that a particular registration, database, or compliance program has been completed.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "United States",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Some U.S. state privacy laws, including the California Consumer Privacy Act as amended by the CPRA and similar state statutes, confer rights on certain residents when the business is in scope. This website does not currently publish a separate “Do Not Sell or Share My Personal Information” link, because it has not been confirmed that those statutes apply to this operator or that a sale or share as those laws define it is occurring.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "State-specific notices should be added only when the relevant law applies. No U.S. state is listed here as definitely in scope.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Other jurisdictions",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Additional disclosures can be added here if the agency establishes operations or legal obligations in other countries. No extra country-specific statement is published without that confirmation.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "17. Children’s Privacy",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This website is intended for business professionals considering manufacturing marketing services. It is not directed at children, and we do not knowingly collect personal information from children in order to offer services to them.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The site does not include an age-verification mechanism. If we learn that we have collected personal information from a child in a way that is inconsistent with applicable law, we will take reasonable steps to delete it.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "18. Third-Party Links",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The website may link to external sites, messaging apps, social platforms, and vendor documentation. Those destinations have their own privacy policies and practices. We do not control how those operators use information you provide to them.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Official policies for services that are currently linked or that may later be enabled include ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Google",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "https://policies.google.com/privacy",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": ", ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Meta",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "https://www.facebook.com/privacy/policy/",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": ", ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "WhatsApp",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "https://www.whatsapp.com/legal/privacy-policy",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": ", and ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Cloudflare",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "https://www.cloudflare.com/privacypolicy/",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "19. Changes to This Policy",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We may update this policy as the website, services, legal requirements, and technology integrations change. Material changes should be reflected in the CMS copy before new optional tracking is presented as current practice.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Last updated: ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "[Last updated date — to be confirmed by the site owner]",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The presence of a last-updated field does not mean that a lawyer has completed a formal legal review on that date.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "20. Contact Information",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "For privacy questions or requests, contact Maryan Polyak through the ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Contact page",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "/contact",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": " or WhatsApp at +972538974802.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Privacy email: ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "[Privacy contact email — to be confirmed by the site owner]",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Legal entity: ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "[Registered legal entity name — to be confirmed by the site owner]",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Postal address: ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "[Registered postal address — to be confirmed by the site owner]",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "text": ".",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Do not send passwords, payment-card numbers, or other highly sensitive credentials through public contact channels.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "enableLink": null,
+            "link": {
+              "type": "reference",
+              "newTab": null,
+              "url": null,
+              "label": null,
+              "appearance": "default"
+            }
+          }
+        ],
+        "blockType": "content"
+      }
+    ],
+    "meta": {
+      "title": "Privacy Policy | Manufacturing Marketing Agency",
+      "image": null,
+      "description": "Read our privacy policy to understand how website information, contact inquiries, cookies, analytics, advertising technologies, and personal data are handled."
+    },
+    "publishedAt": null,
+    "generateSlug": false,
+    "slug": "privacy-policy",
+    "updatedAt": "2026-10-09T07:21:36.950Z",
+    "createdAt": "2026-10-09T07:20:34.693Z",
+    "_status": "published"
+  },
+  {
+    "id": 9,
+    "title": "Accessibility Statement",
+    "pageLongTitle": "Accessibility Statement",
+    "hero": {
+      "type": "none",
+      "richText": null,
+      "links": [],
+      "media": null
+    },
+    "layout": [
+      {
+        "id": "6ac895fb2b45bf5188dfcd39",
+        "blockName": null,
+        "columns": [
+          {
+            "id": "6ac895fb2b45bf5188dfcd38",
+            "size": "full",
+            "richText": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Our Commitment",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Maryan Polyak operates Manufacturing Marketing Agency as a B2B manufacturing marketing website. We intend this site to be usable by as many people as reasonably possible, including people who use keyboards, screen readers, and other assistive technologies.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Accessibility is treated as an ongoing design and engineering practice, not a one-time launch task. We continue to improve the site as we add pages, features, and content.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Accessibility Standards",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We aim to align the public website with widely used accessibility best practices. Where it is useful as a technical reference, we look to the Web Content Accessibility Guidelines (WCAG) 2.2 Level AA.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This statement does not claim that the website is fully compliant, certified, or independently audited. No accessibility certification, audit score, or compliance percentage is published here because none has been independently verified for this site.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Accessibility Features",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The following features are implemented in the current public website and can be verified in the product itself:",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "A skip link that moves keyboard users to the main content.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Keyboard access to primary navigation, footer links, buttons, and form controls.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Visible focus indicators on interactive controls.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Semantic page structure, including headings, navigation, main content, and footer landmarks.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Language set to English on the document.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Screen-reader labels on key controls, including the site logo and the accessibility settings panel.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Alternative text support for CMS images, used when editors provide a description.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Readable typography and responsive layouts that adapt to common screen sizes.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "An accessibility settings widget with text size, high contrast, grayscale, highlighted links, a more readable font, increased text spacing, reduced motion, and a reset control.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "text": "Respect for reduced-motion preferences, including the system reduced-motion setting and the in-site control.",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The accessibility widget stores the visitor’s chosen settings in the browser. It is an assistance panel. It is not a substitute for a formal accessibility audit and it is not a cookie-consent manager.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Ongoing Improvements",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We review and improve accessibility as the website changes. There is no published formal audit calendar. When we add features or content, we work to keep the site operable with a keyboard, reasonably readable, and compatible with common assistive technologies.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Known Limitations",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "No independent accessibility audit of this website has been completed for publication. We continue to evaluate the experience and welcome reports of barriers. This section can be updated in the CMS when specific issues are confirmed.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Some content is photographic or technically detailed. Image descriptions depend on the text supplied in the CMS. Third-party embeds, when used, may not offer the same accessibility support as the rest of the site.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Third-Party Content",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Parts of the website can include content or tools that we do not fully control. Examples that exist in the current product include optional video embeds on case study pages and links to external messaging services such as WhatsApp. Those third-party interfaces follow their own accessibility practices.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Feedback and Contact",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "If you have trouble using this website, please tell us. Use the ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Contact page",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "/contact",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": " to send a message, or contact us through WhatsApp at +972538974802 when that channel is available. Please include the page URL and a short description of the barrier.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "We will use the information you provide to understand the issue and, where reasonable, to improve the website.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Statement Review",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This statement describes current website practices. It is edited in the website CMS when accessibility features or this text change. It is not a formal accessibility audit report and it does not use a separate legal-review date.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "enableLink": null,
+            "link": {
+              "type": "reference",
+              "newTab": null,
+              "url": null,
+              "label": null,
+              "appearance": "default"
+            }
+          }
+        ],
+        "blockType": "content"
+      }
+    ],
+    "meta": {
+      "title": "Accessibility Statement | Manufacturing Marketing Agency",
+      "image": null,
+      "description": "Learn about our commitment to website accessibility, inclusive design, keyboard navigation, readable content, and ongoing accessibility improvements."
+    },
+    "publishedAt": null,
+    "generateSlug": false,
+    "slug": "accessibility",
+    "updatedAt": "2026-10-09T07:21:31.532Z",
+    "createdAt": "2026-10-09T07:20:31.945Z",
+    "_status": "published"
+  },
+  {
+    "id": 8,
+    "title": "Contact",
+    "pageLongTitle": "Contact & Global Operations",
+    "hero": {
+      "type": "lowImpact",
+      "richText": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 1
+            },
+            "content": [
+              {
+                "text": "Contact & Global Operations",
+                "type": "text"
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "media": null
+    },
+    "layout": [
+      {
+        "id": "6ada35c3c4d88e5614bfb382",
+        "blockName": null,
+        "columns": [
+          {
+            "id": "6ada35c3c4d88e5614bfb381",
+            "size": "full",
+            "richText": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Business Inquiries",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "info@neo-lines.com",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "mailto:info@neo-lines.com",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "International Communication",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Tell us about your products, markets, or marketing goals. Whether you need help with your website, SEO, technical content, or lead generation, you can contact us directly using your preferred messaging app.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "enableLink": null,
+            "link": {
+              "type": "reference",
+              "newTab": null,
+              "url": null,
+              "label": null,
+              "appearance": "default"
+            }
+          }
+        ],
+        "blockType": "content"
+      }
+    ],
+    "meta": {
+      "title": "Contact",
+      "image": null,
+      "description": "Contact the manufacturing marketing agency by email, WhatsApp, or Telegram. No appointment is required."
+    },
+    "publishedAt": null,
+    "generateSlug": false,
+    "slug": "contact",
+    "updatedAt": "2026-10-22T16:11:47.684Z",
+    "createdAt": "2026-10-02T07:10:10.658Z",
+    "_status": "published"
+  },
+  {
+    "id": 7,
+    "title": "About",
+    "pageLongTitle": "About",
+    "hero": {
+      "type": "lowImpact",
+      "richText": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 1
+            },
+            "content": [
+              {
+                "text": "About",
+                "type": "text"
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "media": null
+    },
+    "layout": [
+      {
+        "id": "6abf58d0b913e41244246ee0",
+        "blockName": null,
+        "columns": [
+          {
+            "id": "6abf58d0b913e41244246edf",
+            "size": "full",
+            "richText": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Digital systems that bring commercial inquiries",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Maryan Polyak helps manufacturing and industrial companies build digital systems that bring in prospects with real commercial inquiries.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Many manufacturers have strong technical expertise, while the website and marketing do not reflect the full range and what the plant can actually do. A company may make different products, work in several directions, and serve different markets. Buyers then struggle to find the solution they need.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "The work",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Maryan works with manufacturers of metal structures, facade systems, industrial equipment, engineering systems, heating equipment, and other specialized products.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The work includes analysis of production and commercial lines, website structure, catalogs and online stores, technical content, and promotion.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Promotion covers SEO, Google Ads, social advertising, content development, link acquisition, and work on external platforms.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "These parts are meant to work together, so each product or commercial line can reach its own audience.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "How an engagement is organized",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The first step is to understand what the company actually makes and sells, which markets it serves, and what the business needs to accomplish.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The website structure, the content of the pages, and the approach to promotion are decided from that.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Many projects continue for years, because the product range changes and new markets and lines of business appear.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Read the ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "case studies",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "rel": "noopener noreferrer",
+                            "href": "/case-studies",
+                            "class": null,
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": ", then we can discuss how to improve your current website and marketing.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "enableLink": null,
+            "link": {
+              "type": "reference",
+              "newTab": null,
+              "url": null,
+              "label": null,
+              "appearance": "default"
+            }
+          }
+        ],
+        "blockType": "content"
+      }
+    ],
+    "meta": {
+      "title": "About",
+      "image": null,
+      "description": "About this manufacturing marketing agency."
+    },
+    "publishedAt": null,
+    "generateSlug": false,
+    "slug": "about",
+    "updatedAt": "2026-10-20T18:51:08.186Z",
+    "createdAt": "2026-10-02T07:10:08.073Z",
+    "_status": "published"
+  },
+  {
+    "id": 6,
+    "title": "Image editor check",
+    "pageLongTitle": "Image editor check",
+    "hero": {
+      "type": "lowImpact",
+      "richText": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph"
+          }
+        ]
+      },
+      "links": [],
+      "media": null
+    },
+    "layout": [
+      {
+        "id": "6a846dd61cf3992f844f5005",
+        "blockName": null,
+        "columns": [
+          {
+            "id": "6a846dd61cf3992f844f5004",
+            "size": "full",
+            "richText": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Before the full-width image.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "attrs": {
+                    "alt": "",
+                    "src": "/api/media/file/neolines-900x900.jpg",
+                    "align": "full",
+                    "width": 100,
+                    "caption": "Full-width caption",
+                    "mediaId": 1,
+                    "srcFull": "/api/media/file/neolines.jpeg"
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "After the full-width image.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "attrs": {
+                    "alt": "",
+                    "src": "/api/media/file/neolines-900x900.jpg",
+                    "align": "left",
+                    "width": 50,
+                    "caption": "Left aligned",
+                    "mediaId": 1,
+                    "srcFull": "/api/media/file/neolines.jpeg"
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Text under a left-aligned image without wrapping.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "attrs": {
+                    "alt": "",
+                    "src": "/api/media/file/neolines-900x900.jpg",
+                    "align": "center",
+                    "width": 60,
+                    "caption": "Centered",
+                    "mediaId": 1,
+                    "srcFull": "/api/media/file/neolines.jpeg"
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Text under a centered image.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "attrs": {
+                    "alt": "",
+                    "src": "/api/media/file/neolines-900x900.jpg",
+                    "align": "right",
+                    "width": 50,
+                    "caption": "Right aligned",
+                    "mediaId": 1,
+                    "srcFull": "/api/media/file/neolines.jpeg"
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Text under a right-aligned image without wrapping.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "attrs": {
+                    "alt": "",
+                    "src": "/api/media/file/neolines-900x900.jpg",
+                    "align": "float-left",
+                    "width": 45,
+                    "caption": "Wrap left",
+                    "mediaId": 1,
+                    "srcFull": "/api/media/file/neolines.jpeg"
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This paragraph should wrap around the left-floated image. The image stays in the content flow as a float, so subsequent text fills the remaining space on the right.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "A second wrapping paragraph continues beside or below the floated image depending on remaining height.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "attrs": {
+                    "alt": "",
+                    "src": "/api/media/file/neolines-900x900.jpg",
+                    "align": "float-right",
+                    "width": 45,
+                    "caption": "Wrap right",
+                    "mediaId": 1,
+                    "srcFull": "/api/media/file/neolines.jpeg"
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "This paragraph should wrap around the right-floated image. Text fills the remaining space on the left while the image stays within the content width.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Final paragraph after wrapped images.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "enableLink": null,
+            "link": {
+              "type": "reference",
+              "newTab": null,
+              "url": null,
+              "label": null,
+              "appearance": "default"
+            }
+          }
+        ],
+        "blockType": "content"
+      }
+    ],
+    "meta": {
+      "title": null,
+      "image": null,
+      "description": null
+    },
+    "publishedAt": "2026-08-18T14:36:05.898Z",
+    "generateSlug": false,
+    "slug": "image-editor-check",
+    "updatedAt": "2026-10-22T16:11:53.043Z",
+    "createdAt": "2026-08-18T14:33:27.732Z",
+    "_status": "draft"
+  },
+  {
+    "id": 5,
+    "title": null,
+    "pageLongTitle": null,
+    "hero": {
+      "type": "lowImpact",
+      "richText": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph"
+          }
+        ]
+      },
+      "links": [],
+      "media": null
+    },
+    "meta": {
+      "title": null,
+      "image": null,
+      "description": null
+    },
+    "publishedAt": "2026-08-15T14:40:05.318Z",
+    "generateSlug": false,
+    "slug": null,
+    "updatedAt": "2026-08-23T12:31:12.549Z",
+    "createdAt": "2026-08-15T14:38:52.782Z",
+    "_status": "draft",
+    "layout": []
+  }
+]

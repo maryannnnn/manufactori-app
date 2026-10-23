@@ -28,11 +28,15 @@ const getServicesSitemap = unstable_cache(
       },
     })
 
-    const dateFallback = new Date().toISOString()
+    const newest = results.docs
+      ?.map((doc) => doc.updatedAt)
+      .filter((value): value is string => Boolean(value))
+      .sort()
+      .at(-1)
 
     const archive = {
       loc: `${SITE_URL}/services`,
-      lastmod: dateFallback,
+      ...(newest ? { lastmod: newest } : {}),
     }
 
     const sitemap = results.docs
@@ -42,10 +46,10 @@ const getServicesSitemap = unstable_cache(
             if (!path) return null
             return {
               loc: `${SITE_URL}${path}`,
-              lastmod: doc.updatedAt || dateFallback,
+              ...(doc.updatedAt ? { lastmod: doc.updatedAt } : {}),
             }
           })
-          .filter((entry): entry is { loc: string; lastmod: string } => Boolean(entry))
+          .filter((entry): entry is { loc: string; lastmod?: string } => Boolean(entry))
       : []
 
     return [archive, ...sitemap]

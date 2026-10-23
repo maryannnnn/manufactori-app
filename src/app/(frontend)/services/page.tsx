@@ -51,7 +51,8 @@ export default async function ServicesArchivePage() {
         data={buildWebPageGraph({
           path: SERVICES_ARCHIVE_PATH,
           name: 'Services',
-          description: 'Industrial and digital marketing services for manufacturing companies.',
+          description:
+            'SEO, technical content, and AI-powered search for manufacturing companies. Ordinary search remains the foundation.',
           breadcrumbs: serviceArchiveBreadcrumbs(),
           type: 'CollectionPage',
         })}
@@ -67,7 +68,8 @@ export default async function ServicesArchivePage() {
           Industrial marketing works better when the website, technical content, search, and
           client acquisition operate as one system. The work starts from what the company
           actually manufactures, the products it sells, the markets it serves, and what its buyers
-          need.
+          need. Ordinary SEO remains the foundation. AI search optimization extends that same
+          product information. It is not a shortcut around it.
         </p>
       </div>
 
@@ -133,8 +135,10 @@ export default async function ServicesArchivePage() {
           </h2>
           <p className="mt-4 text-base leading-7 text-muted-foreground">
             Website structure helps buyers find products. Technical content explains how those
-            products are used. SEO improves visibility in search. Advertising adds further ways to
-            reach buyers. A sales process helps the company handle the inquiries that arrive.
+            products are used. SEO improves visibility in ordinary search, and the same clarity
+            helps AI-powered search retrieve the right information. A citation is not guaranteed.
+            Advertising adds further ways to reach buyers. A sales process helps the company
+            handle the inquiries that arrive.
           </p>
           <p className="mt-4 text-base leading-7 text-muted-foreground">
             Not every company needs every service at once. The sensible start is a look at the
@@ -158,7 +162,7 @@ export async function generateMetadata(): Promise<Metadata> {
     doc: {
       meta: {
         title: 'Services',
-        description: 'Industrial and digital marketing services for manufacturing companies.',
+        description: 'SEO, technical content, and AI-powered search for manufacturing companies. Ordinary search remains the foundation.',
       },
     },
     url: SERVICES_ARCHIVE_PATH,

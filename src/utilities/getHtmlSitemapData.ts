@@ -40,9 +40,16 @@ const EXCLUDED_PAGE_SLUGS = new Set([
   'search',
   'admin',
   'clients',
+  'image-editor-check',
   ...MAIN_NAV_PAGE_SLUGS,
   ...LEGAL_PAGE_SLUGS,
 ])
+
+const isPublicPageHref = (href: string): boolean => {
+  if (!href.startsWith('/')) return false
+  if (href.startsWith('/media/') || href.startsWith('/api/') || href.startsWith('/admin')) return false
+  return !/\.(?:png|jpe?g|gif|webp|svg|ico|avif)(?:$|\?)/i.test(href)
+}
 
 const publishedWhere = {
   _status: {
@@ -146,7 +153,9 @@ const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
 
   const additionalPages = pages.flatMap((page) => {
     if (!page.slug || EXCLUDED_PAGE_SLUGS.has(page.slug) || !page.title) return []
-    return [{ label: page.title, href: `/${page.slug}` }]
+    const href = `/${page.slug}`
+    if (!isPublicPageHref(href)) return []
+    return [{ label: page.title, href }]
   })
 
   return {

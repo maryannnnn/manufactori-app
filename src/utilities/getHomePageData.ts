@@ -10,7 +10,7 @@ import { getCaseStudyListPreview } from './getCaseStudyListPreview'
 import { getPostList } from './getPostList'
 import { getRichTextPlainText } from './richText/getPlainText'
 
-export const HOME_SERVICES_LIMIT = 6
+export const HOME_SERVICES_LIMIT = 7
 export const HOME_CASE_STUDIES_LIMIT = 6
 export const HOME_POSTS_LIMIT = 3
 export const HOME_TESTIMONIALS_LIMIT = 3

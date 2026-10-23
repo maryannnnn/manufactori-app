@@ -35,6 +35,11 @@ export const contactStripCopy = {
     heading: 'Have a Similar Manufacturing Challenge?',
     description: "Tell us about your company and the project you're planning.",
   },
+  contact: {
+    heading: 'Have a Question About Your Project?',
+    description:
+      'Message us directly on WhatsApp or Telegram to discuss your manufacturing business, website, SEO, or digital marketing needs.',
+  },
 } as const
 
 export type ContactStripVariant = keyof typeof contactStripCopy

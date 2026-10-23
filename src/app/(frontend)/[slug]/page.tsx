@@ -10,6 +10,7 @@ import { homeStatic } from '@/endpoints/seed/home-static'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { ContactStrip } from '@/components/ContactStrip'
 import { HtmlSitemap } from '@/components/HtmlSitemap'
 import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
@@ -95,6 +96,11 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
+      {decodedSlug === 'contact' ? (
+        <div className="container mt-10">
+          <ContactStrip contained={false} variant="contact" />
+        </div>
+      ) : null}
       {decodedSlug === 'sitemap' ? <HtmlSitemap /> : null}
     </article>
   )

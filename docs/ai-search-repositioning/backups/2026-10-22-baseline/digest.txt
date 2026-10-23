@@ -1,0 +1,525 @@
+# SERVICES
+
+## [12] AI Search Optimization & Content Engineering for Manufacturers | ai-search-optimization-manufacturers | published
+long: AI Search Optimization for Manufacturing Companies
+content title: Make your manufacturing expertise easier to find, understand, and evaluate across traditional search engines and AI-powered search experiences.
+preview: AI Search Optimization & Content Engineering
+Traditional SEO as the foundation, with technical content structured so people and search systems can understand your products, specifications, and applications.
+
+For manufacturers, component suppliers, and technical B2B companies. Outcomes depend on the site, the data you can verify, and how search platforms change.
+intro: [object Object]
+Why traditional SEO still matters
+
+AI-powered search experiences do not remove the need for a site that can be crawled, indexed, and understood. If a product page is thin, duplicated, or buried, neither a conventional search engine nor an AI product has much reliable material to work with.
+
+Manufacturing searches are specific. People look for product names, model numbers, part numbers, specifications, tolerances, and operating conditions. They also look for compatibility with equipment, production lines, and industrial systems, and they use the terms and standards of their industry.
+
+The site architecture should follow that behavior: product ranges, applications, industries, and technical characteristics, with internal links between those pages. Technical SEO still covers duplicate content, indexability, page performance, and whether specifications and drawings can actually be reached.
+
+The aim is to help search engines discover and interpret the manufacturer’s own content. Different AI products do not retrieve information in one shared way, and a traditional ranking position does not by itself decide whether an AI answer mentions a company.
+
+SCOPE Semantic Chunking: [object Object]
+SCOPE Technical Product Profiles: [object Object]
+SCOPE Application and Compatibility Matrices: [object Object]
+SCOPE Technical Limitations and Conditions of Use: [object Object]
+SCOPE Technical Resources and Evaluation Tools: [object Object]
+SCOPE Optional extensions, scoped separately: [object Object]
+OUTCOME Clearer technical and product information: [object Object]
+OUTCOME Better discovery for specific queries: [object Object]
+OUTCOME Easier evaluation for engineers and procurement: [object Object]
+OUTCOME A stronger base for search and AI discovery: [object Object]
+FAQ Will ChatGPT, Gemini, or another AI product recommend us?
+FAQ Does this replace traditional SEO?
+FAQ Will you write specifications we do not have?
+FAQ How is success judged?
+META AI Search Optimization for Manufacturers || Improve manufacturing website SEO and technical content for AI-powered search. Make product specifications, applications, and capabilities easier to discover.
+
+## [10] Sales Enablement & CRM | sales-enablement-crm | published
+long: Sales Enablement & CRM for Manufacturers
+content title: 
+preview: Sales Enablement & CRM
+A way to collect inquiries, pass them to the right people, track where they came from, and work with prospects.
+
+Useful when marketing activity and the sales process are not connected.
+
+Practical result: a clearer handoff from marketing to sales. It does not guarantee a close rate.
+intro: [object Object]
+Why This Looks Different for Manufacturers
+
+Industrial sales reps often come from an engineering or technical background, not a software sales background, and many have run their pipeline from memory and a notebook for years. A CRM rollout that ignores that reality gets adopted for a month and then abandoned.
+
+A long, committee-based sales cycle also means a single lead can stay in play for months, touched by multiple people on both sides. The CRM and process have to reflect that reality: multiple contacts per account, long stage durations, and a handoff that works whether the deal closes in six weeks or sixteen months.
+
+SCOPE CRM Setup and Configuration: [object Object]
+SCOPE Lead Scoring and Handoff Rules: [object Object]
+SCOPE Marketing and Sales Alignment (SLA): [object Object]
+SCOPE Sales Playbooks and Talk Tracks: [object Object]
+SCOPE Pipeline and Revenue Reporting: [object Object]
+SCOPE Team Training and Adoption Support: [object Object]
+FAQ Which CRM platforms do you work with?
+FAQ Will this replace our current CRM, or improve what we have?
+FAQ How do you get sales reps to actually adopt a new process?
+FAQ What is a marketing-to-sales SLA, and why do we need one?
+FAQ Can you integrate the CRM with our ERP or quoting system?
+FAQ How do you measure whether this is working?
+FAQ What do you need from us to start?
+META Sales Enablement & CRM for Manufacturers | Maryan Polyak || CRM setup and sales enablement built for manufacturers: clean pipelines, clear lead handoff, and marketing-to-sales alignment that actually closes RFQs.
+
+## [9] Lead Generation | lead-generation | published
+long: Lead Generation for Manufacturers
+content title: 
+preview: Lead Generation
+Paid search, LinkedIn, and other fitting channels, aimed at commercially meaningful inquiries rather than visitor counts alone.
+
+Useful when the company needs more relevant conversations with buyers who have a real requirement.
+
+Practical result: campaigns pointed at inquiries the sales process can handle. It does not guarantee a volume of leads.
+intro: [object Object]
+Why Lead Generation Is Different for Manufacturers
+
+A typical B2B ad campaign is built to convert a single decision-maker quickly. An industrial purchase involves an engineer who specs it, a procurement lead who negotiates it, and an executive who approves it, often over several months. Campaigns that only target one of those roles, or that expect a fast conversion, waste budget on the wrong part of the funnel.
+
+We build campaigns around the full buying committee: different messages for different roles, offers that match where a buyer actually is in a long cycle, and tracking that follows a lead all the way to a closed RFQ, not just a form fill.
+
+SCOPE Paid Search for High-Intent Technical Queries: [object Object]
+SCOPE LinkedIn and Account-Based Campaigns: [object Object]
+SCOPE Email Nurture for Long Sales Cycles: [object Object]
+SCOPE Landing Pages Built to Convert: [object Object]
+SCOPE CRM-Connected Lead Tracking: [object Object]
+SCOPE Reporting Tied to Pipeline, Not Vanity Metrics: [object Object]
+FAQ How long before we see qualified leads?
+FAQ Do you manage the ad spend, or just the strategy?
+FAQ How do you define a “qualified” lead?
+FAQ What is our minimum ad spend commitment?
+FAQ Can you work with our existing CRM?
+FAQ Do you also create the content used in campaigns?
+FAQ What do you need from us to start?
+META Lead Generation for Manufacturers | Maryan Polyak || Paid search, LinkedIn and email campaigns built to generate qualified RFQs for manufacturers, with reporting your sales team can actually use.
+
+## [8] Technical Content & Thought Leadership | technical-content-thought-leadership | published
+long: Technical Content & Thought Leadership for Manufacturers
+content title: 
+preview: Technical Content & Thought Leadership
+Product pages, technical articles, application descriptions, case material, and expert pieces based on what the company actually knows.
+
+Useful when buyers need to understand specifications and how a product is used in practice.
+
+Practical result: content that explains the product, its characteristics, and its applications, without invented claims.
+intro: [object Object]
+Why Technical Content Works Differently for Manufacturers
+
+An engineer evaluating a vendor does not want a marketing pitch. They want a real answer: how a material performs under load, how two processes compare, what tolerance is achievable, what a spec actually means in practice. Content that gives a direct, specific, technically sound answer earns trust that a generic article cannot.
+
+The same qualities that earn an engineer’s trust are what AI systems look for when deciding what to cite: clear definitions, specific numbers, and content written by someone who demonstrably knows the subject. Technical accuracy is not a constraint on good content here. It is the strategy.
+
+Citation by ChatGPT, Perplexity or Google AI Overviews is an objective of this work, not a promise that every piece will be named. Where mentions can be observed, they can be tracked. Where they cannot, we do not invent a number.
+
+SCOPE Subject Matter Expert Interviews: [object Object]
+SCOPE Application Notes and How-To Guides: [object Object]
+SCOPE Comparison and Spec Explainer Content: [object Object]
+SCOPE Case Studies and Technical Proof: [object Object]
+SCOPE AI-Citation-Ready Structure: [object Object]
+SCOPE Editorial Calendar Tied to Buyer Questions: [object Object]
+FAQ How much time will this take from our engineers?
+FAQ How is this different from general content marketing?
+FAQ How do you make sure the content is technically accurate?
+FAQ What is AI citation, and why does it matter?
+FAQ How often will you publish?
+FAQ Do you handle distribution, not just writing?
+FAQ What do you need from us to start?
+META Technical Content & Thought Leadership | Maryan Polyak || Technical content for manufacturers that engineers trust and AI systems cite: application notes, guides and expert articles built from your own know-how.
+
+## [7] SEO & AI Search Optimization | seo-ai-search-optimization | published
+long: SEO & AI Search Optimization for Manufacturers
+content title: 
+preview: SEO & AI Search Optimization
+Technical optimization, keyword research, site structure, and content so buyers can find the company by its products, technical capabilities, and applications. The work covers conventional search engines and AI tools, including ChatGPT and Perplexity.
+
+Useful when the range is hard to discover in search.
+
+Practical result: clearer visibility for real products and applications. It is not a ranking or traffic guarantee.
+intro: [object Object]
+How Industrial Buyers Actually Search
+
+Technical buyers search with part numbers, tolerances, materials, certifications and application terms, not with marketing slogans.
+
+That means your website and your presence in AI answers are your first sales rep. Our approach is built around this behavior: every page answers a specific technical question, and every question maps to a stage of the buying committee’s decision.
+
+SCOPE Technical SEO for Complex Manufacturing Sites: [object Object]
+SCOPE Product, Capability and Application Page Architecture: [object Object]
+SCOPE AI Search Visibility (GEO / AEO): [object Object]
+SCOPE Technical Content for Engineers and Procurement: [object Object]
+SCOPE RFQ and Lead Tracking: [object Object]
+SCOPE Reporting You Can Show Your CEO: [object Object]
+FAQ How long does SEO take for a manufacturing company?
+FAQ What is AI search optimization (GEO/AEO)?
+FAQ Is SEO different for manufacturers than for other B2B companies?
+FAQ Do you guarantee rankings?
+FAQ Can you work with our engineers and subject matter experts?
+FAQ How do you measure success?
+FAQ What do you need from us to start?
+META SEO & AI Search for Manufacturers | Maryan Polyak || Get found by engineers and buyers in Google, ChatGPT and Perplexity. Technical SEO and AI search optimization built for manufacturers and industrial companies.
+
+## [6] Website Design & Development for Manufacturers | website-design-development-for-manufacturers | published
+long: Website Design & Development for Manufacturers
+content title: 
+preview: Website Design & Development for Manufacturers
+Corporate websites, product catalogs, and online stores built for engineers, procurement teams, and other B2B buyers. The site should help people find products, read technical information, and send a request for quotation.
+
+Useful when the current site does not represent the real range or give buyers a clear way to inquire.
+
+Practical result: a site organized around the products, markets, and commercial paths the company actually has.
+intro: [object Object]
+What Makes an Industrial Website Different
+
+A manufacturer’s site has to serve an engineer comparing tolerances, a procurement lead comparing terms, and an executive comparing vendors, often in the same session. That means deep catalog structure, fast search and filtering, clear certifications and capabilities, and an RFQ process that does not ask for more than a first-touch buyer is willing to give.
+
+Generic web design templates are not built for this. We design around your catalog, your CAD and spec files, and your actual sales process, not a stock set of pages.
+
+SCOPE Site Architecture for Large Catalogs: [object Object]
+SCOPE Design Built for Technical Trust: [object Object]
+SCOPE RFQ and Quote Request Flow: [object Object]
+SCOPE Performance, Speed and Core Web Vitals: [object Object]
+SCOPE CMS You Can Actually Update: [object Object]
+SCOPE SEO and AI-Search Foundation Built In: [object Object]
+FAQ How long does a manufacturing website project take?
+FAQ Can you migrate our existing product catalog and CAD files?
+FAQ What platform or CMS do you build on?
+FAQ Will the site integrate with our CRM or ERP?
+FAQ Can our team update the site ourselves after launch?
+FAQ Do you also handle SEO after the site launches?
+FAQ What do you need from us to start?
+META Website Design & Development for Manufacturers | Maryan Polyak || Industrial websites built for engineers and procurement: fast, searchable catalogs, clear RFQ paths and a site your sales team actually uses.
+
+## [5] Marketing Strategy & Roadmap | marketing-strategy-roadmap | published
+long: Marketing Strategy & Roadmap for Manufacturers
+content title: 
+preview: Marketing Strategy & Roadmap
+A practical plan with priorities, a budget, stages of work, and clear ownership.
+
+Useful for manufacturers with several lines of business, different buyer groups, and unclear marketing priorities.
+
+Practical result: a sequence the company can act on. It is not a promise of a set number of inquiries or sales.
+intro: [object Object]
+Why Manufacturers Need a Different Kind of Strategy
+
+Industrial buying committees are larger and slower than typical B2B purchases: engineers evaluate specs, procurement negotiates terms, and management signs off, often across a cycle measured in months. A generic growth-marketing playbook built for SaaS does not map onto that process.
+
+A strategy for a manufacturer has to account for a technical buyer, a large and often messy product catalog, long consideration windows, and a sales team that still closes most deals in person or on a call. The roadmap is built around how your specific buyers actually decide, not a template.
+
+SCOPE Market and Competitive Position Audit: [object Object]
+SCOPE Buyer and Buying-Committee Mapping: [object Object]
+SCOPE Channel and Budget Prioritization: [object Object]
+SCOPE 12-Month Roadmap with Phases and Owners: [object Object]
+SCOPE KPI and Reporting Framework: [object Object]
+SCOPE Sales and Marketing Alignment Workshop: [object Object]
+FAQ How long does it take to build a marketing roadmap?
+FAQ Will you also execute the roadmap, or just hand it to us?
+FAQ Do you need access to our sales team?
+FAQ How is this different from a brand or positioning project?
+FAQ What if our budget changes halfway through the year?
+FAQ Do you guarantee specific results from the roadmap?
+FAQ What do you need from us to start?
+META Marketing Strategy & Roadmap for Manufacturers | Maryan Polyak || A documented marketing roadmap built for manufacturers and industrial companies: clear priorities, budget and a plan sales will actually use.
+
+# CASES
+
+## [26] MONTAGSPECSTROY: Website Development and SEO for a Construction and Engineering Company | montagspecstroy-construction-engineering | published
+url-primary: metal-fabrication (Metal Fabrication)
+categories: metal-fabrication, industrial-manufacturing, manufacturing, manufacturing-seo, industrial-seo, competitor-seo-analysis, manufacturing-keyword-research, industrial-website-architecture, technical-content-marketing, industrial-website-development, manufacturing-website-development, construction, structural-steel-fabrication
+duration: 
+metrics: 
+META MONTAGSPECSTROY Case Study: Website and SEO for Construction Engineering || See how Drupal development, service-focused content, semantic research, and SEO supported MONTAGSPECSTROY, a company working across metal-structure design, construction, and reconstruction.
+CHALLENGE A single metal-products page would collapse that practice into a supplier. Search needed a path for design, for metal structures, for construction and installation, and for reconstruction. 
+SEO An integrated copy program for a construction practice, not a visual refresh alone and not a product-catalog campaign. Pages were to carry the terminology of the stage: design, construction, reconstruction, and metal structures. The source calls the result a content marketing strategy and website promotion. It does not describe a publishing calendar or an ad platform. 
+AI-AUTHORITY This record is a Drupal build, an organic content program, and a separate charity website. It is not an AI-search program. No answer-engine result is claimed. The capture mentions quality standards and does not name a certificate. 
+AI-ENTITY Design, fabrication, installation, and reconstruction are different stages, which is why the mapping matters. The charity website is a different entity and is not placed inside the construction navigation. No city ranking or measured local-search result is published. 
+
+## [25] IVIKOM: Website Development and SEO for a Metal Products Manufacturer | ivikom-metal-products | published
+url-primary: metal-fabrication (Metal Fabrication)
+categories: manufacturing, manufacturing-seo, competitor-seo-analysis, manufacturing-keyword-research, industrial-website-architecture, technical-content-marketing, product-seo, industrial-website-development, manufacturing-website-development, application-seo, metal-fabrication, industrial-manufacturing, industrial-seo, powder-coating, custom-metal-products
+duration: 
+metrics: 
+META IVIKOM Case Study: Website and SEO for a Metal Products Manufacturer || See how Drupal development, product-focused content, keyword research, and SEO supported IVIKOM, a manufacturer of racks, stands, cabinets, containers, and powder coating.
+CHALLENGE A single metal-products page would hide the line a buyer came for. Search needed pages that matched racks, display equipment, storage products, and powder coating as related but distinct offers. 
+SEO An integrated copy program, not a visual refresh alone and not an advertising campaign. Pages were to carry the terminology of the product line, with extra weight on metal products and powder coating. The source calls the result a content marketing strategy that supported search promotion. It does not describe a publishing calendar. 
+AI-AUTHORITY This record is a Drupal build and an organic content program. It is not an AI-search program. No answer-engine result is claimed. The 2006 note mentions safety norms and does not name a certificate. 
+AI-ENTITY Racks, advertising stands, cabinets, containers, and powder coating are different offers, which is why the mapping matters. No city, region, or measured local-search result is published. 
+
+## [24] MIKS: SEO and Digital Marketing for a Multidisciplinary Industrial Manufacturer | miks-industrial-manufacturing | published
+url-primary: metal-fabrication (Metal Fabrication)
+categories: manufacturing, manufacturing-seo, competitor-seo-analysis, manufacturing-keyword-research, industrial-website-architecture, technical-content-marketing, product-seo, industrial-website-development, manufacturing-website-development, application-seo, metal-fabrication, industrial-manufacturing, industrial-seo, structural-steel-fabrication, custom-metal-products
+duration: 
+metrics: +35% Organic traffic | +20% Organic sessions | +22% Total sessions | 1,000+ Additional keywords indexed | +12% Search impressions | +10% Search clicks | +40% New users | +30% Returning visits
+META MIKS Case Study: SEO for a Multidisciplinary Metal Manufacturer || Explore how website architecture, industrial content, technical SEO, and product-category optimization supported MIKS, a multidisciplinary metal manufacturer.
+CHALLENGE A single metal-products page would blur those lines. Search needed a page for the product family, and a visitor needed a path that matched the thing they came to find. 
+SEO Line-specific descriptions, written with the terminology and queries of that line, on a structure taken from the semantic core. Technical work covered speed, mobile presentation, structured data without a named schema type, and internal links. Five microsites gave selected lines their own sites. Domains are not published. 
+AI-AUTHORITY This record is a website architecture, content, and SEO engagement for a metal manufacturer. It is not an AI-search programme. No AI Overview, ChatGPT, or other answer-engine result is claimed. The certifications page exists. The certificates are not named. 
+AI-ENTITY Beams, medical furniture, shelving, and staircases are different entities in the catalog, which is why they have different pages. No city, region, or measured local-search result is published. 
+
+## [23] AREKS: Website Development and SEO for a Family-Owned Furniture Manufacturer | areks-upholstered-furniture | published
+url-primary: upholstered-furniture (Upholstered Furniture)
+categories: manufacturing-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, manufacturing-website-design, technical-content-marketing, manufacturing, design-manufacturing--installation, upholstered-furniture, furniture-manufacturing, sofa-manufacturing, custom-furniture-manufacturing
+duration: 2_years
+metrics: 
+META AREKS Case Study: Website Development and SEO for a Furniture Manufacturer || Explore how website design, semantic SEO, content development, and digital promotion supported AREKS, a family-owned upholstered furniture manufacturer with its own showroom.
+CHALLENGE The site had to make that range understandable, and still read as a factory with a place to compare furniture, without collapsing into one generic furniture page. 
+SEO Category content written for the furniture type on that page, maintained as part of ongoing content management, after competitor analysis and query mapping. No article count and no ranking table are stated. 
+AI-AUTHORITY This project is a Drupal website, product architecture, semantic SEO, and content for a family-owned upholstered furniture factory. It is not rewritten as an AI-search engagement. No ChatGPT, Perplexity, or AI Overview result is claimed. 
+AI-ENTITY Corner sofas, the named folding mechanisms, armchairs, and chair beds are related products and different catalog entities. The countryside facility and showroom are not a measured GEO programme, and no place name is assigned. 
+
+## [22] House of Sofas: SEO, PPC and Website Development for a Sofa Manufacturer | house-of-sofas-sofa-manufacturer | published
+url-primary: sofa-manufacturing (Sofa Manufacturing)
+categories: manufacturing-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, manufacturing-website-design, technical-content-marketing, paid-search--paid-media, manufacturing, design-manufacturing--installation, sofa-manufacturing, furniture-manufacturing, upholstered-furniture, custom-furniture-manufacturing, commercial-furniture
+duration: 2_years
+metrics: +35% Organic traffic | +12% Organic visits | +16% Total sessions | 950 Additional keywords in Google rankings | +30% Top-five keyword performance | +8% Impressions | +7% SEO clicks | +40% New users | +20% Returning visits | +25% PPC clicks | +95% PPC conversions | -3% PPC average CPC | -28% PPC cost per conversion | +85% PPC click-through rate | +65% PPC conversion rate
+META House of Sofas Case Study: SEO and PPC for a Sofa Manufacturer || See how website development, technical SEO, product-focused content, and PPC optimization helped House of Sofas, a sofa manufacturer with its own showroom, improve online visibility and conversion performance.
+CHALLENGE The site had to make that range understandable, and still lead someone to the showroom, a promotion, or an inquiry, without reading as a general furniture store. 
+SEO Category descriptions aligned to product-specific and high-intent queries, plus blog content on advice, products, care, materials, comfort-related features, and maintenance. No article count and no ranking table beyond the source figures are stated. 
+AI-AUTHORITY This project is website structure, technical and on-page SEO, category and care content, and PPC for a sofa manufacturer with a showroom. It is not rewritten as an AI-search engagement. No ChatGPT, Perplexity, or AI Overview result is claimed. 
+AI-ENTITY Sofa types and folding mechanisms are related products and different catalog entities. Showrooms in more than one city are noted without naming the cities. That is not a measured GEO programme. 
+
+## [21] Siblux: SEO and PPC for Timber Houses and Premium Wooden Windows | siblux-timber-houses-wooden-windows | published
+url-primary: timber-construction (Timber Construction)
+categories: manufacturing-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, manufacturing-website-design, technical-content-marketing, paid-search--paid-media, building-materials, building-products--materials, construction-products, construction-materials-manufacturing, manufacturing, design-manufacturing--installation, timber-construction, wood-manufacturing--timber-construction, glulam-house-manufacturing, timber-house-manufacturing, timber-manufacturing, prefabricated-wooden-houses, wood-manufacturing, doors--windows, custom-wood-products, wooden-house-manufacturing
+duration: 
+metrics: +50% Organic traffic | +25% Organic sessions | +30% Total sessions | 800+ Additional keywords in Google rankings | +40% Top-five keyword performance | +15% Impressions | +12% SEO clicks | +60% New users | +30% Returning visits | +40% PPC clicks | +90% PPC conversions | -10% PPC average CPC | -25% PPC cost per conversion | +120% PPC click-through rate | +80% PPC conversion rate
+META Siblux Case Study: SEO, PPC and Timber House Marketing | Maryan Polyak || A case study of SEO, PPC, website content strategy, and redesign for Siblux, a manufacturer and builder of glued-laminated timber houses and premium wooden windows.
+CHALLENGE The two lines are technically different. House projects, window systems, completed buildings, exhibitions, and company information needed a structure a visitor could follow. 
+SEO Unique copy for individual sections, aligned to the information architecture: benefits of glued-laminated timber, wooden window design and manufacturing, and content for both business directions. No ranking table is added beyond the source figures. 
+AI-AUTHORITY This project is website structure, SEO content, a redesign, and PPC for a timber-house and wooden-window manufacturer. It is not rewritten as an AI-search engagement. No ChatGPT, Perplexity, or AI Overview result is claimed. 
+AI-ENTITY Timber houses and wooden windows are related parts of one company and different entities on the site. That is information architecture, not a measured GEO programme, and no country is assigned. 
+
+## [20] Geothermal: SEO and E-Commerce for Complete Heating-System Solutions | geothermal-heating-system-solutions | published
+url-primary: e-commerce-growth (E-commerce Growth)
+categories: e-commerce-growth, manufacturing-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, paid-search--paid-media, heating-equipment, heating-solutions, heating-systems, hvac--climate-equipment, hvac-equipment, commercial-hvac, engineering--technical-services, engineering-services, design-engineering, building-materials, building-products--materials, design-manufacturing--installation
+duration: 
+metrics: 2,000+ Keywords in the semantic core
+META Geothermal Case Study | Heating Systems SEO and E-Commerce || Explore how Neolines supported Geothermal with SEO, a semantic core of more than 2,000 keywords, Drupal e-commerce, and PPC for heating equipment and complete heating systems.
+CHALLENGE Categories, brands, comparisons, and installation pages had to serve both a single purchase and the planning of a heating system. 
+SEO Keyword and competitor research, a semantic core, category and brand pages, SEO-oriented product descriptions, comparisons, and installation content. No article count and no ranking table are stated. 
+AI-AUTHORITY This project is described as Drupal e-commerce, SEO, content, and PPC for a heating catalog and installation offer. It is not rewritten as an AI-search engagement. No ChatGPT, Perplexity, or AI Overview result is claimed. 
+AI-ENTITY Boilers, heat pumps, radiators, water heaters, and complete systems are related parts of one offer. That is not a measured GEO programme, and no country is assigned. 
+
+## [19] Sauna Shop: SEO and E-Commerce for Turnkey Sauna and Bath Construction | sauna-shop-turnkey-sauna-bath | published
+url-primary: e-commerce-growth (E-commerce Growth)
+categories: e-commerce-growth, manufacturing-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, paid-search--paid-media, heating-equipment, heating-solutions, heating-systems, ventilation-equipment, building-materials, building-products--materials, construction-products, timber-construction, design-manufacturing--installation, sauna-and-bath-construction
+duration: 2_years
+metrics: ~1,500 Keywords in the semantic core | 2 years Stated collaboration window
+META Sauna Shop Case Study | Sauna Construction SEO and E-Commerce || Explore how Neolines supported Sauna Shop with two-year SEO, a 1,500-keyword semantic core, Drupal e-commerce, and contextual advertising for sauna and bath construction.
+CHALLENGE Categories had to serve someone buying one product and someone planning timber, insulation, a heater, a chimney, and interior finishing together. 
+SEO Keyword and competitor research, a semantic core, category and subcategory pages, product descriptions, educational content, and internal linking for both purchase intent and construction intent. No article count and no ranking table are stated. 
+AI-AUTHORITY This project is described as Drupal e-commerce, SEO, content, and contextual advertising for a sauna and bath catalog. It is not rewritten as an AI-search engagement. No ChatGPT, Perplexity, or AI Overview result is claimed. 
+AI-ENTITY Heaters, chimneys, timber, insulation, and interior finishing are treated as related parts of one room. That is not a measured GEO programme, and no country is assigned. 
+
+## [18] Stove Shop: Seven Years of SEO, PPC, and E-Commerce for Heating and Sauna | stove-shop-heating-sauna-solutions | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, industrial-website-design, b2b-manufacturing-website-design, technical-content-marketing, industrial-content-marketing, manufacturing-content-marketing, product-page-content, product-content, educational-content, paid-search--paid-media, google-ads-for-manufacturers, industrial-google-ads, manufacturing-ppc, b2b-ppc, industrial-ppc, heating-sauna--fireplace-equipment, heating-equipment, heating-solutions, heating-systems, sauna-equipment, sauna-manufacturing, ventilation-equipment, building-materials, building-products--materials, construction-products, design-manufacturing--installation, industrial-installation, manufacturing, b2b-manufacturing, e-commerce-growth, hvac--climate-equipment
+duration: 7_years
+metrics: +30% Organic traffic | +900+ Additional keywords ranked | +90% PPC conversions | −3% Average CPC | +80% PPC click-through rate | +12% Organic sessions | 7 years Published collaboration window
+META Stove Shop Case Study | Heating and Sauna SEO, Google Ads || Explore how Neolines supported Stove Shop through seven-year SEO, Google Ads, Google Merchant Center product feeds, and e-commerce architecture for heating, sauna, fireplace, and chimney solutions.
+CHALLENGE Thousands of models, dozens of brands, chimney kits, installation, and a Russian-bath information section needed destinations that could support seven years of SEO, Google Ads, and product-feed work. 
+SEO Seven-year search-led work: keyword and competitor research, a semantic core, hierarchical mapping, brand and product content, educational and FAQ pages, seasonal targeting, and ongoing structure updates. No article count is stated. 
+AI-AUTHORITY This project is described as e-commerce SEO, Google Ads, content, and product feeds for a heating and sauna retailer-installer. It is not rewritten as an AI-search engagement. No ChatGPT, Perplexity, or AI Overview result is claimed. 
+AI-ENTITY Product types, third-party brands, chimney kits, and installation are treated as related entities. That is not a measured GEO programme, and no country is assigned. 
+
+## [17] Grosstek: Digital Marketing and SEO for an ACP Manufacturer | grosstek-aluminum-composite-panels | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, industrial-content-marketing, manufacturing-content-marketing, paid-search--paid-media, google-ads-for-manufacturers, manufacturing-search-advertising, product-search-advertising, specification-search-advertising, aluminum-composite-panel-manufacturing, aluminum-composite-panels, ventilated-facade-manufacturing, facade-systems, facade-installation, aluminum-fabrication, composite-materials, building-materials, building-products--materials, construction-materials-manufacturing, construction-products, architectural-products, architectural-metal-fabrication, design-manufacturing--installation, industrial-installation, manufacturing, b2b-manufacturing
+duration: 2_years
+metrics: +55% Organic traffic | +1,500+ Additional keywords ranked | +120% PPC conversions | −10% Average CPC | +110% PPC click-through rate | +25% Organic sessions | 2 years Published collaboration window
+META Grosstek Case Study | ACP Manufacturing SEO and Drupal || Explore how Neolines supported Grosstek, an aluminum composite panel manufacturer, through two-year SEO, Drupal website architecture, visual design, and contextual advertising.
+CHALLENGE Product brands, manufacturing process, ventilated-facade applications, portfolio and inquiries needed destinations that matched a two-year SEO and PPC programme. 
+SEO Search-led work: keyword and competitor research, a semantic core, hierarchical content mapping, unique technical copy for Grosbond, ventilated facades and related pages, meta tags, and Product/Service schema. No article count is stated. 
+AI-AUTHORITY This project is described as Drupal development, SEO, content and PPC for an ACP manufacturer. It is not rewritten as an AI-search engagement. No ChatGPT, Perplexity or AI Overview result is claimed. 
+AI-ENTITY Grosbond, Konstruktor, production, ventilated facades and installation are treated as related entities. Product/Service schema is documented. That is not a measured GEO programme. 
+
+## [16] PromTehMontg: SEO and Website Architecture for Facade Engineering | promtehmontg-facade-engineering-installation | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, industrial-content-marketing, manufacturing-content-marketing, facade-installation, facade-systems, aluminum-composite-panels, building-materials, building-products--materials, construction-products, architectural-products, architectural-metal-fabrication, design-manufacturing--installation, industrial-installation, engineering--technical-services, engineering-services, design-engineering, manufacturing, b2b-manufacturing, ventilated-facade-manufacturing
+duration: 
+metrics: 
+META PromTehMontg Case Study | Facade Engineering SEO and Website Structure || Explore how Neolines supported PromTehMontg with SEO, semantic architecture, and website structure for facade engineering, cladding materials, mounting systems, and installation.
+CHALLENGE Material, cassette, board, stone, mounting, engineering and installation intents needed destinations without collapsing into one cladding homepage or unverified product URLs. 
+SEO The documented strategy is search-led: competitor analysis, a semantic core, content mapping, unique search-oriented copy for relevant service and material categories, and on-page optimisation of those pages. No article count is stated. Generic facade-benefit copy was not the brief. 
+AI-AUTHORITY This project is described as SEO, website structure and content for a facade engineer-installer. It is not rewritten as an AI-search engagement. No ChatGPT, Perplexity or AI Overview result is claimed. 
+AI-ENTITY Cladding types, mounting systems, engineering and installation are treated as related entities. That topical model is useful for modern search in principle. It is not a measured GEO programme. 
+
+## [15] GPTM GROUP: SEO and Digital Marketing for Facade Systems | gptm-group-facade-systems | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, industrial-content-marketing, manufacturing-content-marketing, paid-search--paid-media, google-ads-for-manufacturers, manufacturing-search-advertising, product-search-advertising, facade-installation, facade-systems, ventilated-facade-manufacturing, aluminum-composite-panels, building-materials, building-products--materials, construction-products, construction-materials-manufacturing, architectural-products, architectural-metal-fabrication, design-manufacturing--installation, industrial-installation, engineering--technical-services, engineering-services, design-engineering, manufacturing, b2b-manufacturing
+duration: 3_years
+metrics: 3 years Published collaboration span | 2 Drupal website redevelopments | Full cycle Engineering through turnkey installation
+META GPTM GROUP Case Study | Facade Systems SEO and Drupal || Explore how Neolines supported GPTM GROUP through long-term SEO, Drupal website redevelopment, and contextual advertising for facade systems manufacturing and installation.
+CHALLENGE Materials, systems, components, engineering, supply, installation and portfolio had to stay findable as distinct intents without collapsing into one cladding homepage. 
+SEO The documented strategy is a three-year search-led programme: keyword research, competitor benchmarking, an extensive semantic core, content mapping, on-page optimisation, and custom technical content, carried across two Drupal redevelopments. No article count is stated. 
+AI-AUTHORITY This project is described as long-term SEO, Drupal redevelopment and contextual advertising for a facade manufacturer-contractor. It is not rewritten as an AI-search engagement. No ChatGPT, Perplexity or AI Overview result is claimed. 
+AI-ENTITY Engineering, components, stone, ACP, supply and installation are treated as related entities. That topical model is useful for modern search in principle. It is not a measured GEO programme. 
+
+## [14] VentFasad: SEO and Website Strategy for Facade Installation | ventfasad-ventilated-facade-installation | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, industrial-content-marketing, manufacturing-content-marketing, facade-installation, facade-systems, building-materials, building-products--materials, construction-products, architectural-metal-fabrication, design-manufacturing--installation, industrial-installation, engineering--technical-services, engineering-services, manufacturing, b2b-manufacturing, ventilated-facade-manufacturing
+duration: 1_years
+metrics: 
+META VentFasad Case Study | Facade Installation SEO and Website Strategy || Discover how Neolines supported VentFasad with keyword research, competitor analysis, SEO architecture, content management, and website design for ventilated facade installation.
+CHALLENGE Connected search intents — system, mounting, engineering, installation — needed destinations without collapsing into one contractor slogan or overlapping thin pages. 
+SEO The documented strategy is search- and content-led: keyword and competitor research, a semantic core, content mapping, SEO architecture, unique technical copy, and ongoing content management so pages stay attached to real contractor services. No article count is stated. Paid search is not part of this record. 
+AI-AUTHORITY This project is described as SEO, content management and website design for a facade-installation contractor. It is not rewritten as an AI-search engagement. No ChatGPT ranking, Perplexity citation or AI Overview result is claimed, and none is documented. 
+AI-ENTITY Ventilated facades, mounting subsystems, engineering and installation are treated as related entities in the information architecture. That topical model is useful for modern search in principle. It is not a measured GEO or AEO programme. 
+
+## [13] AluMatrix: SEO and Paid Search for Facade Systems Manufacturing | alumatrix-facade-systems | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, paid-search--paid-media, google-ads-for-manufacturers, manufacturing-search-advertising, product-search-advertising, specification-search-advertising, aluminum-composite-panel-manufacturing, aluminum-composite-panels, ventilated-facade-manufacturing, facade-systems, facade-installation, aluminum-fabrication, composite-materials, building-materials, building-products--materials, construction-materials-manufacturing, construction-products, architectural-products, architectural-metal-fabrication, design-manufacturing--installation, industrial-installation, manufacturing, b2b-manufacturing
+duration: 2_years
+metrics: +40% Organic traffic | +1,200+ Additional keywords ranked | +110% PPC conversions | −5% Average CPC | +100% PPC click-through rate | ~2,000 SEO keyword foundation | 2 years Published collaboration window
+META AluMatrix Case Study | Facade Systems SEO and Paid Search || Explore how Neolines supported AluMatrix with a broad SEO foundation and contextual advertising for aluminum composite panels, ventilated facades, and mounting systems.
+CHALLENGE Related search intents — ACP, ventilated facades, mounting, coating, installation — needed destinations without collapsing into one cladding homepage or competing duplicate pages. 
+SEO The main digital strategy in the source is search-led: competitor analysis, a semantic core of over 2,000 terms, keyword mapping onto facade / panel / manufacturing pages, technical on-page copy, a blog for long-tail capture, schema markup and industry link building. No article count or publishing calendar is stated. 
+AI-AUTHORITY This project is described as SEO, technical content, schema, link building and PPC for a facade-panel manufacturer. It is not rewritten as an AI-search engagement. No ChatGPT ranking, Perplexity citation, Gemini visibility, AI Overview result or AI-generated lead is claimed, and none is documented. 
+AI-ENTITY Aluminum composite panels, ventilated facades, mounting subsystems, coating processes and installation are treated as related entities in the information architecture. That topical model is useful for modern search systems in principle. It is not a measured GEO or AEO programme. 
+
+## [12] Aleks SF: SEO and Digital Marketing for Custom Jewelry Store Equipment | aleks-sf-jewelry-retail-equipment | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, paid-search--paid-media, google-ads-for-manufacturers, manufacturing-search-advertising, jewelry-store-equipment, custom-retail-equipment, custom-store-displays, retail-equipment-manufacturing, retail--commercial-equipment-manufacturing, retail-fixtures, store-fixtures, commercial-display-equipment, custom-furniture-manufacturing, commercial-furniture, design-manufacturing--installation, industrial-installation, engineering--technical-services, engineering-services, design-engineering, manufacturing, b2b-manufacturing
+duration: 10_years
+metrics: +40% Organic traffic | +15% Organic sessions | +18% Overall sessions | 1,200+ Additional keywords ranked | +35% Top-5 keyword performance | ~1,000 SEO keyword foundation | 10 years Published partnership length
+META Aleks SF Case Study | Jewelry Store Equipment SEO || Explore how Neolines supported Aleks SF, a custom retail-equipment manufacturer, through long-term SEO, website promotion, and contextual advertising for jewelry-store projects.
+CHALLENGE Specialist buyers search for different jobs — a showcase, a store fixture, lighting, security of the equipment, a layout, or a complete salon. Those intents needed destinations without flattening the company into a generic furniture page. 
+SEO The main digital strategy in the source is search-led: keyword and competitor analysis, a semantic core of about 1,000 terms, a Drupal information architecture, and SEO-oriented copy for the retail-display niche, followed by ongoing optimization. Contextual advertising complemented that organic programme. No article count or publishing calendar is stated. 
+AI-AUTHORITY This project is described as long-term SEO, website work and contextual advertising for a retail-equipment manufacturer. It is not rewritten as an AI-search engagement. No ChatGPT ranking, Perplexity citation, Gemini visibility, AI Overview result or AI-generated lead is claimed, and none is documented. 
+AI-ENTITY Jewelry showcases, store fixtures, production, installation and turnkey salons are treated as related entities in the information architecture. That topical model is useful for modern search systems in principle. It is not a measured GEO or AEO programme. 
+
+## [11] NPK BINAR: SEO and Website Development for Complete Roofing Systems | npk-binar-roofing-systems | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, roofing-products, metal-building-products, insulation-products, facade-systems, facade-installation, construction-products, construction-materials-manufacturing, architectural-products, architectural-metal-fabrication, design-manufacturing--installation, industrial-installation, engineering--technical-services, engineering-services, manufacturing, b2b-manufacturing
+duration: 2_years
+metrics: 
+META NPK BINAR Case Study | Roofing SEO and Website Development || Explore an SEO and website development case for NPK BINAR, covering roofing systems, metal roofing, fabricated components, drainage products, and installation services.
+CHALLENGE Related products and services had to stay findable as distinct search intents — copper, zinc, standing-seam, tiles, shingles, flashings, gutters, installation — without competing as duplicate pages. 
+SEO The main digital strategy in the source is search-led: keyword analysis, competitor analysis, a semantic foundation, strategic mapping, and a Drupal site designed for UX/UI and SEO. Content marketing and digital promotion are named as ways to present the range and attract prospects. No article count or publishing calendar is stated. 
+AI-AUTHORITY This project is described as website development, semantic SEO and digital presentation of a roofing manufacturer-installer. It is not rewritten as an AI-search engagement. No ChatGPT ranking, Perplexity citation, Gemini visibility, AI Overview result or AI-generated lead is claimed, and none is documented. 
+AI-ENTITY Roofing materials, fabricated components, drainage and installation are treated as related entities in the information architecture. That topical model is useful for modern search systems in principle. It is not a measured GEO or AEO programme. 
+
+## [10] Ovik Montag: SEO and Website Development for HVAC and Building Engineering Systems | ovik-montag-hvac-engineering-seo | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, hvac--climate-equipment, hvac-equipment, hvac-manufacturing, commercial-hvac, industrial-hvac, ventilation-equipment, heating-equipment, heating-solutions, heating-systems, construction-products, design-manufacturing--installation, industrial-installation, engineering--technical-services, engineering-services, design-engineering, industrial-engineering, mechanical-engineering, manufacturing, b2b-manufacturing
+duration: 
+metrics: 
+META Ovik Montag Case Study | HVAC Engineering SEO || Explore an HVAC engineering website and SEO case covering heating, ventilation, air conditioning, technical services, and search-focused website architecture.
+CHALLENGE Heating, ventilation, air conditioning, design, components, installation and service have different search intents. They still have to read as one contractor working inside construction projects. 
+SEO The main digital strategy in the source is search-led: keyword analysis, competitor analysis, a semantic foundation, strategic mapping, and a Drupal site designed for UX/UI and SEO. Content marketing is named as a way to attract potential customers. No article count or publishing calendar is stated. 
+AI-AUTHORITY This project is described as website development, semantic SEO and digital presentation of an HVAC engineering contractor. It is not rewritten as an AI-search engagement. No ChatGPT ranking, Perplexity citation, Gemini visibility, AI Overview result or AI-generated lead is claimed, and none is documented. 
+AI-ENTITY Heating, ventilation, air conditioning, design, installation, components and maintenance are treated as related entities in the information architecture. That topical model is useful for modern search systems in principle. It is not a measured GEO or AEO programme. 
+
+## [9] Security Systems Anhor: SEO and Website Development for Integrated Building Security Systems | security-systems-anhor | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, manufacturing-website-development, manufacturing-website-design--development, industrial-website-development, industrial-website-architecture, technical-content-marketing, fire--emergency-equipment, electrical-engineering, electrical-equipment, telecommunications-equipment, industrial-networking, lighting-systems, engineering--technical-services, engineering-services, design-manufacturing--installation, industrial-installation, manufacturing, b2b-manufacturing
+duration: 
+metrics: 
+META Security Systems Anhor Case Study | SEO for Engineering || Explore an SEO and website development case for Security Systems Anhor, covering semantic research, site architecture, and integrated building security services.
+CHALLENGE Overlapping search intent across those systems makes a generic services page insufficient. Visitors and search engines needed a hierarchy that kept the integrated capability visible and still let each system be found. 
+SEO The documented strategy is search-led industrial SEO: keyword research, competitor analysis, a detailed semantic core, mapping onto an SEO-oriented Drupal architecture, and UX/UI work to make a wide technical catalogue usable. No article count, publishing calendar or ranking target is stated. 
+AI-AUTHORITY This project is described as website development and semantic SEO for a building-security contractor. It is not rewritten as an AI-search engagement. No ChatGPT ranking, Perplexity citation, Gemini visibility or AI Overview result is claimed. 
+AI-ENTITY Systems, components, installation and maintenance are treated as related entities in the information architecture. That topical model is useful for modern search in principle. It is not a measured GEO or AEO programme. 
+
+## [8] Merkan Invest Stroy — Website and SEO for Turnkey Ventilation Systems | merkan-invest-stroy-ventilation-systems | published
+url-primary: manufacturing-website-development (Manufacturing Website Development)
+categories: manufacturing-website-development, manufacturing-website-design--development, manufacturing-website-design, industrial-website-development, manufacturing-seo, industrial-seo, application-seo, product-seo, competitor-seo-analysis, manufacturing-keyword-research, technical-content-marketing, hvac--climate-equipment, hvac-equipment, hvac-manufacturing, commercial-hvac, industrial-hvac, ventilation-equipment, electrical-engineering, construction-products, roofing-products, design-manufacturing--installation, turnkey-manufacturing-solutions, industrial-installation, engineering--technical-services, engineering-services, manufacturing, b2b-manufacturing, engineering-systems
+duration: 5_years
+metrics: 
+META Merkan Invest Stroy Case Study: HVAC Website and SEO || Drupal website, semantic SEO and digital presentation for Merkan Invest Stroy, a turnkey ventilation and air-conditioning contractor.
+CHALLENGE A visitor could not be left with a generic contractor slogan. The site had to show calculation, design, estimate, fabrication, installation, launch and maintenance as one cycle, and still remain usable for search. 
+SEO The main digital strategy in the source is search-led: keyword analysis, competitor analysis, a semantic foundation, strategic mapping, and a Drupal site designed for UX/UI and SEO. Content had to explain the turnkey cycle and the systems themselves so a technical or construction buyer could recognise the offering. No article count or publishing calendar is stated. 
+AI-AUTHORITY This project is described as website development, semantic SEO and digital presentation of a turnkey HVAC contractor. It is not rewritten as an AI-search engagement. No ChatGPT ranking, Perplexity citation, Gemini visibility, AI Overview result or AI-generated lead is claimed, and none is documented. 
+AI-ENTITY Ventilation, air conditioning, ducts, installation, service and construction applications are treated as related entities in the information architecture. That topical model is useful for modern search systems in principle. It is not a measured GEO or AEO programme. 
+
+## [7] Vimpel Engineering - Engineering and Digital Positioning for Anechoic Chambers | vimpel-engineering-anechoic-chambers | published
+url-primary: manufacturing-website-development (Manufacturing Website Development)
+categories: manufacturing-website-development, manufacturing-website-design--development, manufacturing-website-design, manufacturing-seo, industrial-seo, application-seo, product-seo, technical-content-marketing, engineering-services, engineering--technical-services, electrical-engineering, industrial-engineering, design-manufacturing--installation, industrial-electronics, electronics-manufacturing, defense-electronics, aerospace--defense, aerospace-electronics, telecommunications-equipment, antenna-systems, manufacturing, industrial-equipment
+duration: 
+metrics: 
+META Vimpel Engineering: Anechoic Chambers and Electromagnetic Testing || How we structured and developed a digital presence for Vimpel Engineering, specialising in anechoic chambers and electromagnetic absorbing solutions.
+CHALLENGE The website had to explain a product category that most visitors would not understand without technical context. A visitor might need an entire chamber, a specific absorber, antenna testing, RF testing, electromagnetic compatibility, a specialised testing environment, or engineering and installation. The site had to move from a company presentation toward a structured technical-solution platform. 
+SEO Search-driven industrial marketing for a specialised engineering offering: keyword research, competitor and SERP analysis, semantic core, mapping, information architecture, UX alignment, on-page SEO and technical content that follows problem, requirement, solution, application, implementation. Content had to speak to engineers and to technical procurement without unsupported specifications. Paid m
+AI-AUTHORITY This project is described as research, architecture, UX, website development, SEO and content. It is not rewritten as an AI-search engagement. A structured model of chambers, absorbers, functions and applications gives search systems more accurate material than a thin corporate page. No ChatGPT ranking, Perplexity citation, Gemini visibility, AI Ov
+AI-ENTITY Solutions, technical functions, applications and industries are treated as related entities in the information architecture. That topical model is useful for modern search systems in principle. It is not a measured GEO or AEO programme. 
+
+## [6] Nesko - Energy Efficiency and Digital Strategy for Industrial Companies | nesko-energy-efficiency | published
+url-primary: manufacturing-website-development (Manufacturing Website Development)
+categories: manufacturing-website-development, manufacturing-website-design--development, manufacturing-website-design, manufacturing-seo, industrial-seo, application-seo, product-seo, technical-content-marketing, manufacturing, industrial-manufacturing, energy--power-generation, energy-equipment, engineering--technical-services, engineering-services, electrical-engineering, industrial-engineering, industrial-lighting-equipment, industrial-equipment, design-manufacturing--installation, b2b-manufacturing
+duration: 
+metrics: 
+META Nesko - Energy Efficiency and Energy Auditing || Digital strategy, SEO and website development for Nesko, focused on energy auditing, efficiency, cost optimization and energy solutions.
+CHALLENGE Energy efficiency for an industrial client is not the purchase of a device. It is analysis of current consumption, the search for optimization, and delivery of a combined response. The site had to cover different query types, support commercial and informational paths, create a base for long-term SEO, and strengthen professional positioning without collapsing that chain into one generic page. 
+SEO Search-driven industrial marketing supported by a stronger service architecture: keyword research, competitor and SERP analysis, semantic core, semantic maps, service segmentation, website structure, UX alignment, content, internal linking and a blog. The blog extended informational coverage and expert positioning while remaining part of the same map as the commercial directions. No article invent
+AI-AUTHORITY This project is described in the language of the work as it was done: research, architecture, UX, website development, SEO and content. It is not rewritten as an AI-search engagement. A structured model of audit, efficiency, equipment and implementation gives search systems more accurate material than a thin corporate page. No ChatGPT ranking, Perp
+AI-ENTITY Service directions, industrial applications and the company are treated as related entities in the information architecture. That topical model is useful for modern search systems in principle. It is not a measured GEO or AEO programme. 
+
+## [5] PakTradeMash - Digital Marketing for Packaging Equipment and Food Production Systems | paktrademash-packaging-equipment | published
+url-primary: manufacturing-seo (Manufacturing SEO)
+categories: manufacturing-seo, manufacturing-website-development, industrial-seo, application-seo, product-seo, technical-content-marketing, manufacturing, packaging-equipment, packaging-machinery, industrial-packaging-systems, food-packaging-equipment, food-processing, food-processing-equipment, food-manufacturing, industrial-food-systems, industrial-equipment, food--beverage-manufacturing
+duration: 
+metrics: 
+META PakTradeMash Case Study: Packaging Equipment SEO and Website Expansion || Website expansion, keyword research and SEO for PakTradeMash, an industrial supplier of packaging equipment and food-production systems.
+CHALLENGE The challenge was not simply to get more traffic. It was to understand how potential industrial buyers searched for packaging equipment and machinery, production lines, refrigeration and freezing equipment, food-production equipment, application-specific equipment and related technical solutions - then convert that demand into a logical website structure. 
+SEO The main strategy was search-driven industrial marketing supported by a stronger website architecture: keyword research, competitor and SERP analysis, semantic core development, mapping, website expansion, content development and on-page SEO working as one process. Content explained equipment, applications and industrial solutions for technical buyers and for search engines. Internal linking tied 
+AI-AUTHORITY This project is described in the language of the work as it was done: research, architecture, content and SEO. It is not rewritten as an AI-search engagement. A structured model of company, products, applications and industries gives search systems more accurate material to read than a thin corporate brochure. No ChatGPT ranking, Perplexity citatio
+AI-ENTITY Equipment types, applications and industries are treated as related entities in the information architecture. That topical model is useful for modern search systems in principle. It is not a measured GEO or AEO programme. 
+
+## [4] Pnevmomachta — Building a Long-Term Digital Presence for a Technical Mast Manufacturer | pnevmomachta-long-term-digital-presence | published
+url-primary: manufacturing-website-development (Manufacturing Website Development)
+categories: manufacturing-website-development, manufacturing-website-design--development, manufacturing-website-design, manufacturing-seo, industrial-seo, application-seo, product-seo, technical-content-marketing, manufacturing, pneumatic-telescopic-masts, telescopic-masts, firefighting-masts, emergency-service-masts, lighting-masts, communication-masts, antenna-masts
+duration: 10_years
+metrics: 10+ Years Continuous digital partnership | Focused range Many real applications
+META Pnevmomachta Case Study: Long-Term Digital Presence || More than ten years of website, SEO and content work for Pnevmomachta, a focused pneumatic telescopic mast manufacturer.
+CHALLENGE The central challenge was to turn a specialized technical manufacturing business into something that could be found and understood online. The website had to carry technical information without becoming difficult to navigate, and it had to support search visibility for different mast applications rather than a single generic product name. 
+SEO SEO is described here as a long-term process rather than a one-time optimization. The original project included keyword and competitor analysis around pneumatic mast applications. A historic keyword-count from older material is not republished, because it has not been independently verified in the current project data. The method that can be stated: research product terminology, research applicati
+AI-AUTHORITY Over more than ten years the site accumulates structured information about the company, products, applications and expertise: technical descriptions, application pages, photographs and updates that follow real production. No claim is made that ChatGPT, Gemini or another AI system ranked the company. There is no verified AI-search measurement in thi
+AI-ENTITY The semantic structure treats the manufacturer, the mast technology and the applications as related entities rather than a single generic product keyword. Firefighting, lighting, antennas, communications and vehicle mounts are distinct uses of the same capability. That is information architecture. It is not a measured GEO or AEO programme, and none
+
+## [3] Laser Made: From a Broken Landing Page to Two Working Manufacturing Websites | laser-made-two-manufacturing-websites | published
+url-primary: manufacturing-website-development (Manufacturing Website Development)
+categories: manufacturing-website-development, manufacturing-website-design--development, manufacturing-seo, paid-search--paid-media, technical-content-marketing, website-conversion--rfq-optimization, laser-cutting, custom-furniture-manufacturing, custom-wood-products, custom-retail-equipment, laser-cutting-laser-advanced-manufacturing, cnc-milling-cnc-advanced-machining, digital-customer-acquisition, e-commerce-growth, lead-generation--new-business, furniture-manufacturing
+duration: 5_years
+metrics: 5 Years Continuous Client Partnership | 2 Websites Built | 27+ Structured Site Sections (Laser Made) | 200+ Portfolio Projects Documented | 2,000+ Keywords in Semantic Core | 10+ Active Social Media Channels
+META Laser Made Case Study: From Landing Page to 2 Sites || Laser Made: full-cycle manufacturer moved from a broken landing page to two structured websites, 200+ projects, and 5 years of steady digital growth.
+CHALLENGE A visitor could not tell what the company actually did. There was no portfolio or case-study material to build trust. Paid search spend was not producing results, and social media activity had no defined strategy or measurable outcome. SEO was effectively not being done. 
+SEO Semantic research and keyword clustering (2,000+ queries), content written per service and material, a blog built from client interviews (roughly 30 minutes of interview per 2,000-word article, starting with 10 to 15 foundational articles then 2 to 4 per month), a 200+ project portfolio, technical performance work (desktop load time 1.5 to 2s, mobile 2.5 to 3s, Google PageSpeed score 85 to 90), li
+AI-AUTHORITY Trust signals confirmed in the source data: a 200+ project portfolio, an expert blog built on client interviews, a 13-question project FAQ, and Google My Business reviews (rating cited as 4.5 to 5 stars). No claims are made in the source data about results in ChatGPT, Perplexity, Gemini or other AI search engines, and none are implied here. 
+AI-ENTITY The site existing structure ties material, process and application together, for example linking a specific material category to the processes performed on it and the finished-product categories that use it, and separates the business into B2B production and B2C retail. This is standard SEO and information-architecture work. The source data does no
+
+# PAGES
+
+## [11] Sitemap | sitemap | published | long=Sitemap
+META Sitemap | Manufacturing Marketing Agency || Browse the main pages, services, case studies, and articles available on our website.
+
+
+
+## [10] Privacy Policy | privacy-policy | published | long=Privacy Policy
+META Privacy Policy | Manufacturing Marketing Agency || Read our privacy policy to understand how website information, contact inquiries, cookies, analytics, advertising technologies, and personal data are handled.
+
+
+
+## [9] Accessibility Statement | accessibility | published | long=Accessibility Statement
+META Accessibility Statement | Manufacturing Marketing Agency || Learn about our commitment to website accessibility, inclusive design, keyboard navigation, readable content, and ongoing accessibility improvements.
+
+
+
+## [8] Contact | contact | published | long=Contact & Global Operations
+META Contact || Contact the manufacturing marketing agency by email, WhatsApp, or Telegram. No appointment is required.
+
+
+
+## [7] About | about | published | long=About
+META About || About this manufacturing marketing agency.
+
+
+
+## [6] Image editor check | image-editor-check | draft | long=Image editor check
+META  || 
+
+
+
+## [5] null | null | draft | long=
+META  || 
+

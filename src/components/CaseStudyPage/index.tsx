@@ -342,8 +342,7 @@ const buildStrategyItems = (
   add(
     {
       key: 'ai-authority',
-      title: 'Brand Authority & Trust',
-      tag: 'AI Search',
+      title: 'What the project record shows',
       content: renderRichTextField(aiSearch?.brandAuthorityAndTrust),
     },
     [aiSearch?.brandAuthorityAndTrust],
@@ -352,8 +351,7 @@ const buildStrategyItems = (
   add(
     {
       key: 'ai-entity',
-      title: 'Entity & GEO Structure',
-      tag: 'AI Search',
+      title: "Relevance to today's search",
       content: renderRichTextField(aiSearch?.entityAndGeoStructure),
     },
     [aiSearch?.entityAndGeoStructure],
