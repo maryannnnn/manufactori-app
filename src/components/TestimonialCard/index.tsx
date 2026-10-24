@@ -10,6 +10,8 @@ type Props = {
   excerpt: string
   href: string
   logo: Media | null
+  name?: string
+  position?: string
 }
 
 export const testimonialExcerpt = (text: string, max = 200): string => {
@@ -23,7 +25,7 @@ export const testimonialExcerpt = (text: string, max = 200): string => {
   return `${cut}…`
 }
 
-export const TestimonialCard: React.FC<Props> = ({ company, excerpt, href, logo }) => {
+export const TestimonialCard: React.FC<Props> = ({ company, excerpt, href, logo, name, position }) => {
   return (
     <article className="min-w-0 rounded-[2px] border border-border bg-card">
       <Link
@@ -42,6 +44,13 @@ export const TestimonialCard: React.FC<Props> = ({ company, excerpt, href, logo 
         ) : null}
         {company ? (
           <h2 className="text-lg font-semibold tracking-tight text-foreground">{company}</h2>
+        ) : null}
+        {name || position ? (
+          <p className="text-sm text-foreground">
+            {name ? <span className="font-medium">{name}</span> : null}
+            {name && position ? <span className="text-muted-foreground">, </span> : null}
+            {position ? <span className="text-muted-foreground">{position}</span> : null}
+          </p>
         ) : null}
         {excerpt ? (
           <p className="text-sm leading-6 text-muted-foreground">{excerpt}</p>

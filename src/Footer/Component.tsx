@@ -5,14 +5,11 @@ import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 import { FooterChannels } from '@/Footer/Channels'
 import { legalFooterLinks } from '@/Footer/legalLinks'
-import { headerCta, mainNavigation } from '@/Header/navigation'
+import { mainNavigation } from '@/Header/navigation'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
-const fallbackLinks = [
-  ...mainNavigation.map((item) => ({ label: item.label, href: item.href })),
-  { label: 'Contact', href: headerCta.href },
-]
+const fallbackLinks = mainNavigation.map((item) => ({ label: item.label, href: item.href }))
 
 export async function Footer() {
   const footerData = await getCachedGlobal('footer', 1)()

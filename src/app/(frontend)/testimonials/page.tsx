@@ -43,6 +43,8 @@ export default async function TestimonialsPage() {
       slug: true,
       testimonial: true,
       clientCompany: true,
+      clientName: true,
+      clientPosition: true,
       caseStudy: true,
     },
   })
@@ -85,6 +87,8 @@ export default async function TestimonialsPage() {
                   <TestimonialCard
                     company={doc.clientCompany?.trim() || ''}
                     excerpt={testimonialExcerpt(getRichTextPlainText(doc.testimonial))}
+                    name={doc.clientName?.trim() || ''}
+                    position={doc.clientPosition?.trim() || ''}
                     href={href}
                     logo={asLogo(caseStudy?.company_logo)}
                   />

@@ -82,6 +82,7 @@ export const mainNavigation: NavItem[] = [
       },
     ],
   },
+  { id: 'contact', label: 'Contact', href: '/contact' },
 ]
 
 export const headerCta: NavLink = {

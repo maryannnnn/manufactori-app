@@ -14,6 +14,7 @@ const rt = (text: string) =>
 type Row = {
   slug: string
   company: string
+  clientName: string
   caseStudyId: number
   quote: string
   description: string
@@ -23,6 +24,7 @@ const rows: Row[] = [
   {
     slug: 'testimonial-laser-made',
     company: 'Laser Made',
+    clientName: 'Mila Laser Made',
     caseStudyId: 3,
     quote:
       'We worked with Maryan Polyak on website development and online promotion. He helped us develop our online presence and present our products and services more clearly to potential customers. He understood our business and took a practical approach to website structure, design, and SEO. We appreciated his technical expertise and attention to the specific needs of our company.',
@@ -32,6 +34,7 @@ const rows: Row[] = [
   {
     slug: 'testimonial-pnevmomachta',
     company: 'Pnevmomachta',
+    clientName: 'Henrik Pnevmomachta',
     caseStudyId: 4,
     quote:
       'We have worked with Maryan Polyak for many years on our website development and SEO. Our business specializes in industrial equipment, and Maryan helped us improve how our products are presented online and make our website more useful for potential customers. He paid attention to our product range, website structure, and search visibility. We appreciated his experience, technical knowledge, and consistent approach to the work.',
@@ -41,6 +44,7 @@ const rows: Row[] = [
   {
     slug: 'testimonial-merkan-invest-stroy',
     company: 'Merkan Invest Stroy',
+    clientName: 'Leon Merkan Invest Stroy',
     caseStudyId: 8,
     quote:
       'We worked with Maryan Polyak for five years on our website development and online promotion. Our business provides ventilation and air conditioning systems, air duct production, installation, and maintenance. Maryan helped us organize the website and present our services more clearly so customers could better understand the full range of our work. He also worked on SEO, keyword research, and website structure. We appreciated his practical approach, technical knowledge, and effort to understand the specifics of our business.',
@@ -50,6 +54,7 @@ const rows: Row[] = [
   {
     slug: 'testimonial-aleks-sf',
     company: 'Aleks SF',
+    clientName: 'Freya Aleks SF',
     caseStudyId: 12,
     quote:
       'Maryan Polyak helped us improve our website and online presence for our business specializing in the production and installation of equipment for jewelry stores. He understood the specific needs of our business and helped present our products and services more clearly to potential customers. His practical approach to website development and SEO helped us organize our online information more effectively. We appreciated his technical knowledge and attention to detail.',
@@ -59,6 +64,7 @@ const rows: Row[] = [
   {
     slug: 'testimonial-alumatrix',
     company: 'Alumatrix',
+    clientName: 'Nico Alumatrix',
     caseStudyId: 13,
     quote:
       'Maryan Polyak worked on our website and online promotion, helping us present our aluminum composite panels and facade systems more clearly. Our business combines product supply with technical solutions for building facades, so it was important to explain our products and their applications in a structured way. Maryan took a practical approach to website organization and SEO, helping us communicate our capabilities to potential customers more effectively. We appreciated his understanding of the relationship between technical products and online presentation.',
@@ -68,6 +74,7 @@ const rows: Row[] = [
   {
     slug: 'testimonial-geotermal',
     company: 'Geotermal',
+    clientName: 'Ines Geotermal',
     caseStudyId: 20,
     quote:
       'Maryan Polyak helped us improve our website and online visibility. He approached the work with attention to our business and the services we provide, focusing on website structure, content, and SEO. He worked to make the information easier for potential customers to understand and find online. We appreciated his professional approach, technical knowledge, and attention to the practical needs of our business.',
@@ -77,6 +84,7 @@ const rows: Row[] = [
   {
     slug: 'testimonial-siblux',
     company: 'Siblux',
+    clientName: 'Oscar Siblux',
     caseStudyId: 21,
     quote:
       'Maryan Polyak helped us present our wooden house construction business online. He worked on the website structure and SEO, with a focus on explaining our products and services clearly to potential customers. For a business involving custom building solutions, it is important to communicate the available options and the value of the work in an understandable way. We appreciated his practical approach and his attention to how our business was represented online.',
@@ -86,6 +94,7 @@ const rows: Row[] = [
   {
     slug: 'testimonial-areks',
     company: 'AREKS',
+    clientName: 'Lina AREKS',
     caseStudyId: 23,
     quote:
       'Maryan Polyak helped us with website development and online promotion, focusing on the way our business and services were presented online. He approached the work methodically, paying attention to website structure, content, and SEO. His aim was to make our information clearer and easier for potential customers to find. We appreciated his technical expertise and practical approach to digital marketing.',
@@ -95,6 +104,7 @@ const rows: Row[] = [
   {
     slug: 'testimonial-ivicom',
     company: 'Ivicom',
+    clientName: 'Hugo Ivicom',
     caseStudyId: 25,
     quote:
       'Maryan Polyak worked on improving our website and online presence. He focused on website organization, content, and SEO to help present our business more clearly to potential customers. He took a practical approach to the work and considered how the website could better communicate our services and business capabilities. We appreciated his technical knowledge, attention to detail, and commitment to improving our online presentation.',
@@ -115,6 +125,8 @@ const dataFor = (row: Row) => {
     testimonialPreviewTitle: row.company,
     testimonialPreviewDescription: row.description,
     testimonial: rt(row.quote),
+    clientName: row.clientName,
+    clientPosition: 'Founder and Director',
     clientCompany: row.company,
     caseStudy: row.caseStudyId,
     testimonialType: 'client' as const,

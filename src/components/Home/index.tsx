@@ -3,7 +3,6 @@ import React, { Suspense } from 'react'
 import { ContactStrip } from '@/components/ContactStrip'
 import { PaletteSelector } from '@/components/Landing/ComingSoon/PaletteSelector'
 import { SHOW_PALETTE_SELECTOR } from '@/design-system'
-import { CookieNotice } from '@/components/Home/CookieNotice'
 import { HomeCaseStudies } from '@/components/Home/CaseStudies'
 import { HomeFinalCta } from '@/components/Home/FinalCta'
 import { HomeFit } from '@/components/Home/Fit'
@@ -58,7 +57,6 @@ export const HomePageContent: React.FC = () => {
       </Suspense>
       <ContactStrip variant="homeLower" />
       <HomeFinalCta />
-      <CookieNotice />
     </main>
   )
 }

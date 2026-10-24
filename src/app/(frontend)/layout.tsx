@@ -9,6 +9,7 @@ import { AccessibilityWidget } from '@/components/AccessibilityWidget'
 import { InitAccessibility } from '@/components/AccessibilityWidget/InitAccessibility'
 import { AdminBar } from '@/components/AdminBar'
 import { InitPalette, DEFAULT_PALETTE_ID } from '@/design-system'
+import { CookieNotice } from '@/components/Home/CookieNotice'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
@@ -54,6 +55,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
             <Header />
             <div id="main-content">{children}</div>
+            <CookieNotice />
             <Footer />
             <JsonLd data={jsonLdGraph([organizationNode(), websiteNode()])} />
           </div>

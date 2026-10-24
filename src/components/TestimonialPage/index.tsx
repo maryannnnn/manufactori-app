@@ -20,6 +20,8 @@ const asMedia = (value: unknown): Media | null => {
 export const TestimonialPage: React.FC<Props> = ({ testimonial }) => {
   const heading = testimonial.testimonialLongTitle || testimonial.title
   const company = testimonial.clientCompany?.trim()
+  const clientName = testimonial.clientName?.trim()
+  const clientPosition = testimonial.clientPosition?.trim()
   const caseStudy =
     testimonial.caseStudy && typeof testimonial.caseStudy === 'object'
       ? (testimonial.caseStudy as CaseStudy)
@@ -42,8 +44,12 @@ export const TestimonialPage: React.FC<Props> = ({ testimonial }) => {
       </h1>
       <blockquote className="mt-8 max-w-[68ch] border-l-2 border-border pl-5">
         <RichText className="max-w-none text-base leading-7 text-foreground" data={testimonial.testimonial} enableGutter={false} />
-        {company ? (
-          <footer className="mt-4 text-sm font-medium text-foreground">{company}</footer>
+        {clientName || clientPosition || company ? (
+          <footer className="mt-4 text-sm text-foreground">
+            {clientName ? <div className="font-medium">{clientName}</div> : null}
+            {clientPosition ? <div className="text-muted-foreground">{clientPosition}</div> : null}
+            {company ? <div className="font-medium">{company}</div> : null}
+          </footer>
         ) : null}
       </blockquote>
       {caseStudy && caseHref && caseTitle ? (

@@ -49,6 +49,11 @@ const run = async () => {
               richText: rt(
                 `<h2>${escapeHtml('Business Inquiries')}</h2>` +
                   `<p><a href="mailto:info@neo-lines.com">info@neo-lines.com</a></p>` +
+                  `<h2>${escapeHtml('Operating Hours & Coverage')}</h2>` +
+                  `<ul>` +
+                  `<li>${escapeHtml('US East & West Coast (EST / PST)')}</li>` +
+                  `<li>${escapeHtml('European Union (CET / GMT)')}</li>` +
+                  `</ul>` +
                   `<h2>${escapeHtml('International Communication')}</h2>` +
                   `<p>${escapeHtml('Tell us about your products, markets, or marketing goals. Whether you need help with your website, SEO, technical content, or lead generation, you can contact us directly using your preferred messaging app.')}</p>`,
               ),
