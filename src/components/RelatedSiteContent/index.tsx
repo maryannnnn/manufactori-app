@@ -53,7 +53,13 @@ const queryRelatedCaseStudies = cache(async (categoryKey: string, sourceKey: str
   if (!ids.length || !sourceKey) return []
 
   const payload = await getPayload({ config: configPromise })
-  const matched = new Map<number, CaseStudy>()
+  const matched = new Map<
+    number,
+    Pick<
+      CaseStudy,
+      'id' | 'title' | 'slug' | 'layout' | 'case_study_categories' | 'primary_case_study_category' | 'meta'
+    >
+  >()
   let page = 1
 
   while (page <= 20) {

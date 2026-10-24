@@ -278,7 +278,7 @@ const run = async () => {
     const before = JSON.parse(JSON.stringify(service)) as Record<string, unknown>
     const after = JSON.parse(JSON.stringify(service)) as {
       slug?: string
-      introduction?: { supportingText?: unknown }
+      introduction?: { supportingText?: unknown; text?: unknown }
       serviceScope?: Array<{ title?: string; description?: unknown }>
     }
     if (after.slug === 'marketing-strategy-roadmap') {
