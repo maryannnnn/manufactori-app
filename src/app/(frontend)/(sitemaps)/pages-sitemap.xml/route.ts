@@ -2,10 +2,19 @@ import { getServerSideSitemap } from 'next-sitemap'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
-import { BLOG_ARCHIVE_PATH, CLIENTS_PATH } from '@/utilities/getContentUrls'
+import { BLOG_ARCHIVE_PATH, CLIENTS_PATH, INDEXABLE_PAGE_SLUGS } from '@/utilities/getContentUrls'
 import { getServerSideURL } from '@/utilities/getURL'
 
-const EXCLUDED_PAGE_SLUGS = new Set(['home', 'search', 'admin', 'clients', 'image-editor-check'])
+const EXCLUDED_PAGE_SLUGS = new Set([
+  'home',
+  'search',
+  'admin',
+  'clients',
+  'blog',
+  'services',
+  'testimonials',
+  'image-editor-check',
+])
 
 const getPagesSitemap = unstable_cache(
   async () => {
@@ -42,7 +51,9 @@ const getPagesSitemap = unstable_cache(
     ]
 
     for (const page of results.docs ?? []) {
-      if (!page?.slug || EXCLUDED_PAGE_SLUGS.has(page.slug)) continue
+      if (!page?.slug || !INDEXABLE_PAGE_SLUGS.has(page.slug) || EXCLUDED_PAGE_SLUGS.has(page.slug)) {
+        continue
+      }
       entries.push({
         loc: `${SITE_URL}/${page.slug}`,
         ...(page.updatedAt ? { lastmod: page.updatedAt } : {}),

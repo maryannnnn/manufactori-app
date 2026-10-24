@@ -1,7 +1,5 @@
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SERVER_URL ||
-  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-  'https://example.com'
+  process.env.NEXT_PUBLIC_SERVER_URL || 'https://manufacturing.neo-lines.com'
 
 /**
  * Static next-sitemap generation is disabled. Public sitemaps are App Router

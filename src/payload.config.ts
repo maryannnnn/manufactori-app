@@ -20,7 +20,7 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { bulkCreateCategoriesEndpoint } from './endpoints/bulkCreateCategories'
 import { defaultTiptap } from '@/fields/defaultTiptap'
-import { getServerSideURL } from './utilities/getURL'
+import { getAllowedOrigins } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -91,7 +91,8 @@ export default buildConfig({
     SiteCategories,
     Users,
   ],
-  cors: [getServerSideURL()].filter(Boolean),
+  cors: getAllowedOrigins(),
+  csrf: getAllowedOrigins(),
   endpoints: [bulkCreateCategoriesEndpoint],
   globals: [Header, Footer, CaseStudiesArchive],
   plugins,

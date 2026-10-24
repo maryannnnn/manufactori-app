@@ -9,6 +9,7 @@ import {
   BLOG_ARCHIVE_PATH,
   CASE_STUDIES_ARCHIVE_PATH,
   CLIENTS_PATH,
+  INDEXABLE_PAGE_SLUGS,
   getCaseStudyUrl,
   getPostUrl,
   getServiceUrl,
@@ -164,7 +165,14 @@ const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
   ])
 
   const additionalPages = pages.flatMap((page) => {
-    if (!page.slug || EXCLUDED_PAGE_SLUGS.has(page.slug) || !page.title) return []
+    if (
+      !page.slug ||
+      !page.title ||
+      !INDEXABLE_PAGE_SLUGS.has(page.slug) ||
+      EXCLUDED_PAGE_SLUGS.has(page.slug)
+    ) {
+      return []
+    }
     const href = `/${page.slug}`
     if (!isPublicPageHref(href)) return []
     return [{ label: page.title, href }]

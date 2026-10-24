@@ -30,6 +30,19 @@ export const BLOG_ARCHIVE_PATH = '/blog'
 /** Path segment for category archive pages: /blog/category/{slug} */
 export const BLOG_CATEGORY_PATH_SEGMENT = 'category'
 
+/**
+ * CMS pages that belong in the public sitemap.
+ * Home, blog, clients, services, cases, testimonials, and their categories
+ * are added by their own routes. Other published pages stay out.
+ */
+export const INDEXABLE_PAGE_SLUGS = new Set([
+  'about',
+  'contact',
+  'privacy-policy',
+  'accessibility',
+  'sitemap',
+])
+
 /** Reserved path segment that must not be used as a Case Study Category slug. */
 export const CASE_STUDY_CATEGORY_PATH_SEGMENT = 'category'
 

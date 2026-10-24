@@ -2,8 +2,11 @@ import type { Metadata } from 'next'
 import type { MetadataRoute } from 'next'
 
 /**
- * Staging / preview / local builds stay out of the index.
- * Vercel production is indexable unless SITE_INDEXING=false.
+ * Staging, preview, and local builds stay out of the index.
+ * Vercel production (https://manufacturing.neo-lines.com) is indexable unless SITE_INDEXING=false.
+ * Indexed sections: home, about, services, case studies and categories, contact,
+ * testimonials, blog posts and categories, clients, privacy policy, and accessibility.
+ * Search, admin, API, drafts, and filtered query URLs stay out.
  * Set SITE_INDEXING=true to preview production robots locally.
  */
 const indexingFlag = process.env.SITE_INDEXING ?? process.env.NEXT_PUBLIC_SITE_INDEXING

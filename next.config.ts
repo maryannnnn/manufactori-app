@@ -2,15 +2,39 @@ import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from 'next'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { PUBLIC_SITE_URL } from './src/utilities/getURL'
 import { BLOCK_SITE_INDEXING, xRobotsTagValue } from './src/utilities/siteRobots'
 
 const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 import { redirects } from './redirects'
 
-const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : process.env.__NEXT_PRIVATE_ORIGIN || 'http://localhost:3000'
+const imageOrigins = Array.from(
+  new Set(
+    [
+      PUBLIC_SITE_URL,
+      'http://localhost:3000',
+      process.env.NEXT_PUBLIC_SERVER_URL,
+      process.env.VERCEL_PROJECT_PRODUCTION_URL
+        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL.replace(/^https?:\/\//, '')}`
+        : '',
+    ].filter((item): item is string => Boolean(item)),
+  ),
+)
+
+const imageRemotePatterns = imageOrigins.flatMap((item) => {
+  try {
+    const url = new URL(item)
+    return [
+      {
+        hostname: url.hostname,
+        protocol: url.protocol.replace(':', '') as 'http' | 'https',
+      },
+    ]
+  } catch {
+    return []
+  }
+})
 
 const nextConfig: NextConfig = {
   // Temporarily required on Windows until Next.js fixes Turbopack Sass resolution.
@@ -28,16 +52,7 @@ const nextConfig: NextConfig = {
       },
     ],
     qualities: [100],
-    remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
-        const url = new URL(item)
-
-        return {
-          hostname: url.hostname,
-          protocol: url.protocol.replace(':', '') as 'http' | 'https',
-        }
-      }),
-    ],
+    remotePatterns: imageRemotePatterns,
   },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
