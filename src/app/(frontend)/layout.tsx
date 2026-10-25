@@ -9,6 +9,7 @@ import { AccessibilityWidget } from '@/components/AccessibilityWidget'
 import { InitAccessibility } from '@/components/AccessibilityWidget/InitAccessibility'
 import { AdminBar } from '@/components/AdminBar'
 import { InitPalette, DEFAULT_PALETTE_ID } from '@/design-system'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { CookieNotice } from '@/components/Home/CookieNotice'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
@@ -36,6 +37,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       suppressHydrationWarning
     >
       <head>
+        <GoogleAnalytics />
         <InitTheme />
         <InitPalette />
         <InitAccessibility />
