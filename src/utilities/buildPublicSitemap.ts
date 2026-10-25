@@ -99,9 +99,11 @@ const imagesOf = (doc: unknown, base: string): string[] => {
   return [...images]
 }
 
-const findPublished = async (
+const findPublished = async <
+  T extends 'pages' | 'posts' | 'services' | 'case-studies' | 'testimonials',
+>(
   payload: Payload,
-  collection: 'pages' | 'posts' | 'services' | 'case-studies' | 'testimonials',
+  collection: T,
   depth = 1,
 ) => {
   return payload.find({
