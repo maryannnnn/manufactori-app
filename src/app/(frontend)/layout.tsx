@@ -37,7 +37,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       suppressHydrationWarning
     >
       <head>
-        <GoogleAnalytics />
         <InitTheme />
         <InitPalette />
         <InitAccessibility />
@@ -63,6 +62,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           </div>
           <AccessibilityWidget />
         </Providers>
+        <GoogleAnalytics />
       </body>
     </html>
   )
