@@ -24,7 +24,7 @@ export const HomeTestimonials: React.FC<Props> = ({ items }) => {
           Client Perspective
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
-          Selected statements from published testimonials.
+          Statements from the companies in the case studies above.
         </p>
         <div className="mt-10">
           <TestimonialCarousel items={items} labelledBy="home-testimonials-heading" />

@@ -1,7 +1,7 @@
 import React from 'react'
 
 /** Central watermark copy. Not stored on Media or Case Study documents. */
-export const IMAGE_WATERMARK_TEXT = 'Neolines.com'
+export const IMAGE_WATERMARK_TEXT = 'neo-lines.com'
 
 /**
  * Soft photographic credit. Sits on the existing Media image — it does not

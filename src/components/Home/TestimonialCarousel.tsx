@@ -1,6 +1,7 @@
 'use client'
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { A11Y_ATTR } from '@/components/AccessibilityWidget/prefs'
@@ -81,26 +82,40 @@ export const TestimonialCarousel: React.FC<Props> = ({ items, labelledBy }) => {
           <article
             aria-label={`Testimonial ${itemIndex + 1} of ${items.length}`}
             aria-roledescription="slide"
-            className="w-full shrink-0 snap-start border border-border bg-card p-6 md:p-8 lg:w-[calc(100%-4rem)]"
+            className="w-full shrink-0 snap-start border border-border bg-card p-6 md:p-10 lg:w-[calc(100%-4rem)]"
             key={item.id}
             role="group"
           >
-            {item.photo ? (
-              <div className="relative mb-6 size-14 overflow-hidden rounded-[2px] bg-accent">
-                <Media fill imgClassName="h-full w-full object-cover" resource={item.photo} size="56px" />
-              </div>
+            {item.logo && item.caseHref ? (
+              <Link
+                aria-label={item.caseTitle ? `View the ${item.caseTitle} case study` : 'View the case study'}
+                className="mb-8 inline-flex h-14 max-w-[220px] items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+                href={item.caseHref}
+              >
+                <Media
+                  className="flex h-full w-full items-center"
+                  imgClassName="h-auto max-h-14 w-auto max-w-full object-contain object-left"
+                  resource={item.logo}
+                  size="220px"
+                />
+              </Link>
             ) : null}
-            <blockquote className="max-w-3xl text-lg leading-8 text-foreground">
+            <blockquote className="max-w-3xl text-lg leading-8 text-foreground md:text-xl md:leading-9">
               {item.quote}
             </blockquote>
             {(item.author || item.position || item.company) && (
               <footer className="mt-6 text-sm text-muted-foreground">
                 {item.author ? <div className="font-medium text-foreground">{item.author}</div> : null}
-                <div>
-                  {[item.position, item.company].filter(Boolean).join(', ')}
-                </div>
+                {item.position ? <div>{item.position}</div> : null}
+                {item.company ? <div className="font-medium text-foreground">{item.company}</div> : null}
               </footer>
             )}
+            <Link
+              className="mt-6 inline-flex text-sm text-link underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+              href={item.testimonialHref}
+            >
+              Read the full testimonial
+            </Link>
           </article>
         ))}
       </div>
@@ -109,7 +124,7 @@ export const TestimonialCarousel: React.FC<Props> = ({ items, labelledBy }) => {
         <div className="mt-6 flex items-center gap-3">
           <button
             aria-label="Previous testimonial"
-            className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
             onClick={() => goTo(index - 1)}
             type="button"
           >
@@ -117,7 +132,7 @@ export const TestimonialCarousel: React.FC<Props> = ({ items, labelledBy }) => {
           </button>
           <button
             aria-label="Next testimonial"
-            className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
             onClick={() => goTo(index + 1)}
             type="button"
           >
@@ -129,7 +144,7 @@ export const TestimonialCarousel: React.FC<Props> = ({ items, labelledBy }) => {
                 aria-current={itemIndex === index ? 'true' : undefined}
                 aria-label={`Go to testimonial ${itemIndex + 1}`}
                 className={cn(
-                  'size-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                  'size-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring',
                   itemIndex === index ? 'bg-cta' : 'bg-border',
                 )}
                 key={item.id}
