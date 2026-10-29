@@ -17,6 +17,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { PagePreviewBlock } from '@/blocks/PagePreviewBlock/Component'
 import { PostCommentsBlock } from '@/blocks/PostCommentsBlock/Component'
 import { PostContentTitleBlock } from '@/blocks/PostContentTitleBlock/Component'
+import { PostFAQBlock } from '@/blocks/PostFAQBlock/Component'
 import { PostGalleryBlock } from '@/blocks/PostGalleryBlock/Component'
 import { ServiceCommentsBlock } from '@/blocks/ServiceCommentsBlock/Component'
 import { ServiceGalleryBlock } from '@/blocks/ServiceGalleryBlock/Component'
@@ -46,6 +47,7 @@ const blockComponents = {
   pagePreviewBlock: PagePreviewBlock,
   postCommentsBlock: PostCommentsBlock,
   postContentTitleBlock: PostContentTitleBlock,
+  postFAQBlock: PostFAQBlock,
   postGalleryBlock: PostGalleryBlock,
   svcGallery: ServiceGalleryBlock,
   svcComments: ServiceCommentsBlock,
