@@ -18,14 +18,14 @@ export const HomeServices: React.FC<Props> = ({ services }) => {
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
           A connected marketing system for manufacturers and industrial companies.
         </p>
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
           {services.map((service) => (
             <ServiceCard
               ctaLabel="Learn more"
               doc={service}
-              imageSizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              imageSizes="(max-width: 640px) 100vw, 160px"
               key={service.slug ?? service.title}
-              variant="compact"
+              variant="row"
             />
           ))}
         </div>

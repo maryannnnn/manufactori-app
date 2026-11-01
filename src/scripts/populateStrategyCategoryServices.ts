@@ -11,7 +11,7 @@ import { getServiceUrl } from '../utilities/getContentUrls'
 import { getTiptapExtensions } from '../utilities/richText/extensions'
 import { LEGACY_SERVICE_REDIRECTS } from '../utilities/serviceCatalog'
 
-const context = { disableCategorySeo: true }
+const context = { disableCategorySeo: true, disableRevalidate: true }
 
 const rt = (html: string) => generateJSON(html, getTiptapExtensions({ headingLevels: [2, 3, 4] }))
 const rtCta = (html: string) => generateJSON(html, getTiptapExtensions({ headingLevels: [1, 2, 3, 4] }))
@@ -875,12 +875,17 @@ const rewriteCollection = async (payload: Payload, collection: 'services' | 'pos
   let changed = 0
   for (const doc of found.docs) {
     const rewritten = rewriteValue(doc) as Record<string, unknown>
-    if (JSON.stringify(rewritten) === JSON.stringify(doc)) continue
-    for (const key of OMIT) delete rewritten[key]
+    const data: Record<string, unknown> = {}
+    const original = doc as unknown as Record<string, unknown>
+    for (const [key, value] of Object.entries(rewritten)) {
+      if (OMIT.has(key) || key === 'populatedAuthors' || key === 'breadcrumbs') continue
+      if (JSON.stringify(value) !== JSON.stringify(original[key])) data[key] = value
+    }
+    if (Object.keys(data).length === 0) continue
     await payload.update({
       collection,
       id: doc.id,
-      data: rewritten,
+      data,
       draft: false,
       overrideAccess: true,
       context,
@@ -959,12 +964,11 @@ const main = async () => {
   const payload = await getPayload({ config })
   const required = [
     'marketing-strategy-roadmap',
-    'website-design-development-for-manufacturers',
     'seo-ai-search-optimization',
-    'ai-search-optimization-manufacturers',
-    'lead-generation',
-    'technical-content-thought-leadership',
-    'sales-enablement-crm',
+    'ai-search-optimization-content-engineering',
+    'outbound-lead-generation',
+    'technical-content-strategy',
+    'sales-enablement',
     ...PAGES.map((page) => page.slug),
   ]
   const imageIds = new Map<string, number>()

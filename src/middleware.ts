@@ -16,10 +16,15 @@ export const config = {
   matcher: [
     '/services/marketing-strategy-roadmap',
     '/services/website-design-development-for-manufacturers',
+    '/services/website/website-design-development-for-manufacturers',
     '/services/seo-ai-search-optimization',
     '/services/ai-search-optimization-manufacturers',
+    '/services/search/ai-search-optimization-manufacturers',
     '/services/lead-generation',
+    '/services/paid-media/lead-generation',
     '/services/technical-content-thought-leadership',
+    '/services/content/technical-content-thought-leadership',
     '/services/sales-enablement-crm',
+    '/services/sales/sales-enablement-crm',
   ],
 }

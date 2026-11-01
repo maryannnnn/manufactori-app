@@ -40,6 +40,9 @@ const bullets = (items: string[]) =>
   `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
 
 const populate = async () => {
+  throw new Error(
+    'This service was split into industrial-website-design and website-development. Do not run this script.',
+  )
   const payload = await getPayload({ config })
 
   const existing = await payload.find({

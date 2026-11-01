@@ -8,11 +8,12 @@ import type { ServiceCardData } from '@/components/ServiceCard'
 import type { CaseStudy, Media } from '@/payload-types'
 
 import { getCaseStudyUrl, getTestimonialUrl } from './getContentUrls'
+import { SERVICE_OVERVIEW_SLUGS } from './serviceCatalog'
 import { getCaseStudyListPreview } from './getCaseStudyListPreview'
 import { getPostList } from './getPostList'
 import { getRichTextPlainText } from './richText/getPlainText'
 
-export const HOME_SERVICES_LIMIT = 7
+export const HOME_SERVICES_LIMIT = SERVICE_OVERVIEW_SLUGS.length
 export const HOME_CASE_STUDIES_LIMIT = 6
 export const HOME_POSTS_LIMIT = 3
 
@@ -46,8 +47,12 @@ export const getHomePageData = cache(async (): Promise<HomePageData> => {
       limit: HOME_SERVICES_LIMIT,
       overrideAccess: false,
       pagination: false,
-      sort: ['displayOrder', 'title'],
-      where: { _status: { equals: 'published' } },
+      where: {
+        and: [
+          { _status: { equals: 'published' } },
+          { slug: { in: [...SERVICE_OVERVIEW_SLUGS] } },
+        ],
+      },
       select: {
         title: true,
         slug: true,
@@ -98,8 +103,14 @@ export const getHomePageData = cache(async (): Promise<HomePageData> => {
     }),
   ])
 
+  const overviewOrder = new Map(SERVICE_OVERVIEW_SLUGS.map((slug, index) => [slug, index]))
+
   return {
-    services: services.docs,
+    services: [...services.docs].sort(
+      (a, b) =>
+        (overviewOrder.get(a.slug as (typeof SERVICE_OVERVIEW_SLUGS)[number]) ?? 99) -
+        (overviewOrder.get(b.slug as (typeof SERVICE_OVERVIEW_SLUGS)[number]) ?? 99),
+    ),
     caseStudies: caseStudies.docs.map((doc) => {
       const preview = getCaseStudyListPreview(doc)
       return {

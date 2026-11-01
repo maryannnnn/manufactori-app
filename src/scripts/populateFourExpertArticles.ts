@@ -98,7 +98,7 @@ type Article = {
   ctaLabel: string
 }
 
-const SERVICE = '/services/search/ai-search-optimization-manufacturers'
+const SERVICE = '/services/search/ai-search-optimization-content-engineering'
 
 const ARTICLES: Article[] = [
   {

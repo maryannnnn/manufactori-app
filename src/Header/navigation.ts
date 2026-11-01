@@ -39,8 +39,8 @@ export const serviceNavLinks: NavLink[] = [
     href: serviceHref('marketing-strategy-roadmap'),
   },
   {
-    label: 'Website Design & Development for Manufacturers',
-    href: serviceHref('website-design-development-for-manufacturers'),
+    label: 'Industrial Website Design',
+    href: serviceHref('industrial-website-design'),
   },
   {
     label: 'SEO & AI Search Optimization',
@@ -48,19 +48,19 @@ export const serviceNavLinks: NavLink[] = [
   },
   {
     label: 'AI Search Optimization & Content Engineering',
-    href: serviceHref('ai-search-optimization-manufacturers'),
+    href: serviceHref('ai-search-optimization-content-engineering'),
   },
   {
-    label: 'Technical Content & Thought Leadership',
-    href: serviceHref('technical-content-thought-leadership'),
+    label: 'Technical Content Strategy',
+    href: serviceHref('technical-content-strategy'),
   },
   {
-    label: 'Lead Generation',
-    href: serviceHref('lead-generation'),
+    label: 'Outbound Lead Generation',
+    href: serviceHref('outbound-lead-generation'),
   },
   {
-    label: 'Sales Enablement & CRM',
-    href: serviceHref('sales-enablement-crm'),
+    label: 'Sales Enablement',
+    href: serviceHref('sales-enablement'),
   },
 ]
 
@@ -105,8 +105,36 @@ export const serviceNavSections: NavSection[] = [
     href: serviceHref('website'),
     links: [
       {
-        label: 'Website Design & Development for Manufacturers',
-        href: serviceHref('website-design-development-for-manufacturers'),
+        label: 'Industrial Website Design',
+        href: serviceHref('industrial-website-design'),
+      },
+      {
+        label: 'Website Development',
+        href: serviceHref('website-development'),
+      },
+      {
+        label: 'Website Redesign & Audit',
+        href: serviceHref('website-redesign-audit'),
+      },
+      {
+        label: 'Product Catalogs & E-commerce',
+        href: serviceHref('product-catalogs-ecommerce'),
+      },
+      {
+        label: 'UX/UI for Engineers & B2B Buyers',
+        href: serviceHref('ux-ui-for-engineers-b2b-buyers'),
+      },
+      {
+        label: 'RFQ Forms & Conversion Optimization',
+        href: serviceHref('rfq-forms-conversion-optimization'),
+      },
+      {
+        label: 'Website Maintenance & Security',
+        href: serviceHref('website-maintenance-security'),
+      },
+      {
+        label: 'CAD & 3D Configurator Integration',
+        href: serviceHref('cad-3d-configurator-integration'),
       },
     ],
   },
@@ -120,7 +148,39 @@ export const serviceNavSections: NavSection[] = [
       },
       {
         label: 'AI Search Optimization & Content Engineering',
-        href: serviceHref('ai-search-optimization-manufacturers'),
+        href: serviceHref('ai-search-optimization-content-engineering'),
+      },
+      {
+        label: 'Industrial SEO',
+        href: serviceHref('industrial-seo'),
+      },
+      {
+        label: 'Technical SEO & Website Audits',
+        href: serviceHref('technical-seo-website-audits'),
+      },
+      {
+        label: 'AI Search Optimization (GEO)',
+        href: serviceHref('ai-search-optimization-geo'),
+      },
+      {
+        label: 'Answer Engine Optimization (AEO)',
+        href: serviceHref('answer-engine-optimization-aeo'),
+      },
+      {
+        label: 'AI Visibility & Citation Audits',
+        href: serviceHref('ai-visibility-citation-audits'),
+      },
+      {
+        label: 'Entity & Authority Building',
+        href: serviceHref('entity-authority-building'),
+      },
+      {
+        label: 'International & Multilingual SEO',
+        href: serviceHref('international-multilingual-seo'),
+      },
+      {
+        label: 'Local & Multi-Location SEO',
+        href: serviceHref('local-multi-location-seo'),
       },
     ],
   },
@@ -129,8 +189,44 @@ export const serviceNavSections: NavSection[] = [
     href: serviceHref('paid-media'),
     links: [
       {
-        label: 'Lead Generation',
-        href: serviceHref('lead-generation'),
+        label: 'Search Engine Marketing (SEM)',
+        href: serviceHref('search-engine-marketing-sem'),
+      },
+      {
+        label: 'Google Ads for Manufacturers',
+        href: serviceHref('google-ads-manufacturers'),
+      },
+      {
+        label: 'Microsoft Ads',
+        href: serviceHref('microsoft-ads'),
+      },
+      {
+        label: 'LinkedIn Ads & B2B Campaigns',
+        href: serviceHref('linkedin-ads-b2b-campaigns'),
+      },
+      {
+        label: 'Facebook & Instagram Ads',
+        href: serviceHref('facebook-instagram-ads'),
+      },
+      {
+        label: 'Account-Based Marketing (ABM)',
+        href: serviceHref('account-based-marketing-abm'),
+      },
+      {
+        label: 'Remarketing & Retargeting',
+        href: serviceHref('remarketing-retargeting'),
+      },
+      {
+        label: 'Paid Social Advertising',
+        href: serviceHref('paid-social-advertising'),
+      },
+      {
+        label: 'Outbound Lead Generation',
+        href: serviceHref('outbound-lead-generation'),
+      },
+      {
+        label: 'Email Marketing & Lead Nurturing',
+        href: serviceHref('email-marketing-lead-nurturing'),
       },
     ],
   },
@@ -139,8 +235,40 @@ export const serviceNavSections: NavSection[] = [
     href: serviceHref('content'),
     links: [
       {
-        label: 'Technical Content & Thought Leadership',
-        href: serviceHref('technical-content-thought-leadership'),
+        label: 'Technical Content Strategy',
+        href: serviceHref('technical-content-strategy'),
+      },
+      {
+        label: 'Engineering Articles & Guides',
+        href: serviceHref('engineering-articles-guides'),
+      },
+      {
+        label: 'Product & Capability Pages',
+        href: serviceHref('product-capability-pages'),
+      },
+      {
+        label: 'Technical White Papers',
+        href: serviceHref('technical-white-papers'),
+      },
+      {
+        label: 'Manufacturing Case Studies',
+        href: serviceHref('manufacturing-case-studies'),
+      },
+      {
+        label: 'Thought Leadership',
+        href: serviceHref('thought-leadership'),
+      },
+      {
+        label: 'Industrial Video & Photography',
+        href: serviceHref('industrial-video-photography'),
+      },
+      {
+        label: 'Brand Identity & Visual Communication',
+        href: serviceHref('brand-identity-visual-communication'),
+      },
+      {
+        label: 'Sales Collateral & Presentations',
+        href: serviceHref('sales-collateral-presentations'),
       },
     ],
   },
@@ -149,8 +277,36 @@ export const serviceNavSections: NavSection[] = [
     href: serviceHref('sales'),
     links: [
       {
-        label: 'Sales Enablement & CRM',
-        href: serviceHref('sales-enablement-crm'),
+        label: 'Sales Enablement',
+        href: serviceHref('sales-enablement'),
+      },
+      {
+        label: 'CRM Implementation & Integration',
+        href: serviceHref('crm-implementation-integration'),
+      },
+      {
+        label: 'Marketing Automation',
+        href: serviceHref('marketing-automation'),
+      },
+      {
+        label: 'Lead Management & Nurturing',
+        href: serviceHref('lead-management-nurturing'),
+      },
+      {
+        label: 'Analytics & Conversion Tracking',
+        href: serviceHref('analytics-conversion-tracking'),
+      },
+      {
+        label: 'RFQ Funnel Optimization',
+        href: serviceHref('rfq-funnel-optimization'),
+      },
+      {
+        label: 'Distributor & Channel Enablement',
+        href: serviceHref('distributor-channel-enablement'),
+      },
+      {
+        label: 'Trade Show & Event Marketing',
+        href: serviceHref('trade-show-event-marketing'),
       },
     ],
   },

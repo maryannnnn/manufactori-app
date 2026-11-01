@@ -25,7 +25,7 @@ type Props = {
   ctaLabel?: string
   doc: ServiceCardData
   imageSizes?: string
-  variant?: 'default' | 'compact'
+  variant?: 'default' | 'compact' | 'row'
 }
 
 export const ServiceCard: React.FC<Props> = ({
@@ -47,10 +47,23 @@ export const ServiceCard: React.FC<Props> = ({
       : null)
   const hasImage = Boolean(image)
   const compact = variant === 'compact'
+  const row = variant === 'row'
 
   const inner = (
     <>
-      {compact ? (
+      {row ? (
+        hasImage ? (
+          <div className="relative h-[168px] w-full shrink-0 overflow-hidden bg-accent sm:h-[120px] sm:w-40">
+            <Media
+              className="h-full w-full"
+              fill
+              imgClassName="h-full w-full object-cover"
+              resource={image}
+              size={imageSizes}
+            />
+          </div>
+        ) : null
+      ) : compact ? (
         hasImage ? (
           <div className="relative mx-5 mt-5 size-14 overflow-hidden rounded-[2px] bg-accent">
             <Media
@@ -90,7 +103,8 @@ export const ServiceCard: React.FC<Props> = ({
   )
 
   const classNames = cn(
-    'group flex h-full min-w-0 flex-col overflow-hidden rounded-[2px] border border-border bg-card',
+    'group flex h-full min-w-0 overflow-hidden rounded-[2px] border border-border bg-card',
+    row ? 'flex-col sm:flex-row' : 'flex-col',
     className,
   )
 

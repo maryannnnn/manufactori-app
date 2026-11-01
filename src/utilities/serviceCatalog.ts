@@ -29,12 +29,51 @@ export const SERVICE_CATEGORY_BY_SLUG: Record<string, ServiceCategorySlug> = {
   'buyer-persona-research': 'strategy',
   'fractional-marketing-advisory': 'strategy',
   'international-marketing-strategy': 'strategy',
-  'website-design-development-for-manufacturers': 'website',
+  'industrial-website-design': 'website',
+  'website-development': 'website',
+  'website-redesign-audit': 'website',
+  'product-catalogs-ecommerce': 'website',
+  'ux-ui-for-engineers-b2b-buyers': 'website',
+  'rfq-forms-conversion-optimization': 'website',
+  'website-maintenance-security': 'website',
+  'cad-3d-configurator-integration': 'website',
   'seo-ai-search-optimization': 'search',
-  'ai-search-optimization-manufacturers': 'search',
-  'lead-generation': 'paid-media',
-  'technical-content-thought-leadership': 'content',
-  'sales-enablement-crm': 'sales',
+  'ai-search-optimization-content-engineering': 'search',
+  'industrial-seo': 'search',
+  'technical-seo-website-audits': 'search',
+  'ai-search-optimization-geo': 'search',
+  'answer-engine-optimization-aeo': 'search',
+  'ai-visibility-citation-audits': 'search',
+  'entity-authority-building': 'search',
+  'international-multilingual-seo': 'search',
+  'local-multi-location-seo': 'search',
+  'search-engine-marketing-sem': 'paid-media',
+  'google-ads-manufacturers': 'paid-media',
+  'microsoft-ads': 'paid-media',
+  'linkedin-ads-b2b-campaigns': 'paid-media',
+  'facebook-instagram-ads': 'paid-media',
+  'account-based-marketing-abm': 'paid-media',
+  'remarketing-retargeting': 'paid-media',
+  'paid-social-advertising': 'paid-media',
+  'outbound-lead-generation': 'paid-media',
+  'email-marketing-lead-nurturing': 'paid-media',
+  'technical-content-strategy': 'content',
+  'engineering-articles-guides': 'content',
+  'product-capability-pages': 'content',
+  'technical-white-papers': 'content',
+  'manufacturing-case-studies': 'content',
+  'thought-leadership': 'content',
+  'industrial-video-photography': 'content',
+  'brand-identity-visual-communication': 'content',
+  'sales-collateral-presentations': 'content',
+  'sales-enablement': 'sales',
+  'crm-implementation-integration': 'sales',
+  'marketing-automation': 'sales',
+  'lead-management-nurturing': 'sales',
+  'analytics-conversion-tracking': 'sales',
+  'rfq-funnel-optimization': 'sales',
+  'distributor-channel-enablement': 'sales',
+  'trade-show-event-marketing': 'sales',
 }
 
 export const isServiceOverview = (slug: string | null | undefined): boolean =>
@@ -57,18 +96,32 @@ export const getServiceCategory = (
 
 export const legacyServicePath = (slug: string): string => `/services/${slug}`
 
-export const LEGACY_SERVICE_REDIRECTS: Record<string, string> = Object.fromEntries(
-  Object.entries(SERVICE_CATEGORY_BY_SLUG)
-    .filter(([slug]) =>
-      [
-        'marketing-strategy-roadmap',
-        'website-design-development-for-manufacturers',
-        'seo-ai-search-optimization',
-        'ai-search-optimization-manufacturers',
-        'lead-generation',
-        'technical-content-thought-leadership',
-        'sales-enablement-crm',
-      ].includes(slug),
-    )
-    .map(([slug, category]) => [`/services/${slug}`, `/services/${category}/${slug}`]),
-)
+const LEGACY_INDIVIDUAL_SLUGS = [
+  'marketing-strategy-roadmap',
+  'seo-ai-search-optimization',
+] as const
+
+export const LEGACY_SERVICE_REDIRECTS: Record<string, string> = {
+  ...Object.fromEntries(
+    LEGACY_INDIVIDUAL_SLUGS.map((slug) => [
+      `/services/${slug}`,
+      `/services/${SERVICE_CATEGORY_BY_SLUG[slug]}/${slug}`,
+    ]),
+  ),
+  '/services/website-design-development-for-manufacturers':
+    '/services/website/industrial-website-design',
+  '/services/website/website-design-development-for-manufacturers':
+    '/services/website/industrial-website-design',
+  '/services/ai-search-optimization-manufacturers':
+    '/services/search/ai-search-optimization-content-engineering',
+  '/services/search/ai-search-optimization-manufacturers':
+    '/services/search/ai-search-optimization-content-engineering',
+  '/services/lead-generation': '/services/paid-media/outbound-lead-generation',
+  '/services/paid-media/lead-generation': '/services/paid-media/outbound-lead-generation',
+  '/services/technical-content-thought-leadership':
+    '/services/content/technical-content-strategy',
+  '/services/content/technical-content-thought-leadership':
+    '/services/content/technical-content-strategy',
+  '/services/sales-enablement-crm': '/services/sales/sales-enablement',
+  '/services/sales/sales-enablement-crm': '/services/sales/sales-enablement',
+}

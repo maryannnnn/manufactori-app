@@ -36,6 +36,9 @@ const bullets = (items: string[]) =>
   `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
 
 const populate = async () => {
+  if (process.env.ALLOW_LEGACY_SERVICE_SCRIPT !== '1') {
+    throw new Error('This record is now sales-enablement. Do not run this script.')
+  }
   const payload = await getPayload({ config })
 
   const existing = await payload.find({

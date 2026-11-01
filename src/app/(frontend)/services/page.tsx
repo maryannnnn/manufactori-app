@@ -12,6 +12,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { Media } from '@/components/Media'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getServiceUrl, SERVICES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+import { SERVICE_OVERVIEW_SLUGS } from '@/utilities/serviceCatalog'
 import { buildWebPageGraph, serviceArchiveBreadcrumbs } from '@/utilities/jsonLd'
 
 import PageClient from './page.client'
@@ -31,18 +32,26 @@ export default async function ServicesArchivePage() {
     limit: 100,
     overrideAccess: false,
     pagination: false,
-    sort: ['displayOrder', 'title'],
     select: {
       title: true,
       slug: true,
       service_preview_title: true,
       service_preview_description: true,
+      service_preview_image: true,
       service_card_image: true,
     },
     where: {
-      _status: { equals: 'published' },
+      and: [
+        { _status: { equals: 'published' } },
+        { slug: { in: [...SERVICE_OVERVIEW_SLUGS] } },
+      ],
     },
   })
+  const overviewOrder = new Map(SERVICE_OVERVIEW_SLUGS.map((slug, index) => [slug, index]))
+  const categories = [...services.docs].sort(
+    (a, b) => (overviewOrder.get(a.slug as (typeof SERVICE_OVERVIEW_SLUGS)[number]) ?? 99) -
+      (overviewOrder.get(b.slug as (typeof SERVICE_OVERVIEW_SLUGS)[number]) ?? 99),
+  )
 
   return (
     <div className="pt-16 pb-24">
@@ -74,16 +83,21 @@ export default async function ServicesArchivePage() {
       </div>
 
       <div className="container">
-        {services.docs.length > 0 ? (
+        {categories.length > 0 ? (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {services.docs.map((doc) => {
+            {categories.map((doc) => {
               const href = getServiceUrl(doc)
               const title = doc.service_preview_title || doc.title
               const parts = paragraphs(doc.service_preview_description)
-              const image =
+              const previewImage =
+                doc.service_preview_image && typeof doc.service_preview_image === 'object'
+                  ? doc.service_preview_image
+                  : null
+              const cardImage =
                 doc.service_card_image && typeof doc.service_card_image === 'object'
                   ? doc.service_card_image
                   : null
+              const image = previewImage || cardImage
               if (!title) return null
 
               return (

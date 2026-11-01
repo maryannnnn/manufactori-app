@@ -93,6 +93,11 @@ const uploadImage = async (
 }
 
 const populate = async () => {
+  if (process.env.ALLOW_LEGACY_SERVICE_SCRIPT !== '1') {
+    throw new Error(
+      'This service slug is now ai-search-optimization-content-engineering. Do not run this script.',
+    )
+  }
   if (!readFileSync(SOURCE)) throw new Error('source image missing')
   const payload = await getPayload({ config })
 
