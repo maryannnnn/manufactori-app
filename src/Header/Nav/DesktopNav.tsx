@@ -168,7 +168,7 @@ const MegaPanel: React.FC<{
   pathname: string
 }> = ({ id, item, onMouseEnter, open, pathname }) => {
   const sections = getNavSections(item)
-  const columnCount = Math.min(3, Math.max(1, sections.length > 1 ? sections.length : 2))
+  const manyColumns = sections.length > 3
 
   return (
     <div
@@ -178,20 +178,29 @@ const MegaPanel: React.FC<{
     >
       <div
         className={cn(
-          'container grid gap-x-10 gap-y-6',
-          columnCount === 1 && 'grid-cols-1',
-          columnCount === 2 && 'grid-cols-1 md:grid-cols-2',
-          columnCount >= 3 && 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3',
+          'container grid gap-x-8 gap-y-8',
+          !manyColumns && sections.length <= 1 && 'grid-cols-1',
+          !manyColumns && sections.length === 2 && 'grid-cols-1 md:grid-cols-2',
+          !manyColumns && sections.length >= 3 && 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3',
+          manyColumns && 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6',
         )}
       >
         {sections.map((section, sectionIndex) => (
           <div key={section.heading ?? `section-${sectionIndex}`}>
-            {section.heading ? (
+            {section.heading && section.href ? (
+              <Link
+                className="mb-3 block font-mono text-[11px] leading-snug tracking-wide text-main uppercase break-words transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+                href={section.href}
+                tabIndex={open ? 0 : -1}
+              >
+                {section.heading}
+              </Link>
+            ) : section.heading ? (
               <p className="mb-3 font-mono text-[11px] tracking-wide text-muted uppercase">
                 {section.heading}
               </p>
             ) : null}
-            <ul className="grid grid-cols-1 gap-x-10 gap-y-1 md:grid-cols-2">
+            <ul className={cn('grid grid-cols-1 gap-x-10 gap-y-1', !manyColumns && 'md:grid-cols-2')}>
               {section.links.map((link) => (
                 <li key={link.href}>
                   <Link

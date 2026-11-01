@@ -7,9 +7,11 @@ import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getServiceUrl } from '@/utilities/getContentUrls'
 import { buildServiceGraph } from '@/utilities/jsonLd'
+import { isServiceOverview } from '@/utilities/serviceCatalog'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
+import { permanentRedirect } from 'next/navigation'
 import React, { cache } from 'react'
 
 import PageClient from '../page.client'
@@ -31,7 +33,9 @@ export async function generateStaticParams() {
     select: { slug: true },
   })
 
-  return services.docs.flatMap(({ slug }) => (slug ? [{ slug }] : []))
+  return services.docs.flatMap(({ slug }) =>
+    slug && isServiceOverview(slug) ? [{ slug }] : [],
+  )
 }
 
 export default async function ServiceDocumentPage({ params: paramsPromise }: Args) {
@@ -39,6 +43,9 @@ export default async function ServiceDocumentPage({ params: paramsPromise }: Arg
   const { slug = '' } = await paramsPromise
   const decodedSlug = decodeURIComponent(slug)
   const url = getServiceUrl({ slug: decodedSlug }) || `/services/${decodedSlug}`
+  if (!isServiceOverview(decodedSlug) && url !== `/services/${decodedSlug}`) {
+    permanentRedirect(url)
+  }
   const service = await queryServiceBySlug({ slug: decodedSlug })
 
   if (!service) {

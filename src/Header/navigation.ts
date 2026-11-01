@@ -19,6 +19,8 @@ export type NavLink = {
  */
 export type NavSection = {
   heading?: string
+  /** Overview page for this column. The heading links here when set. */
+  href?: string
   links: NavLink[]
 }
 
@@ -29,34 +31,128 @@ export type NavItem = {
   sections?: NavSection[]
 }
 
+const serviceHref = (slug: string) => getServiceUrl({ slug })!
+
 export const serviceNavLinks: NavLink[] = [
   {
     label: 'Marketing Strategy & Roadmap',
-    href: getServiceUrl({ slug: 'marketing-strategy-roadmap' })!,
+    href: serviceHref('marketing-strategy-roadmap'),
   },
   {
     label: 'Website Design & Development for Manufacturers',
-    href: getServiceUrl({ slug: 'website-design-development-for-manufacturers' })!,
+    href: serviceHref('website-design-development-for-manufacturers'),
   },
   {
     label: 'SEO & AI Search Optimization',
-    href: getServiceUrl({ slug: 'seo-ai-search-optimization' })!,
+    href: serviceHref('seo-ai-search-optimization'),
   },
   {
     label: 'AI Search Optimization & Content Engineering',
-    href: getServiceUrl({ slug: 'ai-search-optimization-manufacturers' })!,
+    href: serviceHref('ai-search-optimization-manufacturers'),
   },
   {
     label: 'Technical Content & Thought Leadership',
-    href: getServiceUrl({ slug: 'technical-content-thought-leadership' })!,
+    href: serviceHref('technical-content-thought-leadership'),
   },
   {
     label: 'Lead Generation',
-    href: getServiceUrl({ slug: 'lead-generation' })!,
+    href: serviceHref('lead-generation'),
   },
   {
     label: 'Sales Enablement & CRM',
-    href: getServiceUrl({ slug: 'sales-enablement-crm' })!,
+    href: serviceHref('sales-enablement-crm'),
+  },
+]
+
+/**
+ * Six service groups. Column headings go to overview pages.
+ * Links below them are published service pages only. Names without a page
+ * stay on the overview, not in the menu.
+ */
+export const serviceNavSections: NavSection[] = [
+  {
+    heading: 'Strategy & Planning',
+    href: serviceHref('strategy'),
+    links: [
+      {
+        label: 'Marketing Strategy & Roadmap',
+        href: serviceHref('marketing-strategy-roadmap'),
+      },
+      {
+        label: 'Market & Competitor Research',
+        href: serviceHref('market-competitor-research'),
+      },
+      {
+        label: 'Brand Positioning & Messaging',
+        href: serviceHref('brand-positioning-messaging'),
+      },
+      {
+        label: 'Buyer Persona Research',
+        href: serviceHref('buyer-persona-research'),
+      },
+      {
+        label: 'Fractional Marketing Advisory',
+        href: serviceHref('fractional-marketing-advisory'),
+      },
+      {
+        label: 'International Marketing Strategy',
+        href: serviceHref('international-marketing-strategy'),
+      },
+    ],
+  },
+  {
+    heading: 'Websites & Digital Experience',
+    href: serviceHref('website'),
+    links: [
+      {
+        label: 'Website Design & Development for Manufacturers',
+        href: serviceHref('website-design-development-for-manufacturers'),
+      },
+    ],
+  },
+  {
+    heading: 'Search & AI Visibility',
+    href: serviceHref('search'),
+    links: [
+      {
+        label: 'SEO & AI Search Optimization',
+        href: serviceHref('seo-ai-search-optimization'),
+      },
+      {
+        label: 'AI Search Optimization & Content Engineering',
+        href: serviceHref('ai-search-optimization-manufacturers'),
+      },
+    ],
+  },
+  {
+    heading: 'Paid Media & Demand Generation',
+    href: serviceHref('paid-media'),
+    links: [
+      {
+        label: 'Lead Generation',
+        href: serviceHref('lead-generation'),
+      },
+    ],
+  },
+  {
+    heading: 'Technical Content & Brand',
+    href: serviceHref('content'),
+    links: [
+      {
+        label: 'Technical Content & Thought Leadership',
+        href: serviceHref('technical-content-thought-leadership'),
+      },
+    ],
+  },
+  {
+    heading: 'Sales Enablement & Marketing Systems',
+    href: serviceHref('sales'),
+    links: [
+      {
+        label: 'Sales Enablement & CRM',
+        href: serviceHref('sales-enablement-crm'),
+      },
+    ],
   },
 ]
 
@@ -65,7 +161,7 @@ export const mainNavigation: NavItem[] = [
     id: 'services',
     label: 'Services',
     href: SERVICES_ARCHIVE_PATH,
-    sections: [{ links: serviceNavLinks }],
+    sections: serviceNavSections,
   },
   { id: 'case-studies', label: 'Case Studies', href: CASE_STUDIES_ARCHIVE_PATH },
   { id: 'blog', label: 'Blog', href: BLOG_ARCHIVE_PATH },

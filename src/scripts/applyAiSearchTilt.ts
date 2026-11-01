@@ -211,7 +211,7 @@ const run = async () => {
                 {
                   type: 'link',
                   attrs: {
-                    href: '/services/seo-ai-search-optimization',
+                    href: '/services/search/seo-ai-search-optimization',
                     rel: null,
                     class: null,
                     target: null,

@@ -1,3 +1,5 @@
+import { getServiceCategorySlug, isServiceOverview } from '@/utilities/serviceCatalog'
+
 type CategoryLike = {
   slug?: string | null
 } | null | undefined
@@ -121,7 +123,10 @@ export const getCaseStudyUrl = (doc: CaseStudyUrlSource | null | undefined): str
 
 export const getServiceUrl = (doc: ServiceUrlSource | null | undefined): string | null => {
   if (!doc?.slug) return null
-  return `${SERVICES_ARCHIVE_PATH}/${doc.slug}`
+  if (isServiceOverview(doc.slug)) return `${SERVICES_ARCHIVE_PATH}/${doc.slug}`
+  const category = getServiceCategorySlug(doc.slug)
+  if (!category) return `${SERVICES_ARCHIVE_PATH}/${doc.slug}`
+  return `${SERVICES_ARCHIVE_PATH}/${category}/${doc.slug}`
 }
 
 export const getTestimonialUrl = (doc: TestimonialUrlSource | null | undefined): string | null => {

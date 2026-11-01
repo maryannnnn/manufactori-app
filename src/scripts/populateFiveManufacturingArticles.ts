@@ -152,7 +152,7 @@ const ARTICLES: Article[] = [
     ctaHeading: 'Start from the families you already quote',
     ctaBody:
       'A catalogue review shows which product and application pages are missing or too thin to answer a buyer. It does not promise rankings.',
-    ctaUrl: '/services/seo-ai-search-optimization',
+    ctaUrl: '/services/search/seo-ai-search-optimization',
     ctaLabel: 'Discuss manufacturing SEO',
     faq: `
 <h3>Should every SKU have its own URL?</h3>
@@ -189,7 +189,7 @@ const ARTICLES: Article[] = [
     ctaHeading: 'Make the catalogue describable first',
     ctaBody:
       'The first review is whether a buyer, or a system summarising the site, can tell what you manufacture. It is not a promise of mentions in any assistant.',
-    ctaUrl: '/services/ai-search-optimization-manufacturers',
+    ctaUrl: '/services/search/ai-search-optimization-manufacturers',
     ctaLabel: 'Discuss AI search preparation',
     faq: `
 <h3>Does optimising for Google also optimise for ChatGPT?</h3>
@@ -226,7 +226,7 @@ const ARTICLES: Article[] = [
     ctaHeading: 'Write the URL rule before the template',
     ctaBody:
       'A structure review names which differences deserve a page and which stay in a table or a filter. It does not require a new page for every SKU.',
-    ctaUrl: '/services/website-design-development-for-manufacturers',
+    ctaUrl: '/services/website/website-design-development-for-manufacturers',
     ctaLabel: 'Discuss catalogue structure',
     faq: `
 <h3>How many levels should the product menu have?</h3>
@@ -263,7 +263,7 @@ const ARTICLES: Article[] = [
     ctaHeading: 'Publish the facts engineering will sign',
     ctaBody:
       'A content review starts from datasheets and real sales questions. It does not ask you to invent a case study or a performance claim.',
-    ctaUrl: '/services/technical-content-thought-leadership',
+    ctaUrl: '/services/content/technical-content-thought-leadership',
     ctaLabel: 'Discuss technical content',
     faq: `
 <h3>Who should write the first draft?</h3>
@@ -300,7 +300,7 @@ const ARTICLES: Article[] = [
     ctaHeading: 'Match the plan to sales capacity',
     ctaBody:
       'A lead review defines a qualified enquiry and checks whether the current pages and reply path can support it. It does not promise a quota of leads.',
-    ctaUrl: '/services/lead-generation',
+    ctaUrl: '/services/paid-media/lead-generation',
     ctaLabel: 'Discuss qualified enquiries',
     faq: `
 <h3>Should we start with SEO or Google Ads?</h3>

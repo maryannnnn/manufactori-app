@@ -156,19 +156,32 @@ const MobileItem: React.FC<{
         id={disclosureId}
       >
         <ul className="pb-3 pl-3">
-          {getNavSections(item).flatMap((section) =>
-            section.links.map((link) => (
-              <li key={link.href}>
+          {getNavSections(item).map((section, sectionIndex) => (
+            <li key={section.heading ?? `section-${sectionIndex}`}>
+              {section.heading && section.href ? (
                 <Link
-                  aria-current={isNavPathCurrent(pathname, link.href) ? 'page' : undefined}
-                  className="flex min-h-12 items-center py-2 text-base leading-snug text-muted break-words transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
-                  href={link.href}
+                  aria-current={isNavPathCurrent(pathname, section.href) ? 'page' : undefined}
+                  className="flex min-h-11 items-center py-2 text-sm font-semibold text-main break-words transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+                  href={section.href}
                 >
-                  {link.label}
+                  {section.heading}
                 </Link>
-              </li>
-            )),
-          )}
+              ) : null}
+              <ul>
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      aria-current={isNavPathCurrent(pathname, link.href) ? 'page' : undefined}
+                      className="flex min-h-12 items-center py-2 text-base leading-snug text-muted break-words transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+                      href={link.href}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
         </ul>
       </div>
     </li>

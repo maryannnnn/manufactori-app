@@ -36,7 +36,7 @@ const BASE =
 const ROUTES = [
   '/',
   '/services',
-  '/services/seo-ai-search-optimization',
+  '/services/search/seo-ai-search-optimization',
   '/case-studies',
   '/blog',
   '/about',

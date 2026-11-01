@@ -15,6 +15,7 @@ import { Media } from '@/components/Media'
 import { ServiceCard } from '@/components/ServiceCard'
 import { getCaseStudyListPreview } from '@/utilities/getCaseStudyListPreview'
 import { SERVICES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+import { getServiceCategory } from '@/utilities/serviceCatalog'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 import { cn } from '@/utilities/ui'
 
@@ -22,6 +23,7 @@ import {
   SERVICE_DURATION_OPTIONS,
   SERVICE_FORMAT_OPTIONS,
 } from '@/collections/Services/fields/structuredServiceFields'
+import { isServiceOverview, ServiceOverview } from '@/components/ServicePage/Overview'
 
 type Props = {
   service: Service
@@ -53,7 +55,10 @@ const Section: React.FC<{
 )
 
 export const ServicePage: React.FC<Props> = ({ service }) => {
+  if (isServiceOverview(service.slug)) return <ServiceOverview service={service} />
+
   const heading = service.service_long_title || service.title
+  const category = getServiceCategory(service.slug)
   const contentTitle = service.service_content_title
   const previewImage = service.service_preview_image
   const situations = service.clientSituations ?? []
@@ -109,6 +114,9 @@ export const ServicePage: React.FC<Props> = ({ service }) => {
             items={[
               { name: 'Home', href: '/' },
               { name: 'Services', href: SERVICES_ARCHIVE_PATH },
+              ...(category
+                ? [{ name: category.label, href: `${SERVICES_ARCHIVE_PATH}/${category.slug}` }]
+                : []),
               { name: heading },
             ]}
           />

@@ -14,6 +14,7 @@ import {
   TESTIMONIALS_ARCHIVE_PATH,
 } from './getContentUrls'
 import { richTextToPlainText } from './richText/toPlainText'
+import { getServiceCategory } from './serviceCatalog'
 import {
   ORGANIZATION_DESCRIPTION,
   ORGANIZATION_NAME,
@@ -223,9 +224,13 @@ export const buildServiceGraph = (service: Service): JsonLdNode | null => {
   const serviceId = `${absoluteUrl(path)}#service`
   const questions = faqEntities(service.faq?.items)
   const review = reviewNode(service.clientTestimonial, serviceId)
+  const category = getServiceCategory(service.slug)
   const crumbs = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: SERVICES_ARCHIVE_PATH },
+    ...(category
+      ? [{ name: category.label, path: `${SERVICES_ARCHIVE_PATH}/${category.slug}` }]
+      : []),
     { name: name, path },
   ]
   const breadcrumb = breadcrumbListNode(crumbs)
