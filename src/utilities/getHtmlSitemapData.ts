@@ -11,9 +11,11 @@ import {
   CLIENTS_PATH,
   INDEXABLE_PAGE_SLUGS,
   getCaseStudyUrl,
+  getIndustryUrl,
   getPostUrl,
   getServiceUrl,
   getTestimonialUrl,
+  INDUSTRIES_ARCHIVE_PATH,
   SERVICES_ARCHIVE_PATH,
   TESTIMONIALS_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
@@ -28,6 +30,7 @@ export type HtmlSitemapLink = {
 export type HtmlSitemapData = {
   mainNavigation: HtmlSitemapLink[]
   services: HtmlSitemapLink[]
+  industries: HtmlSitemapLink[]
   caseStudies: HtmlSitemapLink[]
   posts: HtmlSitemapLink[]
   testimonials: HtmlSitemapLink[]
@@ -69,6 +72,7 @@ const mainNavigationLinks: HtmlSitemapLink[] = [
   { label: 'Clients', href: CLIENTS_PATH },
   { label: 'Testimonials', href: TESTIMONIALS_ARCHIVE_PATH },
   { label: navById.services?.label || 'Services', href: navById.services?.href || SERVICES_ARCHIVE_PATH },
+  { label: navById.industries?.label || 'Industrial', href: navById.industries?.href || INDUSTRIES_ARCHIVE_PATH },
   {
     label: navById['case-studies']?.label || 'Case Studies',
     href: navById['case-studies']?.href || CASE_STUDIES_ARCHIVE_PATH,
@@ -79,7 +83,7 @@ const mainNavigationLinks: HtmlSitemapLink[] = [
 
 const collectPublished = async <T>(
   payload: Awaited<ReturnType<typeof getPayload>>,
-  collection: 'pages' | 'services' | 'case-studies' | 'posts' | 'testimonials',
+  collection: 'pages' | 'services' | 'case-studies' | 'posts' | 'testimonials' | 'industries',
   args: {
     depth?: number
     sort?: string | string[]
@@ -115,7 +119,7 @@ const collectPublished = async <T>(
 const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
   const payload = await getPayload({ config: configPromise })
 
-  const [pages, services, caseStudies, posts, testimonials] = await Promise.all([
+  const [pages, services, industries, caseStudies, posts, testimonials] = await Promise.all([
     collectPublished<{ title?: string | null; slug?: string | null }>(payload, 'pages', {
       sort: 'title',
       select: { title: true, slug: true },
@@ -127,6 +131,16 @@ const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
     }>(payload, 'services', {
       sort: ['displayOrder', 'title'],
       select: { title: true, slug: true, service_preview_title: true },
+    }),
+    collectPublished<{
+      title?: string | null
+      slug?: string | null
+      industryLevel?: 'primary' | 'secondary' | null
+      parentIndustry?: { slug?: string | null } | number | null
+    }>(payload, 'industries', {
+      depth: 1,
+      sort: ['displayOrder', 'title'],
+      select: { title: true, slug: true, industryLevel: true, parentIndustry: true },
     }),
     collectPublished<
       Pick<CaseStudy, 'title' | 'slug' | 'case_study_long_title' | 'primary_case_study_category'>
@@ -180,6 +194,11 @@ const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
 
   return {
     mainNavigation: mainNavigationLinks,
+    industries: industries.flatMap((doc) => {
+      const href = getIndustryUrl(doc)
+      if (!href || !doc.title) return []
+      return [{ label: doc.title, href }]
+    }),
     services: services.flatMap((doc) => {
       const href = getServiceUrl(doc)
       const label = doc.title || doc.service_preview_title
@@ -217,5 +236,6 @@ export const getHtmlSitemapData = unstable_cache(loadHtmlSitemapData, [HTML_SITE
     'services-sitemap',
     'case-studies-sitemap',
     'testimonials-sitemap',
+    'industries-sitemap',
   ],
 })

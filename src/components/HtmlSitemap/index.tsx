@@ -46,6 +46,9 @@ export const HtmlSitemap = async () => {
         heading="Services"
         links={data.services}
       />
+      {data.industries.length > 0 ? (
+        <SitemapSection heading="Industrial" links={data.industries} />
+      ) : null}
       <SitemapSection
         emptyLabel="No published case studies."
         heading="Case Studies"

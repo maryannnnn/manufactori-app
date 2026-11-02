@@ -62,8 +62,8 @@ export const CaseStudyCard: React.FC<Props> = ({
 
   const body = (
     <>
-      <div className="relative aspect-[4/3] overflow-hidden bg-accent">
-        {hasImage ? (
+      {hasImage ? (
+        <div className="relative aspect-[4/3] overflow-hidden bg-accent">
           <Media
             className="h-full w-full"
             fill
@@ -72,8 +72,8 @@ export const CaseStudyCard: React.FC<Props> = ({
             showWatermark
             size={imageSizes}
           />
-        ) : null}
-      </div>
+        </div>
+      ) : null}
 
       <div className="flex flex-1 flex-col gap-2 p-5">
         {showCategory && category ? (

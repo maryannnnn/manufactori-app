@@ -17,7 +17,7 @@ import {
 } from '../navigation'
 import { PhoneLink } from './PhoneLink'
 
-export const MobileNav: React.FC = () => {
+export const MobileNav: React.FC<{ items?: NavItem[] }> = ({ items = mainNavigation }) => {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [expandedId, setExpandedId] = useState<string | null>(null)
@@ -78,7 +78,7 @@ export const MobileNav: React.FC = () => {
       >
         <nav aria-label="Main" className="container py-4">
           <ul className="flex flex-col">
-            {mainNavigation.map((item) => (
+            {items.map((item) => (
               <MobileItem
                 expanded={expandedId === item.id}
                 item={item}

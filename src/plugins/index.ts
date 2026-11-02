@@ -17,6 +17,7 @@ import {
   getCaseStudyUrl,
   getCategoryUrl,
   getPostUrl,
+  getIndustryUrl,
   getServiceUrl,
   getTestimonialUrl,
 } from '@/utilities/getContentUrls'
@@ -25,6 +26,9 @@ import { SITE_NAME } from '@/utilities/siteIdentity'
 type SeoDoc = (Post | Page | CaseStudy) & {
   service_long_title?: string | null
   testimonialLongTitle?: string | null
+  industryLongTitle?: string | null
+  industryLevel?: 'primary' | 'secondary' | null
+  parentIndustry?: { slug?: string | null } | number | null
   introduction?: unknown
 }
 
@@ -51,6 +55,11 @@ const generateURL: GenerateURL<SeoDoc> = ({ doc }) => {
     if (path) return `${url}${path}`
   }
 
+  if ('industryLongTitle' in doc || 'industryLevel' in doc) {
+    const path = getIndustryUrl(doc)
+    if (path) return `${url}${path}`
+  }
+
   if ('testimonialLongTitle' in doc) {
     const path = getTestimonialUrl(doc)
     if (path) return `${url}${path}`
@@ -71,7 +80,7 @@ const generateURL: GenerateURL<SeoDoc> = ({ doc }) => {
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['pages', 'posts', 'case-studies', 'services', 'testimonials'],
+    collections: ['pages', 'posts', 'case-studies', 'services', 'testimonials', 'industries'],
     overrides: {
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {

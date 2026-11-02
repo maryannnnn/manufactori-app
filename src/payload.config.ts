@@ -8,6 +8,7 @@ import { Categories } from './collections/Categories'
 import { CaseStudies } from './collections/CaseStudies'
 import { CaseStudyCategories } from './collections/CaseStudyCategories'
 import { Media } from './collections/Media'
+import { Industries } from './collections/Industries'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Services } from './collections/Services'
@@ -82,6 +83,7 @@ export default buildConfig({
   collections: [
     Pages,
     Posts,
+    Industries,
     CaseStudies,
     Services,
     Testimonials,

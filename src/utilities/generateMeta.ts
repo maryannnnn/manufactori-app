@@ -4,7 +4,7 @@ import type { CaseStudy, Media, Page, Post, Config } from '../payload-types'
 
 import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
-import { getCaseStudyUrl, getPostUrl, getServiceUrl, getTestimonialUrl } from './getContentUrls'
+import { getCaseStudyUrl, getIndustryUrl, getPostUrl, getServiceUrl, getTestimonialUrl } from './getContentUrls'
 import { resolveMediaSource } from './getMediaUrl'
 import { noindexRobotsMetadata, siteRobotsMetadata } from './siteRobots'
 import { brandTitle } from './siteIdentity'
@@ -22,6 +22,10 @@ type MetaDoc = Partial<Page> | Partial<Post> | Partial<CaseStudy> | {
   service_long_title?: string | null
   service_preview_image?: Media | Config['db']['defaultIDType'] | null
   testimonialLongTitle?: string | null
+  industryLongTitle?: string | null
+  industryLevel?: 'primary' | 'secondary' | null
+  industryPreviewImage?: Media | Config['db']['defaultIDType'] | null
+  parentIndustry?: { slug?: string | null } | number | null
 }
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
@@ -39,12 +43,14 @@ const fallbackImage = (doc: MetaDoc | null | undefined) => {
   if (!doc) return undefined
   if (doc.meta?.image) return doc.meta.image
   if ('service_preview_image' in doc) return doc.service_preview_image
+  if ('industryPreviewImage' in doc) return doc.industryPreviewImage
   return undefined
 }
 
 const pageTitleFromDoc = (doc: MetaDoc | null | undefined): string | undefined => {
   if (!doc) return undefined
   if (doc.meta?.title) return doc.meta.title
+  if ('industryLongTitle' in doc && doc.industryLongTitle) return doc.industryLongTitle
   if ('service_long_title' in doc && doc.service_long_title) return doc.service_long_title
   if ('pageLongTitle' in doc && doc.pageLongTitle) return doc.pageLongTitle
   if (doc.title) return doc.title
@@ -76,6 +82,7 @@ export const generateMeta = async (args: {
   const collectionPath = (() => {
     if ('primary_case_study_category' in doc) return getCaseStudyUrl(doc as CaseStudy)
     if ('primary_category' in doc) return getPostUrl(doc as Post)
+    if ('industryLevel' in doc) return getIndustryUrl(doc)
     if ('service_long_title' in doc) return getServiceUrl(doc)
     if ('testimonialLongTitle' in doc) return getTestimonialUrl(doc)
     return null

@@ -44,7 +44,8 @@ export const ServiceCard: React.FC<Props> = ({
       : null) ||
     (doc.service_card_image && typeof doc.service_card_image === 'object'
       ? doc.service_card_image
-      : null)
+      : null) ||
+    (doc.meta?.image && typeof doc.meta.image === 'object' ? doc.meta.image : null)
   const hasImage = Boolean(image)
   const compact = variant === 'compact'
   const row = variant === 'row'
@@ -75,19 +76,17 @@ export const ServiceCard: React.FC<Props> = ({
             />
           </div>
         ) : null
-      ) : (
+      ) : hasImage ? (
         <div className="relative aspect-[4/3] overflow-hidden bg-accent">
-          {hasImage ? (
-            <Media
-              className="h-full w-full"
-              fill
-              imgClassName="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-              resource={image}
-              size={imageSizes}
-            />
-          ) : null}
+          <Media
+            className="h-full w-full"
+            fill
+            imgClassName="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            resource={image}
+            size={imageSizes}
+          />
         </div>
-      )}
+      ) : null}
       <div className="flex min-w-0 flex-1 flex-col p-4">
         {title ? <div className="font-semibold tracking-tight">{title}</div> : null}
         {description ? (

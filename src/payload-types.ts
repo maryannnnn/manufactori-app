@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
+    industries: Industry;
     'case-studies': CaseStudy;
     services: Service;
     testimonials: Testimonial;
@@ -102,6 +103,7 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    industries: IndustriesSelect<false> | IndustriesSelect<true>;
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
@@ -969,6 +971,592 @@ export interface PagePreviewBlock {
   blockType: 'pagePreviewBlock';
 }
 /**
+ * Primary industries and their secondary specializations. Use the approved Industrial names. Do not add a third level, and do not put secondary industries in the main navigation.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "industries".
+ */
+export interface Industry {
+  id: number;
+  /**
+   * Internal document title. This is not the public H1.
+   */
+  title: string;
+  /**
+   * Public page heading. Falls back to the internal title when empty.
+   */
+  industryLongTitle?: string | null;
+  /**
+   * Primary industries appear in the main navigation. Secondary industries belong to one primary industry.
+   */
+  industryLevel: 'primary' | 'secondary';
+  /**
+   * Required before a secondary industry is published. Only primary industries can be selected.
+   */
+  parentIndustry?: (number | null) | Industry;
+  /**
+   * Lower numbers appear first among industries at the same level.
+   */
+  displayOrder?: number | null;
+  /**
+   * Highlight this industry where featured listings are used.
+   */
+  featured?: boolean | null;
+  /**
+   * Short text for industry cards and listings. Not the page H1 and not the meta description.
+   */
+  industryPreviewDescription?: string | null;
+  /**
+   * Image for the industry page and for cards. Alt text is edited on the media record.
+   */
+  industryPreviewImage?: (number | null) | Media;
+  /**
+   * What this industry manufactures and how production is organized.
+   */
+  industryOverview?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Production processes and manufacturing methods used in this industry.
+   */
+  manufacturingProcesses?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Main product groups, components, and applications.
+   */
+  productsAndApplications?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Materials, equipment, technologies, and technical characteristics that matter here.
+   */
+  materialsAndTechnologies?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Industries, regions, and application sectors these manufacturers serve.
+   */
+  targetMarkets?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Typical customer organizations.
+   */
+  buyerTypes?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * People who evaluate suppliers and approve a purchase.
+   */
+  decisionMakers?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Technical, commercial, and operational requirements buyers bring to a supplier.
+   */
+  buyerRequirements?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * What influences supplier selection in this industry.
+   */
+  purchasingFactors?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Marketing and customer-acquisition problems specific to this industry.
+   */
+  marketingChallenges?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * How online demand and digital competition work in this industry.
+   */
+  digitalMarketSpecifics?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * What separates one manufacturer or supplier from another.
+   */
+  competitiveFactors?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * What makes relevant B2B inquiries hard to attract, qualify, or convert.
+   */
+  leadGenerationChallenges?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * How buyers search for manufacturers, products, capabilities, and suppliers.
+   */
+  searchBehavior?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Website structure, product and application pages, internal links, and search intent for this industry.
+   */
+  seoStrategy?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * How content and structure can be represented accurately in AI-powered search. Do not promise citations or rankings.
+   */
+  aiSearchStrategy?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Keyword groups, product terminology, technical entities, and related search intents.
+   */
+  keywordAndTopicStructure?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Publications, expert mentions, references, and other visibility that can support this industry. Do not invent citations.
+   */
+  authorityAndVisibility?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * What content manufacturers in this industry need, and why.
+   */
+  contentStrategy?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Specifications, capabilities, materials, standards, and engineering information buyers need.
+   */
+  technicalContent?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Product descriptions, applications, and answers to buyer requirements.
+   */
+  productAndApplicationContent?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Content that shows manufacturing knowledge without unsupported claims.
+   */
+  expertiseContent?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Useful formats for this industry, such as articles, product pages, guides, comparisons, case studies, video, documentation, and FAQs.
+   */
+  contentFormats?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * How a buyer in this industry moves from research to supplier evaluation.
+   */
+  buyerJourney?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Technical evaluation, quotation, procurement, approval, testing, or other stages that actually occur here.
+   */
+  salesCycleCharacteristics?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Questions and information needs at each stage of the decision.
+   */
+  buyerQuestionsByStage?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Evidence, specifications, references, certifications, and project examples that build trust. Do not invent proof.
+   */
+  trustAndConversionFactors?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * How content and follow-up can support a longer decision without treating every signup as a quote.
+   */
+  leadNurturingApproach?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * How the website, catalog, technical pages, and inquiry path should be organized.
+   */
+  websiteAndCatalogStrategy?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * How Google Ads or other paid media should be used for this industry, if at all.
+   */
+  paidAdvertisingStrategy?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Inquiry forms, contact paths, and other conversion points that match how this industry buys.
+   */
+  conversionOptimization?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Digital measures such as inquiries and form submissions. Do not claim revenue or closed-sales attribution.
+   */
+  analyticsAndMeasurement?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Practical understanding of the products, processes, buyers, and commercial setting.
+   */
+  industryExpertise?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Separate direct industry work from related manufacturing experience.
+   */
+  relevantExperience?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Documented evidence only. Do not invent clients, projects, or results.
+   */
+  industryProofPoints?: {
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Preview cards only. These are not Secondary Industry records and do not create public pages.
+   */
+  plannedSubindustries?:
+    | {
+        title?: string | null;
+        /**
+         * Stored for a future page. It does not publish a URL by itself.
+         */
+        slug?: string | null;
+        previewDescription?: string | null;
+        previewImage?: (number | null) | Media;
+        displayOrder?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Existing service records. Do not copy service descriptions into this industry.
+   */
+  recommendedServices?: (number | Service)[] | null;
+  /**
+   * Link an existing case study and say how it relates to this industry. The classification belongs to this link, not to the case study record.
+   */
+  relatedCaseStudies?:
+    | {
+        caseStudy?: (number | null) | CaseStudy;
+        relevance?: ('direct' | 'related_manufacturing' | 'related_product') | null;
+        /**
+         * Why this case is relevant here. Do not rewrite the case study.
+         */
+        relevanceNote?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Existing articles. Leave empty when none are relevant.
+   */
+  relatedPosts?: (number | Post)[] | null;
+  /**
+   * Optional. The page can be published with no questions.
+   */
+  faq?:
+    | {
+        question?: string | null;
+        answer?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  ctaTitle?: string | null;
+  ctaDescription?: string | null;
+  ctaButtonLabel?: string | null;
+  /**
+   * Usually /contact. Do not hardcode a phone number or email address.
+   */
+  ctaButtonUrl?: string | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  /**
+   * Internal document title.
+   */
+  title: string;
+  /**
+   * SEO/content heading used as H1. Falls back to the internal title when empty.
+   */
+  service_long_title?: string | null;
+  /**
+   * Short title for cards, archives and related-service lists. Not the page H1.
+   */
+  service_preview_title?: string | null;
+  /**
+   * Compact explanation of the service and its business purpose.
+   */
+  service_preview_description?: string | null;
+  /**
+   * Service page image. Not used on Related Services or archive cards.
+   */
+  service_preview_image?: (number | null) | Media;
+  /**
+   * Image for archive cards and Related Services. Separate from the Service page image.
+   */
+  service_card_image?: (number | null) | Media;
+  /**
+   * In-page heading under the H1. Separate from the internal title, long title and preview title.
+   */
+  service_content_title?: string | null;
+  /**
+   * Who the service is for, the problem it addresses, and the intended outcome.
+   */
+  introduction?: {
+    text?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Optional second paragraph. Leave empty when the short introduction is enough.
+     */
+    supportingText?: {
+      [k: string]: unknown;
+    } | null;
+  };
+  /**
+   * Situations in which this service becomes relevant. Optional.
+   */
+  clientSituations?:
+    | {
+        title: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        consequence?: {
+          [k: string]: unknown;
+        } | null;
+        recommendedApproach?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Scope items for this Service. Optional.
+   */
+  serviceScope?:
+    | {
+        title: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        deliverables?: {
+          [k: string]: unknown;
+        } | null;
+        approach?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Process steps. Typically 4–8, with no required count.
+   */
+  processSteps?:
+    | {
+        /**
+         * Optional. The frontend uses the list order when this is empty.
+         */
+        stepNumber?: number | null;
+        title: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        duration?: string | null;
+        deliverable?: {
+          [k: string]: unknown;
+        } | null;
+        clientInvolvement?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * How a new client can start. All fields are optional and editable per Service.
+   */
+  entryOffer?: {
+    title?: string | null;
+    description?: {
+      [k: string]: unknown;
+    } | null;
+    includes?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Free-form, e.g. "2–4 weeks". Not a global price list.
+     */
+    duration?: string | null;
+    deliverables?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Optional. Leave empty when price is not published.
+     */
+    price?: string | null;
+    ctaLabel?: string | null;
+    ctaUrl?: string | null;
+    nextStep?: {
+      [k: string]: unknown;
+    } | null;
+  };
+  workingFormat?: {
+    /**
+     * Add only the formats that apply to this Service.
+     */
+    formats?:
+      | {
+          format?: ('initial_project' | 'ongoing_monthly' | 'campaign') | null;
+          duration?: ('one_time_project' | '1_month' | '3_months' | '6_months' | '1_year' | 'ongoing') | null;
+          description?: {
+            [k: string]: unknown;
+          } | null;
+          id?: string | null;
+        }[]
+      | null;
+    minimumEngagement?: ('one_time_project' | '1_month' | '3_months' | '6_months' | '1_year' | 'ongoing') | null;
+    /**
+     * Optional, e.g. "Weekly working sessions".
+     */
+    frequency?: string | null;
+  };
+  /**
+   * Descriptive outcomes. Do not invent numeric guarantees.
+   */
+  expectedOutcomes?:
+    | {
+        title: string;
+        description?: {
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Existing Case Study collection. Preview title, text and image come from each case.
+   */
+  relatedCaseStudies?: (number | CaseStudy)[] | null;
+  /**
+   * Same proof-quote shape as Case Study. Separate from FAQ and from the optional Comments layout block.
+   */
+  clientTestimonial?: {
+    quote?: {
+      [k: string]: unknown;
+    } | null;
+    author?: string | null;
+    position?: string | null;
+    company?: string | null;
+  };
+  /**
+   * Same question/answer pattern as Case Study FAQ. Stored on the Service, not as a separate FAQ collection.
+   */
+  faq?: {
+    /**
+     * Section heading. Falls back to a generic heading when empty.
+     */
+    title?: string | null;
+    intro?: {
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Typically 5–15 questions. No required count.
+     */
+    items?:
+      | {
+          question: string;
+          answer: {
+            [k: string]: unknown;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Optional Service-to-Service links. The current Service is excluded.
+   */
+  relatedServices?: (number | Service)[] | null;
+  /**
+   * Optional extra blocks (gallery, comments, CTA). Structured sections above do not require this.
+   */
+  layout?:
+    | (
+        | ContentBlock
+        | ServiceGalleryBlock
+        | ServiceCommentsBlock
+        | CallToActionBlock
+        | MediaBlock
+        | ArchiveBlock
+        | CodeBlock
+      )[]
+    | null;
+  /**
+   * Existing 4D site taxonomy (Services, Industrial, Solutions, Technology). No separate Service category collection.
+   */
+  site_categories?: (number | SiteCategory)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  /**
+   * Display this Service in featured listings.
+   */
+  featured?: boolean | null;
+  /**
+   * Lower numbers appear first in the Services archive.
+   */
+  displayOrder?: number | null;
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "case-studies".
  */
@@ -1551,267 +2139,6 @@ export interface CaseStudyCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services".
- */
-export interface Service {
-  id: number;
-  /**
-   * Internal document title.
-   */
-  title: string;
-  /**
-   * SEO/content heading used as H1. Falls back to the internal title when empty.
-   */
-  service_long_title?: string | null;
-  /**
-   * Short title for cards, archives and related-service lists. Not the page H1.
-   */
-  service_preview_title?: string | null;
-  /**
-   * Compact explanation of the service and its business purpose.
-   */
-  service_preview_description?: string | null;
-  /**
-   * Service page image. Not used on Related Services or archive cards.
-   */
-  service_preview_image?: (number | null) | Media;
-  /**
-   * Image for archive cards and Related Services. Separate from the Service page image.
-   */
-  service_card_image?: (number | null) | Media;
-  /**
-   * In-page heading under the H1. Separate from the internal title, long title and preview title.
-   */
-  service_content_title?: string | null;
-  /**
-   * Who the service is for, the problem it addresses, and the intended outcome.
-   */
-  introduction?: {
-    text?: {
-      [k: string]: unknown;
-    } | null;
-    /**
-     * Optional second paragraph. Leave empty when the short introduction is enough.
-     */
-    supportingText?: {
-      [k: string]: unknown;
-    } | null;
-  };
-  /**
-   * Situations in which this service becomes relevant. Optional.
-   */
-  clientSituations?:
-    | {
-        title: string;
-        description?: {
-          [k: string]: unknown;
-        } | null;
-        consequence?: {
-          [k: string]: unknown;
-        } | null;
-        recommendedApproach?: {
-          [k: string]: unknown;
-        } | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Scope items for this Service. Optional.
-   */
-  serviceScope?:
-    | {
-        title: string;
-        description?: {
-          [k: string]: unknown;
-        } | null;
-        deliverables?: {
-          [k: string]: unknown;
-        } | null;
-        approach?: {
-          [k: string]: unknown;
-        } | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Process steps. Typically 4–8, with no required count.
-   */
-  processSteps?:
-    | {
-        /**
-         * Optional. The frontend uses the list order when this is empty.
-         */
-        stepNumber?: number | null;
-        title: string;
-        description?: {
-          [k: string]: unknown;
-        } | null;
-        duration?: string | null;
-        deliverable?: {
-          [k: string]: unknown;
-        } | null;
-        clientInvolvement?: {
-          [k: string]: unknown;
-        } | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * How a new client can start. All fields are optional and editable per Service.
-   */
-  entryOffer?: {
-    title?: string | null;
-    description?: {
-      [k: string]: unknown;
-    } | null;
-    includes?: {
-      [k: string]: unknown;
-    } | null;
-    /**
-     * Free-form, e.g. "2–4 weeks". Not a global price list.
-     */
-    duration?: string | null;
-    deliverables?: {
-      [k: string]: unknown;
-    } | null;
-    /**
-     * Optional. Leave empty when price is not published.
-     */
-    price?: string | null;
-    ctaLabel?: string | null;
-    ctaUrl?: string | null;
-    nextStep?: {
-      [k: string]: unknown;
-    } | null;
-  };
-  workingFormat?: {
-    /**
-     * Add only the formats that apply to this Service.
-     */
-    formats?:
-      | {
-          format?: ('initial_project' | 'ongoing_monthly' | 'campaign') | null;
-          duration?: ('one_time_project' | '1_month' | '3_months' | '6_months' | '1_year' | 'ongoing') | null;
-          description?: {
-            [k: string]: unknown;
-          } | null;
-          id?: string | null;
-        }[]
-      | null;
-    minimumEngagement?: ('one_time_project' | '1_month' | '3_months' | '6_months' | '1_year' | 'ongoing') | null;
-    /**
-     * Optional, e.g. "Weekly working sessions".
-     */
-    frequency?: string | null;
-  };
-  /**
-   * Descriptive outcomes. Do not invent numeric guarantees.
-   */
-  expectedOutcomes?:
-    | {
-        title: string;
-        description?: {
-          [k: string]: unknown;
-        } | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Existing Case Study collection. Preview title, text and image come from each case.
-   */
-  relatedCaseStudies?: (number | CaseStudy)[] | null;
-  /**
-   * Same proof-quote shape as Case Study. Separate from FAQ and from the optional Comments layout block.
-   */
-  clientTestimonial?: {
-    quote?: {
-      [k: string]: unknown;
-    } | null;
-    author?: string | null;
-    position?: string | null;
-    company?: string | null;
-  };
-  /**
-   * Same question/answer pattern as Case Study FAQ. Stored on the Service, not as a separate FAQ collection.
-   */
-  faq?: {
-    /**
-     * Section heading. Falls back to a generic heading when empty.
-     */
-    title?: string | null;
-    intro?: {
-      [k: string]: unknown;
-    } | null;
-    /**
-     * Typically 5–15 questions. No required count.
-     */
-    items?:
-      | {
-          question: string;
-          answer: {
-            [k: string]: unknown;
-          };
-          id?: string | null;
-        }[]
-      | null;
-  };
-  /**
-   * Optional Service-to-Service links. The current Service is excluded.
-   */
-  relatedServices?: (number | Service)[] | null;
-  /**
-   * Optional extra blocks (gallery, comments, CTA). Structured sections above do not require this.
-   */
-  layout?:
-    | (
-        | ContentBlock
-        | ServiceGalleryBlock
-        | ServiceCommentsBlock
-        | CallToActionBlock
-        | MediaBlock
-        | ArchiveBlock
-        | CodeBlock
-      )[]
-    | null;
-  /**
-   * Existing 4D site taxonomy (Services, Industrial, Solutions, Technology). No separate Service category collection.
-   */
-  site_categories?: (number | SiteCategory)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  /**
-   * Display this Service in featured listings.
-   */
-  featured?: boolean | null;
-  /**
-   * Lower numbers appear first in the Services archive.
-   */
-  displayOrder?: number | null;
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ServiceGalleryBlock".
  */
 export interface ServiceGalleryBlock {
@@ -1976,6 +2303,10 @@ export interface Redirect {
       | ({
           relationTo: 'testimonials';
           value: number | Testimonial;
+        } | null)
+      | ({
+          relationTo: 'industries';
+          value: number | Industry;
         } | null);
     url?: string | null;
   };
@@ -2155,6 +2486,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'industries';
+        value: number | Industry;
       } | null)
     | ({
         relationTo: 'case-studies';
@@ -2575,6 +2910,99 @@ export interface PostFAQBlockSelect<T extends boolean = true> {
   postFAQText?: T;
   id?: T;
   blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "industries_select".
+ */
+export interface IndustriesSelect<T extends boolean = true> {
+  title?: T;
+  industryLongTitle?: T;
+  industryLevel?: T;
+  parentIndustry?: T;
+  displayOrder?: T;
+  featured?: T;
+  industryPreviewDescription?: T;
+  industryPreviewImage?: T;
+  industryOverview?: T;
+  manufacturingProcesses?: T;
+  productsAndApplications?: T;
+  materialsAndTechnologies?: T;
+  targetMarkets?: T;
+  buyerTypes?: T;
+  decisionMakers?: T;
+  buyerRequirements?: T;
+  purchasingFactors?: T;
+  marketingChallenges?: T;
+  digitalMarketSpecifics?: T;
+  competitiveFactors?: T;
+  leadGenerationChallenges?: T;
+  searchBehavior?: T;
+  seoStrategy?: T;
+  aiSearchStrategy?: T;
+  keywordAndTopicStructure?: T;
+  authorityAndVisibility?: T;
+  contentStrategy?: T;
+  technicalContent?: T;
+  productAndApplicationContent?: T;
+  expertiseContent?: T;
+  contentFormats?: T;
+  buyerJourney?: T;
+  salesCycleCharacteristics?: T;
+  buyerQuestionsByStage?: T;
+  trustAndConversionFactors?: T;
+  leadNurturingApproach?: T;
+  websiteAndCatalogStrategy?: T;
+  paidAdvertisingStrategy?: T;
+  conversionOptimization?: T;
+  analyticsAndMeasurement?: T;
+  industryExpertise?: T;
+  relevantExperience?: T;
+  industryProofPoints?: T;
+  plannedSubindustries?:
+    | T
+    | {
+        title?: T;
+        slug?: T;
+        previewDescription?: T;
+        previewImage?: T;
+        displayOrder?: T;
+        id?: T;
+      };
+  recommendedServices?: T;
+  relatedCaseStudies?:
+    | T
+    | {
+        caseStudy?: T;
+        relevance?: T;
+        relevanceNote?: T;
+        id?: T;
+      };
+  relatedPosts?: T;
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  ctaTitle?: T;
+  ctaDescription?: T;
+  ctaButtonLabel?: T;
+  ctaButtonUrl?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -3748,6 +4176,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'posts';
           value: number | Post;
+        } | null)
+      | ({
+          relationTo: 'industries';
+          value: number | Industry;
         } | null)
       | ({
           relationTo: 'case-studies';

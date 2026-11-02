@@ -8,9 +8,11 @@ import {
   CASE_STUDIES_ARCHIVE_PATH,
   CLIENTS_PATH,
   getCaseStudyUrl,
+  getIndustryUrl,
   getPostUrl,
   getServiceUrl,
   getTestimonialUrl,
+  INDUSTRIES_ARCHIVE_PATH,
   SERVICES_ARCHIVE_PATH,
   TESTIMONIALS_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
@@ -57,7 +59,7 @@ class SitemapList {
 }
 
 const findPublished = async <
-  T extends 'pages' | 'posts' | 'services' | 'case-studies' | 'testimonials',
+  T extends 'pages' | 'posts' | 'services' | 'case-studies' | 'testimonials' | 'industries',
 >(
   payload: Payload,
   collection: T,
@@ -79,13 +81,14 @@ export const loadPublicSitemap = async (): Promise<PublicSitemapEntry[]> => {
   const base = getServerSideURL().replace(/\/+$/, '')
   const list = new SitemapList()
 
-  const [pages, posts, services, caseStudies, testimonials, postCategories, caseCategories] =
+  const [pages, posts, services, caseStudies, testimonials, industries, postCategories, caseCategories] =
     await Promise.all([
       findPublished(payload, 'pages'),
       findPublished(payload, 'posts', 1),
       findPublished(payload, 'services'),
       findPublished(payload, 'case-studies', 1),
       findPublished(payload, 'testimonials'),
+      findPublished(payload, 'industries', 1),
       collectActiveCategoryPaths(payload, 'post'),
       collectActiveCategoryPaths(payload, 'case-study'),
     ])
@@ -125,6 +128,13 @@ export const loadPublicSitemap = async (): Promise<PublicSitemapEntry[]> => {
     list.add(absolute(base, path), doc.updatedAt)
   }
 
+  list.add(absolute(base, INDUSTRIES_ARCHIVE_PATH))
+  for (const doc of industries.docs) {
+    const path = getIndustryUrl(doc)
+    if (!path) continue
+    list.add(absolute(base, path), doc.updatedAt)
+  }
+
   for (const doc of testimonials.docs) {
     const path = getTestimonialUrl(doc)
     if (!path) continue
@@ -150,6 +160,7 @@ export const getPublicSitemap = unstable_cache(loadPublicSitemap, ['public-sitem
     'services-sitemap',
     'case-studies-sitemap',
     'testimonials-sitemap',
+    'industries-sitemap',
   ],
 })
 

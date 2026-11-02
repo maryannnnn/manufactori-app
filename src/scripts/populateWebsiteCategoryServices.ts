@@ -773,7 +773,7 @@ const pageData = (page: PageCopy, imageId: number, relatedIds: number[], publish
     })),
   },
   expectedOutcomes: [],
-  relatedCaseStudies: [],
+  relatedCaseStudies: [] as number[],
   clientTestimonial: { quote: null, author: null, position: null, company: null },
   faq: {
     title: 'Questions & answers',

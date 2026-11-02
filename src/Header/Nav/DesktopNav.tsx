@@ -19,7 +19,7 @@ import { PhoneLink } from './PhoneLink'
 const navLinkClass =
   'inline-flex min-h-11 items-center px-2 text-sm font-medium text-main transition-colors hover:text-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
 
-export const DesktopNav: React.FC = () => {
+export const DesktopNav: React.FC<{ items?: NavItem[] }> = ({ items = mainNavigation }) => {
   const pathname = usePathname()
   const [openId, setOpenId] = useState<string | null>(null)
   const navRef = useRef<HTMLElement>(null)
@@ -95,7 +95,7 @@ export const DesktopNav: React.FC = () => {
       ref={navRef}
     >
       <ul className="flex flex-wrap items-center justify-end gap-1">
-        {mainNavigation.map((item) => {
+        {items.map((item) => {
           const hasMenu = navItemHasMenu(item)
           const isOpen = openId === item.id
           const current = isNavPathCurrent(pathname, item.href)
@@ -168,7 +168,8 @@ const MegaPanel: React.FC<{
   pathname: string
 }> = ({ id, item, onMouseEnter, open, pathname }) => {
   const sections = getNavSections(item)
-  const manyColumns = sections.length > 3
+  const stacked = item.menuStyle === 'columns'
+  const manyColumns = !stacked && sections.length > 3
 
   return (
     <div
@@ -179,9 +180,10 @@ const MegaPanel: React.FC<{
       <div
         className={cn(
           'container grid gap-x-8 gap-y-8',
-          !manyColumns && sections.length <= 1 && 'grid-cols-1',
-          !manyColumns && sections.length === 2 && 'grid-cols-1 md:grid-cols-2',
-          !manyColumns && sections.length >= 3 && 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3',
+          stacked && 'grid-cols-1 md:grid-cols-3',
+          !stacked && !manyColumns && sections.length <= 1 && 'grid-cols-1',
+          !stacked && !manyColumns && sections.length === 2 && 'grid-cols-1 md:grid-cols-2',
+          !stacked && !manyColumns && sections.length >= 3 && 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3',
           manyColumns && 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6',
         )}
       >
@@ -200,7 +202,7 @@ const MegaPanel: React.FC<{
                 {section.heading}
               </p>
             ) : null}
-            <ul className={cn('grid grid-cols-1 gap-x-10 gap-y-1', !manyColumns && 'md:grid-cols-2')}>
+            <ul className={cn('grid grid-cols-1 gap-x-10 gap-y-1', !manyColumns && !stacked && 'md:grid-cols-2')}>
               {section.links.map((link) => (
                 <li key={link.href}>
                   <Link

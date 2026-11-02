@@ -60,6 +60,9 @@ export const SERVICES_ARCHIVE_PATH = '/services'
 /** Testimonials listing route; individual testimonials live beneath it. */
 export const TESTIMONIALS_ARCHIVE_PATH = '/testimonials'
 
+/** Industry listing route. Secondary industries live under their primary industry. */
+export const INDUSTRIES_ARCHIVE_PATH = '/industrial'
+
 /** Slugs that would collide with blog routing. */
 export const RESERVED_CATEGORY_SLUGS = ['category', 'categories'] as const
 
@@ -134,6 +137,23 @@ export const getTestimonialUrl = (doc: TestimonialUrlSource | null | undefined):
   return `${TESTIMONIALS_ARCHIVE_PATH}/${doc.slug}`
 }
 
+type IndustryUrlSource = {
+  slug?: string | null
+  industryLevel?: 'primary' | 'secondary' | null
+  parentIndustry?: CategoryRef
+  parentSlug?: string | null
+}
+
+export const getIndustryUrl = (doc: IndustryUrlSource | null | undefined): string | null => {
+  if (!doc?.slug) return null
+  if (doc.industryLevel === 'secondary') {
+    const parentSlug = doc.parentSlug || getCategorySlug(doc.parentIndustry)
+    if (!parentSlug) return null
+    return `${INDUSTRIES_ARCHIVE_PATH}/${parentSlug}/${doc.slug}`
+  }
+  return `${INDUSTRIES_ARCHIVE_PATH}/${doc.slug}`
+}
+
 export const getReferenceUrl = (
   relationTo: string | null | undefined,
   value:
@@ -155,6 +175,7 @@ export const getReferenceUrl = (
   if (relationTo === 'case-studies') return getCaseStudyUrl(value)
   if (relationTo === 'services') return getServiceUrl(value)
   if (relationTo === 'testimonials') return getTestimonialUrl(value)
+  if (relationTo === 'industries') return getIndustryUrl(value)
   if (relationTo === 'categories') return getCategoryUrl(value)
   if (relationTo === 'case-study-categories') return getCaseStudyCategoryUrl(value)
 

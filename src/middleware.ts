@@ -4,7 +4,14 @@ import type { NextRequest } from 'next/server'
 import { LEGACY_SERVICE_REDIRECTS } from './utilities/serviceCatalog'
 
 export function middleware(request: NextRequest) {
-  const destination = LEGACY_SERVICE_REDIRECTS[request.nextUrl.pathname]
+  const { pathname } = request.nextUrl
+  if (pathname === '/industries' || pathname.startsWith('/industries/')) {
+    const url = request.nextUrl.clone()
+    url.pathname = pathname.replace(/^\/industries/, '/industrial')
+    return NextResponse.redirect(url, 301)
+  }
+
+  const destination = LEGACY_SERVICE_REDIRECTS[pathname]
   if (!destination) return NextResponse.next()
 
   const url = request.nextUrl.clone()
@@ -26,5 +33,7 @@ export const config = {
     '/services/content/technical-content-thought-leadership',
     '/services/sales-enablement-crm',
     '/services/sales/sales-enablement-crm',
+    '/industries',
+    '/industries/:path*',
   ],
 }

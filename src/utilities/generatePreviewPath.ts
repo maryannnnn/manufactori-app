@@ -1,7 +1,7 @@
 import { PreviewSearchParams } from '@/app/(frontend)/next/preview/route'
 import { PayloadRequest, CollectionSlug } from 'payload'
 
-import { getCaseStudyCategoryUrl, getCaseStudyUrl } from './getContentUrls'
+import { getCaseStudyCategoryUrl, getCaseStudyUrl, getIndustryUrl, INDUSTRIES_ARCHIVE_PATH } from './getContentUrls'
 
 type Props = {
   collection: CollectionSlug
@@ -47,6 +47,15 @@ export const generatePreviewPath = ({ collection, slug, categorySlug }: Props) =
 
   if (collection === 'testimonials') {
     path = `/testimonials/${encodedSlug}`
+  }
+
+  if (collection === 'industries') {
+    path =
+      getIndustryUrl({
+        slug,
+        industryLevel: categorySlug ? 'secondary' : 'primary',
+        parentSlug: categorySlug,
+      }) || `${INDUSTRIES_ARCHIVE_PATH}/${encodedSlug}`
   }
 
   const encodedParams = new URLSearchParams({

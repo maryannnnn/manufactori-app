@@ -7,10 +7,12 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { Logo } from '@/components/Logo/Logo'
 
+import type { NavItem } from './navigation'
+import { mainNavigation } from './navigation'
 import { DesktopNav } from './Nav/DesktopNav'
 import { MobileNav } from './Nav/MobileNav'
 
-export const HeaderClient: React.FC = () => {
+export const HeaderClient: React.FC<{ navigation?: NavItem[] }> = ({ navigation = mainNavigation }) => {
   const headerRef = useRef<HTMLElement>(null)
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
@@ -55,8 +57,8 @@ export const HeaderClient: React.FC = () => {
           >
             <Logo loading="eager" priority="high" />
           </Link>
-          <DesktopNav />
-          <MobileNav />
+          <DesktopNav items={navigation} />
+          <MobileNav items={navigation} />
         </div>
       </div>
     </header>
