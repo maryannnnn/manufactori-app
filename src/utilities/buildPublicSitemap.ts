@@ -153,7 +153,7 @@ export const loadPublicSitemap = async (): Promise<PublicSitemapEntry[]> => {
   return list.list()
 }
 
-export const getPublicSitemap = unstable_cache(loadPublicSitemap, ['public-sitemap'], {
+export const getPublicSitemap = unstable_cache(loadPublicSitemap, ['public-sitemap', 'nested-industry-urls'], {
   tags: [
     'pages-sitemap',
     'posts-sitemap',

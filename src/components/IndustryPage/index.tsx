@@ -16,6 +16,7 @@ import {
   INDUSTRIES_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
 import { getCaseStudyListPreview } from '@/utilities/getCaseStudyListPreview'
+import { getSecondaryIndustryPaths } from '@/utilities/industryPaths'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 
 const buttonClass =
@@ -46,6 +47,7 @@ export type IndustryChild = {
   industryPreviewDescription?: string | null
   industryPreviewImage?: Media | number | null
   parentIndustry?: { slug?: string | null; title?: string | null } | number | null
+  parentSlug?: string | null
   displayOrder?: number | null
 }
 
@@ -109,10 +111,12 @@ const filled = (items: { label: string; value: RichValue }[]) =>
 
 const TextSection = ({
   id,
+  industryPaths,
   title,
   items,
 }: {
   id: string
+  industryPaths?: Record<string, string>
   title: string
   items: { label: string; value: RichValue }[]
 }) => {
@@ -127,7 +131,7 @@ const TextSection = ({
         {blocks.map((item) => (
           <div key={item.label}>
             <h3 className="mb-3 text-base font-semibold tracking-tight">{item.label}</h3>
-            <RichTextField value={item.value as never} />
+            <RichTextField industryPaths={industryPaths} value={item.value as never} />
           </div>
         ))}
       </div>
@@ -226,10 +230,14 @@ const SpecializationSection = ({
   )
 }
 
-export const IndustryPage: React.FC<{
+export const IndustryPage = async ({
+  industry,
+  children = [],
+}: {
   industry: IndustryRecord
   children?: IndustryChild[]
-}> = ({ industry, children = [] }) => {
+}) => {
+  const industryPaths = await getSecondaryIndustryPaths()
   const heading = industry.industryLongTitle || industry.title || 'Industry'
   const parent = industry.parentIndustry && typeof industry.parentIndustry === 'object' ? industry.parentIndustry : null
   const parentHref = parent?.slug ? `${INDUSTRIES_ARCHIVE_PATH}/${parent.slug}` : null
@@ -250,7 +258,13 @@ export const IndustryPage: React.FC<{
       {
         key: item.id || `faq-${index}`,
         title: item.question,
-        content: <RichTextField className="[&_p]:text-sm [&_p:last-child]:mb-0" value={item.answer as never} />,
+        content: (
+          <RichTextField
+            className="[&_p]:text-sm [&_p:last-child]:mb-0"
+            industryPaths={industryPaths}
+            value={item.answer as never}
+          />
+        ),
       },
     ]
   })
@@ -291,6 +305,7 @@ export const IndustryPage: React.FC<{
         </section>
 
         <TextSection
+          industryPaths={industryPaths}
           id="overview"
           title="Industry overview"
           items={[
@@ -301,6 +316,7 @@ export const IndustryPage: React.FC<{
           ]}
         />
         <TextSection
+          industryPaths={industryPaths}
           id="markets"
           title="Markets and buyers"
           items={[
@@ -312,6 +328,7 @@ export const IndustryPage: React.FC<{
           ]}
         />
         <TextSection
+          industryPaths={industryPaths}
           id="challenges"
           title="Marketing challenges"
           items={[
@@ -322,6 +339,7 @@ export const IndustryPage: React.FC<{
           ]}
         />
         <TextSection
+          industryPaths={industryPaths}
           id="search"
           title="SEO and AI search"
           items={[
@@ -333,6 +351,7 @@ export const IndustryPage: React.FC<{
           ]}
         />
         <TextSection
+          industryPaths={industryPaths}
           id="content"
           title="Content strategy"
           items={[
@@ -344,6 +363,7 @@ export const IndustryPage: React.FC<{
           ]}
         />
         <TextSection
+          industryPaths={industryPaths}
           id="journey"
           title="Buyer journey and sales cycle"
           items={[
@@ -355,6 +375,7 @@ export const IndustryPage: React.FC<{
           ]}
         />
         <TextSection
+          industryPaths={industryPaths}
           id="approach"
           title="Digital marketing approach"
           items={[
@@ -365,6 +386,7 @@ export const IndustryPage: React.FC<{
           ]}
         />
         <TextSection
+          industryPaths={industryPaths}
           id="expertise"
           title="Expertise and experience"
           items={[

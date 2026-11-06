@@ -9,11 +9,22 @@ import { RichTextLightbox } from './RichTextLightbox'
 
 import '@/utilities/richText/image.css'
 
+const FLAT_INDUSTRY_HREF = /href="\/industrial\/([a-z0-9-]+)"/g
+
+const rewriteFlatIndustryHrefs = (html: string, paths?: Record<string, string>) => {
+  if (!paths) return html
+  return html.replace(FLAT_INDUSTRY_HREF, (match, slug: string) => {
+    const nested = paths[slug]
+    return nested ? `href="${nested}"` : match
+  })
+}
+
 type TiptapRichTextProps = {
   className?: string
   data: TiptapRichTextValue
   enableGutter?: boolean
   enableProse?: boolean
+  industryPaths?: Record<string, string>
 }
 
 export default function TiptapRichText({
@@ -21,9 +32,11 @@ export default function TiptapRichText({
   data,
   enableGutter = true,
   enableProse = true,
+  industryPaths,
 }: TiptapRichTextProps) {
-  const html = rewriteMediaSrcsInHtml(
-    generateHTML(data, getTiptapExtensions({ headingLevels: [1, 2, 3, 4, 5, 6] })),
+  const html = rewriteFlatIndustryHrefs(
+    rewriteMediaSrcsInHtml(generateHTML(data, getTiptapExtensions({ headingLevels: [1, 2, 3, 4, 5, 6] }))),
+    industryPaths,
   )
 
   return (

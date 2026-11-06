@@ -1003,6 +1003,10 @@ export interface Industry {
    */
   featured?: boolean | null;
   /**
+   * Shared site taxonomy. Independent from the Industrial parent and specialization hierarchy. Does not change URLs or navigation.
+   */
+  site_categories?: (number | SiteCategory)[] | null;
+  /**
    * Short text for industry cards and listings. Not the page H1 and not the meta description.
    */
   industryPreviewDescription?: string | null;
@@ -2922,6 +2926,7 @@ export interface IndustriesSelect<T extends boolean = true> {
   parentIndustry?: T;
   displayOrder?: T;
   featured?: T;
+  site_categories?: T;
   industryPreviewDescription?: T;
   industryPreviewImage?: T;
   industryOverview?: T;

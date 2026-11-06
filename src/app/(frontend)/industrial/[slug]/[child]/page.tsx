@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
-import React, { cache } from 'react'
+import { notFound, permanentRedirect } from 'next/navigation'
+import React from 'react'
 
 import { IndustryPage, type IndustryRecord } from '@/components/IndustryPage'
 import { JsonLd } from '@/components/JsonLd'
@@ -14,81 +12,60 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { getIndustryUrl, INDUSTRIES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
 import { buildWebPageGraph } from '@/utilities/jsonLd'
 
+import { hydrateRelatedCaseStudies, querySecondaryBySlug } from '../../loadIndustry'
+
 export const dynamic = 'force-dynamic'
 
 type Args = {
   params: Promise<{ slug?: string; child?: string }>
 }
 
-const querySecondary = cache(async (parentSlug: string, childSlug: string) => {
-  const { isEnabled: draft } = await draftMode()
-  const payload = await getPayload({ config: configPromise })
-  const parents = await payload.find({
-    collection: 'industries',
-    depth: 0,
-    draft: false,
-    limit: 1,
-    overrideAccess: false,
-    pagination: false,
-    where: {
-      and: [{ slug: { equals: parentSlug } }, { industryLevel: { equals: 'primary' } }],
-    },
+const nestedPath = (parentSlug: string, childSlug: string) =>
+  getIndustryUrl({
+    slug: childSlug,
+    industryLevel: 'secondary',
+    parentSlug,
   })
-  const parent = parents.docs[0]
-  if (!parent) return null
-  const result = await payload.find({
-    collection: 'industries',
-    depth: 2,
-    draft,
-    limit: 1,
-    overrideAccess: draft,
-    pagination: false,
-    where: {
-      and: [
-        { slug: { equals: childSlug } },
-        { industryLevel: { equals: 'secondary' } },
-        { parentIndustry: { equals: parent.id } },
-      ],
-    },
-  })
-  const industry = result.docs[0]
-  if (!industry) return null
-  return { industry, parent }
-})
 
 export default async function SecondaryIndustryPage({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '', child = '' } = await paramsPromise
   const parentSlug = decodeURIComponent(slug)
   const childSlug = decodeURIComponent(child)
-  const url = `${INDUSTRIES_ARCHIVE_PATH}/${parentSlug}/${childSlug}`
-  const found = await querySecondary(parentSlug, childSlug)
-  if (!found) return <PayloadRedirects url={url} />
+  const requested = `${INDUSTRIES_ARCHIVE_PATH}/${parentSlug}/${childSlug}`
 
-  const heading = found.industry.industryLongTitle || found.industry.title
-  const parentTitle = found.parent.title || found.parent.slug
+  const secondary = await querySecondaryBySlug(childSlug)
+  if (!secondary?.parent?.slug || !secondary.industry.slug) return <PayloadRedirects url={requested} />
+
+  const canonical = nestedPath(secondary.parent.slug, secondary.industry.slug)
+  if (canonical && canonical !== requested) permanentRedirect(canonical)
+
+  const hydratedIndustry = await hydrateRelatedCaseStudies(secondary.industry)
+  const heading = hydratedIndustry.industryLongTitle || hydratedIndustry.title
+  const parentTitle = secondary.parent.title || secondary.parent.slug
+
   return (
     <div className="pt-16 pb-24">
-      <PayloadRedirects disableNotFound url={url} />
+      <PayloadRedirects disableNotFound url={requested} />
       {draft ? <LivePreviewListener /> : null}
       <JsonLd
         data={buildWebPageGraph({
-          path: url,
+          path: requested,
           name: heading || 'Industry',
-          description: found.industry.meta?.description || found.industry.industryPreviewDescription,
+          description: hydratedIndustry.meta?.description || hydratedIndustry.industryPreviewDescription,
           breadcrumbs: [
             { name: 'Home', path: '/' },
             { name: 'Industrial', path: INDUSTRIES_ARCHIVE_PATH },
-            { name: parentTitle || 'Industry', path: `${INDUSTRIES_ARCHIVE_PATH}/${parentSlug}` },
-            { name: heading || found.industry.title || 'Industry', path: url },
+            { name: parentTitle || 'Industry', path: `${INDUSTRIES_ARCHIVE_PATH}/${secondary.parent.slug}` },
+            { name: heading || hydratedIndustry.title || 'Industry', path: requested },
           ],
         })}
       />
       <IndustryPage
         industry={{
-          ...(found.industry as IndustryRecord),
+          ...(hydratedIndustry as IndustryRecord),
           industryLevel: 'secondary',
-          parentIndustry: { slug: found.parent.slug, title: found.parent.title },
+          parentIndustry: { slug: secondary.parent.slug, title: secondary.parent.title },
         }}
       />
     </div>
@@ -96,20 +73,17 @@ export default async function SecondaryIndustryPage({ params: paramsPromise }: A
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-  const { slug = '', child = '' } = await paramsPromise
-  const found = await querySecondary(decodeURIComponent(slug), decodeURIComponent(child))
-  if (!found) notFound()
+  const { child = '' } = await paramsPromise
+  const childSlug = decodeURIComponent(child)
+  const secondary = await querySecondaryBySlug(childSlug)
+  if (!secondary?.parent?.slug || !secondary.industry.slug) notFound()
+
   return generateMeta({
     doc: {
-      ...found.industry,
+      ...secondary.industry,
       industryLevel: 'secondary' as const,
-      parentIndustry: { slug: found.parent.slug },
+      parentIndustry: { slug: secondary.parent.slug },
     },
-    url:
-      getIndustryUrl({
-        slug: found.industry.slug,
-        industryLevel: 'secondary',
-        parentSlug: found.parent.slug,
-      }) || undefined,
+    url: nestedPath(secondary.parent.slug, secondary.industry.slug || childSlug) || undefined,
   })
 }

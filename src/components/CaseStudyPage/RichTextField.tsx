@@ -7,6 +7,7 @@ import { FieldLabel } from './Section'
 
 type Props = {
   className?: string
+  industryPaths?: Record<string, string>
   label?: string
   value: unknown
 }
@@ -16,7 +17,7 @@ type Props = {
  * when the field is empty. Every structured section is built from these, which
  * is what keeps the template safe for case studies that only fill in some tabs.
  */
-export const RichTextField: React.FC<Props> = ({ className, label, value }) => {
+export const RichTextField: React.FC<Props> = ({ className, industryPaths, label, value }) => {
   if (!hasRichTextContent(value)) return null
 
   return (
@@ -26,6 +27,7 @@ export const RichTextField: React.FC<Props> = ({ className, label, value }) => {
         className="max-w-none prose-sm md:prose-base"
         data={value as Record<string, unknown>}
         enableGutter={false}
+        industryPaths={industryPaths}
       />
     </div>
   )

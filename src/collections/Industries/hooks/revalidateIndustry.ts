@@ -1,4 +1,4 @@
-import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
+import type { CollectionAfterChangeHook, CollectionAfterDeleteHook, Payload } from 'payload'
 
 import { revalidatePath, revalidateTag } from 'next/cache'
 
@@ -29,38 +29,55 @@ const safeRevalidateTag = (tag: string) => {
   }
 }
 
-const revalidateIndustryPaths = (doc: IndustryDoc) => {
-  const path = getIndustryUrl(doc)
+const parentSlugOf = async (payload: Payload, parent: IndustryDoc['parentIndustry']) => {
+  if (!parent) return null
+  if (typeof parent === 'object') return parent.slug || null
+  const parentDoc = await payload.findByID({
+    collection: 'industries',
+    id: parent,
+    depth: 0,
+    overrideAccess: true,
+    disableErrors: true,
+  })
+  return parentDoc?.slug || null
+}
+
+const revalidateIndustryPaths = (doc: IndustryDoc, parentSlug?: string | null) => {
+  const path = getIndustryUrl({ ...doc, parentSlug })
   if (path) safeRevalidatePath(path)
-  if (doc.industryLevel === 'secondary' && doc.parentIndustry && typeof doc.parentIndustry === 'object' && doc.parentIndustry.slug) {
-    safeRevalidatePath(`${INDUSTRIES_ARCHIVE_PATH}/${doc.parentIndustry.slug}`)
-  }
+  if (doc.slug) safeRevalidatePath(`${INDUSTRIES_ARCHIVE_PATH}/${doc.slug}`)
+  if (parentSlug) safeRevalidatePath(`${INDUSTRIES_ARCHIVE_PATH}/${parentSlug}`)
   safeRevalidatePath(INDUSTRIES_ARCHIVE_PATH)
   safeRevalidatePath('/')
   safeRevalidateTag('industries-sitemap')
   revalidateHtmlSitemap()
 }
 
-export const revalidateIndustry: CollectionAfterChangeHook<IndustryDoc> = ({
+export const revalidateIndustry: CollectionAfterChangeHook<IndustryDoc> = async ({
   doc,
   previousDoc,
   req: { payload, context },
 }) => {
   if (context.disableRevalidate) return doc
   if (doc._status === 'published') {
-    payload.logger.info(`Revalidating industry at ${getIndustryUrl(doc) || doc.slug}`)
-    revalidateIndustryPaths(doc)
+    const parentSlug = await parentSlugOf(payload, doc.parentIndustry)
+    payload.logger.info(`Revalidating industry at ${getIndustryUrl({ ...doc, parentSlug }) || doc.slug}`)
+    revalidateIndustryPaths(doc, parentSlug)
   }
   if (previousDoc?._status === 'published' && doc._status !== 'published') {
-    revalidateIndustryPaths(previousDoc)
+    const parentSlug = await parentSlugOf(payload, previousDoc.parentIndustry)
+    revalidateIndustryPaths(previousDoc, parentSlug)
   }
   return doc
 }
 
-export const revalidateIndustryDelete: CollectionAfterDeleteHook<IndustryDoc> = ({
+export const revalidateIndustryDelete: CollectionAfterDeleteHook<IndustryDoc> = async ({
   doc,
-  req: { context },
+  req: { payload, context },
 }) => {
-  if (!context.disableRevalidate) revalidateIndustryPaths(doc)
+  if (!context.disableRevalidate) {
+    const parentSlug = await parentSlugOf(payload, doc.parentIndustry)
+    revalidateIndustryPaths(doc, parentSlug)
+  }
   return doc
 }

@@ -24,115 +24,55 @@ const list = (titles: string[]): PlannedDirection[] =>
   }))
 
 /**
- * Approved October INDUSTRIAL structure: 9 primaries, 65 planned secondary directions
- * (exact titles from the supplied list; the brief said 66, the list totals 65).
- * Cards only. Not Secondary Industry records and not public pages.
+ * Approved INDUSTRIAL structure: 9 primaries plus planned secondary directions.
+ * Metalworking specializations are published Secondary Industry pages (not planned cards).
+ * Remaining entries are cards only until published as Secondary Industry records.
  */
 export const PLANNED_BY_PRIMARY: PrimaryPlannedGroup[] = [
   {
+    // Published as Secondary Industry records under Metalworking (see metalworkingSpecializations.ts).
     primarySlug: 'metalworking-metal-manufacturing',
-    directions: list([
-      'CNC & Precision Machining',
-      'Metal Fabrication',
-      'Sheet Metal & Metal Forming',
-      'Welding & Heavy Fabrication',
-      'Casting & Molding',
-      'Heat Treatment & Material Processing',
-      'Surface Finishing & Coatings',
-      'Laser Manufacturing',
-    ]),
+    directions: [],
   },
   {
+    // Published as Secondary Industry records (see machinerySpecializations.ts).
     primarySlug: 'industrial-machinery-equipment',
-    directions: list([
-      'Industrial Equipment & Machinery',
-      'Industrial Machinery & Machine Tools',
-      'Industrial Automation & Robotics',
-      'Industrial Automation Components',
-      'Material Handling',
-      'Pneumatic Equipment',
-      'Power Transmission',
-      'Pumps, Valves & Fluid Handling',
-      'Pressure Vessels & Process Equipment',
-      'OEM & Component Manufacturing',
-      'Assembly & Integration',
-      'Custom Industrial Manufacturing',
-      'MRO & Industrial Services',
-      'Industrial Sensors & Instrumentation',
-      'Industrial Filtration & Separation',
-      'Conveyor & Material Handling Systems',
-      'Industrial Cooling & Refrigeration',
-      'Water & Wastewater Treatment Equipment',
-    ]),
+    directions: [],
   },
   {
+    // Published as Secondary Industry records (see buildingSpecializations.ts).
     primarySlug: 'building-products-construction-manufacturing',
-    directions: list([
-      'Building Products & Materials',
-      'Wood Manufacturing & Timber Construction',
-      'Furniture Manufacturing',
-      'Heating, Sauna & Fireplace Equipment',
-      'HVAC & Climate Equipment',
-      'Retail & Commercial Equipment Manufacturing',
-      'Industrial Lighting Equipment',
-      'Fire & Emergency Equipment',
-      'Glass Manufacturing & Processing',
-      'Ceramics & Refractory Manufacturing',
-      'Cement & Concrete Products',
-      'Textile & Apparel Manufacturing',
-      'Printing & Industrial Printing',
-    ]),
+    directions: [],
   },
   {
+    // Published as Secondary Industry records (see electricalSpecializations.ts).
     primarySlug: 'electrical-electronics-manufacturing',
-    directions: list([
-      'Electrical & Electronic Equipment',
-      'Electronics Manufacturing',
-      'Telecommunications Equipment',
-      'Semiconductor Manufacturing',
-      'Batteries & Energy Storage Manufacturing',
-    ]),
+    directions: [],
   },
   {
+    // Published as Secondary Industry records (see transportSpecializations.ts).
     primarySlug: 'automotive-aerospace-transportation',
-    directions: list([
-      'Automotive Manufacturing',
-      'Aerospace Manufacturing',
-      'Marine & Shipbuilding',
-      'Defense & Military Manufacturing',
-    ]),
+    directions: [],
   },
   {
+    // Published as Secondary Industry records (see chemicalSpecializations.ts).
     primarySlug: 'chemical-process-manufacturing',
-    directions: list([
-      'Chemical & Petrochemical',
-      'Oil & Gas',
-      'Energy & Power Generation',
-      'Food & Beverage Manufacturing',
-      'Pharmaceutical & Biotechnology Manufacturing',
-      'Plastics & Polymer Manufacturing',
-      'Packaging & Packaging Equipment',
-      'Process Manufacturing',
-      'Paper & Pulp Manufacturing',
-      'Rubber Products Manufacturing',
-      'Renewable Energy Equipment',
-    ]),
+    directions: [],
   },
   {
+    // Published as Secondary Industry records (see medicalSpecializations.ts).
     primarySlug: 'medical-specialized-manufacturing',
-    directions: list(['Medical Device Manufacturing', 'Precision Technology Manufacturing']),
+    directions: [],
   },
   {
+    // Published as Secondary Industry records (see supplySpecializations.ts).
     primarySlug: 'agriculture-mining-industrial-supply',
-    directions: list([
-      'Agriculture & Agricultural Equipment',
-      'Mining & Heavy Industry',
-      'Industrial Distribution & Supply',
-    ]),
+    directions: [],
   },
   {
+    // Published as a Secondary Industry record (see engineeringSpecializations.ts).
     primarySlug: 'engineering-technical-services',
-    directions: list(['Engineering & Technical Services']),
+    directions: [],
   },
 ]
 

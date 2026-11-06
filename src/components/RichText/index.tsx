@@ -64,10 +64,11 @@ type Props = {
   data: DefaultTypedEditorState | Record<string, unknown>
   enableGutter?: boolean
   enableProse?: boolean
+  industryPaths?: Record<string, string>
 } & React.HTMLAttributes<HTMLDivElement>
 
 export default function RichText(props: Props) {
-  const { className, data, enableProse = true, enableGutter = true, ...rest } = props
+  const { className, data, enableProse = true, enableGutter = true, industryPaths, ...rest } = props
 
   if (isTiptapRichText(data)) {
     return (
@@ -76,6 +77,7 @@ export default function RichText(props: Props) {
         data={data}
         enableGutter={enableGutter}
         enableProse={enableProse}
+        industryPaths={industryPaths}
       />
     )
   }

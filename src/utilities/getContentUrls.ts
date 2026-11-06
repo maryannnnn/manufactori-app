@@ -60,7 +60,7 @@ export const SERVICES_ARCHIVE_PATH = '/services'
 /** Testimonials listing route; individual testimonials live beneath it. */
 export const TESTIMONIALS_ARCHIVE_PATH = '/testimonials'
 
-/** Industry listing route. Secondary industries live under their primary industry. */
+/** Industry listing route. Primary pages are /industrial/{slug}. Secondary pages are /industrial/{parent}/{slug}. */
 export const INDUSTRIES_ARCHIVE_PATH = '/industrial'
 
 /** Slugs that would collide with blog routing. */
@@ -146,11 +146,12 @@ type IndustryUrlSource = {
 
 export const getIndustryUrl = (doc: IndustryUrlSource | null | undefined): string | null => {
   if (!doc?.slug) return null
+
   if (doc.industryLevel === 'secondary') {
     const parentSlug = doc.parentSlug || getCategorySlug(doc.parentIndustry)
-    if (!parentSlug) return null
-    return `${INDUSTRIES_ARCHIVE_PATH}/${parentSlug}/${doc.slug}`
+    if (parentSlug) return `${INDUSTRIES_ARCHIVE_PATH}/${parentSlug}/${doc.slug}`
   }
+
   return `${INDUSTRIES_ARCHIVE_PATH}/${doc.slug}`
 }
 

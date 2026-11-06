@@ -228,7 +228,7 @@ const loadHtmlSitemapData = async (): Promise<HtmlSitemapData> => {
   }
 }
 
-export const getHtmlSitemapData = unstable_cache(loadHtmlSitemapData, [HTML_SITEMAP_CACHE_TAG], {
+export const getHtmlSitemapData = unstable_cache(loadHtmlSitemapData, [HTML_SITEMAP_CACHE_TAG, 'nested-industry-urls'], {
   tags: [
     HTML_SITEMAP_CACHE_TAG,
     'pages-sitemap',

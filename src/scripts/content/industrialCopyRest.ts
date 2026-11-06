@@ -481,11 +481,11 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
     planned: [],
     fields: {
       industryOverview:
-        'This group covers medical-device manufacturing and other specialized production where the product has a narrow intended use. A custom retail fixture is specialized equipment, and it is not a medical device.',
+        'This group covers two different offers. Medical device manufacturing is production of devices, instruments, diagnostic equipment, and components for industrial buyers. Precision technology manufacturing is the business of engineered components and precision programs. It is not a second page about machine tools. A custom retail fixture is specialized equipment, and it is not a medical device.',
       manufacturingProcesses:
         'Machining, molding, assembly, and finishing may apply. Describe the steps you run for the device or specialty product. Do not imply a quality-system certificate that is not public.',
       productsAndApplications:
-        'Pages should name the product family and the use it is built for. Adjacent uses that you will not support should be excluded in the same section.',
+        'Pages should name the product family and the use it is built for. Keep device families on the medical device page and tight-tolerance engineered components on the precision technology page. Adjacent uses that you will not support should be excluded in the same section.',
       materialsAndTechnologies:
         'Materials, cleanliness expectations you can document, and critical dimensions that are public belong here. Controlled drawings stay request-only.',
       targetMarkets:
@@ -509,7 +509,7 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
       searchBehavior:
         'Engineers search the component and the use. Patients, if they are not your buyer, should not be the landing-page audience.',
       seoStrategy:
-        'Publish family pages for the specialty products you sell, with the intended use and the exclusion. Do not create a page per unapproved claim.',
+        'Publish family pages for the specialty products you sell, with the intended use and the exclusion. Device searches belong on the medical device page. Precision-program searches belong on the precision technology page. A machining-process question belongs with CNC and precision machining. Do not create a page per unapproved claim.',
       aiSearchStrategy:
         'Write intended use and limits so an assistant is less likely to invent a clinical claim. Do not promise mentions in ChatGPT, Gemini, or Perplexity.',
       keywordAndTopicStructure:
@@ -521,7 +521,7 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
       technicalContent:
         'Materials, public specifications, and the document list are the technical content. Missing numbers stay missing.',
       productAndApplicationContent:
-        'Each family should say who it is for. Specialized industrial products and medical products should not share a paragraph.',
+        'Each family should say who it is for. A device page and a precision-component page should not share a paragraph. Link the reader to the specialization that matches the enquiry.',
       expertiseContent:
         'Show how an enquiry is checked against the intended use. That is the expertise. A list of prestigious markets is not.',
       contentFormats:
@@ -537,7 +537,7 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
       leadNurturingApproach:
         'Follow-up asks for the use and the specification gap. It does not offer a clinical outcome.',
       websiteAndCatalogStrategy:
-        'Separate medical families from other specialized products. Each family keeps its own enquiry context.',
+        'Separate medical families from other specialized products. Each family keeps its own enquiry context. Do not merge a device catalog with a precision-component catalog to look larger.',
       paidAdvertisingStrategy:
         'Use component and process terms that match a family page. Do not buy consumer symptom queries.',
       conversionOptimization:
@@ -587,11 +587,11 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
     planned: [],
     fields: {
       industryOverview:
-        'This group includes agricultural equipment, mining and heavy-duty components, and the industrial suppliers that stock or distribute them. A manufacturer and a distributor should not use the same sentence.',
+        'This group includes three different offers. Agriculture and agricultural equipment is manufacturing of farm machines, implements, and parts. Mining and heavy industry is manufacturing of mining and quarry equipment and heavy-duty components. Industrial distribution and supply is the business of stocking and reselling products made by others. A manufacturer and a distributor should not use the same sentence.',
       manufacturingProcesses:
         'Fabrication, assembly, wear-part production, and kitting are different operations. State which one the company does. A catalog reseller is not a factory.',
       productsAndApplications:
-        'Equipment and parts are chosen for a duty: crop, ore, abrasion, or a maintenance task. Pages should name that duty and the product family.',
+        'Equipment and parts are chosen for a duty: crop, ore, abrasion, or a maintenance task. Keep farm equipment on the agriculture page, mining and quarry equipment on the mining page, and stocked multi-brand supply on the distribution page.',
       materialsAndTechnologies:
         'Wear materials, fitment, and the machines a part fits are the facts buyers check. Do not publish a hardness or a life figure you cannot source.',
       targetMarkets:
@@ -613,9 +613,9 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
       leadGenerationChallenges:
         'Part requests without a machine or a duty are hard to quote. The form has to ask for both.',
       searchBehavior:
-        'Users search a machine, a wear part, or a supplier type. Those three queries need three destinations when you serve all three.',
+        'Users search a machine, a wear part, or a supplier type. Those three queries need three destinations. Farm equipment manufacturing, mining equipment manufacturing, and industrial distribution are not one page.',
       seoStrategy:
-        'Publish family pages for equipment or parts you supply, and a separate explanation when a dealer network is the route to buy.',
+        'Publish family pages for equipment or parts you supply, and a separate explanation when a dealer network is the route to buy. Manufacturing intent belongs on the agriculture or mining page. Catalog and channel intent belongs on the distribution page.',
       aiSearchStrategy:
         'State whether you manufacture or distribute, and for which duty. Assistants confuse those roles. Citations are not promised.',
       keywordAndTopicStructure:
@@ -627,7 +627,7 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
       technicalContent:
         'Fitment, materials you will confirm, and operating limits you can stand behind are the technical pages.',
       productAndApplicationContent:
-        'Agriculture, mining, and general MRO supply should not share one product grid if the duties differ.',
+        'Agriculture, mining, and general supply should not share one product grid if the duties differ. Send each intent to its own specialization page.',
       expertiseContent:
         'Show how a duty is matched to a family or a part. That is useful. A claim about harvest or mine output is not, unless it is already published, which it is not here.',
       contentFormats:
@@ -643,7 +643,7 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
       leadNurturingApproach:
         'Follow-up should ask for the machine and the duty if they were missing. It should not offer a fictional field trial.',
       websiteAndCatalogStrategy:
-        'Separate manufactured lines from distributed lines. Parts pages should say how to confirm fitment.',
+        'Separate manufactured lines from distributed lines. Farm machines, mining equipment, and stocked parts should not share one grid. Parts pages should say how to confirm fitment.',
       paidAdvertisingStrategy:
         'Land part and equipment queries on the matching family. Exclude brands and models you do not supply.',
       conversionOptimization:
@@ -703,7 +703,7 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
     planned: [],
     fields: {
       industryOverview:
-        'Engineering and technical service firms sell a scope: design, calculation, test, or a defined field service. The website fails when it looks like a product catalog with no deliverable.',
+        'Engineering and technical service firms sell a scope: design, calculation, test, or a defined field service. The expanded page for that offer is Specialized Engineering & Technical Services. The website fails when it looks like a product catalog with no deliverable.',
       manufacturingProcesses:
         'Some firms also fabricate a chamber, a duct, or a test article. Say when hardware is part of the scope and when the deliverable is a document or a service only.',
       productsAndApplications:
@@ -731,7 +731,7 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
       searchBehavior:
         'People search the problem and the deliverable, such as a calculation, a chamber, or a system design. The page should use those words when they are accurate.',
       seoStrategy:
-        'One page per service line, with the deliverable and the exclusion. Do not create a page for a discipline you do not practice.',
+        'One page per service line, with the deliverable and the exclusion. The sector overview stays here. The expanded specialist page is Specialized Engineering & Technical Services. Do not create a page for a discipline you do not practice.',
       aiSearchStrategy:
         'Describe the scope in sentences that cannot be mistaken for a product SKU or a guaranteed test result. Do not promise assistant citations.',
       keywordAndTopicStructure:
@@ -745,7 +745,7 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
       productAndApplicationContent:
         'If hardware is delivered, give it a product path. If only a service is delivered, do not force it into a catalog template.',
       expertiseContent:
-        'Show how a problem is framed into a scope. Limit the claim to disciplines the published record supports.',
+        'Show how a problem is framed into a scope. Limit the claim to disciplines the published record supports. The worked example of that framing is on Specialized Engineering & Technical Services.',
       contentFormats:
         'Service-line pages, a sample outline of a deliverable, and a short list of exclusions fit this industry.',
       buyerJourney:
@@ -759,7 +759,7 @@ export const MORE_INDUSTRIES: IndustryCopy[] = [
       leadNurturingApproach:
         'Follow-up should request the missing problem statement or site data. It should not resell the entire firm.',
       websiteAndCatalogStrategy:
-        'Structure the site as service lines. Hardware, if any, is a separate branch with its own enquiry.',
+        'Structure the site as service lines. Hardware, if any, is a separate branch with its own enquiry. Keep the specialist explanation on Specialized Engineering & Technical Services rather than repeating it here.',
       paidAdvertisingStrategy:
         'Advertise the problem and the deliverable, and open that service page. Do not buy generic engineering jobs unrelated to the scope.',
       conversionOptimization:

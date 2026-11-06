@@ -4,6 +4,7 @@ import { APIError, slugField } from 'payload'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { defaultTiptap } from '@/fields/defaultTiptap'
+import { hierarchicalCategoryRelationshipAdmin } from '@/fields/hierarchicalCategoryRelationship'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateIndustry, revalidateIndustryDelete } from './hooks/revalidateIndustry'
 
@@ -63,20 +64,20 @@ const validateIndustryShape: CollectionBeforeValidateHook = async ({ data, origi
   }
 
   if (typeof data.slug === 'string' && data.slug) {
-    const siblingWhere: Where[] = [{ slug: { equals: data.slug } }]
-    if (parentId != null) siblingWhere.push({ parentIndustry: { equals: parentId } })
-    else siblingWhere.push({ parentIndustry: { exists: false } })
-    if (originalDoc?.id != null) siblingWhere.push({ id: { not_equals: originalDoc.id } })
-    const siblings = await req.payload.find({
+    // Public Industrial URLs are flat (/industrial/{slug}), so slugs must be unique across
+    // the whole collection, not only among siblings under one parent.
+    const slugWhere: Where[] = [{ slug: { equals: data.slug } }]
+    if (originalDoc?.id != null) slugWhere.push({ id: { not_equals: originalDoc.id } })
+    const slugConflicts = await req.payload.find({
       collection: 'industries',
       depth: 0,
       limit: 1,
       overrideAccess: true,
       pagination: false,
-      where: { and: siblingWhere },
+      where: { and: slugWhere },
     })
-    if (siblings.docs.length > 0) {
-      throw new APIError('Another industry with this slug already exists under the same parent.', 400)
+    if (slugConflicts.docs.length > 0) {
+      throw new APIError('Another industry with this slug already exists. Public Industrial URLs require unique slugs.', 400)
     }
   }
 
@@ -202,6 +203,18 @@ export const Industries: CollectionConfig = {
               defaultValue: false,
               admin: {
                 description: 'Highlight this industry where featured listings are used.',
+              },
+            },
+            {
+              name: 'site_categories',
+              type: 'relationship',
+              label: 'Site Categories',
+              relationTo: 'site-categories',
+              hasMany: true,
+              admin: {
+                ...hierarchicalCategoryRelationshipAdmin,
+                description:
+                  'Shared site taxonomy. Independent from the Industrial parent and specialization hierarchy. Does not change URLs or navigation.',
               },
             },
           ],

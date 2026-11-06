@@ -70,36 +70,8 @@ export const INDUSTRIES: IndustryCopy[] = [
         note: 'Laser Made fabricates in wood, acrylic, MDF, and metal. The case shows a fabrication website, not a dedicated metal-only plant.',
       },
     ],
-    planned: [
-      {
-        title: 'CNC & Precision Machining',
-        slug: 'cnc-precision-machining',
-        previewDescription:
-          'Milling, turning, and other machining work sold against a drawing, a tolerance, and a material.',
-        displayOrder: 1,
-      },
-      {
-        title: 'Metal Fabrication',
-        slug: 'metal-fabrication',
-        previewDescription:
-          'Cut, formed, and assembled metal parts and structures made for a defined industrial use.',
-        displayOrder: 2,
-      },
-      {
-        title: 'Sheet Metal Fabrication and Forming',
-        slug: 'sheet-metal-fabrication-forming',
-        previewDescription:
-          'Flat patterns, bends, and formed sheet parts where thickness and geometry decide the process.',
-        displayOrder: 3,
-      },
-      {
-        title: 'Welding & Heavy Fabrication',
-        slug: 'welding-heavy-fabrication',
-        previewDescription:
-          'Welded assemblies and heavier fabricated structures, including the documents buyers ask to see.',
-        displayOrder: 4,
-      },
-    ],
+    // Specializations are published Secondary Industry records (metalworkingSpecializations.ts).
+    planned: [],
     fields: {
       industryOverview:
         'Metalworking covers companies that machine, fabricate, form, and weld metal into components, assemblies, and structures. The public offer is usually a process plus a material range, not a single consumer product.',
