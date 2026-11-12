@@ -12,6 +12,7 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { getPostListPreview } from '@/utilities/getPostListPreview'
+import { queryRelatedPostsForCards } from '@/utilities/queryRelatedPosts'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 import { richTextToPlainText } from '@/utilities/richText/toPlainText'
 import { collectActiveCategoryPaths } from '@/utilities/activeCategoryPaths'
@@ -286,6 +287,8 @@ async function renderPostPage(categorySlug: string | null, postSlug: string) {
   }
 
   const { hero, layout } = post
+  const payload = await getPayload({ config: configPromise })
+  const relatedDocs = await queryRelatedPostsForCards(payload, post.relatedPosts)
 
   return (
     <article className="pt-16 pb-16">
@@ -323,12 +326,12 @@ async function renderPostPage(categorySlug: string | null, postSlug: string) {
         <PostTaxonomy categories={post.categories} />
       </div>
 
-      {post.relatedPosts && post.relatedPosts.length > 0 && (
+      {relatedDocs.length > 0 && (
         <div className="flex flex-col items-center gap-4 pt-8">
           <div className="container">
             <RelatedPosts
               className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-              docs={post.relatedPosts.filter((relatedPost) => typeof relatedPost === 'object')}
+              docs={relatedDocs}
             />
           </div>
         </div>

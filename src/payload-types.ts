@@ -317,6 +317,8 @@ export interface Post {
     | {
         id?: string | null;
         name?: string | null;
+        jobTitle?: string | null;
+        professionalFocus?: string | null;
       }[]
     | null;
   /**
@@ -937,6 +939,14 @@ export interface SiteCategory {
 export interface User {
   id: number;
   name?: string | null;
+  /**
+   * Public professional title shown on article author blocks (for example: Manufacturing Marketing Specialist | SEO & AI Search).
+   */
+  jobTitle?: string | null;
+  /**
+   * Second public description line under the job title (for example: Manufacturing & Industrial Digital Marketing).
+   */
+  professionalFocus?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -2810,6 +2820,8 @@ export interface PostsSelect<T extends boolean = true> {
     | {
         id?: T;
         name?: T;
+        jobTitle?: T;
+        professionalFocus?: T;
       };
   generateSlug?: T;
   slug?: T;
@@ -3691,6 +3703,8 @@ export interface SiteCategoriesSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  jobTitle?: T;
+  professionalFocus?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

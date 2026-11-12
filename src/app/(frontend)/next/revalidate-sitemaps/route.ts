@@ -16,8 +16,13 @@ export async function GET(req: NextRequest) {
 
   revalidateTag('industries-sitemap', 'max')
   revalidateTag('pages-sitemap', 'max')
+  revalidateTag('posts-sitemap', 'max')
+  revalidateTag('services-sitemap', 'max')
+  revalidateTag('case-studies-sitemap', 'max')
+  revalidateTag('testimonials-sitemap', 'max')
   revalidateTag(HTML_SITEMAP_CACHE_TAG, 'max')
   revalidatePath('/sitemap.xml')
+  revalidatePath('/posts-sitemap.xml')
   revalidatePath(HTML_SITEMAP_PATH)
   revalidatePath(INDUSTRIES_ARCHIVE_PATH)
   revalidatePath(`${INDUSTRIES_ARCHIVE_PATH}/[slug]`, 'page')

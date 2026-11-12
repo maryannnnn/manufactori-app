@@ -299,6 +299,14 @@ export const Posts: CollectionConfig<'posts'> = {
           name: 'name',
           type: 'text',
         },
+        {
+          name: 'jobTitle',
+          type: 'text',
+        },
+        {
+          name: 'professionalFocus',
+          type: 'text',
+        },
       ],
     },
     slugField({

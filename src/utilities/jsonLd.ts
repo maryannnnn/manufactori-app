@@ -363,6 +363,10 @@ export const buildBlogPostingGraph = (post: Post): JsonLdNode | null => {
       '@type': 'Person',
       '@id': entityId(`person-${author.id}`),
       name: author.name,
+      ...(author.jobTitle ? { jobTitle: author.jobTitle } : {}),
+      ...(author.professionalFocus
+        ? { description: author.professionalFocus }
+        : {}),
     }))
   const crumbs = [
     { name: 'Home', path: '/' },

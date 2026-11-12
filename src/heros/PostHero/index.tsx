@@ -77,7 +77,13 @@ export const PostHero: React.FC<{
                 <div className="flex flex-col gap-1">
                   <p className="text-sm">Author</p>
 
-                  <p>{formatAuthors(populatedAuthors)}</p>
+                  <p className="font-medium">{formatAuthors(populatedAuthors)}</p>
+                  {populatedAuthors?.length === 1 && populatedAuthors[0]?.jobTitle ? (
+                    <p className="text-sm text-white/90">{populatedAuthors[0].jobTitle}</p>
+                  ) : null}
+                  {populatedAuthors?.length === 1 && populatedAuthors[0]?.professionalFocus ? (
+                    <p className="text-sm text-white/90">{populatedAuthors[0].professionalFocus}</p>
+                  ) : null}
                 </div>
               </div>
             )}
