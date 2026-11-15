@@ -6,6 +6,7 @@ import type { Service } from '@/payload-types'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { RichTextField } from '@/components/CaseStudyPage/RichTextField'
 import { ContactStrip } from '@/components/ContactStrip'
+import { ServiceIndustrialArticles } from '@/components/ServiceIndustrialArticles'
 import { Media } from '@/components/Media'
 import { SERVICES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
@@ -109,6 +110,8 @@ export const ServiceOverview: React.FC<{ service: Service }> = ({ service }) => 
             {ctaLabel}
           </Link>
         </section>
+
+        <ServiceIndustrialArticles serviceSlug={service.slug} siteCategories={service.site_categories} />
 
         <ContactStrip className="mt-8" contained={false} variant="serviceLower" />
       </div>

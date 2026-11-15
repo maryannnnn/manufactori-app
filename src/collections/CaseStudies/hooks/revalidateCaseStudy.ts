@@ -3,6 +3,8 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook, Payload } fr
 import { revalidatePath, revalidateTag } from 'next/cache'
 
 import { CLIENTS_PATH, getCaseStudyUrl } from '../../../utilities/getContentUrls'
+import { AGGREGATED_DISCUSSIONS_CACHE_TAG } from '../../../utilities/queryAggregatedDiscussions'
+import { AGGREGATED_FAQS_CACHE_TAG } from '../../../utilities/queryAggregatedFaqs'
 import { revalidateHtmlSitemap } from '../../../utilities/revalidateHtmlSitemap'
 
 type CaseStudyDoc = {
@@ -18,6 +20,19 @@ const safeRevalidatePath = (path: string) => {
   } catch {
     // Scripts / nested ops outside Next request.
   }
+}
+
+const safeRevalidateTag = (tag: string) => {
+  try {
+    revalidateTag(tag, 'max')
+  } catch {
+    // Scripts / nested ops outside Next request.
+  }
+}
+
+const revalidateAggregatedFeeds = () => {
+  safeRevalidateTag(AGGREGATED_FAQS_CACHE_TAG)
+  safeRevalidateTag(AGGREGATED_DISCUSSIONS_CACHE_TAG)
 }
 
 const resolveCaseStudyPath = async (
@@ -63,8 +78,11 @@ export const revalidateCaseStudy: CollectionAfterChangeHook<CaseStudyDoc> = asyn
       }
       safeRevalidatePath('/')
       safeRevalidatePath('/case-studies')
+      safeRevalidatePath('/questions-answers')
+      safeRevalidatePath('/discussions')
       safeRevalidatePath(CLIENTS_PATH)
       revalidateTag('case-studies-sitemap', 'max')
+      revalidateAggregatedFeeds()
       revalidateHtmlSitemap()
     }
 
@@ -76,8 +94,11 @@ export const revalidateCaseStudy: CollectionAfterChangeHook<CaseStudyDoc> = asyn
       }
       safeRevalidatePath('/')
       safeRevalidatePath('/case-studies')
+      safeRevalidatePath('/questions-answers')
+      safeRevalidatePath('/discussions')
       safeRevalidatePath(CLIENTS_PATH)
       revalidateTag('case-studies-sitemap', 'max')
+      revalidateAggregatedFeeds()
       revalidateHtmlSitemap()
     }
   }
@@ -93,8 +114,11 @@ export const revalidateCaseStudyDelete: CollectionAfterDeleteHook<CaseStudyDoc> 
     if (path) safeRevalidatePath(path)
     safeRevalidatePath('/')
     safeRevalidatePath('/case-studies')
+    safeRevalidatePath('/questions-answers')
+    safeRevalidatePath('/discussions')
     safeRevalidatePath(CLIENTS_PATH)
     revalidateTag('case-studies-sitemap', 'max')
+    revalidateAggregatedFeeds()
     revalidateHtmlSitemap()
   }
   return doc

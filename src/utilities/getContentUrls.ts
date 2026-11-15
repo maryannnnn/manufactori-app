@@ -63,6 +63,12 @@ export const TESTIMONIALS_ARCHIVE_PATH = '/testimonials'
 /** Industry listing route. Primary pages are /industrial/{slug}. Secondary pages are /industrial/{parent}/{slug}. */
 export const INDUSTRIES_ARCHIVE_PATH = '/industrial'
 
+/** Central FAQ archive aggregated from published site content. */
+export const QUESTIONS_ANSWERS_PATH = '/questions-answers'
+
+/** Central discussion archive aggregated from Blog and Case Studies. */
+export const DISCUSSIONS_PATH = '/discussions'
+
 /** Slugs that would collide with blog routing. */
 export const RESERVED_CATEGORY_SLUGS = ['category', 'categories'] as const
 

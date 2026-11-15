@@ -3,6 +3,7 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'paylo
 import { revalidatePath, revalidateTag } from 'next/cache'
 
 import { getServiceUrl } from '../../../utilities/getContentUrls'
+import { AGGREGATED_FAQS_CACHE_TAG } from '../../../utilities/queryAggregatedFaqs'
 import { revalidateHtmlSitemap } from '../../../utilities/revalidateHtmlSitemap'
 
 type ServiceDoc = {
@@ -42,8 +43,10 @@ export const revalidateService: CollectionAfterChangeHook<ServiceDoc> = ({
         safeRevalidatePath(path)
       }
       safeRevalidatePath('/services')
+      safeRevalidatePath('/questions-answers')
       safeRevalidatePath('/')
       safeRevalidateTag('services-sitemap')
+      safeRevalidateTag(AGGREGATED_FAQS_CACHE_TAG)
       revalidateHtmlSitemap()
     }
 
@@ -54,8 +57,10 @@ export const revalidateService: CollectionAfterChangeHook<ServiceDoc> = ({
         safeRevalidatePath(oldPath)
       }
       safeRevalidatePath('/services')
+      safeRevalidatePath('/questions-answers')
       safeRevalidatePath('/')
       safeRevalidateTag('services-sitemap')
+      safeRevalidateTag(AGGREGATED_FAQS_CACHE_TAG)
       revalidateHtmlSitemap()
     }
   }
@@ -70,8 +75,10 @@ export const revalidateServiceDelete: CollectionAfterDeleteHook<ServiceDoc> = ({
     const path = resolveServicePath(doc)
     if (path) safeRevalidatePath(path)
     safeRevalidatePath('/services')
+    safeRevalidatePath('/questions-answers')
     safeRevalidatePath('/')
     safeRevalidateTag('services-sitemap')
+    safeRevalidateTag(AGGREGATED_FAQS_CACHE_TAG)
     revalidateHtmlSitemap()
   }
   return doc

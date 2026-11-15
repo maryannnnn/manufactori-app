@@ -16,7 +16,9 @@ type Props = {
   initialValue?: string
   inputId: string
   label: string
+  limit?: number
   placeholder: string
+  source?: string
 }
 
 /**
@@ -30,7 +32,9 @@ export const ArchiveSearch: React.FC<Props> = ({
   initialValue = '',
   inputId,
   label,
+  limit,
   placeholder,
+  source,
 }) => {
   const router = useRouter()
   const [value, setValue] = useState(initialValue)
@@ -49,10 +53,18 @@ export const ArchiveSearch: React.FC<Props> = ({
     if (next === committedValue.current) return
 
     committedValue.current = next
-    router.push(buildCaseStudyArchiveUrl(archivePath, { search: next || undefined, category }), {
-      scroll: false,
-    })
-  }, [archivePath, category, debouncedValue, router])
+    router.push(
+      buildCaseStudyArchiveUrl(archivePath, {
+        search: next || undefined,
+        category,
+        source,
+        limit,
+      }),
+      {
+        scroll: false,
+      },
+    )
+  }, [archivePath, category, debouncedValue, limit, router, source])
 
   return (
     <form

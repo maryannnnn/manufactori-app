@@ -3,6 +3,7 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook, Payload } fr
 import { revalidatePath, revalidateTag } from 'next/cache'
 
 import { getIndustryUrl, INDUSTRIES_ARCHIVE_PATH } from '../../../utilities/getContentUrls'
+import { AGGREGATED_FAQS_CACHE_TAG } from '../../../utilities/queryAggregatedFaqs'
 import { revalidateHtmlSitemap } from '../../../utilities/revalidateHtmlSitemap'
 
 type IndustryDoc = {
@@ -48,8 +49,10 @@ const revalidateIndustryPaths = (doc: IndustryDoc, parentSlug?: string | null) =
   if (doc.slug) safeRevalidatePath(`${INDUSTRIES_ARCHIVE_PATH}/${doc.slug}`)
   if (parentSlug) safeRevalidatePath(`${INDUSTRIES_ARCHIVE_PATH}/${parentSlug}`)
   safeRevalidatePath(INDUSTRIES_ARCHIVE_PATH)
+  safeRevalidatePath('/questions-answers')
   safeRevalidatePath('/')
   safeRevalidateTag('industries-sitemap')
+  safeRevalidateTag(AGGREGATED_FAQS_CACHE_TAG)
   revalidateHtmlSitemap()
 }
 

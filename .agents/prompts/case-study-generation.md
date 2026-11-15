@@ -93,9 +93,11 @@ Shape of a good discussion:
   depth 3. One or two may have two siblings at the same depth (two replies to the
   same parent) rather than a single line.
 - Expert replies (`isExpert: true`) are attributed to the configured expert —
-  currently **Maryan Polyak**, role **Manufacturing Digital Marketing & Web
-  Development Expert**. Invent no further credentials. Not every entry is his;
-  other people ask, he answers where an expert answer belongs.
+  currently **Maryan Polyak**, role **Manufacturing Marketing Specialist | SEO & AI Search**
+  (professional focus: **Manufacturing & Industrial Digital Marketing**). Do not use older
+  designations such as "Manufacturing Digital Marketing & Web Development Expert".
+  Invent no further credentials. Not every entry is his; other people ask, he answers
+  where an expert answer belongs.
 - Dates in ascending order, spread over a few weeks.
 
 Subject matter, chosen to fit the specific case: manufacturing website architecture,

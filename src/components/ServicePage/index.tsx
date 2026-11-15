@@ -13,6 +13,7 @@ import { RichTextField } from '@/components/CaseStudyPage/RichTextField'
 import { ContactStrip } from '@/components/ContactStrip'
 import { Media } from '@/components/Media'
 import { ServiceCard } from '@/components/ServiceCard'
+import { ServiceIndustrialArticles } from '@/components/ServiceIndustrialArticles'
 import { getCaseStudyListPreview } from '@/utilities/getCaseStudyListPreview'
 import { SERVICES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
 import { getServiceCategory } from '@/utilities/serviceCatalog'
@@ -295,6 +296,8 @@ export const ServicePage: React.FC<Props> = ({ service }) => {
             </div>
           </Section>
         ) : null}
+
+        <ServiceIndustrialArticles serviceSlug={service.slug} siteCategories={service.site_categories} />
 
         <ContactStrip className="mb-10" contained={false} variant="serviceLower" />
 

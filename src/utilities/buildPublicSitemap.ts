@@ -7,12 +7,14 @@ import {
   BLOG_ARCHIVE_PATH,
   CASE_STUDIES_ARCHIVE_PATH,
   CLIENTS_PATH,
+  DISCUSSIONS_PATH,
   getCaseStudyUrl,
   getIndustryUrl,
   getPostUrl,
   getServiceUrl,
   getTestimonialUrl,
   INDUSTRIES_ARCHIVE_PATH,
+  QUESTIONS_ANSWERS_PATH,
   SERVICES_ARCHIVE_PATH,
   TESTIMONIALS_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
@@ -100,6 +102,8 @@ export const loadPublicSitemap = async (): Promise<PublicSitemapEntry[]> => {
   list.add(absolute(base, SERVICES_ARCHIVE_PATH))
   list.add(absolute(base, CASE_STUDIES_ARCHIVE_PATH))
   list.add(absolute(base, TESTIMONIALS_ARCHIVE_PATH))
+  list.add(absolute(base, QUESTIONS_ANSWERS_PATH))
+  list.add(absolute(base, DISCUSSIONS_PATH))
 
   for (const page of pages.docs) {
     if (!page.slug || EXCLUDED_PAGE_SLUGS.has(page.slug)) continue

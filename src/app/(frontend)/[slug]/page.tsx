@@ -10,6 +10,7 @@ import { homeStatic } from '@/endpoints/seed/home-static'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
+import { AboutHero } from '@/components/About/Hero'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ContactStrip } from '@/components/ContactStrip'
 import { HtmlSitemap } from '@/components/HtmlSitemap'
@@ -73,8 +74,10 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const { hero, layout, pageLongTitle, title } = page
   const heading = pageLongTitle || title
+  const isAboutPage = decodedSlug === 'about'
   const compactHero = !hero?.type || hero.type === 'none' || hero.type === 'lowImpact'
-  const showStandaloneH1 = Boolean(heading) && (!hero?.type || hero.type === 'none')
+  const showStandaloneH1 =
+    Boolean(heading) && (!hero?.type || hero.type === 'none') && !isAboutPage
 
   return (
     <article className="pt-16 pb-24">
@@ -96,9 +99,9 @@ export default async function Page({ params: paramsPromise }: Args) {
         </div>
       ) : null}
 
-      <RenderHero {...hero} />
+      {isAboutPage ? <AboutHero title={heading || 'About'} /> : <RenderHero {...hero} />}
       <RenderBlocks blocks={layout} />
-      {decodedSlug === 'about' ? (
+      {isAboutPage ? (
         <div className="container mt-10">
           <p className="max-w-[65ch] text-base leading-7">
             <Link

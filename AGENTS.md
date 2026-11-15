@@ -5,6 +5,9 @@ Start with `.agents/skills/payload/SKILL.md` for a quick reference, then see `.a
 
 ## Prompts
 
+- `.agents/prompts/blog-article-standards.md` — permanent Blog article rules: exact Maryan
+  Polyak author identity, FAQ, variable discussion count, categories. Read before creating
+  or extending any Blog post.
 - `.agents/prompts/case-study-generation.md` — turning supplied client material into a
   complete Case Study, including the required FAQ and expert discussion. Read it before
   generating or extending any case study.

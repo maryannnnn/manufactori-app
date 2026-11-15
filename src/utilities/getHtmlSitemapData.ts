@@ -9,6 +9,7 @@ import {
   BLOG_ARCHIVE_PATH,
   CASE_STUDIES_ARCHIVE_PATH,
   CLIENTS_PATH,
+  DISCUSSIONS_PATH,
   INDEXABLE_PAGE_SLUGS,
   getCaseStudyUrl,
   getIndustryUrl,
@@ -16,6 +17,7 @@ import {
   getServiceUrl,
   getTestimonialUrl,
   INDUSTRIES_ARCHIVE_PATH,
+  QUESTIONS_ANSWERS_PATH,
   SERVICES_ARCHIVE_PATH,
   TESTIMONIALS_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
@@ -78,6 +80,8 @@ const mainNavigationLinks: HtmlSitemapLink[] = [
     href: navById['case-studies']?.href || CASE_STUDIES_ARCHIVE_PATH,
   },
   { label: navById.blog?.label || 'Blog', href: navById.blog?.href || BLOG_ARCHIVE_PATH },
+  { label: 'Questions & Answers', href: QUESTIONS_ANSWERS_PATH },
+  { label: 'Discussions', href: DISCUSSIONS_PATH },
   { label: 'Contact', href: headerCta.href || '/contact' },
 ]
 

@@ -1,22 +1,24 @@
 import Link from 'next/link'
 import React from 'react'
 
-import type { CaseStudy, Media, Post, Service } from '@/payload-types'
+import type { CaseStudy, Media, Post, Service, SiteCategory } from '@/payload-types'
 
 import { Accordion, type AccordionItem } from '@/components/Accordion'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { CaseStudyCard } from '@/components/CaseStudyCard'
 import { ContactStrip } from '@/components/ContactStrip'
+import { IndustryContextualCta } from '@/components/IndustryContextualCta'
 import { Media as MediaImage } from '@/components/Media'
+import { RelatedArticleCards } from '@/components/RelatedArticleCards'
 import { RichTextField } from '@/components/CaseStudyPage/RichTextField'
 import { ServiceCard } from '@/components/ServiceCard'
 import {
   getIndustryUrl,
-  getPostUrl,
   INDUSTRIES_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
 import { getCaseStudyListPreview } from '@/utilities/getCaseStudyListPreview'
 import { getSecondaryIndustryPaths } from '@/utilities/industryPaths'
+import { queryArticlesForIndustry } from '@/utilities/queryIndustryArticles'
 import { hasRichTextContent } from '@/utilities/richText/hasContent'
 
 const buttonClass =
@@ -99,6 +101,7 @@ export type IndustryRecord = IndustryChild & {
       }[]
     | null
   relatedPosts?: (number | Post)[] | null
+  site_categories?: (number | SiteCategory)[] | null
   faq?: { id?: string | null; question?: string | null; answer?: RichValue }[] | null
   ctaTitle?: string | null
   ctaDescription?: string | null
@@ -247,7 +250,6 @@ export const IndustryPage = async ({
       ? industry.industryPreviewImage
       : null
   const services = (industry.recommendedServices ?? []).filter((item): item is Service => typeof item === 'object' && item !== null)
-  const posts = (industry.relatedPosts ?? []).filter((item): item is Post => typeof item === 'object' && item !== null && Boolean(item.slug))
   const cases = (industry.relatedCaseStudies ?? []).flatMap((item) => {
     if (!item?.caseStudy || typeof item.caseStudy !== 'object') return []
     return [item]
@@ -270,6 +272,19 @@ export const IndustryPage = async ({
   })
   const ctaHref = industry.ctaButtonUrl || ''
   const showCta = Boolean(industry.ctaTitle || industry.ctaDescription || (industry.ctaButtonLabel && ctaHref))
+  const topicTitle = industry.title || heading
+  const { articles, viewAllHref } = await queryArticlesForIndustry(
+    {
+      id: industry.id,
+      slug: industry.slug,
+      industryLevel: industry.industryLevel,
+      parentIndustry: industry.parentIndustry,
+      site_categories: industry.site_categories,
+    },
+    {
+      childSlugs: children.map((child) => child.slug).filter((slug): slug is string => Boolean(slug)),
+    },
+  )
 
   return (
     <article className="pb-16">
@@ -315,6 +330,9 @@ export const IndustryPage = async ({
             { label: 'Materials and technologies', value: industry.materialsAndTechnologies },
           ]}
         />
+
+        <IndustryContextualCta slot="intro" title={topicTitle} />
+
         <TextSection
           industryPaths={industryPaths}
           id="markets"
@@ -350,6 +368,9 @@ export const IndustryPage = async ({
             { label: 'Authority and visibility', value: industry.authorityAndVisibility },
           ]}
         />
+
+        <IndustryContextualCta slot="mid" title={topicTitle} />
+
         <TextSection
           industryPaths={industryPaths}
           id="content"
@@ -398,9 +419,14 @@ export const IndustryPage = async ({
 
         <SpecializationSection children={children} planned={industry.plannedSubindustries} />
 
+        <IndustryContextualCta slot="end" title={topicTitle} />
+
         {services.length > 0 ? (
-          <section aria-labelledby="services" className="scroll-mt-24 pb-16">
-            <h2 className="mb-6 border-b border-border pb-3 text-2xl font-semibold tracking-tight" id="services">
+          <section aria-labelledby="related-services" className="scroll-mt-24 pb-16">
+            <h2
+              className="mb-6 border-b border-border pb-3 text-2xl font-semibold tracking-tight"
+              id="related-services"
+            >
               Related services
             </h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -412,8 +438,11 @@ export const IndustryPage = async ({
         ) : null}
 
         {cases.length > 0 ? (
-          <section aria-labelledby="cases" className="scroll-mt-24 pb-16">
-            <h2 className="mb-6 border-b border-border pb-3 text-2xl font-semibold tracking-tight" id="cases">
+          <section aria-labelledby="related-case-studies" className="scroll-mt-24 pb-16">
+            <h2
+              className="mb-6 border-b border-border pb-3 text-2xl font-semibold tracking-tight"
+              id="related-case-studies"
+            >
               Related case studies
             </h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -423,8 +452,14 @@ export const IndustryPage = async ({
                 return (
                   <div key={item.id || doc.id}>
                     <CaseStudyCard doc={{ ...doc, ...getCaseStudyListPreview(doc) }} />
-                    {label ? <p className="mt-3 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{label}</p> : null}
-                    {item.relevanceNote ? <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.relevanceNote}</p> : null}
+                    {label ? (
+                      <p className="mt-3 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                        {label}
+                      </p>
+                    ) : null}
+                    {item.relevanceNote ? (
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.relevanceNote}</p>
+                    ) : null}
                   </div>
                 )
               })}
@@ -432,26 +467,12 @@ export const IndustryPage = async ({
           </section>
         ) : null}
 
-        {posts.length > 0 ? (
-          <section aria-labelledby="articles" className="scroll-mt-24 pb-16">
-            <h2 className="mb-6 border-b border-border pb-3 text-2xl font-semibold tracking-tight" id="articles">
-              Related articles
-            </h2>
-            <ul className="max-w-[68ch] divide-y divide-border border-y border-border">
-              {posts.map((post) => {
-                const href = getPostUrl(post)
-                if (!href) return null
-                return (
-                  <li key={post.id}>
-                    <Link className="block py-3 text-foreground underline-offset-4 hover:text-link hover:underline" href={href}>
-                      {post.title}
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </section>
-        ) : null}
+        <RelatedArticleCards
+          articles={articles}
+          heading="Related Manufacturing Articles"
+          headingId="related-articles"
+          viewAllHref={viewAllHref}
+        />
 
         {faqQuestions.length > 0 ? (
           <section aria-labelledby="faq" className="scroll-mt-24 pb-16">
@@ -484,7 +505,7 @@ export const IndustryPage = async ({
           </section>
         ) : null}
 
-        <ContactStrip className="mt-8" contained={false} variant="serviceLower" />
+        <ContactStrip className="mt-8" contained={false} idSuffix="industry-final" variant="serviceLower" />
       </div>
     </article>
   )

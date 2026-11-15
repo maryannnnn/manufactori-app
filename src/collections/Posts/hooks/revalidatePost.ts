@@ -4,6 +4,8 @@ import { revalidatePath, revalidateTag } from 'next/cache'
 
 import type { Post } from '../../../payload-types'
 import { getPostUrl } from '../../../utilities/getContentUrls'
+import { AGGREGATED_DISCUSSIONS_CACHE_TAG } from '../../../utilities/queryAggregatedDiscussions'
+import { AGGREGATED_FAQS_CACHE_TAG } from '../../../utilities/queryAggregatedFaqs'
 import { revalidateHtmlSitemap } from '../../../utilities/revalidateHtmlSitemap'
 
 const resolvePostPath = async (payload: Payload, doc: Post): Promise<string | null> => {
@@ -43,7 +45,11 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = async ({
       }
       revalidatePath('/')
       revalidatePath('/blog')
+      revalidatePath('/questions-answers')
+      revalidatePath('/discussions')
       revalidateTag('posts-sitemap', 'max')
+      revalidateTag(AGGREGATED_FAQS_CACHE_TAG, 'max')
+      revalidateTag(AGGREGATED_DISCUSSIONS_CACHE_TAG, 'max')
       revalidateHtmlSitemap()
     }
 
@@ -56,7 +62,11 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = async ({
       }
       revalidatePath('/')
       revalidatePath('/blog')
+      revalidatePath('/questions-answers')
+      revalidatePath('/discussions')
       revalidateTag('posts-sitemap', 'max')
+      revalidateTag(AGGREGATED_FAQS_CACHE_TAG, 'max')
+      revalidateTag(AGGREGATED_DISCUSSIONS_CACHE_TAG, 'max')
       revalidateHtmlSitemap()
     }
   }
@@ -75,7 +85,11 @@ export const revalidateDelete: CollectionAfterDeleteHook<Post> = async ({
     }
     revalidatePath('/')
     revalidatePath('/blog')
+    revalidatePath('/questions-answers')
+    revalidatePath('/discussions')
     revalidateTag('posts-sitemap', 'max')
+    revalidateTag(AGGREGATED_FAQS_CACHE_TAG, 'max')
+    revalidateTag(AGGREGATED_DISCUSSIONS_CACHE_TAG, 'max')
     revalidateHtmlSitemap()
   }
 

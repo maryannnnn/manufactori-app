@@ -7,6 +7,8 @@ import { buildWebPageGraph } from '@/utilities/jsonLd'
 import { HOME_DESCRIPTION, HOME_TITLE } from '@/utilities/siteIdentity'
 import { siteRobotsMetadata } from '@/utilities/siteRobots'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: {
     absolute: HOME_TITLE,

@@ -2,8 +2,10 @@ import {
   BLOG_ARCHIVE_PATH,
   CASE_STUDIES_ARCHIVE_PATH,
   CLIENTS_PATH,
+  DISCUSSIONS_PATH,
   getServiceUrl,
   INDUSTRIES_ARCHIVE_PATH,
+  QUESTIONS_ANSWERS_PATH,
   SERVICES_ARCHIVE_PATH,
   TESTIMONIALS_ARCHIVE_PATH,
 } from '@/utilities/getContentUrls'
@@ -324,7 +326,19 @@ export const mainNavigation: NavItem[] = [
   },
   { id: 'industries', label: 'Industrial', href: INDUSTRIES_ARCHIVE_PATH, menuStyle: 'columns' },
   { id: 'case-studies', label: 'Case Studies', href: CASE_STUDIES_ARCHIVE_PATH },
-  { id: 'blog', label: 'Blog', href: BLOG_ARCHIVE_PATH },
+  {
+    id: 'blog',
+    label: 'Blog',
+    href: BLOG_ARCHIVE_PATH,
+    sections: [
+      {
+        links: [
+          { label: 'FAQ', href: QUESTIONS_ANSWERS_PATH },
+          { label: 'Comments', href: DISCUSSIONS_PATH },
+        ],
+      },
+    ],
+  },
   {
     id: 'about',
     label: 'About',

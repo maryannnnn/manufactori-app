@@ -4,12 +4,20 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
+import { AggregatedDiscussionSection } from '@/components/AggregatedDiscussionSection'
+import { AggregatedFaqSection } from '@/components/AggregatedFaqSection'
 import { CaseStudyArchive } from '@/components/CaseStudyArchive'
 import { CaseStudyCategoryFilters } from '@/components/CaseStudyCategoryFilters'
 import { CaseStudySearch } from '@/components/CaseStudySearch'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
-import { CASE_STUDIES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+import {
+  CASE_STUDIES_ARCHIVE_PATH,
+  DISCUSSIONS_PATH,
+  QUESTIONS_ANSWERS_PATH,
+} from '@/utilities/getContentUrls'
+import { queryAggregatedDiscussions } from '@/utilities/queryAggregatedDiscussions'
+import { queryAggregatedFaqs } from '@/utilities/queryAggregatedFaqs'
 import { buildWebPageGraph, caseStudyArchiveBreadcrumbs } from '@/utilities/jsonLd'
 import { buildCaseStudyArchiveUrl } from '@/utilities/caseStudyArchiveUrl'
 import { CASE_STUDIES_PAGE_SIZE, getCaseStudyList } from '@/utilities/getCaseStudyList'
@@ -21,6 +29,8 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { noindexRobotsMetadata } from '@/utilities/siteRobots'
 
 import PageClient from './page.client'
+
+export const dynamic = 'force-dynamic'
 
 /** Used when the archive global has not been filled in yet. */
 const FALLBACK_HEADING = 'Case Studies'
@@ -46,9 +56,18 @@ export default async function CaseStudiesPage({ searchParams: searchParamsPromis
   const activeFilter = filters.find((filter) => filter.slug === categoryParam?.trim())
   const category = activeFilter?.slug
 
-  const [archive, caseStudies] = await Promise.all([
+  const [archive, caseStudies, faqItems, discussionItems] = await Promise.all([
     getCachedGlobal('case-studies-archive', 1)(),
     getCaseStudyList({ categoryId: activeFilter?.id, page, search }),
+    queryAggregatedFaqs({
+      limit: 5,
+      allow: ['case-studies'],
+      quota: { 'case-studies': 5 },
+    }),
+    queryAggregatedDiscussions({
+      limit: 5,
+      allow: ['case-studies'],
+    }),
   ])
 
   // A page past the end would otherwise render an empty grid alongside a
@@ -148,6 +167,19 @@ export default async function CaseStudiesPage({ searchParams: searchParamsPromis
           )}
         </div>
       )}
+
+      <AggregatedFaqSection
+        heading="Questions from our case studies"
+        headingId="case-studies-faq"
+        items={faqItems}
+        viewAllHref={`${QUESTIONS_ANSWERS_PATH}?source=case-studies`}
+      />
+      <AggregatedDiscussionSection
+        heading="Discussions from our case studies"
+        headingId="case-studies-discussions"
+        items={discussionItems}
+        viewAllHref={`${DISCUSSIONS_PATH}?source=case-studies`}
+      />
     </div>
   )
 }

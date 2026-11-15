@@ -5,6 +5,7 @@ import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
+import { AUTHOR_IDENTITY } from '@/utilities/authorIdentity'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { BLOG_ARCHIVE_PATH, getCategoryUrl } from '@/utilities/getContentUrls'
 import Link from 'next/link'
@@ -78,11 +79,15 @@ export const PostHero: React.FC<{
                   <p className="text-sm">Author</p>
 
                   <p className="font-medium">{formatAuthors(populatedAuthors)}</p>
-                  {populatedAuthors?.length === 1 && populatedAuthors[0]?.jobTitle ? (
-                    <p className="text-sm text-white/90">{populatedAuthors[0].jobTitle}</p>
+                  {populatedAuthors?.length === 1 ? (
+                    <p className="text-sm text-white/90">
+                      {populatedAuthors[0]?.jobTitle || AUTHOR_IDENTITY.jobTitle}
+                    </p>
                   ) : null}
-                  {populatedAuthors?.length === 1 && populatedAuthors[0]?.professionalFocus ? (
-                    <p className="text-sm text-white/90">{populatedAuthors[0].professionalFocus}</p>
+                  {populatedAuthors?.length === 1 ? (
+                    <p className="text-sm text-white/90">
+                      {populatedAuthors[0]?.professionalFocus || AUTHOR_IDENTITY.professionalFocus}
+                    </p>
                   ) : null}
                 </div>
               </div>

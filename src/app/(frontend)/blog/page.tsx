@@ -5,12 +5,16 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 
 import { ArchiveSearch } from '@/components/ArchiveSearch'
+import { BlogCategoryActivity } from '@/components/BlogCategoryActivity'
 import { CollectionArchive } from '@/components/CollectionArchive'
 import { ContactStrip } from '@/components/ContactStrip'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
+import { PostsPageSizeSelect } from '@/components/PostsPageSizeSelect'
 import { BLOG_ARCHIVE_PATH } from '@/utilities/getContentUrls'
-import { POSTS_PAGE_SIZE, getPostList } from '@/utilities/getPostList'
+import { getPostList } from '@/utilities/getPostList'
+import { POSTS_PAGE_SIZE, parsePostsPageSize } from '@/utilities/postsPageSize'
+import { queryActiveBlogCategories } from '@/utilities/queryActiveBlogCategories'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { JsonLd } from '@/components/JsonLd'
 import { generateMeta } from '@/utilities/generateMeta'
@@ -25,6 +29,7 @@ type Args = {
   searchParams: Promise<{
     page?: string
     search?: string
+    limit?: string
   }>
 }
 
@@ -33,9 +38,10 @@ const parsePage = (value: string | undefined): number => {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 1
 }
 
-const buildArchiveUrl = (page: number, search?: string): string => {
+const buildArchiveUrl = (page: number, search?: string, limit?: number): string => {
   const params = new URLSearchParams()
   if (search) params.set('search', search)
+  if (typeof limit === 'number' && limit !== POSTS_PAGE_SIZE) params.set('limit', String(limit))
   if (page > 1) params.set('page', String(page))
 
   const query = params.toString()
@@ -43,15 +49,21 @@ const buildArchiveUrl = (page: number, search?: string): string => {
 }
 
 export default async function PostsArchivePage({ searchParams: searchParamsPromise }: Args) {
-  const { page: pageParam, search: searchParam } = await searchParamsPromise
+  const { page: pageParam, search: searchParam, limit: limitParam } = await searchParamsPromise
   const search = searchParam?.trim() || undefined
   const page = parsePage(pageParam)
+  const pageSize = parsePostsPageSize(limitParam)
 
-  const posts = await getPostList({ page, search })
+  const [posts, activeCategories] = await Promise.all([
+    getPostList({ page, search, limit: pageSize }),
+    queryActiveBlogCategories(),
+  ])
 
   if (posts.totalPages > 0 && page > posts.totalPages) {
-    redirect(buildArchiveUrl(posts.totalPages, search))
+    redirect(buildArchiveUrl(posts.totalPages, search, pageSize))
   }
+
+  const limitForUrls = pageSize === POSTS_PAGE_SIZE ? undefined : pageSize
 
   return (
     <div className="pt-16 pb-24">
@@ -80,20 +92,27 @@ export default async function PostsArchivePage({ searchParams: searchParamsPromi
           initialValue={search ?? ''}
           inputId="posts-search"
           label="Search posts"
+          limit={limitForUrls}
           placeholder="Search posts"
         />
+        <BlogCategoryActivity categories={activeCategories} />
       </div>
 
       <ContactStrip className="mb-10 border-y" variant="blog" />
 
       {posts.totalDocs > 0 ? (
         <React.Fragment>
-          <div className="container mb-6">
+          <div className="container mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <PageRange
               collectionLabels={{ plural: 'Posts', singular: 'Post' }}
               currentPage={posts.page}
-              limit={POSTS_PAGE_SIZE}
+              limit={posts.limit}
               totalDocs={posts.totalDocs}
+            />
+            <PostsPageSizeSelect
+              archivePath={BLOG_ARCHIVE_PATH}
+              pageSize={pageSize}
+              search={search}
             />
           </div>
 
@@ -103,6 +122,7 @@ export default async function PostsArchivePage({ searchParams: searchParamsPromi
             <div className="container">
               <Pagination
                 basePath={BLOG_ARCHIVE_PATH}
+                limit={limitForUrls}
                 page={posts.page}
                 search={search}
                 totalPages={posts.totalPages}
@@ -134,9 +154,10 @@ export default async function PostsArchivePage({ searchParams: searchParamsPromi
 }
 
 export async function generateMetadata({ searchParams: searchParamsPromise }: Args): Promise<Metadata> {
-  const { page: pageParam, search: searchParam } = await searchParamsPromise
+  const { page: pageParam, search: searchParam, limit: limitParam } = await searchParamsPromise
   const search = searchParam?.trim()
   const page = parsePage(pageParam)
+  const pageSize = parsePostsPageSize(limitParam)
 
   const meta = await generateMeta({
     doc: {
@@ -145,12 +166,12 @@ export async function generateMetadata({ searchParams: searchParamsPromise }: Ar
         description: 'Articles on manufacturing marketing, websites, and industrial digital strategy.',
       },
     },
-    url: buildArchiveUrl(page),
+    url: buildArchiveUrl(page, undefined, pageSize),
   })
 
   return {
     ...meta,
-    alternates: { ...meta.alternates, canonical: buildArchiveUrl(page) },
+    alternates: { ...meta.alternates, canonical: buildArchiveUrl(page, undefined, pageSize) },
     ...(search ? { robots: noindexRobotsMetadata } : {}),
   }
 }

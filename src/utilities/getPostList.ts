@@ -7,28 +7,39 @@ import { getPayload } from 'payload'
 import type { CardPostData } from '@/components/Card'
 
 import { getPostListPreview } from './getPostListPreview'
+import { POSTS_PAGE_SIZE } from './postsPageSize'
 
-/** Matches the Case Studies archive: three cards per row on desktop. */
-export const POSTS_PAGE_SIZE = 9
+export { POSTS_PAGE_SIZE, POSTS_PAGE_SIZE_OPTIONS, parsePostsPageSize, type PostsPageSize } from './postsPageSize'
 
 type Args = {
   page?: number
   search?: string
+  /** Override the default page size. Must be one of POSTS_PAGE_SIZE_OPTIONS. */
+  limit?: number
 }
 
 export type PostListResult = {
   docs: CardPostData[]
   page: number
+  limit: number
   totalDocs: number
   totalPages: number
 }
 
-const emptyResult = (page: number): PostListResult => ({
+const emptyResult = (page: number, limit: number): PostListResult => ({
   docs: [],
   page,
+  limit,
   totalDocs: 0,
   totalPages: 0,
 })
+
+const resolveLimit = (limit: number | undefined): number => {
+  if (typeof limit === 'number' && Number.isFinite(limit) && limit > 0) {
+    return Math.min(Math.floor(limit), 100)
+  }
+  return POSTS_PAGE_SIZE
+}
 
 const toIds = (docs: { id: number | string }[]): (number | string)[] => docs.map((doc) => doc.id)
 
@@ -97,21 +108,22 @@ const collectMatchingPostIds = async (
 /**
  * Paginated Posts query for /blog. Only one page of documents is fetched.
  */
-export const getPostList = async ({ page = 1, search }: Args): Promise<PostListResult> => {
+export const getPostList = async ({ page = 1, search, limit }: Args): Promise<PostListResult> => {
   const payload = await getPayload({ config: configPromise })
   const trimmed = search?.trim()
+  const pageSize = resolveLimit(limit)
 
   let where: Where | undefined
   if (trimmed) {
     const ids = await collectMatchingPostIds(payload, trimmed)
-    if (ids.length === 0) return emptyResult(page)
+    if (ids.length === 0) return emptyResult(page, pageSize)
     where = { id: { in: ids } }
   }
 
   const result = await payload.find({
     collection: 'posts',
     depth: 1,
-    limit: POSTS_PAGE_SIZE,
+    limit: pageSize,
     overrideAccess: false,
     page,
     sort: '-publishedAt',
@@ -144,6 +156,7 @@ export const getPostList = async ({ page = 1, search }: Args): Promise<PostListR
       }
     }),
     page: result.page ?? 1,
+    limit: pageSize,
     totalDocs: result.totalDocs,
     totalPages: result.totalPages,
   }

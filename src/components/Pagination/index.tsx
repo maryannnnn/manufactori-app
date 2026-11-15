@@ -18,15 +18,17 @@ export const Pagination: React.FC<{
   basePath: string
   category?: string
   className?: string
+  limit?: number
   page: number
   search?: string
+  source?: string
   totalPages: number
 }> = (props) => {
   const router = useRouter()
 
-  const { basePath, category, className, page, search, totalPages } = props
+  const { basePath, category, className, limit, page, search, source, totalPages } = props
   const pageUrl = (pageNumber: number) =>
-    buildCaseStudyArchiveUrl(basePath, { page: pageNumber, search, category })
+    buildCaseStudyArchiveUrl(basePath, { page: pageNumber, search, category, source, limit })
   const hasNextPage = page < totalPages
   const hasPrevPage = page > 1
 

@@ -1,15 +1,18 @@
 import type { CaseStudy, Media, Page, Post, Service } from '@/payload-types'
 
+import { AUTHOR_IDENTITY } from './authorIdentity'
 import { resolveMediaSource } from './getMediaUrl'
 import {
   BLOG_ARCHIVE_PATH,
   CASE_STUDIES_ARCHIVE_PATH,
   CLIENTS_PATH,
+  DISCUSSIONS_PATH,
   getCaseStudyCategoryUrl,
   getCaseStudyUrl,
   getCategoryUrl,
   getPostUrl,
   getServiceUrl,
+  QUESTIONS_ANSWERS_PATH,
   SERVICES_ARCHIVE_PATH,
   TESTIMONIALS_ARCHIVE_PATH,
 } from './getContentUrls'
@@ -205,6 +208,62 @@ export const buildWebPageGraph = (args: {
   )
 }
 
+/** FAQ archive graph: CollectionPage + FAQPage for the visible pairs on the current view. */
+export const buildQuestionsAnswersGraph = (args: {
+  name: string
+  description: string
+  items: Array<{ question: string; answerPlain: string }>
+}): JsonLdNode => {
+  const crumbs = breadcrumbListNode([
+    { name: 'Home', path: '/' },
+    { name: args.name, path: QUESTIONS_ANSWERS_PATH },
+  ])
+  const questions = args.items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answerPlain,
+    },
+  }))
+
+  return jsonLdGraph(
+    [
+      webPageNode({
+        path: QUESTIONS_ANSWERS_PATH,
+        name: args.name,
+        description: args.description,
+        type: 'CollectionPage',
+        extra: crumbs ? { breadcrumb: { '@id': crumbs['@id'] } } : undefined,
+      }),
+      questions.length
+        ? {
+            '@type': 'FAQPage',
+            '@id': `${absoluteUrl(QUESTIONS_ANSWERS_PATH)}#faq`,
+            isPartOf: { '@id': `${absoluteUrl(QUESTIONS_ANSWERS_PATH)}#webpage` },
+            mainEntity: questions,
+          }
+        : null,
+      crumbs,
+    ].filter(Boolean) as JsonLdNode[],
+  )
+}
+
+export const buildDiscussionsArchiveGraph = (args: {
+  name: string
+  description: string
+}): JsonLdNode =>
+  buildWebPageGraph({
+    path: DISCUSSIONS_PATH,
+    name: args.name,
+    description: args.description,
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: args.name, path: DISCUSSIONS_PATH },
+    ],
+    type: 'CollectionPage',
+  })
+
 const caseStudyFaqItems = (doc: CaseStudy): FaqItem[] => {
   return (doc.layout ?? []).flatMap((block) => {
     if (block.blockType !== 'csFAQ') return []
@@ -357,17 +416,24 @@ export const buildBlogPostingGraph = (post: Post): JsonLdNode | null => {
   const articleId = `${absoluteUrl(path)}#article`
   const category = typeof post.primary_category === 'object' ? post.primary_category : null
   const categoryPath = category ? getCategoryUrl(category) : null
-  const authors = (post.populatedAuthors ?? [])
-    .filter((author) => author?.name)
-    .map((author) => ({
-      '@type': 'Person',
-      '@id': entityId(`person-${author.id}`),
-      name: author.name,
-      ...(author.jobTitle ? { jobTitle: author.jobTitle } : {}),
-      ...(author.professionalFocus
-        ? { description: author.professionalFocus }
-        : {}),
-    }))
+  const populated = (post.populatedAuthors ?? []).filter((author) => author?.name)
+  const authors = populated.length
+    ? populated.map((author) => ({
+        '@type': 'Person' as const,
+        '@id': entityId(`person-${author.id}`),
+        name: author.name || AUTHOR_IDENTITY.name,
+        jobTitle: author.jobTitle || AUTHOR_IDENTITY.jobTitle,
+        description: author.professionalFocus || AUTHOR_IDENTITY.professionalFocus,
+      }))
+    : [
+        {
+          '@type': 'Person' as const,
+          '@id': entityId('person-maryan-polyak'),
+          name: AUTHOR_IDENTITY.name,
+          jobTitle: AUTHOR_IDENTITY.jobTitle,
+          description: AUTHOR_IDENTITY.professionalFocus,
+        },
+      ]
   const crumbs = [
     { name: 'Home', path: '/' },
     { name: 'Blog', path: BLOG_ARCHIVE_PATH },

@@ -129,7 +129,7 @@ const aboutBlocks = [
     'Classic technical SEO remains the foundation. Pages still have to be crawlable and tied to a real product, capability, or application. Semantic architecture, internal links, and the vocabulary of the industry are what make a manufacturing site understandable in ordinary search.',
   ),
   paragraph(
-    'AI search extends that foundation. The same facts are organized so AI systems can read them and accurately cite them when they use a source. This is the work sometimes called Generative Engine Optimization (GEO) and answer-engine optimization (AEO). It is structure that is readable by both search engines and AI systems, including assistants such as ChatGPT, Perplexity, Gemini, and Google AI Overviews.',
+    'AI search extends that foundation. The same facts are organized so AI systems can read them and accurately cite them when they use a source. This is the work sometimes called Generative Engine Optimization (GEO) and answer-engine optimization (AEO). It is structure that is readable by both search engines and AI systems, including assistants such as ChatGPT, Claude, Grok, Perplexity, Gemini, and Google AI Overviews.',
   ),
   paragraph(
     'Those products do not retrieve information in one shared way. A citation or recommendation is not guaranteed. Older projects on this site record the work done at the time. They are evidence of technical marketing practice, not claims of a measured GEO or AEO programme.',

@@ -6,15 +6,29 @@ import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { AggregatedDiscussionSection } from '@/components/AggregatedDiscussionSection'
+import { AggregatedFaqSection } from '@/components/AggregatedFaqSection'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ContactStrip } from '@/components/ContactStrip'
 import { IndustryCard, type IndustryChild } from '@/components/IndustryPage'
+import { IndustryContextualCta } from '@/components/IndustryContextualCta'
 import { JsonLd } from '@/components/JsonLd'
+import { RelatedArticleCards } from '@/components/RelatedArticleCards'
 import { generateMeta } from '@/utilities/generateMeta'
-import { INDUSTRIES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+import {
+  DISCUSSIONS_PATH,
+  INDUSTRIES_ARCHIVE_PATH,
+  QUESTIONS_ANSWERS_PATH,
+} from '@/utilities/getContentUrls'
 import { buildWebPageGraph } from '@/utilities/jsonLd'
+import { queryAggregatedDiscussions } from '@/utilities/queryAggregatedDiscussions'
+import { queryAggregatedFaqs } from '@/utilities/queryAggregatedFaqs'
+import { queryLatestIndustrialArticles } from '@/utilities/queryIndustryArticles'
 
+/** Always render on the server with live CMS data. Avoids stale prerenders that omit the industry cards. */
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
+export const fetchCache = 'force-no-store'
 
 const FALLBACK_TITLE = 'Industrial marketing for manufacturing companies'
 const FALLBACK_DESCRIPTION =
@@ -34,6 +48,10 @@ const queryOverview = async () => {
   return (result.docs[0] as RequiredDataFromCollectionSlug<'pages'> | undefined) || null
 }
 
+/**
+ * Nine published primary Industrial specializations, ordered for the landing grid.
+ * Uses the same publication filter as the public Industries API.
+ */
 const queryPrimaries = async () => {
   const payload = await getPayload({ config: configPromise })
   const result = await payload.find({
@@ -54,11 +72,29 @@ const queryPrimaries = async () => {
 }
 
 export default async function IndustrialOverviewPage() {
-  const [page, industries] = await Promise.all([queryOverview(), queryPrimaries()])
+  const [page, industries, articleSection, faqItems, discussionItems] = await Promise.all([
+    queryOverview(),
+    queryPrimaries(),
+    queryLatestIndustrialArticles(3),
+    queryAggregatedFaqs({
+      limit: 5,
+      allow: ['industries'],
+      quota: { industries: 5 },
+    }),
+    queryAggregatedDiscussions({
+      limit: 5,
+      allow: ['posts'],
+      industrialOnly: true,
+    }),
+  ])
   const heading = page?.pageLongTitle || page?.title || FALLBACK_TITLE
   const description = page?.meta?.description || FALLBACK_DESCRIPTION
-  const intro = page?.layout?.slice(0, 1) ?? []
-  const rest = page?.layout?.slice(1) ?? []
+  const layout = page?.layout ?? []
+  const intro = layout.slice(0, 1)
+  const afterIntro = layout.slice(1)
+  const midSplit = Math.max(1, Math.ceil(afterIntro.length / 2))
+  const beforeMidCta = afterIntro.slice(0, midSplit)
+  const afterMidCta = afterIntro.slice(midSplit)
 
   return (
     <div className="pt-16 pb-24">
@@ -83,6 +119,11 @@ export default async function IndustrialOverviewPage() {
         </h1>
       </div>
       {intro.length > 0 ? <RenderBlocks blocks={intro} /> : null}
+
+      <div className="container">
+        <IndustryContextualCta landing slot="intro" />
+      </div>
+
       <section aria-labelledby="industrial-industries" className="container py-12">
         <h2 className="mb-6 text-2xl font-semibold tracking-tight" id="industrial-industries">
           Nine manufacturing industries
@@ -99,9 +140,40 @@ export default async function IndustrialOverviewPage() {
           </p>
         )}
       </section>
-      {rest.length > 0 ? <RenderBlocks blocks={rest} /> : null}
+
+      {beforeMidCta.length > 0 ? <RenderBlocks blocks={beforeMidCta} /> : null}
+
       <div className="container">
-        <ContactStrip className="mt-8" />
+        <IndustryContextualCta landing slot="mid" />
+      </div>
+
+      {afterMidCta.length > 0 ? <RenderBlocks blocks={afterMidCta} /> : null}
+
+      <div className="container">
+        <RelatedArticleCards
+          articles={articleSection.articles}
+          heading="Latest Industrial Articles"
+          headingId="industrial-latest-articles"
+          viewAllHref={articleSection.viewAllHref}
+        />
+      </div>
+
+      <AggregatedFaqSection
+        heading="Questions from industrial pages"
+        headingId="industrial-faq"
+        items={faqItems}
+        viewAllHref={`${QUESTIONS_ANSWERS_PATH}?source=industries`}
+      />
+      <AggregatedDiscussionSection
+        heading="Discussions from industrial articles"
+        headingId="industrial-discussions"
+        items={discussionItems}
+        viewAllHref={DISCUSSIONS_PATH}
+      />
+
+      <div className="container">
+        <IndustryContextualCta landing slot="end" />
+        <ContactStrip className="mt-8" contained={false} idSuffix="industrial-landing" variant="serviceLower" />
       </div>
     </div>
   )

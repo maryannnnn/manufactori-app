@@ -11,6 +11,8 @@ type Props = {
   contained?: boolean
   description?: string
   heading?: string
+  /** Disambiguates aria heading ids when multiple strips share a variant on one page. */
+  idSuffix?: string
   variant?: ContactStripVariant
 }
 
@@ -34,12 +36,13 @@ export const ContactStrip: React.FC<Props> = ({
   contained = true,
   description,
   heading,
+  idSuffix,
   variant = 'default',
 }) => {
   const copy = contactStripCopy[variant]
   const title = heading ?? copy.heading
   const support = description ?? copy.description
-  const headingId = `contact-strip-${variant}`
+  const headingId = idSuffix ? `contact-strip-${variant}-${idSuffix}` : `contact-strip-${variant}`
   const whatsappHref = getWhatsAppUrl()
   const telegramHref = getTelegramUrl()
 

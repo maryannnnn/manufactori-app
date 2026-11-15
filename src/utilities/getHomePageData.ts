@@ -15,7 +15,7 @@ import { getRichTextPlainText } from './richText/getPlainText'
 
 export const HOME_SERVICES_LIMIT = SERVICE_OVERVIEW_SLUGS.length
 export const HOME_CASE_STUDIES_LIMIT = 6
-export const HOME_POSTS_LIMIT = 3
+export const HOME_POSTS_LIMIT = 5
 
 export type HomeTestimonial = {
   id: number | string
@@ -83,7 +83,7 @@ export const getHomePageData = cache(async (): Promise<HomePageData> => {
         layout: true,
       },
     }),
-    getPostList({ page: 1 }),
+    getPostList({ page: 1, limit: HOME_POSTS_LIMIT }),
     payload.find({
       collection: 'testimonials',
       depth: 2,

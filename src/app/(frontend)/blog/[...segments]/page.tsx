@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+import { AuthorIdentificationBlock } from '@/components/AuthorIdentificationBlock'
 import { RelatedSiteContent } from '@/components/RelatedSiteContent'
 import { ContactStrip } from '@/components/ContactStrip'
 import { PostTaxonomy } from '@/components/CaseStudyPage/CaseStudyTaxonomy'
@@ -27,6 +28,7 @@ import {
   getCategoryUrl,
   isReservedCategorySlug,
 } from '@/utilities/getContentUrls'
+import { getArticleCtaCopy } from '@/utilities/articleCtaCopy'
 import { buildBlogPostingGraph, buildWebPageGraph, categoryArchiveBreadcrumbs } from '@/utilities/jsonLd'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -289,6 +291,18 @@ async function renderPostPage(categorySlug: string | null, postSlug: string) {
   const { hero, layout } = post
   const payload = await getPayload({ config: configPromise })
   const relatedDocs = await queryRelatedPostsForCards(payload, post.relatedPosts)
+  const blocks = (layout ?? []) as Parameters<typeof RenderBlocks>[0]['blocks']
+  const endBlockTypes = new Set(['postFAQBlock', 'postCommentsBlock', 'cta'])
+  const firstEndIndex = blocks.findIndex((block) => endBlockTypes.has(String(block.blockType)))
+  const mainBlocks = firstEndIndex === -1 ? blocks : blocks.slice(0, firstEndIndex)
+  const endBlocks = firstEndIndex === -1 ? [] : blocks.slice(firstEndIndex)
+  const midSplit = Math.max(1, Math.ceil(mainBlocks.length / 2))
+  const beforeMid = mainBlocks.slice(0, midSplit)
+  const afterMid = mainBlocks.slice(midSplit)
+  const topicTitle = post.postLongTitle || post.title
+  const introCta = getArticleCtaCopy(topicTitle, 'intro')
+  const midCta = getArticleCtaCopy(topicTitle, 'mid')
+  const endCta = getArticleCtaCopy(topicTitle, 'end')
 
   return (
     <article className="pt-16 pb-16">
@@ -316,11 +330,39 @@ async function renderPostPage(categorySlug: string | null, postSlug: string) {
       </div>
       <RenderHero {...hero} />
       <div className="container mt-8 mb-4">
-        <ContactStrip contained={false} variant="post" />
+        <ContactStrip
+          contained={false}
+          description={introCta.description}
+          heading={introCta.heading}
+          idSuffix="post-intro"
+          variant="post"
+        />
       </div>
-      {layout && layout.length > 0 && (
-        <RenderBlocks blocks={layout as Parameters<typeof RenderBlocks>[0]['blocks']} />
-      )}
+      {beforeMid.length > 0 ? <RenderBlocks blocks={beforeMid} /> : null}
+      <div className="container my-8">
+        <ContactStrip
+          contained={false}
+          description={midCta.description}
+          heading={midCta.heading}
+          idSuffix="post-mid"
+          variant="post"
+        />
+      </div>
+      {afterMid.length > 0 ? <RenderBlocks blocks={afterMid} /> : null}
+
+      <AuthorIdentificationBlock />
+
+      <div className="container mb-8">
+        <ContactStrip
+          contained={false}
+          description={endCta.description}
+          heading={endCta.heading}
+          idSuffix="post-end"
+          variant="post"
+        />
+      </div>
+
+      {endBlocks.length > 0 ? <RenderBlocks blocks={endBlocks} /> : null}
 
       <div className="container">
         <PostTaxonomy categories={post.categories} />

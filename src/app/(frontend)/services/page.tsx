@@ -6,16 +6,24 @@ import React from 'react'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
+import { AggregatedFaqSection } from '@/components/AggregatedFaqSection'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ContactStrip } from '@/components/ContactStrip'
 import { JsonLd } from '@/components/JsonLd'
 import { Media } from '@/components/Media'
 import { generateMeta } from '@/utilities/generateMeta'
-import { getServiceUrl, SERVICES_ARCHIVE_PATH } from '@/utilities/getContentUrls'
+import {
+  QUESTIONS_ANSWERS_PATH,
+  getServiceUrl,
+  SERVICES_ARCHIVE_PATH,
+} from '@/utilities/getContentUrls'
+import { queryAggregatedFaqs } from '@/utilities/queryAggregatedFaqs'
 import { SERVICE_OVERVIEW_SLUGS } from '@/utilities/serviceCatalog'
 import { buildWebPageGraph, serviceArchiveBreadcrumbs } from '@/utilities/jsonLd'
 
 import PageClient from './page.client'
+
+export const dynamic = 'force-dynamic'
 
 const paragraphs = (value: string | null | undefined): string[] =>
   (value ?? '')
@@ -25,28 +33,35 @@ const paragraphs = (value: string | null | undefined): string[] =>
 
 export default async function ServicesArchivePage() {
   const payload = await getPayload({ config: configPromise })
-  const services = await payload.find({
-    collection: 'services',
-    depth: 1,
-    draft: false,
-    limit: 100,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      title: true,
-      slug: true,
-      service_preview_title: true,
-      service_preview_description: true,
-      service_preview_image: true,
-      service_card_image: true,
-    },
-    where: {
-      and: [
-        { _status: { equals: 'published' } },
-        { slug: { in: [...SERVICE_OVERVIEW_SLUGS] } },
-      ],
-    },
-  })
+  const [services, faqItems] = await Promise.all([
+    payload.find({
+      collection: 'services',
+      depth: 1,
+      draft: false,
+      limit: 100,
+      overrideAccess: false,
+      pagination: false,
+      select: {
+        title: true,
+        slug: true,
+        service_preview_title: true,
+        service_preview_description: true,
+        service_preview_image: true,
+        service_card_image: true,
+      },
+      where: {
+        and: [
+          { _status: { equals: 'published' } },
+          { slug: { in: [...SERVICE_OVERVIEW_SLUGS] } },
+        ],
+      },
+    }),
+    queryAggregatedFaqs({
+      limit: 5,
+      allow: ['services'],
+      quota: { services: 5 },
+    }),
+  ])
   const overviewOrder = new Map(SERVICE_OVERVIEW_SLUGS.map((slug, index) => [slug, index]))
   const categories = [...services.docs].sort(
     (a, b) => (overviewOrder.get(a.slug as (typeof SERVICE_OVERVIEW_SLUGS)[number]) ?? 99) -
@@ -159,6 +174,15 @@ export default async function ServicesArchivePage() {
             current website, the product range, the target markets, and the commercial tasks.
           </p>
         </section>
+
+        <AggregatedFaqSection
+          className="mt-8 border-t border-border pt-16"
+          contained={false}
+          heading="Questions from our services"
+          headingId="services-faq"
+          items={faqItems}
+          viewAllHref={`${QUESTIONS_ANSWERS_PATH}?source=services`}
+        />
 
         <ContactStrip
           className="mt-16"
